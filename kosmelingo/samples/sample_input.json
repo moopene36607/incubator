@@ -1,0 +1,39 @@
+{
+  "product": {
+    "brand": "GLOWHAUS",
+    "brand_ja": "グロウハウス",
+    "name": "Niacinamide Glow Serum",
+    "name_ja": "ナイアシンアミド グロウ セラム",
+    "category": "Serum",
+    "category_ja": "美容液",
+    "net_weight": "30 mL",
+    "country_of_origin": "韓国"
+  },
+  "importer": {
+    "name_ja": "(株) 화장품 트레이딩 재팬",
+    "address_ja": "東京都港区南青山 3-12-7 ヴィラ青山 5F",
+    "license_number": "13Z2X12345"
+  },
+  "ingredients": [
+    "Water",
+    "Glycerin",
+    "Niacinamide",
+    "Butylene Glycol",
+    "Sodium Hyaluronate",
+    "Centella Asiatica Extract",
+    "Camellia Sinensis Leaf Extract",
+    "Adenosine",
+    "Panthenol",
+    "Allantoin",
+    "Sodium Ascorbyl Phosphate",
+    "Tocopheryl Acetate",
+    "Carbomer",
+    "Sodium Hydroxide",
+    "1,2-Hexanediol",
+    "Ethylhexylglycerin",
+    "Disodium EDTA",
+    "Polyglutamic Acid",
+    "Beta-Glucan",
+    "Phenoxyethanol"
+  ]
+}
