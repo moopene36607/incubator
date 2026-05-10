@@ -1,0 +1,5 @@
+.omc/
+.claude/
+__pycache__/
+*.pyc
+.env
