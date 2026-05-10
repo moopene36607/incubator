@@ -1,0 +1,47 @@
+{
+  "student": {
+    "name": "林小雨",
+    "age": 10,
+    "grade": "國小四年級",
+    "age_band_code": "ELEMENTARY"
+  },
+  "teacher": {
+    "name": "王美玲老師",
+    "studio_name": "樂之音音樂教室",
+    "contact": "LINE 官方帳號 @yueyin"
+  },
+  "subject_code": "PIANO",
+  "month_data": {
+    "year": 2026,
+    "month": 4,
+    "attendance_actual": 4,
+    "attendance_planned": 4,
+    "homework_done_pct": 70,
+    "main_topics": [
+      "拜爾基本練習曲第 14-16 課",
+      "小奏鳴曲 (小巨人 Op.39 No.7) 第一樂章",
+      "視奏練習:速度由 60 BPM 提升至 75 BPM"
+    ],
+    "progress_observations": [
+      "視奏速度本月從 60 BPM 提升到 75 BPM,反應力明顯進步",
+      "小奏鳴曲第一樂章已能完整彈奏,拍子穩定",
+      "上課專注度高,願意主動嘗試教師提出的新指法",
+      "4 月初參加『兒童音樂大賽』初賽獲得佳作",
+      "情感表達比 3 月有層次,弱奏部分能控制力度"
+    ],
+    "weak_points": [
+      "左手獨立性仍不足,左手節奏常不自覺對齊右手",
+      "練習量不夠 — 老師建議每週 4-5 次,實際只練 2-3 次",
+      "面對長樂句時呼吸感較弱,易斷句"
+    ],
+    "parent_concerns_responding_to": [
+      "家長 3 月底曾私下詢問:小雨是否有比賽潛力、未來是否該往音樂班發展"
+    ],
+    "next_month_plan": [
+      "進入小奏鳴曲第二、三樂章",
+      "開始拜爾 17-19 課 (左手獨立練習加重)",
+      "鼓勵每週至少 4 次練琴,可用『練琴打卡表』陪伴"
+    ],
+    "extra_note": "小雨個性內向但專注,適合慢速累積型學習;家長配合度高。比賽佳作對她信心提升明顯。"
+  }
+}

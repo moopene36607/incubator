@@ -76,12 +76,18 @@ Each prototype has the same shape:
 - **解決的問題**: 台灣 2,600 家動物醫院 / 診所,獸醫師每天 20-50 份 SOAP 病歷 = 每天 2.5-7.5 小時純文書(PTT VetMed: 「打 SOAP 打到手軟」、Dcard 獸醫系版: 「實習要寫到 10 點才能走」)。VetSnap (USD$99) + Scribenote (USD$89) 在英文市場已驗證 PMF。但繁中市場零 AI 競品 — 獸易通 / 毛孩管家等本土 PIMS 都是 record-keeper 沒 AI 生成。語言護城河 + 在地 PIMS 無 AI = 完整空白。架構:純函式渲染病患標頭 + 簽核欄,AI 只寫 SOAP 4 段。**System prompt 嚴禁開具體劑量 + 嚴禁下確定診斷**(獸醫師法規範診斷與處方為獸醫師專屬職責)。
 - **目標市場**: 2,600 家動物醫院,診所版 NT$1,800/月(對標 VetSnap USD$99 ≈ NT$3,200,有 44% 價格優勢)。WTP:獸醫師時薪 NT$1,000 × 省 3.5 小時/天 = 月省 NT$77K,vs 月費 NT$1,800 = 42 倍 ROI。TAM 5% 滲透 = 月 NT$23 萬 MRR。Distribution: FB「台灣獸醫師社群」、獸醫系實習生 KOL、獸醫師公會、太僕 / 瑞鵬連鎖醫院、獸醫繼續教育學分課程贊助。
 
+### Round 10 — `monthrep/` (Taiwan 🇹🇼 — cram-school / talent-class monthly report)
+
+- **題目**: 台灣才藝班 / 補習班老師 學生月報自動產生器(月報先生)
+- **解決的問題**: 全台才藝班 + 補習班約 50,000 家,1 位老師通常帶 20-30 位學生,每月底要寫 20-30 份個人化月報 ≈ 4 小時 admin/月。痛點 PTT C_Education / Dcard 教師版 / FB「台灣補習班主、才藝教室經營交流」社團多次出現:「每個月月底寫到懷疑人生」「打到半夜還沒寫完」。補教王 / EduBase / 補習達人 / ClassSwift / 均一 / PaGamO 全部是排課收費點名,**無一家**有 AI 文字生成。Gap:補教軟體商核心客戶是大型連鎖,沒動力做小型才藝工作室小功能 — 1-5 人才藝工作室是 VC 嫌小、補教軟體商嫌雜的縫隙。架構:純函式渲染標頭 + 出席統計 + LINE 友好版,AI 只寫 4 段月報內容。8 種科目 grounding(鋼琴 / 美術 / 英文 / 數學 / 舞蹈 / 小提琴 / 圍棋 / 作文)+ 4 個年齡 band(學齡前 / 國小 / 國中 / 高中) 自動切換口吻。**AI 嚴禁編造**(沒提到的進步 / 比賽 / 出席日數絕對不能補)。
+- **目標市場**: 50,000 家才藝班 / 補習班,Solo NT$299/月、Studio NT$799/月、Chain NT$2,499/月。WTP 錨點:老師時薪 NT$600 × 月省 4 小時 = 月省 NT$2,400 vs Solo NT$299 = 8x ROI。TAM 2% 滲透 = 月 NT$30 萬 MRR / 年 NT$360 萬 ARR。Distribution: FB 補教交流社團、PTT C_Education / Dcard 教師版、才藝教育博覽會、新手老師 LINE 社群、教育部數位轉型補助配合推廣。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic non-vet / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手 / 托嬰幼兒園 / 宮廟) — `laobao` tax, `carepen` long-term care, `sudoc` legal, `vetnote` veterinary.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document / vet-record / clinical-SOAP topics unless evidence is *extraordinarily* strong.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote), TW cram-school / talent-class monthly report (monthrep). For Taiwan, pick *fresh verticals* (F&B / non-vet healthcare clinic admin / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手 / 托嬰幼兒園 / 宮廟) — `laobao` tax, `carepen` long-term care, `sudoc` legal, `vetnote` veterinary, `monthrep` 補教 / 才藝 月報.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records, cram-school monthly report. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document / vet-record / clinical-SOAP / cram-school-report topics unless evidence is *extraordinarily* strong.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -89,4 +95,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 9 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 10 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
