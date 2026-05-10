@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "experience_level": "beginner",
+    "fitness_level": "medium",
+    "available_days": 3,
+    "departure_city": "台北市",
+    "season": "spring",
+    "avoid_terrains": ["vertical"],
+    "altitude_sickness_history": false,
+    "max_party_size": 4,
+    "has_winter_gear": false,
+    "gear_owned": ["headlamp", "trekking_poles", "20L_daypack"],
+    "goals": ["第一座百岳", "可以拍美照", "不要太冷"]
+  }
+}
