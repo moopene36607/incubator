@@ -1,0 +1,57 @@
+{
+  "claim": {
+    "claim_number": "TX-2026-04-1138",
+    "carrier": "Heritage Insurance",
+    "insured_name": "Robert J. Hernandez",
+    "loss_address": "4127 Mockingbird Lane, Round Rock, TX 78664",
+    "date_of_loss": "2026-04-23",
+    "date_of_inspection": "2026-04-29",
+    "policy_type": "HO-3",
+    "peril": "Hail and Wind",
+    "weather_event_summary": "NWS confirmed severe thunderstorms moving NE through Williamson County on 2026-04-23 with hail reports of 1.5 to 1.75 inches in the Round Rock corridor between 18:40 and 19:10 CDT. Wind gusts to 64 mph reported at KAUS."
+  },
+  "structure": {
+    "year_built": 2008,
+    "stories": 1,
+    "approx_square_footage": 2240,
+    "roof_material": "3-tab asphalt shingle, original",
+    "siding_material": "Hardiplank fiber cement, painted",
+    "elevations_inspected": ["front (south)", "left (east)", "rear (north)", "right (west)"]
+  },
+  "photo_observations": [
+    {
+      "id": "P-01",
+      "location": "Front elevation roof slope, south facing",
+      "description": "Asphalt 3-tab shingles with multiple circular impact marks, approximately 1.25 to 1.5 inch diameter, exhibiting granule loss exposing asphalt mat. Fractures of the mat visible on at least two impacts. Pattern consistent across the slope, not concentrated near drip edge. No prior repair indicators."
+    },
+    {
+      "id": "P-02",
+      "location": "Aluminum gutter, east elevation, mid-run",
+      "description": "Front face of K-style gutter shows multiple round dents averaging 0.75 to 1 inch diameter on a 5 to 8 inch spacing. Dents are bright (no oxidation), indicating recent impact. Gutter remains structurally sound but cosmetically damaged the full length of the run, approximately 38 linear feet."
+    },
+    {
+      "id": "P-03",
+      "location": "South-facing window screen, master bedroom",
+      "description": "Aluminum window screen frame is bowed inward at midpoint with mesh torn in three locations consistent with hail penetration. Screen fabric displaced, frame bent approximately 1 inch out of plane. Window glazing intact, no spider fracture observed."
+    }
+  ],
+  "xactimate_line_items": [
+    {"code": "RFG 240", "description": "3-tab asphalt shingle roofing - laminated", "quantity": 24.5, "unit": "SQ", "unit_price": 285.00},
+    {"code": "RFG IWS", "description": "Ice & water shield", "quantity": 320, "unit": "SF", "unit_price": 1.85},
+    {"code": "RFG RIDGC", "description": "Hip / ridge cap composition shingles", "quantity": 86, "unit": "LF", "unit_price": 6.45},
+    {"code": "RFG DRIP", "description": "Drip edge", "quantity": 158, "unit": "LF", "unit_price": 2.15},
+    {"code": "RFG VENTA", "description": "Roof vent - turtle type", "quantity": 4, "unit": "EA", "unit_price": 38.00},
+    {"code": "GUT ALMK", "description": "Gutter - aluminum - 5\" K-style", "quantity": 38, "unit": "LF", "unit_price": 8.20},
+    {"code": "GUT DALMK", "description": "Detach & reset gutter", "quantity": 0, "unit": "LF", "unit_price": 0},
+    {"code": "WDW SCRRP", "description": "Window screen - rescreen", "quantity": 1, "unit": "EA", "unit_price": 42.00},
+    {"code": "WDW SCRFR", "description": "Window screen frame", "quantity": 1, "unit": "EA", "unit_price": 28.00},
+    {"code": "PNT EXTW", "description": "Paint exterior wall - one coat", "quantity": 0, "unit": "SF", "unit_price": 0},
+    {"code": "DMO RFG", "description": "Tear off composition shingles", "quantity": 24.5, "unit": "SQ", "unit_price": 62.00},
+    {"code": "DMO HAUL", "description": "Dumpster load - 30 yd", "quantity": 1, "unit": "EA", "unit_price": 595.00}
+  ],
+  "options": {
+    "carrier_tone": "neutral_technical",
+    "include_methodology": true,
+    "include_recommendation": true
+  }
+}
