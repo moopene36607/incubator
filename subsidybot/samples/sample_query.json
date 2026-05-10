@@ -1,0 +1,14 @@
+{
+  "profile": {
+    "age": 32,
+    "gender": "女",
+    "is_new_immigrant": false,
+    "has_business_registered": true,
+    "business_age_years": 1.5,
+    "employee_count": 3,
+    "industry": "服務業 / 線上手作課程平台",
+    "capital_twd": 500000,
+    "free_text": "我跟先生兩年前一起創業做線上手作課平台,目前 3 人團隊(含我夫妻 + 1 位兼職客服)。希望擴增 SaaS 課程播放系統 + 雲端 CDN,但資金壓力很大,請問適合哪些補助?"
+  },
+  "question": "我跟先生兩年前一起創業做線上手作課平台,目前 3 人團隊。想擴增 SaaS 系統 + 雲端 CDN,請問有哪些補助 / 貸款適合我們?"
+}

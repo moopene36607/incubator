@@ -100,13 +100,19 @@ Each prototype has the same shape:
 - **解決的問題**: 估計台灣活躍團媽 40-100 萬人,每月 8-15 次團 × 30-80 條訂購訊息 = 每月 240-1,200 條手工逐條判讀。Dcard 媽媽版:「整單 2-4 小時 / 次,算錯就自己賠」。揪好買 / 多多團走「電商平台」方向,不解決「群組截圖 → 整單」最後一哩痛點(自打嘴巴會把用戶留在 LINE)— 結構性 gap。架構:**LLM 解析非結構化 LINE 對話 → 結構化 OrderEvent (add/set/cancel),純函式聚合(`aggregator.py`)100% 算錢**。三種 action 區分精確處理「改成 N 個」「取消」這類團購群組常見模糊語言。Skipped events 透明列出避免靜默漏單。
 - **目標市場**: 40-100 萬團媽,Pro NT$299/月、Business NT$699/月、年付折扣。WTP:每月 36 小時手工 × NT$200/hr = NT$7,200 機會成本 vs NT$299 = 24x ROI。TAM 1% 滲透 = 5,000 人 × NT$299 = **月 NT$150 萬 MRR / 年 NT$1,800 萬 ARR**;加 Business + 港澳 + 日韓繁中 → 翻倍。Distribution: FB 大型團購社團(「TAIWAN 媽媽團購交流」5-10 萬人)、Dcard 媽媽版 / WomenTalk、Threads / YouTube 主婦 KOL、LINE 官方 Bot Store。
 
+### Round 14 — `subsidybot/` (Taiwan 🇹🇼 — government subsidy RAG Q&A, **third non-doc-gen pattern**)
+
+- **題目**: 台灣中小企業 / 創業 / 個人補助 RAG Q&A 助手(用戶條件 + 自由問題 → 30 秒比對符合方案)
+- **解決的問題**: 台灣補助散在 N 個機關(經濟部 / 勞動部 / 農業部 / 數位部 / 各縣市),普通創業者每次自己 Google 2-3 小時還可能漏。PTT Entrepreneur:「請問台灣創業補助有哪些?每次都要自己去 N 個不同網站找資料」。SBIR 官網是靜態 FAQ;104 補助資料庫無法答「我符合嗎」;ChatGPT 直接問**幻覺嚴重**(常給已截止方案);律師諮詢一次 NT$3,000-5,000 小企業負擔不起。架構:**`subsidies_db.py` 結構化 corpus(8 個方案 metadata)+ `retrieval.py` 純函式硬條件比對(年齡 / 設立年限 / 員工 / 行業 / 性別)+ Claude 嚴格 RAG(只 cite 提供 corpus,絕不編造)**。Bug fix during testing: 性別 substring 比對誤判 25 男符合「男(45歲以上)」— 改 exact match。
+- **目標市場**: 1-10 人微型企業主 ~150,000 人 + 自由工作者 + 個人創業者 = 200,000+ 潛在用戶。Pro NT$299/月、企業版 NT$799/月、API NT$0.5/call、Enterprise NT$5,000+/月。WTP:每月省 2-3 小時查補助 × 機會成本 = NT$600-1,800 vs Pro NT$299 = 2-6x ROI。TAM 1% 滲透 = 2,000 人 × NT$299 = **月 NT$60 萬 MRR / 年 NT$720 萬 ARR**;加 API + Enterprise + 橫移 RAG(勞基法/健保/農委會)→ 翻倍。Distribution: PTT Entrepreneur / Dcard 創業版、創業 podcast、會計師 / 記帳士事務所合作 partner、政府單位 partner、創業育成中心、長尾 SEO 關鍵字。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote), TW cram-school monthly report (monthrep), TW personal-trainer post-class report (fitlog), TW used-motorcycle valuation (motoval), TW LINE group-buy aggregation (snaporder). For Taiwan, pick *fresh verticals* (F&B 餐飲非團購 / non-vet healthcare clinic admin / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 / 美髮美容 / 托嬰幼兒園 / 宮廟 / 家政).
-- **Architecture diversification rule** — covered AI patterns: doc-gen (rounds 1-11), vertical pricing model (motoval round 12), NLP/OCR multi-message aggregation (snaporder round 13). Future rounds: prefer matching / monitoring / scheduling / vision-classification / LINE-bot / RAG / vertical-pricing-other-domain. Avoid yet another "AI writes a report/note/contract" or "OCR aggregation" pattern unless extraordinary evidence.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records, cram-school monthly report, fitness-trainer post-class report, used-motorcycle valuation, LINE group-buy aggregation.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote), TW 補教月報 (monthrep), TW 健身 (fitlog), TW 二手機車 (motoval), TW LINE 團購 (snaporder), TW 政府補助 RAG (subsidybot). For Taiwan, pick *fresh verticals* (F&B 餐飲 / non-vet clinic admin / real estate / logistics / HR / wedding / agriculture vision / construction / 自媒體 / 美髮美容 churn / 托嬰幼兒園 / 宮廟 / 家政 / dating / pet vision/聲音).
+- **Architecture diversification rule** — covered AI patterns: doc-gen (rounds 1-11), vertical pricing model (motoval r12), NLP/OCR multi-message aggregation (snaporder r13), RAG over local-knowledge corpus (subsidybot r14). Future rounds: prefer matching / monitoring / scheduling / vision-classification / LINE-bot / churn-prediction / vertical-pricing-other-domain / vision-or-voice signal analysis. Avoid yet another "AI writes a report/note/contract" / "OCR aggregation" / "RAG Q&A over docs" pattern unless extraordinary evidence.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records, cram-school monthly report, fitness-trainer post-class report, used-motorcycle valuation, LINE group-buy aggregation, government subsidy RAG.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -114,4 +120,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 13 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 14 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
