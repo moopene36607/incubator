@@ -1,0 +1,27 @@
+{
+  "group_name": "周大姐 5 月團 — 韓國零食 + 大湖草莓",
+  "products": {
+    "SHIN_RAMYUN":  {"name": "韓國辛辣麵",        "unit_price": 100, "unit_label": "包"},
+    "STRAWBERRY":   {"name": "大湖草莓",          "unit_price": 250, "unit_label": "盒"},
+    "PORRIDGE":     {"name": "泰山八寶粥",        "unit_price": 35,  "unit_label": "罐"}
+  },
+  "events": [
+    {"buyer": "阿美",  "item": "SHIN_RAMYUN", "quantity": 5, "action": "add",   "line_no": 3,  "raw_text": "我要 5 包辛辣麵"},
+    {"buyer": "阿美",  "item": "STRAWBERRY",  "quantity": 1, "action": "add",   "line_no": 3,  "raw_text": "+ 1 盒草莓"},
+    {"buyer": "阿美",  "item": "PORRIDGE",    "quantity": 3, "action": "add",   "line_no": 4,  "raw_text": "還有 3 罐八寶粥"},
+    {"buyer": "小薇",  "item": "SHIN_RAMYUN", "quantity": 2, "action": "add",   "line_no": 5,  "raw_text": "+2 辛辣麵"},
+    {"buyer": "小薇",  "item": "STRAWBERRY",  "quantity": 1, "action": "add",   "line_no": 6,  "raw_text": "草莓 1 盒"},
+    {"buyer": "阿欣",  "item": "SHIN_RAMYUN", "quantity": 8, "action": "add",   "line_no": 7,  "raw_text": "我要訂韓國辛辣麵 8 包"},
+    {"buyer": "嘉媽",  "item": "STRAWBERRY",  "quantity": 3, "action": "add",   "line_no": 9,  "raw_text": "草莓我要 3 盒"},
+    {"buyer": "阿美",  "item": "STRAWBERRY",  "quantity": 2, "action": "set",   "line_no": 10, "raw_text": "草莓改成 2 盒不要 1 盒"},
+    {"buyer": "小薇",  "item": "PORRIDGE",    "quantity": 5, "action": "add",   "line_no": 11, "raw_text": "八寶粥 +5 罐"},
+    {"buyer": "阿欣",  "item": "STRAWBERRY",  "quantity": 3, "action": "add",   "line_no": 12, "raw_text": "+3 大湖草莓"},
+    {"buyer": "嘉媽",  "item": "PORRIDGE",    "quantity": 1, "action": "add",   "line_no": 13, "raw_text": "八寶粥 1 罐"},
+    {"buyer": "嘉媽",  "item": "STRAWBERRY",  "quantity": 4, "action": "set",   "line_no": 17, "raw_text": "草莓追加 1 盒,總共 4 盒"},
+    {"buyer": "阿欣",  "item": "STRAWBERRY",  "quantity": 5, "action": "set",   "line_no": 22, "raw_text": "再 2 盒,總共 5 盒"},
+    {"buyer": "嘉媽",  "item": "SHIN_RAMYUN", "quantity": 1, "action": "add",   "line_no": 23, "raw_text": "我老公也想要 1 包辛辣麵"},
+    {"buyer": "新人小姐", "item": "SHIN_RAMYUN", "quantity": 3, "action": "add", "line_no": 24, "raw_text": "辛辣麵 3 包"},
+    {"buyer": "新人小姐", "item": "STRAWBERRY",  "quantity": 2, "action": "add", "line_no": 24, "raw_text": "草莓 2 盒"},
+    {"buyer": "嘉媽",  "item": "SHIN_RAMYUN", "quantity": 0, "action": "cancel","line_no": 27, "raw_text": "我老公那包不要了"}
+  ]
+}

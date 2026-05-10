@@ -1,0 +1,8 @@
+{
+  "group_name": "周大姐 5 月團 — 韓國零食 + 大湖草莓",
+  "products": {
+    "SHIN_RAMYUN":  {"name": "韓國辛辣麵",        "unit_price": 100, "unit_label": "包"},
+    "STRAWBERRY":   {"name": "大湖草莓",          "unit_price": 250, "unit_label": "盒"},
+    "PORRIDGE":     {"name": "泰山八寶粥",        "unit_price": 35,  "unit_label": "罐"}
+  }
+}
