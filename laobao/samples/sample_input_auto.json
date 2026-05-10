@@ -1,0 +1,16 @@
+{
+  "amount": 18000,
+  "income_type": "auto",
+  "description": "我是兼職在補習班教國中數學,每週固定排班、用補習班的教室和教材,每月領鐘點費。這次是 4 月份的鐘點費。",
+  "payer": {
+    "name": "明日之星補習班",
+    "tax_id": "87654321"
+  },
+  "payee": {
+    "name": "林志傑",
+    "id": "F123456789",
+    "address": "新北市板橋區文化路二段 100 號",
+    "is_union_insured": false,
+    "is_resident": true
+  }
+}
