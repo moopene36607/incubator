@@ -88,12 +88,19 @@ Each prototype has the same shape:
 - **解決的問題**: 台灣自由接案 PT 約 2-3 萬人,每天 6-8 節 1 對 1 課,每節結束後要寫課後紀錄維持留存與信任。Dcard 健身板:「一天 6 節課要寫 6 份,累死」。PTT FITNESS:「Word 模板還是很花時間」。每天 30-40 分鐘 admin × 教練時薪 NT$1,500 = 月省 NT$11K+ 機會成本。**TrueCoach (USD$19.99 月費) 在英文市場已驗證 PMF**;繁中市場零 AI 課後報告產生器,本土 MixFit / SportSoft 是課程預約點名沒 AI;ChatGPT 直接問每次要重打學員資料、沒結構化動作 grounding。架構:純函式渲染量化訓練表 + LINE 純文字版,AI 只寫 5 段(摘要 / 進步 / 觀察 / 下次重點 / 恢復飲食)。**AI 嚴禁編造**(體重 / 體脂 / 卡路里 / 心率沒提到不能補)+ **AI 不下醫療診斷**(學員主述不適時用「下次留意 / 視情況調整」措辭,規避 PT 與物治職業界線)。30 個動作 seed db 用台灣健身圈詞彙(槓鈴背蹲舉 / RPE / 超負荷 / TUT)。
 - **目標市場**: 2-3 萬持照 PT,Solo NT$299/月(對標 TrueCoach NT$640 便宜 53%)、Solo+ Whisper NT$599/月、Studio NT$1,499/月。WTP 錨點:每天省 30-40 分鐘 × NT$1,500 時薪 = 月省 NT$11K+ vs Solo NT$299 = **37x ROI**。TAM 5% 滲透 = 月 NT$30 萬 MRR。Distribution: FB「健身教練交流」社團、體適能協會 (CTSCA / CSCS) 訓練營、YouTube 健身 KOL (肌肉爸爸 / 健人蓋伊 / 館長) 合作、Threads / IG 健身教練、World Gym / Anytime Fitness 駐店 PT BD。
 
+### Round 12 — `motoval/` (Taiwan 🇹🇼 — used motorcycle valuation, **first non-doc-gen pattern**)
+
+- **題目**: 台灣二手機車 AI 估價助手(自然語言車況描述 → 估值 + 議價建議)
+- **解決的問題**: 台灣年交易二手機車 60 萬台,FB「台灣二手機車買賣」27 萬成員社團每天上百篇詢價,但**無客觀估價工具**。8891 / U-CAR 主打汽車 + 機車是 listing 沒估價;Yahoo / 露天只有 listing;Kelley Blue Book 等英美工具不認識台灣機車車款(光陽 Force / 三陽 DRG / Yamaha 新勁戰 / Gogoro)— 結構性 gap。前 11 輪 prototype 全是 document-gen,本輪刻意換成 **vertical pricing model + 自然語言解析** 架構。`pricing.py` 純函式 5 步驟估值(MSRP × 年折舊率^age × 里程 factor × 車況等級 × 細項加減分),所有數字計算 100% 純函式絕不交給 LLM;sanity cap 限制估值 ≤ MSRP × 0.95。AI 只負責解析自然語言「我的 Force 155 2021 跑了 7 萬...」→ 結構化 input。
+- **目標市場**: 60 萬台年交易 + 2,000 家二手車行。B2C NT$49/次 估價、B2C 月會員 NT$199、B2B 車行 NT$799/月(無限批次)、B2B 連鎖 NT$2,499/月、API NT$0.5/call。WTP:B2C NT$49 vs 開錯價 NT$5K+ = 100x 保險;B2B 車行月 30 台估價省一台錯估 NT$2K = 月費回本。TAM B2C NT$147 萬/年 + B2B NT$192 萬 ARR + API enterprise = **總天花板 NT$1,000 萬 ARR**。Distribution: PTT biker / Dcard 機車版、FB 二手機車買賣社團、YouTube 機車 KOL(老吳 / Apex / 老查)、8891 / 露天 listing SEO、二手車行直接 BD。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote), TW cram-school monthly report (monthrep), TW personal-trainer post-class report (fitlog). For Taiwan, pick *fresh verticals* (F&B / non-vet healthcare clinic admin / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 二手 / 托嬰幼兒園 / 宮廟 / 二手車 / 家政) — `laobao` tax, `carepen` long-term care, `sudoc` legal, `vetnote` veterinary, `monthrep` 補教月報, `fitlog` 健身.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records, cram-school monthly report, fitness-trainer post-class report. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document / vet-record / clinical-SOAP / cram-school-report / fitness-trainer-report topics unless evidence is *extraordinarily* strong.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote), TW cram-school monthly report (monthrep), TW personal-trainer post-class report (fitlog), TW used-motorcycle valuation (motoval). For Taiwan, pick *fresh verticals* (F&B / non-vet healthcare clinic admin / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 托嬰幼兒園 / 宮廟 / 家政).
+- **Architecture diversification (NEW from round 12)** — rounds 1-11 were ALL document-generation tools. Round 12 (motoval) finally broke this with vertical pricing model + natural-language parsing. Future rounds should explore other non-doc-gen patterns: matching / monitoring / scheduling / vision / OCR aggregation / LINE bot / RAG. Avoid yet another "AI writes a document/report/notice" idea unless evidence is extraordinary.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records, cram-school monthly report, fitness-trainer post-class report, used-motorcycle valuation.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -101,4 +108,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 11 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 12 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*

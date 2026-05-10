@@ -1,0 +1,15 @@
+{
+  "model_code": "KYMCO_FORCE_155",
+  "year": 2021,
+  "mileage_km": 70000,
+  "condition_rating": "good",
+  "adjustments": [
+    "single_owner",
+    "full_service_book",
+    "dealer_serviced",
+    "new_tires",
+    "minor_paint_damage",
+    "high_mileage"
+  ],
+  "valuation_year": 2026
+}
