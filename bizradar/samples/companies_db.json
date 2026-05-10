@@ -1,0 +1,158 @@
+{
+  "description": "Mock corpus of 10 台灣 companies for bizradar demo. 在真實產品上會從商業司公開資料 + 司法院裁判書 + 新聞 API 即時抓取。",
+  "data_sources_in_real_product": [
+    "經濟部商業司 公司登記查詢 API",
+    "司法院 裁判書檢索 API",
+    "聯合知識庫 / 中央社 / 公開新聞檢索",
+    "金管會 公司治理評鑑(上市櫃)"
+  ],
+  "companies": [
+    {
+      "corp_id": "12345678",
+      "name_zh": "鴻禾國際有限公司",
+      "established_date": "2024-08-15",
+      "capital_amount": 1000000,
+      "registered_address": "新北市板橋區某路 8 號 3 樓",
+      "business_status": "營業中",
+      "industry": "B2B 軟體外包",
+      "directors": ["陳大華", "林志強"],
+      "lawsuits": [
+        {"date": "2025-11-12", "role": "被告", "type": "票款給付", "amount": 580000, "court": "新北地院"}
+      ],
+      "news_negative": [],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "23456789",
+      "name_zh": "禾鴻貿易股份有限公司",
+      "established_date": "2018-03-10",
+      "capital_amount": 5000000,
+      "registered_address": "台北市信義區某路 88 號",
+      "business_status": "解散",
+      "industry": "進口貿易",
+      "directors": ["陳大華", "王明智"],
+      "lawsuits": [
+        {"date": "2023-06-20", "role": "被告", "type": "票款給付", "amount": 2300000, "court": "台北地院"},
+        {"date": "2023-09-15", "role": "被告", "type": "違約損害賠償", "amount": 4500000, "court": "台北地院"}
+      ],
+      "news_negative": [
+        {"date": "2023-08-01", "source": "工商時報", "headline": "禾鴻貿易遭多家供應商討債", "severity": "high"},
+        {"date": "2023-12-05", "source": "中央社", "headline": "禾鴻貿易停業 員工權益恐受損", "severity": "high"}
+      ],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "34567890",
+      "name_zh": "正信實業股份有限公司",
+      "established_date": "2010-05-20",
+      "capital_amount": 30000000,
+      "registered_address": "台中市西屯區某路 100 號",
+      "business_status": "營業中",
+      "industry": "電子製造",
+      "directors": ["李正信", "張曉明", "黃淑芬"],
+      "lawsuits": [],
+      "news_negative": [],
+      "known_business_partners": ["45678901"]
+    },
+    {
+      "corp_id": "45678901",
+      "name_zh": "永盛工業股份有限公司",
+      "established_date": "2008-11-08",
+      "capital_amount": 50000000,
+      "registered_address": "桃園市龜山區某路 200 號",
+      "business_status": "營業中",
+      "industry": "電子製造",
+      "directors": ["黃淑芬", "陳建宏"],
+      "lawsuits": [],
+      "news_negative": [],
+      "known_business_partners": ["34567890"]
+    },
+    {
+      "corp_id": "56789012",
+      "name_zh": "宏發投資有限公司",
+      "established_date": "2025-02-01",
+      "capital_amount": 500000,
+      "registered_address": "新北市板橋區某路 8 號 3 樓",
+      "business_status": "營業中",
+      "industry": "投資控股",
+      "directors": ["林志強"],
+      "lawsuits": [],
+      "news_negative": [],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "67890123",
+      "name_zh": "誠信科技股份有限公司",
+      "established_date": "2015-04-22",
+      "capital_amount": 80000000,
+      "registered_address": "新竹市東區某路 50 號",
+      "business_status": "營業中",
+      "industry": "資訊服務",
+      "directors": ["許志誠", "周淑芬", "蔡明達"],
+      "lawsuits": [
+        {"date": "2024-03-10", "role": "原告", "type": "智財侵權", "amount": 1200000, "court": "智慧財產法院"}
+      ],
+      "news_negative": [],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "78901234",
+      "name_zh": "天和食品工業股份有限公司",
+      "established_date": "1998-07-15",
+      "capital_amount": 100000000,
+      "registered_address": "高雄市鳳山區某路 300 號",
+      "business_status": "營業中",
+      "industry": "食品加工",
+      "directors": ["張天和", "張曉峰", "李美玲"],
+      "lawsuits": [],
+      "news_negative": [],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "89012345",
+      "name_zh": "捷利物流有限公司",
+      "established_date": "2022-09-01",
+      "capital_amount": 2000000,
+      "registered_address": "台北市內湖區某路 10 號",
+      "business_status": "營業中",
+      "industry": "物流運輸",
+      "directors": ["王志明"],
+      "lawsuits": [
+        {"date": "2024-08-15", "role": "被告", "type": "票款給付", "amount": 350000, "court": "台北地院"},
+        {"date": "2025-02-20", "role": "被告", "type": "勞動爭議", "amount": 180000, "court": "台北地院"}
+      ],
+      "news_negative": [
+        {"date": "2024-11-15", "source": "蘋果新聞網", "headline": "捷利物流連月遲發薪資 員工抗議", "severity": "medium"}
+      ],
+      "known_business_partners": []
+    },
+    {
+      "corp_id": "90123456",
+      "name_zh": "綠源生技股份有限公司",
+      "established_date": "2019-06-30",
+      "capital_amount": 15000000,
+      "registered_address": "新竹市東區某路 20 號",
+      "business_status": "營業中",
+      "industry": "生技醫藥",
+      "directors": ["周博士", "蔡明達", "黃志祥"],
+      "lawsuits": [],
+      "news_negative": [],
+      "known_business_partners": ["67890123"]
+    },
+    {
+      "corp_id": "01234567",
+      "name_zh": "鴻禾科技股份有限公司",
+      "established_date": "2021-11-11",
+      "capital_amount": 8000000,
+      "registered_address": "台北市大安區某路 50 號",
+      "business_status": "營業中",
+      "industry": "軟體開發",
+      "directors": ["林志強", "簡淑慧"],
+      "lawsuits": [
+        {"date": "2025-04-05", "role": "原告", "type": "民事勞動爭議", "amount": 450000, "court": "台北地院"}
+      ],
+      "news_negative": [],
+      "known_business_partners": []
+    }
+  ]
+}
