@@ -1,0 +1,29 @@
+{
+  "house": {
+    "region": "台北市大安區",
+    "region_avg_price_per_ping": 1100000,
+    "size_ping": 25.6,
+    "age_years": 27,
+    "floor": 8,
+    "total_floors": 12,
+    "orientation": "東南向",
+    "has_elevator": true,
+    "has_parking": true,
+    "near_mrt_meters": 280,
+    "nearby_school_district": "金華國小 + 金甌女中(明星學區)",
+    "nearby_dislike_facilities": [],
+    "renovation_score": 7,
+    "renovation_notes": [
+      "5 年內全室翻新,廚具是 IKEA 較新款式",
+      "浴室磁磚與五金 5 年內全部更換",
+      "客廳冷氣是國際牌 R32 變頻款",
+      "原木地板無明顯刮痕"
+    ]
+  },
+  "photo_descriptions": [
+    "客廳:約 6 坪空間,木質地板無刮痕,落地窗朝東南方有充足採光,IKEA 風 L 型沙發配淺色牆面,天花板嵌入式 LED 照明,整體看似 5 年內翻修。",
+    "廚房:約 3 坪 L 型廚具,IKEA 白色廚櫃,廚具瓦斯爐是櫻花最近款,流理台不鏽鋼乾淨無水痕,抽油煙機沒有油垢累積。",
+    "主臥:約 4.5 坪,梧桐木衣櫃滿牆,雙人床,牆面塗料新,空調是國際牌 R32 一級能效。",
+    "浴室:約 1.5 坪,乾濕分離,馬桶與面盆都是 TOTO 5 年內款式,磁磚與地板乾淨無發霉,只有矽利康有輕微泛黃。"
+  ]
+}
