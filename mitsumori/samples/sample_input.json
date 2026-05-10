@@ -1,0 +1,53 @@
+{
+  "company": {
+    "name": "山田金属工業株式会社",
+    "address": "〒144-0035 東京都大田区南蒲田 2-12-7",
+    "tel": "03-3743-XXXX",
+    "fax": "03-3743-YYYY",
+    "email": "sales@yamada-kinzoku.co.jp",
+    "license_number": "T1234567890123",
+    "representative_title": "代表取締役",
+    "representative_name": "山田 太郎"
+  },
+  "customer": {
+    "company": "株式会社 ABC 製作所",
+    "department": "購買部 部品調達課",
+    "contact": "佐藤 一郎 様"
+  },
+  "quote": {
+    "subject": "SUS304 制御盤用 取付ブラケット 試作 100 個",
+    "quote_number": "M-20260510-0117",
+    "issue_date": "2026-05-10",
+    "valid_until": "2026-06-10",
+    "delivery_terms": "ご注文確定後 3 週間 / 試作確認分(10 個)は 2 週間",
+    "payment_terms": "月末締め翌月末現金振込",
+    "delivery_location": "貴社ご指定場所(関東圏内 1 ヶ所、運送費別)"
+  },
+  "items": [
+    {
+      "part_name": "ブラケット A (図面 A-001 改 2)",
+      "material": "SUS304 (2B 仕上げ)",
+      "thickness_mm": 3.0,
+      "quantity": 100,
+      "processes": ["NCT 切断", "穴あけ φ6.5 × 4 箇所", "曲げ R3 × 2 箇所", "バリ取り", "脱脂洗浄"],
+      "material_jpy_per_unit": 380,
+      "machining_minutes_per_unit": 8.5,
+      "remarks": "穴位置公差 ±0.1mm、曲げ角度公差 ±0.5°"
+    },
+    {
+      "part_name": "補強プレート B (図面 B-014)",
+      "material": "SUS304 (2B 仕上げ)",
+      "thickness_mm": 2.0,
+      "quantity": 200,
+      "processes": ["レーザー切断", "穴あけ φ4.5 × 2 箇所", "バリ取り"],
+      "material_jpy_per_unit": 145,
+      "machining_minutes_per_unit": 3.0,
+      "remarks": "切断面のキズ・打痕不可"
+    }
+  ],
+  "rates": {
+    "machining_jpy_per_min": 130,
+    "setup_jpy": 12000,
+    "margin_rate": 0.18
+  }
+}
