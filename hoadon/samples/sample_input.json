@@ -1,0 +1,23 @@
+{
+  "shop": {
+    "business_name": "Phở Hà Nội Cô Tâm",
+    "tax_code": "0123456789",
+    "address": "Số 28, Ngõ 15, Đường Lý Thường Kiệt, Quận Hoàn Kiếm, Hà Nội",
+    "owner_name": "Nguyễn Thị Tâm",
+    "phone": "0912 345 678"
+  },
+  "business_date": "2026-05-10",
+  "lines": [
+    {"item_name": "Phở bò tái",       "quantity": 35, "unit_price_vnd": 65000, "category": "fb"},
+    {"item_name": "Phở bò chín",      "quantity": 18, "unit_price_vnd": 65000, "category": "fb"},
+    {"item_name": "Phở gà",           "quantity": 22, "unit_price_vnd": 60000, "category": "fb"},
+    {"item_name": "Bún chả Hà Nội",   "quantity": 12, "unit_price_vnd": 70000, "category": "fb"},
+    {"item_name": "Trà đá",           "quantity": 87, "unit_price_vnd": 5000,  "category": "fb"},
+    {"item_name": "Trà nóng",         "quantity": 24, "unit_price_vnd": 8000,  "category": "fb"},
+    {"item_name": "Pepsi lon",        "quantity": 18, "unit_price_vnd": 20000, "category": "fb"},
+    {"item_name": "Cà phê sữa đá",    "quantity": 31, "unit_price_vnd": 25000, "category": "fb"},
+    {"item_name": "Quẩy nóng",        "quantity": 26, "unit_price_vnd": 15000, "category": "fb"},
+    {"item_name": "Bánh mì pate",     "quantity": 8,  "unit_price_vnd": 40000, "category": "fb"},
+    {"item_name": "Combo phở + nước (set)", "quantity": 6, "unit_price_vnd": 80000, "category": "fb"}
+  ]
+}
