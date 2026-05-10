@@ -1,0 +1,16 @@
+{
+  "name": "陳大哥",
+  "age": 55,
+  "target_retire_age": 65,
+  "monthly_salary": 75000,
+  "avg_insurance_salary": 45800,
+  "labor_pension_years": 22,
+  "labor_insurance_years": 30,
+  "national_pension_years": 0,
+  "self_contribute_rate": 0.0,
+  "current_savings": 3500000,
+  "monthly_save": 20000,
+  "region": "雙北",
+  "household_type": "couple",
+  "notes": "55 歲新北上班族,月薪 75,000(投保薪資已達上限 45,800),勞退累積 22 年、勞保 30 年(同公司資歷),沒參加過國保。和老婆 60 歲住新莊,小孩剛大學畢業已不用養。目前儲蓄 350 萬,每月再存 2 萬。希望 65 歲退休。"
+}
