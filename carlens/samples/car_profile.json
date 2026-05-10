@@ -1,0 +1,30 @@
+{
+  "listing_id": "8891-A23-0501-12345",
+  "make": "Toyota",
+  "model": "Camry 2.0",
+  "declared_year": 2018,
+  "declared_mileage_km": 38000,
+  "declared_no_accident": true,
+  "declared_no_flood": true,
+  "asking_price_ntd": 685000,
+  "interior_wear_level": 6,
+  "interior_wear_notes": "方向盤皮革明顯磨損露白、駕駛座椅椅墊塌陷、踏板防滑膠墊磨損見金屬底、檔位 R / D 字樣模糊難辨。",
+  "engine_bay_state": "局部重噴",
+  "engine_bay_notes": "右前葉子板內側螺絲底漆顏色與車身漆面不同;水箱罩支架疑似後換新件;螺絲頭有重新鎖過痕跡。",
+  "undercarriage_state": "新塗裝可疑",
+  "undercarriage_notes": "整個底盤黑色防鏽塗料極新,看不到原廠焊接點痕跡;塗裝邊緣有滴流。",
+  "body_paint_consistency": "局部色差",
+  "body_paint_notes": "右後車門與右後葉子板色差明顯,陽光下可看到一條補土線;後保桿邊緣有 1mm 高低差。",
+  "tire_estimated_remaining_pct": 35,
+  "tire_brand_year": "瑪吉斯 / 2021 年 32 週(已 4 年)",
+  "vin_plate_state": "原廠",
+  "vin_plate_notes": "車身號碼牌完整、字體一致、無修補痕跡。",
+  "equipment_features": [
+    "LED 大燈",
+    "Apple CarPlay",
+    "盲點偵測",
+    "電動椅",
+    "皮椅"
+  ],
+  "seller_notes": "車主出國移民急售,只開到上下班,週末停放車庫,僅一手車主。"
+}
