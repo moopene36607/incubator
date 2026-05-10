@@ -1,0 +1,17 @@
+{
+  "name": "鼎峰科技股份有限公司(8 人軟體外包)",
+  "starting_cash": 1800000,
+  "monthly_revenue_mean": 1000000,
+  "monthly_revenue_std": 200000,
+  "monthly_fixed_cost": 500000,
+  "variable_cost_ratio": 0.15,
+  "ar_collection_days_mean": 60,
+  "ar_collection_days_std": 15,
+  "big_customer_default_prob_per_year": 0.05,
+  "default_loss_ratio": 0.7,
+  "simulation_months": 12,
+  "big_deal_amount": 2000000,
+  "big_deal_collection_days": 90,
+  "big_deal_extra_variable_cost": 300000,
+  "notes": "鼎峰科技,8 人軟體外包公司,主要做企業內網開發。月營收約 NT$80-120 萬,固定成本(含 8 人薪資 + 辦公室房租 + AWS)約 50 萬,變動成本(外包 / 出差)約營收 15%。應收 60 天票期(極少數客戶 30 天 / 90 天)。最近一家上市公司客戶提案 NT$200 萬大單,90 天票期 + 一次性外包加班 NT$30 萬。老闆問:接不接得起?"
+}
