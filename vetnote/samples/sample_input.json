@@ -1,0 +1,43 @@
+{
+  "patient": {
+    "name": "豆豆",
+    "species": "犬",
+    "breed": "米克斯 (中型混血)",
+    "age": {"years": 4, "months": 2},
+    "sex": "公",
+    "neuter_status": "已絕育",
+    "current_weight_kg": 12.3,
+    "previous_weight_kg": 12.8,
+    "chip_id": "900141001234567",
+    "owner_name": "陳○○"
+  },
+  "visit": {
+    "visit_date": "2026-05-10",
+    "visit_type": "急診",
+    "vet_name": "王宏明 獸醫師",
+    "chief_complaint_category_code": "GI_ACUTE",
+    "chief_complaint_category_label": "急性胃腸炎 / 嘔吐 / 腹瀉"
+  },
+  "subjective": {
+    "owner_history": "飼主敘述:昨天下午約 4 點開始嘔吐,至今 (24 小時) 共吐 5-6 次,內容物先為食物殘渣,後為黃色泡沫狀液體。今天早上開始完全不吃東西,連最愛的雞肉零食也拒絕。精神比平常差,趴著不太想動。沒有腹瀉。喝水量正常但喝完不久又吐。沒有發燒摸起來。",
+    "relevant_history": "兩週前曾在散步時偷吃路邊垃圾 (疑似廚餘),當時有輕微軟便一天自行恢復。已完成 8 合一年度疫苗 (2026-03-15) 與心絲蟲預防。每月使用蝨蚤心絲蟲滴劑。平日吃乾飼料 (Royal Canin 中型成犬),無特殊處方飼料需求。無已知食物過敏史。"
+  },
+  "objective": {
+    "tpr": {"temperature_c": 39.2, "pulse_bpm": 108, "respiration_rpm": 28},
+    "physical_exam": {
+      "general_appearance": "BCS 5/9,精神略沈鬱,警覺度 3/4",
+      "hydration": "中度脫水 (約 6-7%),皮膚張力延遲 2-3 秒,黏膜微乾",
+      "mucous_membrane": "粉紅,CRT 約 2 秒",
+      "abdomen": "腹部觸診示中度痛感 (前腹尤其),無明顯 mass,腸蠕動聲略增",
+      "other": "心音肺音正常,周邊淋巴結不腫大,皮毛狀況良好"
+    },
+    "imaging": "腹部 X 光 (LR + VD):觀察到部分小腸 dilated bowel loops,未見明確 radio-opaque foreign body。胃內仍有少量內容物。無腹腔游離氣體。",
+    "lab": {
+      "cbc": "WBC 18.5 K/μL (↑,正常 6-17),Hct 48% (脫水代償),Platelet 正常",
+      "biochem": "BUN 35 mg/dL (↑,正常 7-27),Creatinine 1.6 mg/dL (邊緣高),Glucose 92,ALT 正常,ALP 正常",
+      "electrolytes": "Na 142,K 3.8,Cl 105 (大致正常)",
+      "snap_tests": "Parvo SNAP: 陰性。 cPL SNAP: 陰性 (initial,可能仍需 Spec cPL 排除胰臟炎)"
+    }
+  },
+  "vet_comments": "考慮為飲食不慎引發之急性胃腸炎合併中度脫水,但需與輕度胰臟炎、部分性腸阻塞鑑別。輸液中觀察 24 小時。"
+}

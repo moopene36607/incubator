@@ -70,12 +70,18 @@ Each prototype has the same shape:
 - **解決的問題**: 台灣執業律師 14,000 人,**1–5 人事務所佔 75%+**(律師公會 2023)。PTT LAW 板直接引用「每次起訴狀都要從模板重打,要引條文又要改格式,一份要 2–3 小時」。Harvey AI USD 100+/user/月 + 全英文 + 不懂台灣司法院書狀格式;LawBank 法源只是法條搜尋不生成書狀;ChatGPT 直接問會幻覺條文。Gap 結構性:Harvey 不來、LawBank 不做、Word 太累。架構:純函式組裝書狀骨架(訴之聲明、中文大寫金額、民國紀年、狀末敬語、證物清單),AI 只負責「事實及理由」段落,RAG 限定 11 條最常引用民法/民事訴訟法。「協助起草」非「代擬」+ 律師審閱免責聲明,規避無律師資格代擬法律疑慮。
 - **目標市場**: 14,000 律師中 10,500 位 1–5 人事務所;Standard NT$1,999/月(無限份 + 5 種書狀類型)。WTP 錨點:律師寫 1 份起訴狀 1.5h × NT$1,500/hr = NT$2,250 機會成本 → sudoc 壓到 15 分鐘,1 份回本一半月費。TAM 5% 滲透 = 月 NT$105 萬 MRR。Distribution: 律師公會在地分會、法律 podcast、PTT LAW、新進律師(司法官特考補習班)。
 
+### Round 9 — `vetnote/` (Taiwan 🇹🇼 — veterinary SOAP)
+
+- **題目**: 台灣獸醫診所中文 SOAP 病歷草稿 AI 助手
+- **解決的問題**: 台灣 2,600 家動物醫院 / 診所,獸醫師每天 20-50 份 SOAP 病歷 = 每天 2.5-7.5 小時純文書(PTT VetMed: 「打 SOAP 打到手軟」、Dcard 獸醫系版: 「實習要寫到 10 點才能走」)。VetSnap (USD$99) + Scribenote (USD$89) 在英文市場已驗證 PMF。但繁中市場零 AI 競品 — 獸易通 / 毛孩管家等本土 PIMS 都是 record-keeper 沒 AI 生成。語言護城河 + 在地 PIMS 無 AI = 完整空白。架構:純函式渲染病患標頭 + 簽核欄,AI 只寫 SOAP 4 段。**System prompt 嚴禁開具體劑量 + 嚴禁下確定診斷**(獸醫師法規範診斷與處方為獸醫師專屬職責)。
+- **目標市場**: 2,600 家動物醫院,診所版 NT$1,800/月(對標 VetSnap USD$99 ≈ NT$3,200,有 44% 價格優勢)。WTP:獸醫師時薪 NT$1,000 × 省 3.5 小時/天 = 月省 NT$77K,vs 月費 NT$1,800 = 42 倍 ROI。TAM 5% 滲透 = 月 NT$23 萬 MRR。Distribution: FB「台灣獸醫師社群」、獸醫系實習生 KOL、獸醫師公會、太僕 / 瑞鵬連鎖醫院、獸醫繼續教育學分課程贊助。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic / real estate / logistics / pet / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手) — `laobao` covers tax, `carepen` covers long-term care, `sudoc` covers legal.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document topics unless evidence is *extraordinarily* strong.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc), TW veterinary (vetnote). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic non-vet / real estate / logistics / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手 / 托嬰幼兒園 / 宮廟) — `laobao` tax, `carepen` long-term care, `sudoc` legal, `vetnote` veterinary.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting, veterinary SOAP records. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document / vet-record / clinical-SOAP topics unless evidence is *extraordinarily* strong.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -83,4 +89,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 8 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 9 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
