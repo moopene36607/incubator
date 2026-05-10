@@ -1,0 +1,62 @@
+{
+  "store_name": "微光咖啡食堂",
+  "employees": [
+    {"name": "阿哲", "role": "店長", "is_full_time": true,  "target_weekly_hours": 45,
+     "can_substitute_for": ["外場", "內場", "收銀+外場"]},
+    {"name": "小華", "role": "外場", "is_full_time": false, "target_weekly_hours": 28,
+     "can_substitute_for": ["收銀+外場"]},
+    {"name": "小芳", "role": "外場", "is_full_time": false, "target_weekly_hours": 24,
+     "can_substitute_for": ["收銀+外場"]},
+    {"name": "阿偉", "role": "收銀+外場", "is_full_time": false, "target_weekly_hours": 28,
+     "can_substitute_for": ["外場"]},
+    {"name": "大雄", "role": "內場", "is_full_time": false, "target_weekly_hours": 28,
+     "can_substitute_for": []},
+    {"name": "阿美", "role": "外場", "is_full_time": false, "target_weekly_hours": 20,
+     "can_substitute_for": ["收銀+外場"]},
+    {"name": "小君", "role": "外場", "is_full_time": false, "target_weekly_hours": 24,
+     "can_substitute_for": []},
+    {"name": "阿成", "role": "內場", "is_full_time": false, "target_weekly_hours": 32,
+     "can_substitute_for": []}
+  ],
+  "shifts": [
+    {"shift_id": "TUE_LUNCH",   "day": "週二", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "阿美"},
+    {"shift_id": "TUE_LUNCH_2", "day": "週二", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "TUE_DINNER",  "day": "週二", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "收銀+外場", "assigned_to": "阿偉"},
+    {"shift_id": "TUE_DINNER_2","day": "週二", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "TUE_DINNER_3","day": "週二", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"},
+
+    {"shift_id": "WED_LUNCH",   "day": "週三", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小芳"},
+    {"shift_id": "WED_LUNCH_2", "day": "週三", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "WED_DINNER",  "day": "週三", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "收銀+外場", "assigned_to": "阿偉"},
+    {"shift_id": "WED_DINNER_2","day": "週三", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "WED_DINNER_3","day": "週三", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"},
+
+    {"shift_id": "THU_LUNCH",   "day": "週四", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "阿美"},
+    {"shift_id": "THU_LUNCH_2", "day": "週四", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "THU_DINNER",  "day": "週四", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小君"},
+    {"shift_id": "THU_DINNER_2","day": "週四", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "THU_DINNER_3","day": "週四", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"},
+
+    {"shift_id": "FRI_LUNCH",   "day": "週五", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小華"},
+    {"shift_id": "FRI_LUNCH_2", "day": "週五", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "FRI_DINNER",  "day": "週五", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "收銀+外場", "assigned_to": "阿偉"},
+    {"shift_id": "FRI_DINNER_2","day": "週五", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "FRI_DINNER_3","day": "週五", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"},
+
+    {"shift_id": "SAT_LUNCH",   "day": "週六", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "阿美"},
+    {"shift_id": "SAT_LUNCH_2", "day": "週六", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小君"},
+    {"shift_id": "SAT_LUNCH_3", "day": "週六", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "SAT_DINNER",  "day": "週六", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "收銀+外場", "assigned_to": "阿偉"},
+    {"shift_id": "SAT_DINNER_2","day": "週六", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小華"},
+    {"shift_id": "SAT_DINNER_3","day": "週六", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "SAT_DINNER_4","day": "週六", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"},
+
+    {"shift_id": "SUN_LUNCH",   "day": "週日", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小芳"},
+    {"shift_id": "SUN_LUNCH_2", "day": "週日", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小君"},
+    {"shift_id": "SUN_LUNCH_3", "day": "週日", "start_time": "11:00", "end_time": "15:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "阿成"},
+    {"shift_id": "SUN_DINNER",  "day": "週日", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "收銀+外場", "assigned_to": "阿偉"},
+    {"shift_id": "SUN_DINNER_2","day": "週日", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "外場",      "assigned_to": "小華"},
+    {"shift_id": "SUN_DINNER_3","day": "週日", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "內場",      "assigned_to": "大雄"},
+    {"shift_id": "SUN_DINNER_4","day": "週日", "start_time": "17:00", "end_time": "21:00", "duration_hours": 4, "role_required": "店長",      "assigned_to": "阿哲"}
+  ]
+}

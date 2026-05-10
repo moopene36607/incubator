@@ -1,0 +1,36 @@
+[
+  {
+    "type": "swap",
+    "requester": "小華",
+    "swap_target": "阿偉",
+    "swap_my_shift_id": "FRI_LUNCH",
+    "swap_their_shift_id": "SAT_DINNER",
+    "raw_text": "店長,我這週五午班想跟阿偉的週六晚班換可以嗎?他週六剩下午班有空"
+  },
+  {
+    "type": "leave",
+    "requester": "小君",
+    "shift_id": "THU_DINNER",
+    "raw_text": "我下週四晚班要去考英檢,可以幫我找人代班嗎?"
+  },
+  {
+    "type": "extra",
+    "requester": "阿美",
+    "shift_id": "FRI_LUNCH",
+    "raw_text": "我這週只排了 12 小時太少,週五午班可以幫忙嗎?"
+  },
+  {
+    "type": "swap",
+    "requester": "大雄",
+    "swap_target": "阿成",
+    "swap_my_shift_id": "WED_LUNCH_2",
+    "swap_their_shift_id": "WED_DINNER_2",
+    "raw_text": "我跟阿成週三換班好不好?我下午有點事"
+  },
+  {
+    "type": "extra",
+    "requester": "阿哲",
+    "shift_id": "TUE_LUNCH",
+    "raw_text": "(店長自己要加 TUE_LUNCH 同時段已有班測試)"
+  }
+]
