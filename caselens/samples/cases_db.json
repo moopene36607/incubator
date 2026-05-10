@@ -1,0 +1,279 @@
+{
+  "description": "Mock corpus of 15 台灣車禍訴訟判決案例供 caselens demo。真實產品會從司法院裁判書 API + LegalBank 整合 + Wisers 法學資料庫即時抓取。",
+  "data_sources_in_real_product": [
+    "司法院 裁判書檢索 API",
+    "全國法規資料庫 / 立法院法案庫",
+    "公開判決書(地方法院 / 高等法院 / 最高法院)"
+  ],
+  "note": "本 prototype 集中在『機車 vs 汽車 / 機車 vs 機車』類車禍案件,demo 相似度檢索 + 賠償預估。",
+  "cases": [
+    {
+      "case_id": "TPHV-114-A-001",
+      "title": "機車騎士遭闖紅燈汽車撞傷,左腿骨折",
+      "court": "台灣高等法院",
+      "judgment_date": "2025-08-15",
+      "category": "車禍",
+      "summary": "原告騎機車正常綠燈直行,被告駕汽車闖紅燈左轉撞擊。原告小腿骨折,住院 14 天 + 復健 3 月。原告有戴安全帽。",
+      "key_factors": ["機車 vs 汽車", "汽車闖紅燈", "原告綠燈直行", "原告戴安全帽", "骨折", "住院 14 天", "復健 3 月"],
+      "responsibility_split": {"plaintiff": 0, "defendant": 100},
+      "compensation_amount": 850000,
+      "compensation_breakdown": {
+        "醫療費": 180000,
+        "工作損失": 250000,
+        "車輛維修": 35000,
+        "精神慰撫金": 350000,
+        "看護費": 35000
+      },
+      "key_holdings": "被告闖紅燈為事故主因,原告無過失。骨折屬中度傷害,精神慰撫金以原告 36 歲、白領職業參考實務,核給 NT$35 萬。"
+    },
+    {
+      "case_id": "TPHV-114-A-002",
+      "title": "機車雙方撞擊,均未禮讓無號誌路口",
+      "court": "台北地方法院",
+      "judgment_date": "2025-06-22",
+      "category": "車禍",
+      "summary": "兩台機車於無號誌路口對向撞擊,雙方均未禮讓且車速過快。原告手臂擦挫傷 + 機車損壞;被告無傷。",
+      "key_factors": ["機車 vs 機車", "無號誌路口", "雙方未禮讓", "車速過快", "擦挫傷", "機車損壞"],
+      "responsibility_split": {"plaintiff": 50, "defendant": 50},
+      "compensation_amount": 38000,
+      "compensation_breakdown": {
+        "醫療費": 8000,
+        "車輛維修": 25000,
+        "精神慰撫金": 5000
+      },
+      "key_holdings": "雙方均有過失,責任各半。原告請求 NT$76,000 折半判給 NT$38,000。輕傷案件精神慰撫金通常 NT$3,000-1 萬。"
+    },
+    {
+      "case_id": "TCHV-113-A-003",
+      "title": "汽車變換車道未打方向燈擦撞機車",
+      "court": "台中地方法院",
+      "judgment_date": "2024-11-10",
+      "category": "車禍",
+      "summary": "原告騎機車於外側車道直行,被告駕汽車從中線變換至外線未打方向燈,擦撞原告機車。原告滑倒造成手腕骨折 + 腦震盪。原告有戴安全帽。",
+      "key_factors": ["機車 vs 汽車", "汽車變換車道", "未打方向燈", "機車手腕骨折", "腦震盪", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 10, "defendant": 90},
+      "compensation_amount": 720000,
+      "compensation_breakdown": {
+        "醫療費": 220000,
+        "工作損失": 220000,
+        "車輛維修": 30000,
+        "精神慰撫金": 250000
+      },
+      "key_holdings": "被告變換車道未打方向燈為主因。原告 10% 過失(未保持安全距離)。"
+    },
+    {
+      "case_id": "KSHV-114-A-004",
+      "title": "酒駕汽車追撞停等紅燈機車",
+      "court": "高雄地方法院",
+      "judgment_date": "2025-01-30",
+      "category": "車禍",
+      "summary": "被告酒駕汽車(酒測值 0.65 mg/L)於號誌路口追撞前方停等紅燈之機車。原告下肢多處骨折 + 內出血,住院 23 天。原告無過失。",
+      "key_factors": ["機車 vs 汽車", "汽車酒駕", "停等紅燈被追撞", "下肢骨折", "內出血", "住院 23 天", "原告無過失"],
+      "responsibility_split": {"plaintiff": 0, "defendant": 100},
+      "compensation_amount": 1850000,
+      "compensation_breakdown": {
+        "醫療費": 450000,
+        "工作損失": 600000,
+        "車輛維修": 50000,
+        "精神慰撫金": 700000,
+        "看護費": 50000
+      },
+      "key_holdings": "被告酒駕為加重事由,精神慰撫金核給 NT$70 萬高於一般車禍案件。"
+    },
+    {
+      "case_id": "TPHV-114-A-005",
+      "title": "機車騎士未戴安全帽遭機車擦撞頭部受傷",
+      "court": "台北地方法院",
+      "judgment_date": "2024-09-05",
+      "category": "車禍",
+      "summary": "兩台機車於路口擦撞,被告未禮讓直行車。原告未戴安全帽導致頭部撕裂傷縫合 12 針。",
+      "key_factors": ["機車 vs 機車", "被告未禮讓", "原告未戴安全帽", "頭部撕裂傷", "縫合 12 針"],
+      "responsibility_split": {"plaintiff": 30, "defendant": 70},
+      "compensation_amount": 95000,
+      "compensation_breakdown": {
+        "醫療費": 25000,
+        "工作損失": 30000,
+        "精神慰撫金": 40000
+      },
+      "key_holdings": "原告未戴安全帽加重自身傷害,過失 30%(法院依職權酌減)。"
+    },
+    {
+      "case_id": "TCHV-114-A-006",
+      "title": "汽車逆向行駛撞傷機車騎士",
+      "court": "台中地方法院",
+      "judgment_date": "2025-04-18",
+      "category": "車禍",
+      "summary": "被告駕汽車逆向行駛單行道,撞擊正常方向行駛之原告機車。原告大腿開放性骨折 + 肋骨斷裂,住院 18 天。原告有戴安全帽。",
+      "key_factors": ["機車 vs 汽車", "汽車逆向", "大腿開放性骨折", "肋骨斷裂", "住院 18 天", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 0, "defendant": 100},
+      "compensation_amount": 1280000,
+      "compensation_breakdown": {
+        "醫療費": 320000,
+        "工作損失": 450000,
+        "車輛維修": 30000,
+        "精神慰撫金": 450000,
+        "看護費": 30000
+      },
+      "key_holdings": "被告逆向為重大過失,精神慰撫金較高。原告無過失。"
+    },
+    {
+      "case_id": "TPHV-114-A-007",
+      "title": "機車闖紅燈遭汽車撞傷",
+      "court": "台北地方法院",
+      "judgment_date": "2024-12-20",
+      "category": "車禍",
+      "summary": "原告騎機車闖紅燈直行,被告駕汽車綠燈直行撞擊原告。原告腳踝骨折。",
+      "key_factors": ["機車 vs 汽車", "原告闖紅燈", "被告綠燈直行", "腳踝骨折"],
+      "responsibility_split": {"plaintiff": 80, "defendant": 20},
+      "compensation_amount": 45000,
+      "compensation_breakdown": {
+        "醫療費": 150000,
+        "工作損失": 80000,
+        "精神慰撫金": 10000
+      },
+      "key_holdings": "原告闖紅燈為主因(80% 過失),但被告未注意車前狀況亦有 20% 過失。原告請求 NT$22.5 萬,法院依過失比例判給 NT$4.5 萬。"
+    },
+    {
+      "case_id": "KSHV-114-A-008",
+      "title": "計程車緊急煞車後方機車追撞",
+      "court": "高雄地方法院",
+      "judgment_date": "2024-07-08",
+      "category": "車禍",
+      "summary": "被告計程車於慢車道緊急煞車(無故,並非閃避障礙物)。原告騎機車從後方追撞被告。原告手臂骨折 + 機車損毀。原告有戴安全帽。",
+      "key_factors": ["機車追撞計程車", "計程車緊急煞車", "手臂骨折", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 40, "defendant": 60},
+      "compensation_amount": 165000,
+      "compensation_breakdown": {
+        "醫療費": 90000,
+        "工作損失": 110000,
+        "車輛維修": 45000,
+        "精神慰撫金": 80000
+      },
+      "key_holdings": "被告無故緊急煞車為主因(60%),但原告未保持安全距離亦有 40% 過失。"
+    },
+    {
+      "case_id": "TPHV-114-A-009",
+      "title": "未戴安全帽機車騎士擦撞汽車輕傷",
+      "court": "台北地方法院",
+      "judgment_date": "2025-03-12",
+      "category": "車禍",
+      "summary": "原告未戴安全帽騎機車於巷弄轉彎,被告駕汽車正常直行,雙方擦撞。原告膝蓋擦挫傷 + 機車損壞。",
+      "key_factors": ["機車 vs 汽車", "原告未戴安全帽", "巷弄轉彎", "膝蓋擦挫傷", "機車損壞"],
+      "responsibility_split": {"plaintiff": 60, "defendant": 40},
+      "compensation_amount": 22000,
+      "compensation_breakdown": {
+        "醫療費": 5000,
+        "車輛維修": 15000,
+        "精神慰撫金": 2000
+      },
+      "key_holdings": "原告轉彎未注意 + 未戴安全帽為主因(60%)。"
+    },
+    {
+      "case_id": "TCHV-113-A-010",
+      "title": "汽車違規停車造成機車閃避不及撞傷",
+      "court": "台中地方法院",
+      "judgment_date": "2024-10-25",
+      "category": "車禍",
+      "summary": "被告汽車違規停於機慢車道,原告騎機車於慢車道直行,因前方違停車輛閃避不及自摔。原告手腕骨折 + 大腿擦傷。原告有戴安全帽。",
+      "key_factors": ["機車自摔", "汽車違規停車佔機慢車道", "手腕骨折", "大腿擦傷", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 20, "defendant": 80},
+      "compensation_amount": 420000,
+      "compensation_breakdown": {
+        "醫療費": 110000,
+        "工作損失": 180000,
+        "車輛維修": 25000,
+        "精神慰撫金": 105000
+      },
+      "key_holdings": "被告違規停車為主因(80%)。原告應保持注意,亦有 20% 過失。"
+    },
+    {
+      "case_id": "TPHV-114-A-011",
+      "title": "機車騎士遭未保持安全距離後方汽車追撞",
+      "court": "台北地方法院",
+      "judgment_date": "2025-02-14",
+      "category": "車禍",
+      "summary": "原告騎機車於外側車道正常行駛,被告駕汽車從後方追撞。原告頸部揮鞭症候群 + 機車後方損壞。原告有戴安全帽。",
+      "key_factors": ["汽車追撞機車", "未保持安全距離", "頸部揮鞭症候群", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 0, "defendant": 100},
+      "compensation_amount": 280000,
+      "compensation_breakdown": {
+        "醫療費": 65000,
+        "工作損失": 80000,
+        "車輛維修": 25000,
+        "精神慰撫金": 110000
+      },
+      "key_holdings": "被告未保持安全距離為唯一過失。揮鞭症候群屬中度傷害,精神慰撫金 NT$11 萬。"
+    },
+    {
+      "case_id": "TCHV-114-A-012",
+      "title": "汽車路口左轉未禮讓對向機車",
+      "court": "台中地方法院",
+      "judgment_date": "2024-08-30",
+      "category": "車禍",
+      "summary": "被告駕汽車於號誌路口左轉,未禮讓對向綠燈直行之原告機車,撞擊原告。原告小腿粉碎性骨折 + 內固定手術。住院 25 天。原告有戴安全帽。",
+      "key_factors": ["機車 vs 汽車", "汽車左轉未禮讓直行車", "小腿粉碎性骨折", "內固定手術", "住院 25 天", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 0, "defendant": 100},
+      "compensation_amount": 1450000,
+      "compensation_breakdown": {
+        "醫療費": 380000,
+        "工作損失": 480000,
+        "車輛維修": 35000,
+        "精神慰撫金": 530000,
+        "看護費": 25000
+      },
+      "key_holdings": "被告左轉未禮讓直行車為唯一過失。粉碎性骨折屬重傷,精神慰撫金 NT$53 萬。"
+    },
+    {
+      "case_id": "TPHV-114-A-013",
+      "title": "機車超車失敗擦撞前方汽車",
+      "court": "台北地方法院",
+      "judgment_date": "2024-11-28",
+      "category": "車禍",
+      "summary": "原告騎機車從汽車右方超車失敗,擦撞被告汽車右後方。原告自摔受傷,手肘擦挫傷 + 機車損壞。原告有戴安全帽。",
+      "key_factors": ["機車超車失敗", "右方超車", "自摔", "手肘擦挫傷", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 85, "defendant": 15},
+      "compensation_amount": 12000,
+      "compensation_breakdown": {
+        "醫療費": 12000,
+        "車輛維修": 15000,
+        "精神慰撫金": 3000
+      },
+      "key_holdings": "原告右方超車違規 + 未注意車前狀況為主因(85%)。"
+    },
+    {
+      "case_id": "KSHV-114-A-014",
+      "title": "夜間機車對撞,雙方均無酒駕但車速過快",
+      "court": "高雄地方法院",
+      "judgment_date": "2025-05-08",
+      "category": "車禍",
+      "summary": "雙方機車於夜間 23:00 鄉道對撞。鑑定結果雙方均車速過快(45-55 km/h),夜間視距不足。雙方均無酒駕但均無戴安全帽。原告小腿骨折 + 腦震盪;被告手臂骨折。",
+      "key_factors": ["機車 vs 機車", "夜間", "車速過快", "雙方未戴安全帽", "小腿骨折", "腦震盪"],
+      "responsibility_split": {"plaintiff": 50, "defendant": 50},
+      "compensation_amount": 220000,
+      "compensation_breakdown": {
+        "醫療費": 280000,
+        "工作損失": 200000,
+        "精神慰撫金": 120000
+      },
+      "key_holdings": "雙方均有過失各 50%。未戴安全帽加重傷害,法院已酌減 30%。"
+    },
+    {
+      "case_id": "TCHV-114-A-015",
+      "title": "汽車開門撞傷正常行駛機車",
+      "court": "台中地方法院",
+      "judgment_date": "2025-07-02",
+      "category": "車禍",
+      "summary": "被告汽車路邊停車後突然開啟左側車門,撞擊正常行駛之原告機車。原告自摔受傷,鎖骨骨折 + 膝蓋擦傷 + 機車損壞。原告有戴安全帽。",
+      "key_factors": ["機車 vs 汽車", "汽車開門", "鎖骨骨折", "膝蓋擦傷", "原告戴安全帽"],
+      "responsibility_split": {"plaintiff": 5, "defendant": 95},
+      "compensation_amount": 510000,
+      "compensation_breakdown": {
+        "醫療費": 140000,
+        "工作損失": 200000,
+        "車輛維修": 30000,
+        "精神慰撫金": 140000
+      },
+      "key_holdings": "被告開門未注意為主要過失(95%)。原告 5% 過失(未保持安全距離)。"
+    }
+  ]
+}
