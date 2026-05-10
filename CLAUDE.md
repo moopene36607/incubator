@@ -64,12 +64,18 @@ Each prototype has the same shape:
 - **解決的問題**: 居服員每天 4–8 個個案,LTCIS (長照支付制度資訊系統) 規定欄位多、格式硬。報導者 2024 報導公聽會公開引述「**評鑑還是一場文書整理大賽**」,代寫評鑑文件市場規模「**數萬至數十萬元**」(居盟理事長確認)— 以真金白銀證明痛點存在。**長照 3.0 (2026 上路) 文書指標從 5 增至 7 項**。仁寶 i 照護主打派案不解決文書產出;Vocol.ai 不知 LTCIS 代碼;沒人做「30 秒語音 → LTCIS 結構化記錄」。架構:純函式渲染,AI 只做語意理解,生命徵象沒提到=null **絕不編造**(醫療紀錄硬規矩)。
 - **目標市場**: 台灣 1,400+ 居服單位、40,000+ 居服員。Standard NT$4,900/月 (覆蓋 20-50 名居服員),WTP 錨點:督導改文書 60h/月 × NT$300 = NT$18K → 壓到 15h 一個月回本。TAM 1,400 × NT$4,900 = 月 NT$686 萬;取 5% 滲透 = 月 NT$34 萬 MRR。Distribution: 居家服務策略聯盟、衛福部數位部 AI 落地實證計畫補助、嘉義/屏東/雲林/台南社會處。
 
+### Round 8 — `sudoc/` (Taiwan 🇹🇼 — legal vertical for small law firms)
+
+- **題目**: 台灣 1–5 人小型律師事務所 民事起訴狀 AI 草稿產生器
+- **解決的問題**: 台灣執業律師 14,000 人,**1–5 人事務所佔 75%+**(律師公會 2023)。PTT LAW 板直接引用「每次起訴狀都要從模板重打,要引條文又要改格式,一份要 2–3 小時」。Harvey AI USD 100+/user/月 + 全英文 + 不懂台灣司法院書狀格式;LawBank 法源只是法條搜尋不生成書狀;ChatGPT 直接問會幻覺條文。Gap 結構性:Harvey 不來、LawBank 不做、Word 太累。架構:純函式組裝書狀骨架(訴之聲明、中文大寫金額、民國紀年、狀末敬語、證物清單),AI 只負責「事實及理由」段落,RAG 限定 11 條最常引用民法/民事訴訟法。「協助起草」非「代擬」+ 律師審閱免責聲明,規避無律師資格代擬法律疑慮。
+- **目標市場**: 14,000 律師中 10,500 位 1–5 人事務所;Standard NT$1,999/月(無限份 + 5 種書狀類型)。WTP 錨點:律師寫 1 份起訴狀 1.5h × NT$1,500/hr = NT$2,250 機會成本 → sudoc 壓到 15 分鐘,1 份回本一半月費。TAM 5% 滲透 = 月 NT$105 萬 MRR。Distribution: 律師公會在地分會、法律 podcast、PTT LAW、新進律師(司法官特考補習班)。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic / real estate / logistics / pet / HR / legal / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手) — `laobao` covers tax, `carepen` covers long-term care.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record topics unless evidence is *extraordinarily* strong.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen), TW legal (sudoc). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic / real estate / logistics / pet / HR / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手) — `laobao` covers tax, `carepen` covers long-term care, `sudoc` covers legal.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records, civil litigation drafting. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record / legal-document topics unless evidence is *extraordinarily* strong.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -77,4 +83,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 7 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 8 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
