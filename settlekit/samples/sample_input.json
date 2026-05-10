@@ -1,0 +1,63 @@
+{
+  "creator": {
+    "name": "김미나",
+    "channel_name": "미나의 푸드 다이어리 (Mina's Food Diary)",
+    "platforms": ["YouTube", "Instagram"],
+    "subscriber_counts": {"youtube": 78000, "instagram": 32000},
+    "rrn_last4": "1234",
+    "address": "서울특별시 마포구 와우산로 56, 304호",
+    "contact_email": "mina.fooddiary@gmail.com",
+    "contact_phone": "010-XXXX-XXXX",
+    "bank_account": {
+      "bank_name": "토스뱅크",
+      "account_number": "100-XXXX-XXXX",
+      "holder_name": "김미나"
+    }
+  },
+  "brand": {
+    "company": "주식회사 글로우랩 (GlowLab Co., Ltd.)",
+    "business_id": "123-45-67890",
+    "address": "서울특별시 강남구 테헤란로 152, 글래스타워 11층",
+    "contact_person": "박지훈 마케팅 매니저",
+    "contact_email": "marketing@glowlab.kr"
+  },
+  "deal": {
+    "campaign_name": "글로우랩 비건 콜라겐 세럼 신제품 런칭 협찬",
+    "campaign_period": "2026-05-15 ~ 2026-06-30",
+    "gross_amount_krw": 5000000,
+    "income_type": "freelance",
+    "platform_fee_krw": 0,
+    "deliverables": [
+      {
+        "platform": "YouTube",
+        "description": "메인 비디오 1편 (8–10분, 실사용 후기 + 성분 분석 포함)",
+        "published_date": "2026-06-05",
+        "url": "https://youtube.com/watch?v=EXAMPLE123"
+      },
+      {
+        "platform": "Instagram",
+        "description": "릴스 3편 (각 60초 이내, 사용 루틴 / 베포 / 비포애프터)",
+        "published_date": "2026-06-10 ~ 2026-06-20",
+        "url": "https://instagram.com/p/EXAMPLE_REEL_1"
+      },
+      {
+        "platform": "Instagram",
+        "description": "스토리 2회 (피드 게시 후 24시간 내 부스팅)",
+        "published_date": "2026-06-05, 2026-06-12",
+        "url": "(스토리는 24시간 후 만료)"
+      }
+    ],
+    "usage_rights": {
+      "secondary_use_scope": "갑의 공식 SNS 채널 및 자사 웹사이트 내 게시 (유료 광고 매체 포함)",
+      "usage_period_months": 12,
+      "exclusivity": "동종 비건 콜라겐 카테고리 60일 비경쟁 의무"
+    },
+    "kftc_requirements": {
+      "disclosure_label_required": true,
+      "disclosure_position": "본문 첫 줄 / 영상 시작 5초 이내",
+      "required_hashtags": ["#광고", "#협찬", "#GlowLab"]
+    }
+  },
+  "settlement_date": "2026-07-05",
+  "settlement_number": "SK-20260705-0001"
+}
