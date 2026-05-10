@@ -58,12 +58,18 @@ Each prototype has the same shape:
 - **解決的問題**: Decree 70/2025/NĐ-CP took effect 2025-06-01: any household business with annual revenue over 1 tỷ VND (~USD 39K) must use e-invoices. F&B/retail can aggregate sub-50,000 VND transactions into a daily summary invoice — but the rules are complex (8% F&B vs 10% standard VAT; per-item threshold logic). Vietnamnet 2025: 42.7% of vendors don't fully understand tax types. MISA AMIS targets companies with accountants; VNPT only provides blank free forms; nobody offers AI-driven "daily voice memo → Decree 70 compliant batch invoice" SaaS. Numbers stay in pure functions; AI parses only the unstructured ledger text.
 - **目標市場**: Vietnam ~2.2M hộ kinh doanh; F&B slice estimated 700K. Pho shops, cafes, street vendors, small bakeries. Solo plan 49,000 VND/月 (~USD 2), 399,000 VND/year, multi-shop 129,000 VND/月. WTP anchor: skip an accountant (1–2M VND/year saved) + avoid Decree 70 fines (4–10M VND).
 
+### Round 7 — `carepen/` (Taiwan 🇹🇼 — long-term care, first TW non-tax)
+
+- **題目**: 台灣長照居服員語音逐字稿 → LTCIS 服務記錄草稿 AI 助手
+- **解決的問題**: 居服員每天 4–8 個個案,LTCIS (長照支付制度資訊系統) 規定欄位多、格式硬。報導者 2024 報導公聽會公開引述「**評鑑還是一場文書整理大賽**」,代寫評鑑文件市場規模「**數萬至數十萬元**」(居盟理事長確認)— 以真金白銀證明痛點存在。**長照 3.0 (2026 上路) 文書指標從 5 增至 7 項**。仁寶 i 照護主打派案不解決文書產出;Vocol.ai 不知 LTCIS 代碼;沒人做「30 秒語音 → LTCIS 結構化記錄」。架構:純函式渲染,AI 只做語意理解,生命徵象沒提到=null **絕不編造**(醫療紀錄硬規矩)。
+- **目標市場**: 台灣 1,400+ 居服單位、40,000+ 居服員。Standard NT$4,900/月 (覆蓋 20-50 名居服員),WTP 錨點:督導改文書 60h/月 × NT$300 = NT$18K → 壓到 15h 一個月回本。TAM 1,400 × NT$4,900 = 月 NT$686 萬;取 5% 滲透 = 月 NT$34 萬 MRR。Distribution: 居家服務策略聯盟、衛福部數位部 AI 落地實證計畫補助、嘉義/屏東/雲林/台南社會處。
+
 ---
 
 ## Conventions for future rounds
 
-- **Geography diversification target** — already covered: US, TW, KR→JP cross-border, JP domestic, KR domestic, Vietnam (first SEA). Strongly prefer remaining SEA (TH/ID/PH/SG/MY) / HK / mainland China / fresh JP non-manufacturing / fresh TW non-tax in upcoming rounds.
-- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice tax-compliance topics unless evidence is *extraordinarily* strong.
+- **Geography priority (updated 2026-05-10)** — user is Taiwanese, so **Taiwan first** when evidence is comparable. Then other Asia (JP / KR / SEA / HK / mainland China). US / EU only when no Asian equivalent exists. Already covered: US (scopescribe), TW tax/freelancer (laobao), KR→JP (kosmelingo), JP domestic (mitsumori), KR domestic (settlekit), Vietnam (hoadon), TW long-term care (carepen). For Taiwan, pick *fresh verticals* (F&B / education / healthcare clinic / real estate / logistics / pet / HR / legal / wedding / agriculture / construction / 自媒體 ops / 美髮美容 / 健身 / 二手) — `laobao` covers tax, `carepen` covers long-term care.
+- **Vertical diversification** — already covered: insurance, freelance tax, cosmetic regulatory, manufacturing quoting, creator contracts, F&B retail tax compliance, long-term care service records. Avoid further insurance / payroll / cosmetic / quote / contract / e-invoice / care record topics unless evidence is *extraordinarily* strong.
 - **Architecture** — every prototype keeps numbers in pure Python functions and uses LLM only for prose / classification. Never let AI calculate money.
 - **Demo without API key** — every project ships pre-generated examples in `examples/` so reviewers can see output without setting `ANTHROPIC_API_KEY`.
 - **Commit format** — one commit per round, message explains pain + competitor gap + verified test cases. Push to `origin/main` after each round.
@@ -71,4 +77,4 @@ Each prototype has the same shape:
 
 ---
 
-*Last updated: round 6 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
+*Last updated: round 7 (2026-05-10). Loop job ID: `6901dad6` (every 20 min at :08/:28/:48).*
