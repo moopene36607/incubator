@@ -52,8 +52,8 @@
 | vetnote: 台灣動物醫院家數 | 2,600 家 | ⚠️ 實際 1,590–1,790 家（2022《寵物黃頁》/ 2021 農委會）— **TAM 縮水 30%** | TAM 從 NT$468 萬/月 → NT$306 萬/月 |
 | vetnote: 台灣執業獸醫人數 | 5,500 人 | ✅ 5,000–5,672 人,寵物獸醫 3,993 | 無影響 |
 | vetnote:「繁中市場零競品」 | 完整空白 | ❌❌ **PawfectNotes 已上繁中**(`pawfectnotes.com/zht/`)、整合 ezyVet/Vetspire/Pulse;另有 VetOS / NxVet / Dr.Vet / Vet.AI 已在做 AI 獸醫病歷 | 語言護城河失守,從藍海變紅海 |
-| fitlog: TrueCoach / My PT Hub 是否有繁中 | 沒繁中 | ✅ 仍無繁中（My PT Hub $14.40/月 ≈ NT$450 略貴於 fitlog NT$299） | fitlog 護城河仍真實 |
-| tenderwatch: 招標王仍是主導 | 8 年沒進化 | ✅ 僅見 OpenFun `pcc-viewer`（公開純查詢、無 semantic match）+ 台灣採購公報網（傳統訂閱） | tenderwatch 競爭真的弱 |
+| fitlog: TrueCoach / My PT Hub 是否有繁中 | 沒繁中 | ✅ 仍無繁中（**價格實際遠高於 README 舊聲稱**:TrueCoach Starter $26.34/月 ≈ NT$790、My PT Hub Starter $25/月 ≈ NT$750,均約 fitlog NT$299 的 2.5x） | fitlog 護城河比原文檔講的更強,但 README 海外價格錨點原本錯誤,已修正 |
+| tenderwatch: 招標王仍是主導 | 8 年沒進化 | ⚠️ 部分驗證 — 「招標王 NT$299/月、2018 介面」具體價格未拿到官方頁面證實；但同類公開競品確實只有 OpenFun `pcc-viewer`（純查詢、無 semantic match）+ 台灣採購公報網 / 台灣標案網（傳統訂閱）。**結論仍成立但個別錨點建議改成市場觀察措辭** | tenderwatch 競爭弱方向正確,個別品牌價格錨點需附來源 |
 
 ---
 
@@ -78,7 +78,7 @@
 3. **單次中標 NT$30 萬–3,000 萬** — WTP 錨點極強,NT$799/月被一次中標瞬間消化。
 4. **政府 OpenData 已開放** — `web.pcc.gov.tw` + `data.gov.tw` 是政策強制,資料源無風險。
 5. **Daily-use** — 每日新公告 500–800 件,LINE 推播是高頻接觸點,留存率天生高。
-6. **vetnote 與 fitlog 都已有海外對手在敲門**（PawfectNotes 繁中、My PT Hub $14.40/月）,**tenderwatch 是唯一海外進不來的格局**。
+6. **vetnote 與 fitlog 都已有海外對手在敲門**（PawfectNotes 已上繁中、TrueCoach $26.34/月 與 My PT Hub $25/月雖無繁中但已是 PT 預設選項）,**tenderwatch 是唯一海外進不來的格局**。
 
 ---
 

@@ -31,8 +31,8 @@
 
 | 海外競品 | 證明什麼 |
 |----------|----------|
-| **TrueCoach** (USA, USD$19.99/月) | 全球 PT 最大 SaaS 工具,證明教練願意付這個費用 |
-| **My PT Hub** (UK, £19.99/月) | 同上,英國市場第二大 |
+| **TrueCoach** (USA, USD$26.34/月起) | 全球 PT 最大 SaaS 工具,證明教練願意付這個費用 |
+| **My PT Hub** (UK, USD$25/月起) | 同上,英國市場第二大(Starter $25 / Premium $59 / Ultimate $215) |
 | **Mindbody** (USA, 月費 $200+) | 大型健身房系統 |
 
 **繁中市場**:零 AI 課後報告產生器。
@@ -169,7 +169,7 @@ fitlog/
 - 個人 PT 時薪 NT$1,500(中位)
 - 課後 6-8 節 × 5 分鐘/份 = **每天 30-40 分鐘 admin × NT$1,500 = 月省 NT$11,000+**(22 工作日)
 - fitlog Solo NT$299/月 vs 月省 NT$11,000 = **37x ROI**
-- 對標 TrueCoach NT$640/月,fitlog NT$299 便宜 53%
+- 對標 TrueCoach Starter NT$790/月(USD$26.34)、My PT Hub Starter NT$750/月(USD$25),fitlog NT$299 便宜 60%+
 
 ### TAM
 
