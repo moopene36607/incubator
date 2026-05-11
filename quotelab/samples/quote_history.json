@@ -1,0 +1,56 @@
+{
+  "freelancer_info": {
+    "name": "陳設計師",
+    "specialty": ["LOGO_DESIGN", "WEB_DESIGN"],
+    "years_freelancing": 3,
+    "monthly_income_target_ntd": 80000
+  },
+  "tier_pricing_notes": {
+    "LOGO_DESIGN": {"LOW": 3000, "MID": 6000, "HIGH": 12000, "PREMIUM": 20000},
+    "WEB_DESIGN": {"LOW": 15000, "MID": 30000, "HIGH": 60000, "PREMIUM": 100000}
+  },
+  "history": [
+    {"case_id": "Q001", "case_type": "LOGO_DESIGN", "tier_quoted": "LOW", "quote_ntd": 3000, "accepted": true, "client_notes": "小餐廳"},
+    {"case_id": "Q002", "case_type": "LOGO_DESIGN", "tier_quoted": "LOW", "quote_ntd": 3000, "accepted": true, "client_notes": "個人工作室"},
+    {"case_id": "Q003", "case_type": "LOGO_DESIGN", "tier_quoted": "LOW", "quote_ntd": 3000, "accepted": true, "client_notes": "新創團隊"},
+    {"case_id": "Q004", "case_type": "LOGO_DESIGN", "tier_quoted": "LOW", "quote_ntd": 3000, "accepted": false, "client_notes": "預算 NT$1.5K 太低"},
+
+    {"case_id": "Q005", "case_type": "LOGO_DESIGN", "tier_quoted": "MID", "quote_ntd": 6000, "accepted": true, "client_notes": "美髮沙龍"},
+    {"case_id": "Q006", "case_type": "LOGO_DESIGN", "tier_quoted": "MID", "quote_ntd": 6000, "accepted": true, "client_notes": "工作室擴張"},
+    {"case_id": "Q007", "case_type": "LOGO_DESIGN", "tier_quoted": "MID", "quote_ntd": 6000, "accepted": true, "client_notes": "電商品牌"},
+    {"case_id": "Q008", "case_type": "LOGO_DESIGN", "tier_quoted": "MID", "quote_ntd": 6000, "accepted": true, "client_notes": "民宿"},
+    {"case_id": "Q009", "case_type": "LOGO_DESIGN", "tier_quoted": "MID", "quote_ntd": 6000, "accepted": false, "client_notes": "客戶覺得貴,改找朋友"},
+
+    {"case_id": "Q010", "case_type": "LOGO_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 12000, "accepted": true, "client_notes": "中型零售連鎖"},
+    {"case_id": "Q011", "case_type": "LOGO_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 12000, "accepted": true, "client_notes": "公司 rebranding"},
+    {"case_id": "Q012", "case_type": "LOGO_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 12000, "accepted": false, "client_notes": "預算只到 NT$8K"},
+    {"case_id": "Q013", "case_type": "LOGO_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 12000, "accepted": false, "client_notes": "找其他人"},
+
+    {"case_id": "Q014", "case_type": "LOGO_DESIGN", "tier_quoted": "PREMIUM", "quote_ntd": 20000, "accepted": false, "client_notes": "覺得太貴"},
+    {"case_id": "Q015", "case_type": "LOGO_DESIGN", "tier_quoted": "PREMIUM", "quote_ntd": 20000, "accepted": false, "client_notes": "預算不足"},
+
+    {"case_id": "Q020", "case_type": "WEB_DESIGN", "tier_quoted": "LOW", "quote_ntd": 15000, "accepted": true, "client_notes": "小型工作室網站"},
+    {"case_id": "Q021", "case_type": "WEB_DESIGN", "tier_quoted": "LOW", "quote_ntd": 15000, "accepted": true, "client_notes": "簡單形象網站"},
+    {"case_id": "Q022", "case_type": "WEB_DESIGN", "tier_quoted": "LOW", "quote_ntd": 15000, "accepted": true, "client_notes": "個人 portfolio"},
+
+    {"case_id": "Q023", "case_type": "WEB_DESIGN", "tier_quoted": "MID", "quote_ntd": 30000, "accepted": true, "client_notes": "中小企業官網"},
+    {"case_id": "Q024", "case_type": "WEB_DESIGN", "tier_quoted": "MID", "quote_ntd": 30000, "accepted": true, "client_notes": "餐廳網站 + menu"},
+    {"case_id": "Q025", "case_type": "WEB_DESIGN", "tier_quoted": "MID", "quote_ntd": 30000, "accepted": true, "client_notes": "美容診所"},
+    {"case_id": "Q026", "case_type": "WEB_DESIGN", "tier_quoted": "MID", "quote_ntd": 30000, "accepted": true, "client_notes": "電商品牌"},
+    {"case_id": "Q027", "case_type": "WEB_DESIGN", "tier_quoted": "MID", "quote_ntd": 30000, "accepted": false, "client_notes": "預算 NT$20K"},
+
+    {"case_id": "Q028", "case_type": "WEB_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 60000, "accepted": true, "client_notes": "完整品牌官網"},
+    {"case_id": "Q029", "case_type": "WEB_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 60000, "accepted": true, "client_notes": "B2B 公司網站含 CMS"},
+    {"case_id": "Q030", "case_type": "WEB_DESIGN", "tier_quoted": "HIGH", "quote_ntd": 60000, "accepted": false, "client_notes": "改找廣告代理商"},
+
+    {"case_id": "Q031", "case_type": "WEB_DESIGN", "tier_quoted": "PREMIUM", "quote_ntd": 100000, "accepted": true, "client_notes": "大型電商完整建置"},
+    {"case_id": "Q032", "case_type": "WEB_DESIGN", "tier_quoted": "PREMIUM", "quote_ntd": 100000, "accepted": false, "client_notes": "預算到 NT$60K"}
+  ],
+  "new_case_query": {
+    "case_id": "Q-NEW-001",
+    "case_type": "LOGO_DESIGN",
+    "description": "服飾品牌 rebranding,需要新 logo + 應用延伸(名片 / 招牌 / 包裝)",
+    "client_size_hint": "中型(年收 5,000 萬以上)",
+    "deadline_days": 14
+  }
+}
