@@ -1,0 +1,2931 @@
+{
+  "cram_school_name": "陽光補習班 (台北信義國高中部, 5 名講師, 約 80 學員)",
+  "_meta": "陳老闆 5 月開始夏季招生季, 過去 6 個月累積 180 leads (60 報名, 120 未報名), 想從中學招生模式, 對未來 15 個 lead 預測報名機率, 優先 follow-up high-prob leads.",
+  "numeric_features": [
+    "distance_km",
+    "prev_cram_experience",
+    "days_since_last_contact",
+    "attended_trial"
+  ],
+  "categorical_features": [
+    "grade",
+    "referral",
+    "tried_subject",
+    "parent_education",
+    "contact_method"
+  ],
+  "historical_leads": [
+    {
+      "lead_id": "L0001",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.8,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 24,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0002",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.8,
+        "referral": "Cake/IG",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 12,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0003",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 6.5,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 2,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0004",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 0.5,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 2,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0005",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.0,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 29,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0006",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.7,
+        "referral": "FB廣告",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 15,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0007",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 6.8,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0008",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 6.5,
+        "referral": "路過招生",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 0,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0009",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 6.5,
+        "referral": "路過招生",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 14,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0010",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.7,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 29,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0011",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.5,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 6,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0012",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.8,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0013",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 5.4,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0014",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.8,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 21,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0015",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 4.2,
+        "referral": "路過招生",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 0,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0016",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.5,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0017",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.1,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 18,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0018",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.5,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 20,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0019",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.0,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 5,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0020",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.3,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 15,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0021",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 2.8,
+        "referral": "路過招生",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 27,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0022",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.4,
+        "referral": "Cake/IG",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 11,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0023",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 4.6,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 21,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0024",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.1,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 16,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0025",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.5,
+        "referral": "Google廣告",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 0,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0026",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 0.7,
+        "referral": "FB廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0027",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.0,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0028",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.6,
+        "referral": "親戚口碑",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 1,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0029",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 5.7,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 18,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0030",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 1.5,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0031",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.0,
+        "referral": "路過招生",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 24,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0032",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.1,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0033",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.4,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 20,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0034",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.4,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 21,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0035",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.7,
+        "referral": "Google廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 27,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0036",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.2,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 20,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0037",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.6,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0038",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 8.0,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 30,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0039",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 7.7,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0040",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.5,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 4,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0041",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.8,
+        "referral": "Cake/IG",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0042",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.3,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 9,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0043",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.3,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0044",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.6,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 2,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0045",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.5,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 10,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0046",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.4,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 24,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0047",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.9,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0048",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 2.3,
+        "referral": "親戚口碑",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 17,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0049",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.2,
+        "referral": "路過招生",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 10,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0050",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.6,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 0,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0051",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.3,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 10,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0052",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.8,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 2,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0053",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.9,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0054",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.1,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 30,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0055",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.9,
+        "referral": "Google廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 28,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0056",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.0,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0057",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.6,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0058",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 2.7,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 24,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0059",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.2,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 6,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0060",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 6.3,
+        "referral": "Cake/IG",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 20,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0061",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.5,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 25,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0062",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.5,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 14,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0063",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.1,
+        "referral": "Cake/IG",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0064",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.5,
+        "referral": "Google廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 0,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0065",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.8,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 13,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0066",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.9,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 27,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0067",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 5.1,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 28,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0068",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.2,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 17,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0069",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.5,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 28,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0070",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.6,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 24,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0071",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.8,
+        "referral": "Google廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 9,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0072",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.6,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 4,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0073",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.3,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0074",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 5.8,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 22,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0075",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.5,
+        "referral": "路過招生",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 6,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0076",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.1,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 25,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0077",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.4,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 30,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0078",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.8,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 7,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0079",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.3,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 6,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0080",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 6.8,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0081",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.4,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 29,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0082",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.1,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 14,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0083",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.5,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 7,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0084",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.9,
+        "referral": "Cake/IG",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 11,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0085",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 7.9,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0086",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.0,
+        "referral": "Cake/IG",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 16,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0087",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.3,
+        "referral": "FB廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0088",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.4,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0089",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 5.0,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 0,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0090",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.6,
+        "referral": "路過招生",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 7,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0091",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.8,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 14,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0092",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.0,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 7,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0093",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.1,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0094",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.0,
+        "referral": "路過招生",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0095",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.5,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0096",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 6.7,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0097",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 0.4,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0098",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.1,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 26,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0099",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.2,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 12,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0100",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.5,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 24,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0101",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.1,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 19,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0102",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.6,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 0,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0103",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.7,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 1,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0104",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.6,
+        "referral": "Google廣告",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0105",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.1,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 10,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0106",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.4,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 9,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0107",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.9,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0108",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 0.3,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0109",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.3,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 11,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0110",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.1,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 25,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0111",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.9,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 3,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0112",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 0.3,
+        "referral": "FB廣告",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 1,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0113",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.1,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 4,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0114",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.3,
+        "referral": "朋友介紹",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 4,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0115",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.1,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 29,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0116",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 5.0,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0117",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 6.3,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0118",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 0.5,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 11,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0119",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.1,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 10,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0120",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.6,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 4,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0121",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.3,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 24,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0122",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 5.1,
+        "referral": "Google廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 23,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0123",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.4,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 6,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0124",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.0,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0125",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 5.3,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 0,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0126",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.6,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0127",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 5.6,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0128",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.6,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 4,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0129",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.7,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 20,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0130",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 1.2,
+        "referral": "Cake/IG",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 12,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0131",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.7,
+        "referral": "路過招生",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 6,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0132",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 2.3,
+        "referral": "Google廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 27,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0133",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 0.9,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0134",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 5.6,
+        "referral": "Cake/IG",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 22,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0135",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 6.0,
+        "referral": "路過招生",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 22,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0136",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.6,
+        "referral": "Google廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 21,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0137",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 6.3,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 8,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0138",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.4,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 1,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0139",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.1,
+        "referral": "Cake/IG",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 1,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0140",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 6.1,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 1,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0141",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 0.6,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 28,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0142",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.7,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 5,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0143",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 7.6,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 30,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0144",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.0,
+        "referral": "路過招生",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 26,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0145",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.1,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 25,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0146",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.0,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 6,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0147",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.8,
+        "referral": "朋友介紹",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 3,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0148",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 7.3,
+        "referral": "路過招生",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0149",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 0.7,
+        "referral": "路過招生",
+        "tried_subject": "英文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 15,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0150",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 4.8,
+        "referral": "FB廣告",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 8,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0151",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 3.2,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 18,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0152",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 0.4,
+        "referral": "Cake/IG",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 20,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0153",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.3,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 25,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0154",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 4.5,
+        "referral": "親戚口碑",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0155",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.3,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 10,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0156",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 7.9,
+        "referral": "路過招生",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 22,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0157",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.0,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 3,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0158",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 0.5,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0159",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.3,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 2,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0160",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 3.7,
+        "referral": "Cake/IG",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 30,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0161",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 2.0,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0162",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.2,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 2,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0163",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 1.4,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 26,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0164",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 4.4,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 25,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0165",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 6.9,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 26,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0166",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.7,
+        "referral": "FB廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 15,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0167",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.5,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 26,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0168",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.4,
+        "referral": "路過招生",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 19,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0169",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.4,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 7,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0170",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.5,
+        "referral": "路過招生",
+        "tried_subject": "國文",
+        "parent_education": "大學",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 1,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0171",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 2.1,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 17,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0172",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 2.5,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 28,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0173",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.7,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 21,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0174",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.0,
+        "referral": "路過招生",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 17,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0175",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 4.7,
+        "referral": "FB廣告",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 18,
+        "attended_trial": 1
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0176",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 1.0,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 21,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0177",
+      "features": {
+        "grade": "國小4-6",
+        "distance_km": 1.6,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 30,
+        "attended_trial": 0
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0178",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.3,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 27,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    },
+    {
+      "lead_id": "L0179",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 6.3,
+        "referral": "Google廣告",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 5,
+        "attended_trial": 0
+      },
+      "enrolled": 0
+    },
+    {
+      "lead_id": "L0180",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.9,
+        "referral": "朋友介紹",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 27,
+        "attended_trial": 1
+      },
+      "enrolled": 1
+    }
+  ],
+  "upcoming_leads": [
+    {
+      "lead_id": "L1001",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 3.7,
+        "referral": "Cake/IG",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 25,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1002",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.2,
+        "referral": "親戚口碑",
+        "tried_subject": "英文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 7,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1003",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 1.6,
+        "referral": "親戚口碑",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 11,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1004",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.5,
+        "referral": "FB廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 10,
+        "attended_trial": 1
+      }
+    },
+    {
+      "lead_id": "L1005",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.7,
+        "referral": "FB廣告",
+        "tried_subject": "理化",
+        "parent_education": "國高中",
+        "prev_cram_experience": 1,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 6,
+        "attended_trial": 1
+      }
+    },
+    {
+      "lead_id": "L1006",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 7.2,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 9,
+        "attended_trial": 1
+      }
+    },
+    {
+      "lead_id": "L1007",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.5,
+        "referral": "親戚口碑",
+        "tried_subject": "理化",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1008",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 1.2,
+        "referral": "Google廣告",
+        "tried_subject": "多科套裝",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 6,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1009",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.6,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "網站表單",
+        "days_since_last_contact": 16,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1010",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 0.8,
+        "referral": "朋友介紹",
+        "tried_subject": "數學",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 22,
+        "attended_trial": 1
+      }
+    },
+    {
+      "lead_id": "L1011",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 3.2,
+        "referral": "Google廣告",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 23,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1012",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 5.4,
+        "referral": "Google廣告",
+        "tried_subject": "國文",
+        "parent_education": "研究所",
+        "prev_cram_experience": 0,
+        "contact_method": "電話來電",
+        "days_since_last_contact": 30,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1013",
+      "features": {
+        "grade": "國小1-3",
+        "distance_km": 2.5,
+        "referral": "親戚口碑",
+        "tried_subject": "國文",
+        "parent_education": "國高中",
+        "prev_cram_experience": 0,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 5,
+        "attended_trial": 0
+      }
+    },
+    {
+      "lead_id": "L1014",
+      "features": {
+        "grade": "高中1-3",
+        "distance_km": 4.7,
+        "referral": "朋友介紹",
+        "tried_subject": "理化",
+        "parent_education": "研究所",
+        "prev_cram_experience": 1,
+        "contact_method": "親自到店",
+        "days_since_last_contact": 4,
+        "attended_trial": 1
+      }
+    },
+    {
+      "lead_id": "L1015",
+      "features": {
+        "grade": "國中1-3",
+        "distance_km": 7.2,
+        "referral": "親戚口碑",
+        "tried_subject": "數學",
+        "parent_education": "大學",
+        "prev_cram_experience": 1,
+        "contact_method": "LINE先訊息",
+        "days_since_last_contact": 23,
+        "attended_trial": 1
+      }
+    }
+  ]
+}
