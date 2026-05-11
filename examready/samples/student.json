@@ -1,0 +1,65 @@
+{
+  "student_name": "王小明 (高三 / 二類組)",
+  "school": "台北市某私立高中",
+  "exam_name": "學測 (倒數第 30 天)",
+  "days_to_exam": 30,
+  "nightly_available_minutes": 180,
+  "max_subjects_per_night": 3,
+  "subjects": [
+    {
+      "code": "CHI",
+      "name": "國文",
+      "weight": 1.0,
+      "forgetting_rate": 0.015,
+      "boost_a": 8,
+      "boost_tau": 45,
+      "familiarity": 75,
+      "days_since_studied": 3,
+      "_note": "強項,白話文 OK,文言文需鞏固"
+    },
+    {
+      "code": "ENG",
+      "name": "英文",
+      "weight": 1.5,
+      "forgetting_rate": 0.02,
+      "boost_a": 9,
+      "boost_tau": 45,
+      "familiarity": 60,
+      "days_since_studied": 1,
+      "_note": "二類權重 ×1.5,翻譯 + 作文需持續練"
+    },
+    {
+      "code": "MATH_A",
+      "name": "數A",
+      "weight": 2.0,
+      "forgetting_rate": 0.035,
+      "boost_a": 12,
+      "boost_tau": 60,
+      "familiarity": 45,
+      "days_since_studied": 5,
+      "_note": "二類最重 ×2.0,但弱項,5 天沒練習衰退最快"
+    },
+    {
+      "code": "PHYS",
+      "name": "物理",
+      "weight": 1.5,
+      "forgetting_rate": 0.030,
+      "boost_a": 10,
+      "boost_tau": 60,
+      "familiarity": 55,
+      "days_since_studied": 2,
+      "_note": "電磁學還沒鞏固"
+    },
+    {
+      "code": "CHEM",
+      "name": "化學",
+      "weight": 1.5,
+      "forgetting_rate": 0.030,
+      "boost_a": 10,
+      "boost_tau": 60,
+      "familiarity": 50,
+      "days_since_studied": 4,
+      "_note": "有機化學弱"
+    }
+  ]
+}
