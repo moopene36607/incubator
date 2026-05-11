@@ -1,0 +1,67 @@
+{
+  "restaurant_name": "阿明小館 (台北信義區日式定食)",
+  "address": "台北市信義區忠孝東路四段 555 號",
+  "owner": "陳明遠",
+  "lunch_peak_window": "11:30-13:30 (120 分鐘)",
+  "average_check_per_person_ntd": 280,
+  "baseline_setup": {
+    "n_tables": 10,
+    "table_capacities": [2, 2, 2, 2, 4, 4, 4, 4, 4, 6],
+    "total_seats": 38,
+    "n_servers": 2,
+    "kitchen_capacity": 3,
+    "_explanation": "10 桌(4 張兩人桌 + 5 張四人桌 + 1 張六人桌),2 位服務員,廚房同時可做 3 道菜"
+  },
+  "service_parameters": {
+    "server_order_time_min": 1.5,
+    "server_order_time_max": 3.5,
+    "server_deliver_time_min": 0.5,
+    "server_deliver_time_max": 1.5,
+    "kitchen_cook_time_min": 6.0,
+    "kitchen_cook_time_max": 14.0,
+    "avg_eat_time_min": 18.0,
+    "avg_eat_time_max": 35.0,
+    "avg_patience_min": 8.0,
+    "patience_std": 4.0,
+    "_explanation": "點餐 1.5-3.5 分;烹飪 6-14 分;用餐 18-35 分;客人平均等 8 分就走"
+  },
+  "arrival_pattern": {
+    "customer_arrival_rate_per_min": 0.40,
+    "_explanation": "尖峰每分鐘平均 0.40 組(2 小時約 48 組客人,符合台北信義區小餐館午餐尖峰)"
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "label": "現況 (10桌/2服務員/廚房3/正常餐)"
+    },
+    {
+      "name": "add_2_tables",
+      "label": "加 2 張兩人桌 (12桌/2服務員/廚房3)",
+      "n_tables": 12,
+      "table_capacities": [2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6],
+      "monthly_extra_cost_ntd": 8000
+    },
+    {
+      "name": "express_lunch",
+      "label": "推快餐套餐 (10桌/2服務員/廚房3/出餐快+催單)",
+      "kitchen_cook_time_min": 4.0,
+      "kitchen_cook_time_max": 9.0,
+      "avg_eat_time_min": 14.0,
+      "avg_eat_time_max": 25.0,
+      "monthly_extra_cost_ntd": 12000
+    },
+    {
+      "name": "all_in",
+      "label": "全方位升級 (12桌/3服務員/廚房4/快餐)",
+      "n_tables": 12,
+      "table_capacities": [2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6],
+      "n_servers": 3,
+      "kitchen_capacity": 4,
+      "kitchen_cook_time_min": 4.0,
+      "kitchen_cook_time_max": 9.0,
+      "avg_eat_time_min": 14.0,
+      "avg_eat_time_max": 25.0,
+      "monthly_extra_cost_ntd": 58000
+    }
+  ]
+}
