@@ -1,0 +1,101 @@
+{
+  "property_name": "海風小宿 (4 房獨棟家庭民宿)",
+  "location": "花蓮市區步行 10 分鐘到車站",
+  "baseline_price": 2400,
+  "scenarios": [
+    {
+      "name": "平日 (週一至週四, 非連假)",
+      "is_weekend": 0,
+      "is_holiday": 0,
+      "price_grid": [2000, 2200, 2400, 2600, 2800, 3000]
+    },
+    {
+      "name": "週末 (週五 / 週六)",
+      "is_weekend": 1,
+      "is_holiday": 0,
+      "price_grid": [2800, 3000, 3200, 3400, 3600, 3800, 4000]
+    },
+    {
+      "name": "連假 (含週六 + 政府連假)",
+      "is_weekend": 1,
+      "is_holiday": 1,
+      "price_grid": [3600, 3800, 4200, 4600, 5000, 5400]
+    },
+    {
+      "name": "連假平日 (連假內的週一 / 週二)",
+      "is_weekend": 0,
+      "is_holiday": 1,
+      "price_grid": [2800, 3200, 3600, 4000, 4400]
+    }
+  ],
+  "nightly_history": [
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 3200, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3500, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2600, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+
+    {"price_ntd": 2200, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2600, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3500, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3800, "is_weekend": 1, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 1, "booked": 1},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 3400, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3700, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2700, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3300, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3600, "is_weekend": 1, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 3200, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3500, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2600, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2600, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 4200, "is_weekend": 1, "is_holiday": 1, "booked": 1},
+    {"price_ntd": 4500, "is_weekend": 1, "is_holiday": 1, "booked": 1},
+    {"price_ntd": 4400, "is_weekend": 0, "is_holiday": 1, "booked": 1},
+
+    {"price_ntd": 4200, "is_weekend": 0, "is_holiday": 1, "booked": 1},
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3400, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3700, "is_weekend": 1, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2300, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2600, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 3300, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 3500, "is_weekend": 1, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 1},
+    {"price_ntd": 2400, "is_weekend": 0, "is_holiday": 0, "booked": 0},
+    {"price_ntd": 2500, "is_weekend": 0, "is_holiday": 0, "booked": 1}
+  ]
+}
