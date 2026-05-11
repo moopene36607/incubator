@@ -1,0 +1,1295 @@
+{
+  "_description": "嬰幼兒 0-12 月 哭聲特徵 → 7 類 (hungry/tired/discomfort/pain/colic/overstimulation/wet_diaper) 的 Random Forest 分類訓練 + 1 個未知測試 cry event.",
+  "classes": [
+    "hungry",
+    "tired",
+    "discomfort",
+    "pain",
+    "colic",
+    "overstimulation",
+    "wet_diaper"
+  ],
+  "training_samples": [
+    {
+      "features": {
+        "pitch_mean_hz": 324.0,
+        "duration_s": 37.6,
+        "rhythm_regularity": 0.75,
+        "intensity_slope": 0.4,
+        "time_since_feed_min": 105.0,
+        "time_since_diaper_min": 20.0,
+        "time_since_nap_min": 144.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 411.0,
+        "duration_s": 50.3,
+        "rhythm_regularity": 0.76,
+        "intensity_slope": 0.31,
+        "time_since_feed_min": 205.0,
+        "time_since_diaper_min": 68.0,
+        "time_since_nap_min": 141.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 348.0,
+        "duration_s": 42.6,
+        "rhythm_regularity": 0.63,
+        "intensity_slope": 0.37,
+        "time_since_feed_min": 157.0,
+        "time_since_diaper_min": 73.0,
+        "time_since_nap_min": 164.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 436.0,
+        "duration_s": 24.5,
+        "rhythm_regularity": 0.68,
+        "intensity_slope": 0.49,
+        "time_since_feed_min": 229.0,
+        "time_since_diaper_min": 72.0,
+        "time_since_nap_min": 240.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 403.0,
+        "duration_s": 18.4,
+        "rhythm_regularity": 0.7,
+        "intensity_slope": 0.19,
+        "time_since_feed_min": 134.0,
+        "time_since_diaper_min": 41.0,
+        "time_since_nap_min": 210.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 441.0,
+        "duration_s": 41.0,
+        "rhythm_regularity": 0.61,
+        "intensity_slope": 0.3,
+        "time_since_feed_min": 145.0,
+        "time_since_diaper_min": 38.0,
+        "time_since_nap_min": 96.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 417.0,
+        "duration_s": 37.4,
+        "rhythm_regularity": 0.63,
+        "intensity_slope": 0.15,
+        "time_since_feed_min": 203.0,
+        "time_since_diaper_min": 54.0,
+        "time_since_nap_min": 118.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 483.0,
+        "duration_s": 26.6,
+        "rhythm_regularity": 0.73,
+        "intensity_slope": 0.45,
+        "time_since_feed_min": 162.0,
+        "time_since_diaper_min": 47.0,
+        "time_since_nap_min": 6.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 345.0,
+        "duration_s": 20.8,
+        "rhythm_regularity": 0.61,
+        "intensity_slope": 0.29,
+        "time_since_feed_min": 223.0,
+        "time_since_diaper_min": 9.0,
+        "time_since_nap_min": 149.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 394.0,
+        "duration_s": 36.7,
+        "rhythm_regularity": 0.67,
+        "intensity_slope": 0.42,
+        "time_since_feed_min": 184.0,
+        "time_since_diaper_min": 41.0,
+        "time_since_nap_min": 113.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 486.0,
+        "duration_s": 59.4,
+        "rhythm_regularity": 0.76,
+        "intensity_slope": 0.19,
+        "time_since_feed_min": 190.0,
+        "time_since_diaper_min": 28.0,
+        "time_since_nap_min": 192.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 400.0,
+        "duration_s": 36.6,
+        "rhythm_regularity": 0.87,
+        "intensity_slope": 0.1,
+        "time_since_feed_min": 134.0,
+        "time_since_diaper_min": 24.0,
+        "time_since_nap_min": 8.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 431.0,
+        "duration_s": 41.9,
+        "rhythm_regularity": 0.74,
+        "intensity_slope": 0.17,
+        "time_since_feed_min": 163.0,
+        "time_since_diaper_min": 83.0,
+        "time_since_nap_min": 62.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 397.0,
+        "duration_s": 38.0,
+        "rhythm_regularity": 0.85,
+        "intensity_slope": 0.37,
+        "time_since_feed_min": 174.0,
+        "time_since_diaper_min": 82.0,
+        "time_since_nap_min": 200.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 363.0,
+        "duration_s": 56.3,
+        "rhythm_regularity": 0.63,
+        "intensity_slope": 0.28,
+        "time_since_feed_min": 208.0,
+        "time_since_diaper_min": 46.0,
+        "time_since_nap_min": 109.0
+      },
+      "label": "hungry"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 543.0,
+        "duration_s": 39.0,
+        "rhythm_regularity": 0.79,
+        "intensity_slope": -0.06,
+        "time_since_feed_min": 8.0,
+        "time_since_diaper_min": 24.0,
+        "time_since_nap_min": 240.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 369.0,
+        "duration_s": 32.4,
+        "rhythm_regularity": 0.64,
+        "intensity_slope": -0.08,
+        "time_since_feed_min": 2.0,
+        "time_since_diaper_min": 0.0,
+        "time_since_nap_min": 259.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 536.0,
+        "duration_s": 12.5,
+        "rhythm_regularity": 0.78,
+        "intensity_slope": -0.18,
+        "time_since_feed_min": 75.0,
+        "time_since_diaper_min": 68.0,
+        "time_since_nap_min": 350.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 484.0,
+        "duration_s": 29.1,
+        "rhythm_regularity": 0.55,
+        "intensity_slope": -0.14,
+        "time_since_feed_min": 70.0,
+        "time_since_diaper_min": 69.0,
+        "time_since_nap_min": 348.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 448.0,
+        "duration_s": 31.6,
+        "rhythm_regularity": 0.55,
+        "intensity_slope": -0.19,
+        "time_since_feed_min": 71.0,
+        "time_since_diaper_min": 86.0,
+        "time_since_nap_min": 330.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 451.0,
+        "duration_s": 12.5,
+        "rhythm_regularity": 0.73,
+        "intensity_slope": 0.17,
+        "time_since_feed_min": 94.0,
+        "time_since_diaper_min": 82.0,
+        "time_since_nap_min": 193.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 432.0,
+        "duration_s": 34.2,
+        "rhythm_regularity": 0.68,
+        "intensity_slope": -0.2,
+        "time_since_feed_min": 2.0,
+        "time_since_diaper_min": 10.0,
+        "time_since_nap_min": 333.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 360.0,
+        "duration_s": 20.4,
+        "rhythm_regularity": 0.62,
+        "intensity_slope": 0.08,
+        "time_since_feed_min": 3.0,
+        "time_since_diaper_min": 46.0,
+        "time_since_nap_min": 199.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 411.0,
+        "duration_s": 19.8,
+        "rhythm_regularity": 0.54,
+        "intensity_slope": 0.17,
+        "time_since_feed_min": 69.0,
+        "time_since_diaper_min": 72.0,
+        "time_since_nap_min": 157.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 454.0,
+        "duration_s": 23.0,
+        "rhythm_regularity": 0.62,
+        "intensity_slope": -0.0,
+        "time_since_feed_min": 81.0,
+        "time_since_diaper_min": 6.0,
+        "time_since_nap_min": 216.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 389.0,
+        "duration_s": 37.6,
+        "rhythm_regularity": 0.52,
+        "intensity_slope": -0.03,
+        "time_since_feed_min": 101.0,
+        "time_since_diaper_min": 41.0,
+        "time_since_nap_min": 301.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 388.0,
+        "duration_s": 31.3,
+        "rhythm_regularity": 0.81,
+        "intensity_slope": -0.24,
+        "time_since_feed_min": 64.0,
+        "time_since_diaper_min": 71.0,
+        "time_since_nap_min": 244.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 541.0,
+        "duration_s": 14.8,
+        "rhythm_regularity": 0.8,
+        "intensity_slope": -0.11,
+        "time_since_feed_min": 51.0,
+        "time_since_diaper_min": 37.0,
+        "time_since_nap_min": 139.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 411.0,
+        "duration_s": 20.3,
+        "rhythm_regularity": 0.59,
+        "intensity_slope": -0.05,
+        "time_since_feed_min": 94.0,
+        "time_since_diaper_min": 37.0,
+        "time_since_nap_min": 232.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 415.0,
+        "duration_s": 24.5,
+        "rhythm_regularity": 0.54,
+        "intensity_slope": 0.1,
+        "time_since_feed_min": 96.0,
+        "time_since_diaper_min": 73.0,
+        "time_since_nap_min": 323.0
+      },
+      "label": "tired"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 446.0,
+        "duration_s": 48.1,
+        "rhythm_regularity": 0.46,
+        "intensity_slope": 0.09,
+        "time_since_feed_min": 49.0,
+        "time_since_diaper_min": 154.0,
+        "time_since_nap_min": 153.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 534.0,
+        "duration_s": 48.4,
+        "rhythm_regularity": 0.31,
+        "intensity_slope": -0.21,
+        "time_since_feed_min": 67.0,
+        "time_since_diaper_min": 129.0,
+        "time_since_nap_min": 97.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 422.0,
+        "duration_s": 38.6,
+        "rhythm_regularity": 0.37,
+        "intensity_slope": 0.04,
+        "time_since_feed_min": 26.0,
+        "time_since_diaper_min": 95.0,
+        "time_since_nap_min": 48.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 511.0,
+        "duration_s": 14.1,
+        "rhythm_regularity": 0.28,
+        "intensity_slope": 0.27,
+        "time_since_feed_min": 21.0,
+        "time_since_diaper_min": 142.0,
+        "time_since_nap_min": 137.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 544.0,
+        "duration_s": 17.4,
+        "rhythm_regularity": 0.39,
+        "intensity_slope": 0.0,
+        "time_since_feed_min": 33.0,
+        "time_since_diaper_min": 160.0,
+        "time_since_nap_min": 52.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 463.0,
+        "duration_s": 20.4,
+        "rhythm_regularity": 0.22,
+        "intensity_slope": -0.05,
+        "time_since_feed_min": 108.0,
+        "time_since_diaper_min": 153.0,
+        "time_since_nap_min": 75.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 403.0,
+        "duration_s": 13.9,
+        "rhythm_regularity": 0.21,
+        "intensity_slope": -0.23,
+        "time_since_feed_min": 82.0,
+        "time_since_diaper_min": 129.0,
+        "time_since_nap_min": 168.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 470.0,
+        "duration_s": 41.2,
+        "rhythm_regularity": 0.38,
+        "intensity_slope": 0.09,
+        "time_since_feed_min": 74.0,
+        "time_since_diaper_min": 171.0,
+        "time_since_nap_min": 57.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 443.0,
+        "duration_s": 28.5,
+        "rhythm_regularity": 0.49,
+        "intensity_slope": 0.23,
+        "time_since_feed_min": 82.0,
+        "time_since_diaper_min": 163.0,
+        "time_since_nap_min": 123.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 585.0,
+        "duration_s": 25.6,
+        "rhythm_regularity": 0.48,
+        "intensity_slope": -0.09,
+        "time_since_feed_min": 88.0,
+        "time_since_diaper_min": 112.0,
+        "time_since_nap_min": 4.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 539.0,
+        "duration_s": 21.6,
+        "rhythm_regularity": 0.49,
+        "intensity_slope": 0.18,
+        "time_since_feed_min": 15.0,
+        "time_since_diaper_min": 152.0,
+        "time_since_nap_min": 57.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 581.0,
+        "duration_s": 31.7,
+        "rhythm_regularity": 0.3,
+        "intensity_slope": 0.04,
+        "time_since_feed_min": 87.0,
+        "time_since_diaper_min": 74.0,
+        "time_since_nap_min": 111.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 424.0,
+        "duration_s": 15.0,
+        "rhythm_regularity": 0.31,
+        "intensity_slope": 0.09,
+        "time_since_feed_min": 79.0,
+        "time_since_diaper_min": 63.0,
+        "time_since_nap_min": 104.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 471.0,
+        "duration_s": 25.4,
+        "rhythm_regularity": 0.27,
+        "intensity_slope": -0.05,
+        "time_since_feed_min": 26.0,
+        "time_since_diaper_min": 75.0,
+        "time_since_nap_min": 98.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 532.0,
+        "duration_s": 47.4,
+        "rhythm_regularity": 0.41,
+        "intensity_slope": -0.06,
+        "time_since_feed_min": 31.0,
+        "time_since_diaper_min": 78.0,
+        "time_since_nap_min": 4.0
+      },
+      "label": "discomfort"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 719.0,
+        "duration_s": 73.1,
+        "rhythm_regularity": 0.18,
+        "intensity_slope": 0.52,
+        "time_since_feed_min": 113.0,
+        "time_since_diaper_min": 71.0,
+        "time_since_nap_min": 151.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 788.0,
+        "duration_s": 88.5,
+        "rhythm_regularity": 0.39,
+        "intensity_slope": 0.66,
+        "time_since_feed_min": 32.0,
+        "time_since_diaper_min": 76.0,
+        "time_since_nap_min": 136.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 729.0,
+        "duration_s": 89.2,
+        "rhythm_regularity": 0.1,
+        "intensity_slope": 0.98,
+        "time_since_feed_min": 56.0,
+        "time_since_diaper_min": 116.0,
+        "time_since_nap_min": 122.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 866.0,
+        "duration_s": 113.5,
+        "rhythm_regularity": 0.37,
+        "intensity_slope": 0.58,
+        "time_since_feed_min": 117.0,
+        "time_since_diaper_min": 114.0,
+        "time_since_nap_min": 42.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 857.0,
+        "duration_s": 60.9,
+        "rhythm_regularity": 0.16,
+        "intensity_slope": 0.55,
+        "time_since_feed_min": 76.0,
+        "time_since_diaper_min": 66.0,
+        "time_since_nap_min": 85.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 847.0,
+        "duration_s": 82.3,
+        "rhythm_regularity": 0.16,
+        "intensity_slope": 0.74,
+        "time_since_feed_min": 18.0,
+        "time_since_diaper_min": 107.0,
+        "time_since_nap_min": 171.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 853.0,
+        "duration_s": 105.2,
+        "rhythm_regularity": 0.31,
+        "intensity_slope": 0.86,
+        "time_since_feed_min": 77.0,
+        "time_since_diaper_min": 10.0,
+        "time_since_nap_min": 67.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 833.0,
+        "duration_s": 42.4,
+        "rhythm_regularity": 0.32,
+        "intensity_slope": 1.0,
+        "time_since_feed_min": 2.0,
+        "time_since_diaper_min": 26.0,
+        "time_since_nap_min": 153.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 796.0,
+        "duration_s": 81.5,
+        "rhythm_regularity": 0.39,
+        "intensity_slope": 0.57,
+        "time_since_feed_min": 116.0,
+        "time_since_diaper_min": 62.0,
+        "time_since_nap_min": 116.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 690.0,
+        "duration_s": 75.8,
+        "rhythm_regularity": 0.13,
+        "intensity_slope": 0.81,
+        "time_since_feed_min": 40.0,
+        "time_since_diaper_min": 31.0,
+        "time_since_nap_min": 7.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 798.0,
+        "duration_s": 100.9,
+        "rhythm_regularity": 0.15,
+        "intensity_slope": 0.51,
+        "time_since_feed_min": 65.0,
+        "time_since_diaper_min": 43.0,
+        "time_since_nap_min": 175.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 697.0,
+        "duration_s": 97.2,
+        "rhythm_regularity": 0.1,
+        "intensity_slope": 0.72,
+        "time_since_feed_min": 58.0,
+        "time_since_diaper_min": 51.0,
+        "time_since_nap_min": 146.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 876.0,
+        "duration_s": 118.1,
+        "rhythm_regularity": 0.4,
+        "intensity_slope": 0.42,
+        "time_since_feed_min": 62.0,
+        "time_since_diaper_min": 22.0,
+        "time_since_nap_min": 97.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 691.0,
+        "duration_s": 109.8,
+        "rhythm_regularity": 0.25,
+        "intensity_slope": 0.92,
+        "time_since_feed_min": 77.0,
+        "time_since_diaper_min": 0.0,
+        "time_since_nap_min": 67.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 742.0,
+        "duration_s": 49.5,
+        "rhythm_regularity": 0.15,
+        "intensity_slope": 0.73,
+        "time_since_feed_min": 15.0,
+        "time_since_diaper_min": 118.0,
+        "time_since_nap_min": 87.0
+      },
+      "label": "pain"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 918.0,
+        "duration_s": 242.6,
+        "rhythm_regularity": 0.11,
+        "intensity_slope": 0.77,
+        "time_since_feed_min": 69.0,
+        "time_since_diaper_min": 42.0,
+        "time_since_nap_min": 164.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 730.0,
+        "duration_s": 199.0,
+        "rhythm_regularity": 0.25,
+        "intensity_slope": 0.81,
+        "time_since_feed_min": 57.0,
+        "time_since_diaper_min": 70.0,
+        "time_since_nap_min": 15.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 895.0,
+        "duration_s": 108.5,
+        "rhythm_regularity": 0.15,
+        "intensity_slope": 0.59,
+        "time_since_feed_min": 75.0,
+        "time_since_diaper_min": 27.0,
+        "time_since_nap_min": 59.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 827.0,
+        "duration_s": 159.7,
+        "rhythm_regularity": 0.27,
+        "intensity_slope": 0.83,
+        "time_since_feed_min": 81.0,
+        "time_since_diaper_min": 48.0,
+        "time_since_nap_min": 32.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 902.0,
+        "duration_s": 136.2,
+        "rhythm_regularity": 0.21,
+        "intensity_slope": 0.61,
+        "time_since_feed_min": 77.0,
+        "time_since_diaper_min": 49.0,
+        "time_since_nap_min": 145.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 795.0,
+        "duration_s": 122.4,
+        "rhythm_regularity": 0.22,
+        "intensity_slope": 0.79,
+        "time_since_feed_min": 38.0,
+        "time_since_diaper_min": 32.0,
+        "time_since_nap_min": 150.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 780.0,
+        "duration_s": 266.6,
+        "rhythm_regularity": 0.13,
+        "intensity_slope": 0.49,
+        "time_since_feed_min": 68.0,
+        "time_since_diaper_min": 28.0,
+        "time_since_nap_min": 175.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 840.0,
+        "duration_s": 115.9,
+        "rhythm_regularity": 0.09,
+        "intensity_slope": 0.67,
+        "time_since_feed_min": 54.0,
+        "time_since_diaper_min": 3.0,
+        "time_since_nap_min": 129.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 869.0,
+        "duration_s": 160.7,
+        "rhythm_regularity": 0.2,
+        "intensity_slope": 0.95,
+        "time_since_feed_min": 85.0,
+        "time_since_diaper_min": 102.0,
+        "time_since_nap_min": 171.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 867.0,
+        "duration_s": 204.7,
+        "rhythm_regularity": 0.06,
+        "intensity_slope": 0.61,
+        "time_since_feed_min": 50.0,
+        "time_since_diaper_min": 111.0,
+        "time_since_nap_min": 130.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 703.0,
+        "duration_s": 207.4,
+        "rhythm_regularity": 0.08,
+        "intensity_slope": 0.6,
+        "time_since_feed_min": 69.0,
+        "time_since_diaper_min": 50.0,
+        "time_since_nap_min": 140.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 819.0,
+        "duration_s": 276.7,
+        "rhythm_regularity": 0.1,
+        "intensity_slope": 0.42,
+        "time_since_feed_min": 43.0,
+        "time_since_diaper_min": 15.0,
+        "time_since_nap_min": 153.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 767.0,
+        "duration_s": 93.7,
+        "rhythm_regularity": 0.06,
+        "intensity_slope": 0.67,
+        "time_since_feed_min": 47.0,
+        "time_since_diaper_min": 76.0,
+        "time_since_nap_min": 14.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 873.0,
+        "duration_s": 203.2,
+        "rhythm_regularity": 0.0,
+        "intensity_slope": 0.46,
+        "time_since_feed_min": 50.0,
+        "time_since_diaper_min": 26.0,
+        "time_since_nap_min": 83.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 852.0,
+        "duration_s": 125.9,
+        "rhythm_regularity": 0.09,
+        "intensity_slope": 0.74,
+        "time_since_feed_min": 73.0,
+        "time_since_diaper_min": 82.0,
+        "time_since_nap_min": 101.0
+      },
+      "label": "colic"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 527.0,
+        "duration_s": 36.3,
+        "rhythm_regularity": 0.33,
+        "intensity_slope": 0.41,
+        "time_since_feed_min": 88.0,
+        "time_since_diaper_min": 119.0,
+        "time_since_nap_min": 238.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 728.0,
+        "duration_s": 59.5,
+        "rhythm_regularity": 0.3,
+        "intensity_slope": 0.51,
+        "time_since_feed_min": 73.0,
+        "time_since_diaper_min": 31.0,
+        "time_since_nap_min": 219.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 710.0,
+        "duration_s": 22.2,
+        "rhythm_regularity": 0.35,
+        "intensity_slope": 0.31,
+        "time_since_feed_min": 97.0,
+        "time_since_diaper_min": 30.0,
+        "time_since_nap_min": 196.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 550.0,
+        "duration_s": 36.4,
+        "rhythm_regularity": 0.45,
+        "intensity_slope": 0.54,
+        "time_since_feed_min": 26.0,
+        "time_since_diaper_min": 7.0,
+        "time_since_nap_min": 134.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 516.0,
+        "duration_s": 63.3,
+        "rhythm_regularity": 0.4,
+        "intensity_slope": 0.71,
+        "time_since_feed_min": 92.0,
+        "time_since_diaper_min": 36.0,
+        "time_since_nap_min": 147.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 523.0,
+        "duration_s": 50.6,
+        "rhythm_regularity": 0.36,
+        "intensity_slope": 0.5,
+        "time_since_feed_min": 38.0,
+        "time_since_diaper_min": 41.0,
+        "time_since_nap_min": 93.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 747.0,
+        "duration_s": 71.8,
+        "rhythm_regularity": 0.25,
+        "intensity_slope": 0.45,
+        "time_since_feed_min": 114.0,
+        "time_since_diaper_min": 105.0,
+        "time_since_nap_min": 154.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 596.0,
+        "duration_s": 26.4,
+        "rhythm_regularity": 0.38,
+        "intensity_slope": 0.43,
+        "time_since_feed_min": 56.0,
+        "time_since_diaper_min": 25.0,
+        "time_since_nap_min": 151.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 632.0,
+        "duration_s": 50.8,
+        "rhythm_regularity": 0.44,
+        "intensity_slope": 0.46,
+        "time_since_feed_min": 105.0,
+        "time_since_diaper_min": 59.0,
+        "time_since_nap_min": 161.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 710.0,
+        "duration_s": 39.5,
+        "rhythm_regularity": 0.5,
+        "intensity_slope": 0.54,
+        "time_since_feed_min": 74.0,
+        "time_since_diaper_min": 65.0,
+        "time_since_nap_min": 87.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 638.0,
+        "duration_s": 78.8,
+        "rhythm_regularity": 0.42,
+        "intensity_slope": 0.38,
+        "time_since_feed_min": 98.0,
+        "time_since_diaper_min": 79.0,
+        "time_since_nap_min": 71.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 667.0,
+        "duration_s": 22.1,
+        "rhythm_regularity": 0.44,
+        "intensity_slope": 0.86,
+        "time_since_feed_min": 21.0,
+        "time_since_diaper_min": 32.0,
+        "time_since_nap_min": 157.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 589.0,
+        "duration_s": 47.4,
+        "rhythm_regularity": 0.26,
+        "intensity_slope": 0.33,
+        "time_since_feed_min": 22.0,
+        "time_since_diaper_min": 18.0,
+        "time_since_nap_min": 175.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 622.0,
+        "duration_s": 52.8,
+        "rhythm_regularity": 0.21,
+        "intensity_slope": 0.43,
+        "time_since_feed_min": 44.0,
+        "time_since_diaper_min": 65.0,
+        "time_since_nap_min": 144.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 687.0,
+        "duration_s": 29.3,
+        "rhythm_regularity": 0.3,
+        "intensity_slope": 0.73,
+        "time_since_feed_min": 5.0,
+        "time_since_diaper_min": 1.0,
+        "time_since_nap_min": 77.0
+      },
+      "label": "overstimulation"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 438.0,
+        "duration_s": 19.1,
+        "rhythm_regularity": 0.78,
+        "intensity_slope": -0.15,
+        "time_since_feed_min": 91.0,
+        "time_since_diaper_min": 115.0,
+        "time_since_nap_min": 34.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 472.0,
+        "duration_s": 13.5,
+        "rhythm_regularity": 0.65,
+        "intensity_slope": 0.2,
+        "time_since_feed_min": 20.0,
+        "time_since_diaper_min": 124.0,
+        "time_since_nap_min": 174.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 382.0,
+        "duration_s": 8.2,
+        "rhythm_regularity": 0.85,
+        "intensity_slope": -0.05,
+        "time_since_feed_min": 51.0,
+        "time_since_diaper_min": 218.0,
+        "time_since_nap_min": 127.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 495.0,
+        "duration_s": 17.6,
+        "rhythm_regularity": 0.65,
+        "intensity_slope": 0.27,
+        "time_since_feed_min": 73.0,
+        "time_since_diaper_min": 104.0,
+        "time_since_nap_min": 161.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 461.0,
+        "duration_s": 7.3,
+        "rhythm_regularity": 0.53,
+        "intensity_slope": 0.13,
+        "time_since_feed_min": 75.0,
+        "time_since_diaper_min": 114.0,
+        "time_since_nap_min": 31.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 446.0,
+        "duration_s": 8.8,
+        "rhythm_regularity": 0.83,
+        "intensity_slope": 0.29,
+        "time_since_feed_min": 4.0,
+        "time_since_diaper_min": 236.0,
+        "time_since_nap_min": 117.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 487.0,
+        "duration_s": 20.8,
+        "rhythm_regularity": 0.6,
+        "intensity_slope": -0.08,
+        "time_since_feed_min": 1.0,
+        "time_since_diaper_min": 168.0,
+        "time_since_nap_min": 160.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 476.0,
+        "duration_s": 14.8,
+        "rhythm_regularity": 0.55,
+        "intensity_slope": 0.18,
+        "time_since_feed_min": 67.0,
+        "time_since_diaper_min": 235.0,
+        "time_since_nap_min": 82.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 441.0,
+        "duration_s": 16.9,
+        "rhythm_regularity": 0.83,
+        "intensity_slope": 0.1,
+        "time_since_feed_min": 39.0,
+        "time_since_diaper_min": 128.0,
+        "time_since_nap_min": 123.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 419.0,
+        "duration_s": 11.9,
+        "rhythm_regularity": 0.79,
+        "intensity_slope": 0.02,
+        "time_since_feed_min": 64.0,
+        "time_since_diaper_min": 105.0,
+        "time_since_nap_min": 50.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 356.0,
+        "duration_s": 16.8,
+        "rhythm_regularity": 0.52,
+        "intensity_slope": 0.25,
+        "time_since_feed_min": 68.0,
+        "time_since_diaper_min": 148.0,
+        "time_since_nap_min": 116.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 436.0,
+        "duration_s": 14.1,
+        "rhythm_regularity": 0.67,
+        "intensity_slope": -0.29,
+        "time_since_feed_min": 108.0,
+        "time_since_diaper_min": 110.0,
+        "time_since_nap_min": 19.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 364.0,
+        "duration_s": 15.7,
+        "rhythm_regularity": 0.59,
+        "intensity_slope": 0.28,
+        "time_since_feed_min": 90.0,
+        "time_since_diaper_min": 101.0,
+        "time_since_nap_min": 108.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 368.0,
+        "duration_s": 24.3,
+        "rhythm_regularity": 0.82,
+        "intensity_slope": 0.13,
+        "time_since_feed_min": 37.0,
+        "time_since_diaper_min": 161.0,
+        "time_since_nap_min": 58.0
+      },
+      "label": "wet_diaper"
+    },
+    {
+      "features": {
+        "pitch_mean_hz": 484.0,
+        "duration_s": 18.8,
+        "rhythm_regularity": 0.64,
+        "intensity_slope": 0.01,
+        "time_since_feed_min": 102.0,
+        "time_since_diaper_min": 153.0,
+        "time_since_nap_min": 88.0
+      },
+      "label": "wet_diaper"
+    }
+  ],
+  "test_event": {
+    "_meta": "陳家小寶 (3 個月女嬰) 今晚 19:00 哭超過 5 分鐘, 媽媽手忙腳亂",
+    "infant_name": "陳小寶",
+    "infant_age_months": 3,
+    "baby_history": {
+      "last_feed_minutes_ago": 60,
+      "last_diaper_minutes_ago": 30,
+      "last_nap_minutes_ago": 45,
+      "fed_well_today": true,
+      "no_fever_no_vomit": true
+    },
+    "cry_features": {
+      "pitch_mean_hz": 820.0,
+      "duration_s": 210.0,
+      "rhythm_regularity": 0.15,
+      "intensity_slope": 0.7,
+      "time_since_feed_min": 60,
+      "time_since_diaper_min": 30,
+      "time_since_nap_min": 45
+    }
+  }
+}
