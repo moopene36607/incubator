@@ -1,0 +1,95 @@
+{
+  "jigyousho_name": "あおぞら訪問介護事業所 (板橋区, 訪問介護)",
+  "query": {
+    "kind": "client",
+    "id": "C03",
+    "_meta": "サブ候補探し: 鈴木和夫 78 歳 男性 (認知症 中度, 板橋区, 週 3 回訪問). 通常担当 S01 田中花子 が来週インフルエンザで休暇予定. 似た特性のヘルパーを推薦してほしい"
+  },
+  "staff": [
+    {"id": "S01", "_meta": "田中花子 7 年 / 認知症対応 OK / 女性 / 朝-夕勤務 / 板橋区"},
+    {"id": "S02", "_meta": "佐藤太郎 6 年 / 認知症対応 OK / 男性 / 朝-夕勤務 / 板橋区"},
+    {"id": "S03", "_meta": "山田美咲 5 年 / 認知症対応 OK / 女性 / 全日 / 練馬区"},
+    {"id": "S04", "_meta": "鈴木健一 6 年 / 重度介護 OK / 男性 / 全日 / 練馬区"},
+    {"id": "S05", "_meta": "高橋真理 8 年 / 認知症対応 OK / 女性 / 朝-夕 / 豊島区"},
+    {"id": "S06", "_meta": "中村優 1.5 年 / 軽度ケア / 女性 / 朝勤務 / 板橋区"},
+    {"id": "S07", "_meta": "小林大輔 2 年 / 軽度ケア / 男性 / 夜勤可 / 練馬区"},
+    {"id": "S08", "_meta": "伊藤さくら 1 年 / 軽度ケア / 女性 / 朝勤務 / 豊島区"},
+    {"id": "S09", "_meta": "渡辺涼 1.5 年 / 軽度ケア / 男性 / 夜勤可 / 板橋区"},
+    {"id": "S10", "_meta": "加藤明日香 2 年 / 軽度ケア / 女性 / 朝勤務 / 練馬区"}
+  ],
+  "clients": [
+    {"id": "C01", "_meta": "田中昭夫 85 歳 男 / 認知症 中度 / 週 3 回 / 板橋区"},
+    {"id": "C02", "_meta": "佐藤君代 82 歳 女 / 認知症 中度 / 週 4 回 / 板橋区"},
+    {"id": "C03", "_meta": "鈴木和夫 78 歳 男 / 認知症 中度 / 週 3 回 / 板橋区"},
+    {"id": "C04", "_meta": "山田静子 88 歳 女 / 認知症 重度 / 週 5 回 / 練馬区"},
+    {"id": "C05", "_meta": "木村幸子 82 歳 女 / 認知症 軽度 / 週 2 回 / 豊島区"},
+    {"id": "C06", "_meta": "中村政夫 79 歳 男 / 排泄+移乗 / 週 4 回 / 練馬区"},
+    {"id": "C07", "_meta": "小林雅子 75 歳 女 / 排泄+食事 / 週 3 回 / 板橋区"},
+    {"id": "C08", "_meta": "大野和雄 80 歳 男 / 排泄 / 週 4 回 / 練馬区"},
+    {"id": "C09", "_meta": "林みえ子 78 歳 女 / 移乗 / 週 3 回 / 豊島区"},
+    {"id": "C10", "_meta": "松本順子 77 歳 女 / 排泄+食事 / 週 3 回 / 板橋区"},
+    {"id": "C11", "_meta": "高橋良三 85 歳 男 / 買い物 / 週 2 回 / 板橋区"},
+    {"id": "C12", "_meta": "渡辺孝子 81 歳 女 / 掃除 / 週 1 回 / 練馬区"},
+    {"id": "C13", "_meta": "中島正夫 75 歳 男 / 買い物+散歩 / 週 2 回 / 練馬区"},
+    {"id": "C14", "_meta": "吉田はる子 79 歳 女 / 掃除+洗濯 / 週 2 回 / 豊島区"},
+    {"id": "C15", "_meta": "山口良子 76 歳 女 / 買い物 / 週 1 回 / 板橋区"}
+  ],
+  "past_assignments": [
+    {"staff_id": "S01", "client_id": "C01", "weight": 12},
+    {"staff_id": "S01", "client_id": "C02", "weight": 10},
+    {"staff_id": "S01", "client_id": "C03", "weight": 11},
+    {"staff_id": "S01", "client_id": "C04", "weight": 8},
+    {"staff_id": "S01", "client_id": "C06", "weight": 5},
+    {"staff_id": "S01", "client_id": "C07", "weight": 6},
+
+    {"staff_id": "S02", "client_id": "C01", "weight": 6},
+    {"staff_id": "S02", "client_id": "C03", "weight": 9},
+    {"staff_id": "S02", "client_id": "C04", "weight": 10},
+    {"staff_id": "S02", "client_id": "C06", "weight": 4},
+    {"staff_id": "S02", "client_id": "C08", "weight": 5},
+
+    {"staff_id": "S03", "client_id": "C02", "weight": 11},
+    {"staff_id": "S03", "client_id": "C04", "weight": 9},
+    {"staff_id": "S03", "client_id": "C05", "weight": 8},
+    {"staff_id": "S03", "client_id": "C07", "weight": 5},
+    {"staff_id": "S03", "client_id": "C09", "weight": 4},
+
+    {"staff_id": "S04", "client_id": "C04", "weight": 12},
+    {"staff_id": "S04", "client_id": "C06", "weight": 7},
+    {"staff_id": "S04", "client_id": "C07", "weight": 6},
+    {"staff_id": "S04", "client_id": "C08", "weight": 8},
+    {"staff_id": "S04", "client_id": "C09", "weight": 7},
+    {"staff_id": "S04", "client_id": "C10", "weight": 5},
+
+    {"staff_id": "S05", "client_id": "C02", "weight": 8},
+    {"staff_id": "S05", "client_id": "C03", "weight": 7},
+    {"staff_id": "S05", "client_id": "C05", "weight": 11},
+    {"staff_id": "S05", "client_id": "C06", "weight": 4},
+
+    {"staff_id": "S06", "client_id": "C11", "weight": 10},
+    {"staff_id": "S06", "client_id": "C12", "weight": 6},
+    {"staff_id": "S06", "client_id": "C14", "weight": 8},
+    {"staff_id": "S06", "client_id": "C15", "weight": 5},
+    {"staff_id": "S06", "client_id": "C07", "weight": 3},
+
+    {"staff_id": "S07", "client_id": "C12", "weight": 7},
+    {"staff_id": "S07", "client_id": "C13", "weight": 9},
+    {"staff_id": "S07", "client_id": "C14", "weight": 5},
+    {"staff_id": "S07", "client_id": "C08", "weight": 3},
+
+    {"staff_id": "S08", "client_id": "C11", "weight": 8},
+    {"staff_id": "S08", "client_id": "C12", "weight": 5},
+    {"staff_id": "S08", "client_id": "C14", "weight": 7},
+    {"staff_id": "S08", "client_id": "C15", "weight": 9},
+
+    {"staff_id": "S09", "client_id": "C13", "weight": 10},
+    {"staff_id": "S09", "client_id": "C11", "weight": 4},
+    {"staff_id": "S09", "client_id": "C12", "weight": 5},
+    {"staff_id": "S09", "client_id": "C09", "weight": 3},
+
+    {"staff_id": "S10", "client_id": "C13", "weight": 6},
+    {"staff_id": "S10", "client_id": "C14", "weight": 8},
+    {"staff_id": "S10", "client_id": "C15", "weight": 7},
+    {"staff_id": "S10", "client_id": "C11", "weight": 5}
+  ]
+}
