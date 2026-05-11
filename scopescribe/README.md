@@ -1,60 +1,60 @@
 # scopescribe
 
-**AI scope-of-loss narrative generator for independent insurance adjusters.**
+**為獨立保險理賠員打造的 AI 損失範圍敘述產生器。**
 
-Turn damage photos + Xactimate line items into a polished, carrier-ready report narrative in under 30 seconds.
+把現場勘損照片 + Xactimate 估價項目，30 秒內變成一份精煉、可直接交給保險公司的報告敘述。
 
 ---
 
-## The pain
+## 痛點
 
-Independent (1099) property adjusters in the US — there are about 120,000 of them — get paid per claim. After every catastrophe deployment (hurricane, hail, wildfire, flood) they have to write a detailed report for the carrier:
+美國的獨立（1099）財產理賠員大約有 12 萬人，按件計酬。每次重大災害派遣（颶風、冰雹、野火、洪水）之後，都得寫一份詳細的報告交給保險公司：
 
-- Cause of loss
-- Scope of loss
-- Methodology
-- Per-room / per-elevation findings
+- 損失原因（Cause of loss）
+- 損失範圍（Scope of loss）
+- 方法論（Methodology）
+- 各房間 / 各立面的勘查結果
 
-Most adjusters spend **3–4 hours per claim** on the narrative sections alone. That's not the inspection or the Xactimate sketch — that's the *writing*. It's the same boilerplate every time, but it has to sound custom and match each carrier's tone.
+大多數理賠員光是「寫敘述」這段就要花 **3–4 小時 / 件**。這還不算現場勘查或 Xactimate 草圖 — 純粹是 *寫字*。每次都是同樣那套樣板，但又得讓它讀起來像客製化，還要符合每家保險公司的語氣。
 
-> "Half of every report is just writing the narrative. It's the same boilerplate every time but it has to sound custom. I lose two claims a week to slow turnaround."
+> 「報告有一半時間都在寫敘述。每次都是同一套樣板但要寫得像客製。我每週都因為交件慢丟掉兩件案子。」
 
-Per-claim income model means **every saved hour is direct income**. A tool that turns 4 hours of writing into 15 minutes of editing pays for itself on claim #1.
+按件計酬意味著 **省下的每一小時都是直接收入**。一個能把 4 小時的寫作壓縮成 15 分鐘編輯的工具，光是第 1 件案子就回本了。
 
-## Why no one has built this yet
+## 為什麼還沒人做過
 
-| Existing tool   | What it does                       | Why it doesn't solve the narrative problem |
+| 既有工具         | 它在做什麼                          | 為什麼解不到「寫敘述」這個痛點 |
 |-----------------|------------------------------------|---------------------------------------------|
-| Xactimate       | Estimating + line-item pricing     | No narrative writer. Boilerplate templates only. |
-| ClaimWizard     | Workflow / claim tracking          | Doesn't generate report text. |
-| BuildArray      | Field data capture                 | Photo organization, not writing. |
-| Claim Titan     | Carrier-side AI                    | Targets carriers, not field IAs. |
+| Xactimate       | 估價 + 條目計價                    | 沒有敘述產生器，只有樣板。 |
+| ClaimWizard     | 工作流程 / 案件追蹤                | 不會生成報告文字。 |
+| BuildArray      | 現場資料採集                       | 照片整理用，不是寫作。 |
+| Claim Titan     | 保險公司端 AI                      | 主打保險公司，不是現場 IA。 |
 
-The independent adjuster segment is too small + too geographically scattered for a VC-backed company to chase. Perfect for a focused tool.
+獨立理賠員這個利基太小、地理上又太分散，VC 資助的公司不會去追。剛好適合一個聚焦的小工具。
 
-## What scopescribe does
+## scopescribe 在做什麼
 
 ```
-photos/ + line_items.json + claim metadata
+photos/ + line_items.json + 案件 metadata
             │
             ▼
-   Claude vision + writing
+   Claude 視覺 + 寫作
             │
             ▼
-   Professional narrative ready for the carrier
+   可直接交給保險公司的專業敘述
 ```
 
-1. **Vision pass** — Claude looks at each damage photo and produces field observations: damage type, materials affected, severity, position.
-2. **Synthesis pass** — Claude combines observations + Xactimate line items + claim context (storm date, address, coverage type) into a coherent narrative with the four standard sections every carrier expects.
-3. **Tone match** — The writing matches an adjuster's voice (passive, technical, precise) — not LLM-flavored prose.
+1. **視覺步驟** — Claude 看每張勘損照片，產出現場觀察：損害類型、受損材料、嚴重程度、位置。
+2. **彙整步驟** — Claude 結合觀察 + Xactimate 條目 + 案件背景（風暴日期、地址、保險類型），寫出一份條理清楚的敘述，包含每家保險公司都會要的四個標準段落。
+3. **語氣匹配** — 寫出來的東西像理賠員的口吻（被動、技術性、精確） — 不是 LLM 那種味道的散文。
 
-Output is plain markdown / text, ready to paste into the adjuster's report template.
+輸出是純 markdown / 文字，可以直接貼進理賠員的報告樣板。
 
-## Quick demo (no API key needed)
+## 快速 demo（不用 API key）
 
-A pre-generated example is in `examples/sample_output.md` — that's the actual narrative produced from the synthetic input in `samples/sample_input.json`.
+`examples/sample_output.md` 是預先生成的範例 — 那是直接由 `samples/sample_input.json` 的合成輸入跑出來的真實敘述。
 
-## Run it yourself
+## 自己跑跑看
 
 ```bash
 pip install -r requirements.txt
@@ -62,44 +62,44 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python scopescribe.py samples/sample_input.json
 ```
 
-The input file is a single JSON document — see `samples/sample_input.json` for the shape. Photos can be local file paths *or* text descriptions (the prototype accepts either; descriptions are useful when running the demo without real images).
+輸入是一份 JSON 檔 — 結構可見 `samples/sample_input.json`。照片可以是本機檔案路徑 *或* 文字描述（這個原型兩種都吃；想在沒有真實圖片的情況下跑 demo 時用文字描述很方便）。
 
-## What's in the prototype
+## 原型裡有什麼
 
-- `scopescribe.py` — single-file CLI
-- `samples/sample_input.json` — synthetic Texas hail claim, 3 photo descriptions, 12 Xactimate line items
-- `examples/sample_output.md` — generated narrative (commit-checked so you can read it without running anything)
+- `scopescribe.py` — 單檔 CLI
+- `samples/sample_input.json` — 合成的德州冰雹案件，3 張照片描述、12 條 Xactimate 條目
+- `examples/sample_output.md` — 已生成的敘述（已 commit 進來，不跑任何東西也能直接讀）
 - `requirements.txt`
 
-Total: ~250 lines of Python.
+合計：約 250 行 Python。
 
-## What a real product would add (not in prototype)
+## 正式產品會多做什麼（這個原型沒做）
 
-- Direct Xactimate `.esx` import (parse line items from sketches)
-- Carrier-specific tone templates (USAA reads differently than Allstate)
-- Photo metadata extraction (EXIF date/GPS for chain-of-custody)
-- Re-inspection diff mode (compare two visits)
-- Team plan with shared phrase library
-- Pay-per-report billing ($15/report) aligned with adjuster income model
+- 直接匯入 Xactimate `.esx`（從草圖解析條目）
+- 各保險公司專屬語氣樣板（USAA 跟 Allstate 讀起來不一樣）
+- 照片 metadata 抽取（EXIF 日期/GPS 作為 chain-of-custody）
+- 重新勘查的 diff 模式（比較兩次到場）
+- 團隊方案 + 共用片語庫
+- 按報告計費（$15/份）對齊理賠員的按件收入模式
 
-## Pricing hypothesis
+## 定價假設
 
-- $79/month flat (unlimited reports, one user)
-- $149/month for teams (up to 5 adjusters)
-- $15 per report pay-as-you-go for occasional users
+- $79/月，無限報告（單一使用者）
+- $149/月，團隊版（最多 5 位理賠員）
+- $15/份，pay-as-you-go 給偶爾用的人
 
-500 paying users at $79 = $40K MRR. Catastrophe season demand alone could fill that.
+500 位付費用戶 × $79 = $40K MRR。光是災害季的需求就足以填滿。
 
-## Distribution
+## 通路
 
-Independent adjusters cluster in:
-- AdjusterTV / AdjusterPro communities
-- Catastrophe deployment Facebook groups (active during storm season)
-- IA firm rosters (Eberl, Pilot, Worley) — partner channel
-- Reddit r/Insurance, r/Adjusters
+獨立理賠員聚集在：
+- AdjusterTV / AdjusterPro 社群
+- 災害派遣 Facebook 社團（風暴季很活躍）
+- IA 公司名單（Eberl、Pilot、Worley） — 合作夥伴通路
+- Reddit r/Insurance、r/Adjusters
 
-A 90-second screen recording showing "4 hours of writing → 15 minutes of editing" is the entire marketing motion.
+一段 90 秒的螢幕錄影展示「4 小時寫作 → 15 分鐘編輯」，就是整個行銷主軸。
 
 ---
 
-Generated 2026-05-10 as the first prototype in this incubator.
+於 2026-05-10 生成，是本孵化器的第一個原型。
