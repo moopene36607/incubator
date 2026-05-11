@@ -1,0 +1,81 @@
+{
+  "store_name": "毛孩窩寵物店 (Pets at Home Taipei)",
+  "query": {
+    "_meta": "陳太太家貴賓犬 6 歲 4.5 kg 腸胃敏感, 想換飼料, 不堅持無穀",
+    "features": {
+      "breed": "貴賓",
+      "age_group": "成犬",
+      "weight_kg": 4.5,
+      "sensitive_stomach": true,
+      "grain_free_preference": false
+    }
+  },
+  "historical_reviews": [
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.8, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.6, "age_group": "成犬", "weight_kg": 4.5, "sensitive_stomach": false, "grain_free": false, "months_fed": 4},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.9, "age_group": "幼犬", "weight_kg": 2.8, "sensitive_stomach": false, "grain_free": false, "months_fed": 3},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.5, "age_group": "成犬", "weight_kg": 5.5, "sensitive_stomach": true, "grain_free": false, "months_fed": 8},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.7, "age_group": "老犬", "weight_kg": 4.8, "sensitive_stomach": false, "grain_free": false, "months_fed": 12},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.6, "age_group": "成犬", "weight_kg": 5.2, "sensitive_stomach": false, "grain_free": false, "months_fed": 5},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.4, "age_group": "成犬", "weight_kg": 4.7, "sensitive_stomach": true, "grain_free": false, "months_fed": 6},
+    {"breed": "貴賓", "brand": "Royal Canin 皇家", "rating": 4.8, "age_group": "成犬", "weight_kg": 5.1, "sensitive_stomach": false, "grain_free": false, "months_fed": 9},
+
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.5, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": true, "grain_free": false, "months_fed": 10},
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.3, "age_group": "成犬", "weight_kg": 4.5, "sensitive_stomach": true, "grain_free": false, "months_fed": 6},
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.7, "age_group": "成犬", "weight_kg": 4.8, "sensitive_stomach": true, "grain_free": false, "months_fed": 8},
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.4, "age_group": "老犬", "weight_kg": 5.2, "sensitive_stomach": true, "grain_free": false, "months_fed": 12},
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.6, "age_group": "成犬", "weight_kg": 4.9, "sensitive_stomach": false, "grain_free": false, "months_fed": 5},
+    {"breed": "貴賓", "brand": "Hill's Science Diet 希爾思", "rating": 4.5, "age_group": "幼犬", "weight_kg": 2.5, "sensitive_stomach": true, "grain_free": false, "months_fed": 3},
+
+    {"breed": "貴賓", "brand": "ZiwiPeak 巔峰", "rating": 5.0, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": true, "months_fed": 2},
+    {"breed": "貴賓", "brand": "ZiwiPeak 巔峰", "rating": 4.9, "age_group": "成犬", "weight_kg": 4.7, "sensitive_stomach": false, "grain_free": true, "months_fed": 1},
+
+    {"breed": "貴賓", "brand": "Pedigree 寶路", "rating": 3.2, "age_group": "成犬", "weight_kg": 5.5, "sensitive_stomach": false, "grain_free": false, "months_fed": 4},
+    {"breed": "貴賓", "brand": "Pedigree 寶路", "rating": 3.0, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "貴賓", "brand": "Pedigree 寶路", "rating": 3.4, "age_group": "老犬", "weight_kg": 4.8, "sensitive_stomach": false, "grain_free": false, "months_fed": 8},
+    {"breed": "貴賓", "brand": "Pedigree 寶路", "rating": 2.8, "age_group": "成犬", "weight_kg": 5.2, "sensitive_stomach": true, "grain_free": false, "months_fed": 3},
+    {"breed": "貴賓", "brand": "Pedigree 寶路", "rating": 3.1, "age_group": "幼犬", "weight_kg": 2.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 2},
+
+    {"breed": "貴賓", "brand": "Orijen 渴望", "rating": 4.7, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": true, "months_fed": 4},
+    {"breed": "貴賓", "brand": "Orijen 渴望", "rating": 4.5, "age_group": "成犬", "weight_kg": 4.6, "sensitive_stomach": false, "grain_free": true, "months_fed": 6},
+    {"breed": "貴賓", "brand": "Orijen 渴望", "rating": 4.8, "age_group": "成犬", "weight_kg": 5.3, "sensitive_stomach": true, "grain_free": true, "months_fed": 8},
+    {"breed": "貴賓", "brand": "Orijen 渴望", "rating": 4.4, "age_group": "老犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": true, "months_fed": 5},
+
+    {"breed": "貴賓", "brand": "ProPlan 冠能", "rating": 4.0, "age_group": "成犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+
+    {"breed": "柴犬", "brand": "Royal Canin 皇家", "rating": 4.5, "age_group": "成犬", "weight_kg": 10.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "柴犬", "brand": "Royal Canin 皇家", "rating": 4.6, "age_group": "成犬", "weight_kg": 11.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 8},
+    {"breed": "柴犬", "brand": "Royal Canin 皇家", "rating": 4.3, "age_group": "成犬", "weight_kg": 9.8, "sensitive_stomach": true, "grain_free": false, "months_fed": 4},
+    {"breed": "柴犬", "brand": "Royal Canin 皇家", "rating": 4.7, "age_group": "幼犬", "weight_kg": 5.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 3},
+
+    {"breed": "柴犬", "brand": "Hill's Science Diet 希爾思", "rating": 4.4, "age_group": "成犬", "weight_kg": 10.5, "sensitive_stomach": true, "grain_free": false, "months_fed": 6},
+    {"breed": "柴犬", "brand": "Hill's Science Diet 希爾思", "rating": 4.5, "age_group": "老犬", "weight_kg": 11.5, "sensitive_stomach": true, "grain_free": false, "months_fed": 10},
+    {"breed": "柴犬", "brand": "Hill's Science Diet 希爾思", "rating": 4.2, "age_group": "成犬", "weight_kg": 10.0, "sensitive_stomach": true, "grain_free": false, "months_fed": 5},
+
+    {"breed": "柴犬", "brand": "Orijen 渴望", "rating": 4.8, "age_group": "成犬", "weight_kg": 10.5, "sensitive_stomach": false, "grain_free": true, "months_fed": 8},
+    {"breed": "柴犬", "brand": "Orijen 渴望", "rating": 4.6, "age_group": "成犬", "weight_kg": 11.0, "sensitive_stomach": false, "grain_free": true, "months_fed": 5},
+
+    {"breed": "柴犬", "brand": "Pedigree 寶路", "rating": 3.1, "age_group": "成犬", "weight_kg": 11.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 4},
+    {"breed": "柴犬", "brand": "Pedigree 寶路", "rating": 3.3, "age_group": "幼犬", "weight_kg": 5.5, "sensitive_stomach": false, "grain_free": false, "months_fed": 2},
+
+    {"breed": "黃金獵犬", "brand": "Royal Canin 皇家", "rating": 4.6, "age_group": "成犬", "weight_kg": 28.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 8},
+    {"breed": "黃金獵犬", "brand": "Royal Canin 皇家", "rating": 4.5, "age_group": "成犬", "weight_kg": 30.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 12},
+    {"breed": "黃金獵犬", "brand": "Royal Canin 皇家", "rating": 4.8, "age_group": "成犬", "weight_kg": 27.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+
+    {"breed": "黃金獵犬", "brand": "Hill's Science Diet 希爾思", "rating": 4.5, "age_group": "成犬", "weight_kg": 29.0, "sensitive_stomach": true, "grain_free": false, "months_fed": 7},
+    {"breed": "黃金獵犬", "brand": "Hill's Science Diet 希爾思", "rating": 4.6, "age_group": "老犬", "weight_kg": 31.0, "sensitive_stomach": true, "grain_free": false, "months_fed": 10},
+
+    {"breed": "黃金獵犬", "brand": "Orijen 渴望", "rating": 4.9, "age_group": "成犬", "weight_kg": 28.0, "sensitive_stomach": false, "grain_free": true, "months_fed": 5},
+
+    {"breed": "米克斯", "brand": "Royal Canin 皇家", "rating": 4.2, "age_group": "成犬", "weight_kg": 12.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "米克斯", "brand": "Royal Canin 皇家", "rating": 4.4, "age_group": "成犬", "weight_kg": 15.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 8},
+    {"breed": "米克斯", "brand": "Royal Canin 皇家", "rating": 4.0, "age_group": "成犬", "weight_kg": 13.0, "sensitive_stomach": true, "grain_free": false, "months_fed": 4},
+
+    {"breed": "米克斯", "brand": "Pedigree 寶路", "rating": 3.5, "age_group": "成犬", "weight_kg": 14.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "米克斯", "brand": "Pedigree 寶路", "rating": 3.3, "age_group": "成犬", "weight_kg": 12.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 4},
+    {"breed": "米克斯", "brand": "Pedigree 寶路", "rating": 3.4, "age_group": "老犬", "weight_kg": 13.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 5},
+
+    {"breed": "米克斯", "brand": "ProPlan 冠能", "rating": 4.1, "age_group": "成犬", "weight_kg": 13.5, "sensitive_stomach": false, "grain_free": false, "months_fed": 6},
+    {"breed": "米克斯", "brand": "ProPlan 冠能", "rating": 4.3, "age_group": "成犬", "weight_kg": 14.0, "sensitive_stomach": false, "grain_free": false, "months_fed": 8}
+  ]
+}
