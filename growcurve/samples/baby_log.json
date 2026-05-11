@@ -1,0 +1,116 @@
+{
+  "infant_info": {
+    "infant_name": "陳小寶 (男嬰)",
+    "infant_age_months_at_start": 4.0,
+    "sex": "boy",
+    "start_date": "2026-05-01",
+    "_meta": "陳媽媽 4 個月健兒門診時, 醫生說「體重略偏輕但 OK 觀察」。家長焦慮 daily 量 21 天, 但 daily 起伏 100-150 g 看不出真實趨勢。"
+  },
+  "measurements": [
+    {
+      "day_idx": 0,
+      "weight_kg": 6.571,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 1,
+      "weight_kg": 6.351,
+      "note": "餵奶後"
+    },
+    {
+      "day_idx": 2,
+      "weight_kg": 6.448,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 3,
+      "weight_kg": 6.423,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 4,
+      "weight_kg": 6.435,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 5,
+      "weight_kg": 6.534,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 6,
+      "weight_kg": 6.634,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 7,
+      "weight_kg": 6.561,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 8,
+      "weight_kg": 6.504,
+      "note": "晨起"
+    },
+    {
+      "day_idx": 9,
+      "weight_kg": 6.795,
+      "note": "晨起"
+    },
+    {
+      "day_idx": 10,
+      "weight_kg": 6.261,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 11,
+      "weight_kg": 6.467,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 12,
+      "weight_kg": 6.545,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 13,
+      "weight_kg": 6.664,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 14,
+      "weight_kg": 6.571,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 15,
+      "weight_kg": 6.648,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 16,
+      "weight_kg": 6.649,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 17,
+      "weight_kg": 6.53,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 18,
+      "weight_kg": 6.542,
+      "note": "餵奶前"
+    },
+    {
+      "day_idx": 19,
+      "weight_kg": 6.687,
+      "note": "睡前"
+    },
+    {
+      "day_idx": 20,
+      "weight_kg": 6.593,
+      "note": "餵奶前"
+    }
+  ]
+}
