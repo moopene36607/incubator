@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>{% block title %}tenderwatch{% endblock %} — tenderwatch</title>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+  <header class="bg-white border-b border-slate-200 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-blue-700 tracking-tight">tenderwatch</a>
+      <nav class="flex items-center gap-4 text-sm">
+        <a href="/app/today" class="text-slate-600 hover:text-blue-700">今日標案</a>
+        <a href="/app/profile" class="text-slate-600 hover:text-blue-700">Profile</a>
+        <a href="/app/billing" class="text-slate-600 hover:text-blue-700">帳單</a>
+        <form method="post" action="/logout" class="inline">
+          <button type="submit" class="text-slate-500 hover:text-red-600 text-sm">登出</button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 mt-auto">
+    <div class="container mx-auto px-4 py-4 text-xs text-slate-400 flex gap-4">
+      <a href="/tos" class="hover:underline">服務條款</a>
+      <a href="/privacy" class="hover:underline">隱私政策</a>
+      <a href="/refund" class="hover:underline">退款政策</a>
+    </div>
+  </footer>
+
+</body>
+</html>

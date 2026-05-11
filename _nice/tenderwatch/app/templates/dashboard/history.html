@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}歷史標案{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+  <h1 class="text-2xl font-bold text-slate-800">過去 30 天高匹配標案</h1>
+</div>
+
+{% if matches %}
+<div class="overflow-x-auto">
+  <table class="w-full bg-white rounded-xl shadow text-sm">
+    <thead>
+      <tr class="text-left text-slate-500 border-b border-slate-200">
+        <th class="px-4 py-3 font-medium">案號</th>
+        <th class="px-4 py-3 font-medium">標題</th>
+        <th class="px-4 py-3 font-medium">機關</th>
+        <th class="px-4 py-3 font-medium">預算（萬）</th>
+        <th class="px-4 py-3 font-medium">截止日</th>
+        <th class="px-4 py-3 font-medium">AI 分數</th>
+        <th class="px-4 py-3 font-medium">建議</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in matches %}
+      <tr class="border-b border-slate-100 hover:bg-slate-50">
+        <td class="px-4 py-3 font-mono text-xs text-slate-600">{{ row.match.tender_case_no }}</td>
+        <td class="px-4 py-3 text-slate-800 max-w-xs truncate">{{ row.tender.title }}</td>
+        <td class="px-4 py-3 text-slate-600">{{ row.tender.agency }}</td>
+        <td class="px-4 py-3 text-slate-700">{{ (row.tender.budget_twd / 10000) | int }}</td>
+        <td class="px-4 py-3 text-slate-600">{{ row.tender.deadline_date }}</td>
+        <td class="px-4 py-3">
+          <span class="inline-block px-2 py-0.5 rounded-full text-xs font-semibold
+            {% if row.match.llm_score >= 85 %}bg-green-100 text-green-700
+            {% elif row.match.llm_score >= 70 %}bg-blue-100 text-blue-700
+            {% else %}bg-slate-100 text-slate-600{% endif %}">
+            {{ row.match.llm_score }}
+          </span>
+        </td>
+        <td class="px-4 py-3 text-slate-600 text-xs max-w-xs truncate">{{ row.match.llm_recommendation or "" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="bg-white rounded-xl shadow p-12 text-center text-slate-400">
+  過去 30 天無高匹配標案
+</div>
+{% endif %}
+{% endblock %}

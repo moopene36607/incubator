@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}建立 Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+  <h1 class="text-2xl font-bold text-slate-800 mb-6">建立公司 Profile</h1>
+  <p class="text-slate-500 mb-8 text-sm">填寫完成後，系統將每天早上 09:00 透過 LINE 推播高匹配標案。</p>
+
+  <form method="post" action="/onboarding" class="space-y-6 bg-white rounded-xl shadow p-6">
+
+    <div>
+      <label for="company_name" class="block text-sm font-medium text-slate-700 mb-1">公司名稱</label>
+      <input
+        type="text"
+        id="company_name"
+        name="company_name"
+        required
+        class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="例：台灣科技整合股份有限公司"
+      />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for="capital_twd" class="block text-sm font-medium text-slate-700 mb-1">實收資本額（新台幣）</label>
+        <input
+          type="number"
+          id="capital_twd"
+          name="capital_twd"
+          required
+          min="0"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="5000000"
+        />
+      </div>
+      <div>
+        <label for="employee_count" class="block text-sm font-medium text-slate-700 mb-1">員工人數</label>
+        <input
+          type="number"
+          id="employee_count"
+          name="employee_count"
+          required
+          min="1"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="25"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="capability_description" class="block text-sm font-medium text-slate-700 mb-1">公司能力描述</label>
+      <textarea
+        id="capability_description"
+        name="capability_description"
+        required
+        rows="6"
+        class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="雲端遷移、HIS 介接、ISO 27001"
+      ></textarea>
+      <p class="text-xs text-slate-400 mt-1">此描述將用於語意匹配，越詳細越準確。</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for="min_tender_budget_twd" class="block text-sm font-medium text-slate-700 mb-1">最低標案預算（新台幣）</label>
+        <input
+          type="number"
+          id="min_tender_budget_twd"
+          name="min_tender_budget_twd"
+          min="0"
+          value="100000"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div>
+        <label for="max_tender_budget_twd" class="block text-sm font-medium text-slate-700 mb-1">最高標案預算（選填）</label>
+        <input
+          type="number"
+          id="max_tender_budget_twd"
+          name="max_tender_budget_twd"
+          min="0"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="不限"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="excluded_categories" class="block text-sm font-medium text-slate-700 mb-1">排除類別（逗號分隔）</label>
+      <input
+        type="text"
+        id="excluded_categories"
+        name="excluded_categories"
+        class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="印刷, 工程, 餐飲"
+      />
+    </div>
+
+    <div>
+      <label for="iso_certifications" class="block text-sm font-medium text-slate-700 mb-1">ISO 認證（逗號分隔）</label>
+      <input
+        type="text"
+        id="iso_certifications"
+        name="iso_certifications"
+        class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="ISO 27001, ISO 9001"
+      />
+    </div>
+
+    <div>
+      <label for="minimum_days_to_deadline" class="block text-sm font-medium text-slate-700 mb-1">截止日距今最少天數</label>
+      <input
+        type="number"
+        id="minimum_days_to_deadline"
+        name="minimum_days_to_deadline"
+        min="1"
+        value="7"
+        class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div class="pt-2">
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
+      >
+        建立 profile
+      </button>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

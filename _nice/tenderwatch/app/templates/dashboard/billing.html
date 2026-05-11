@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}帳單{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+  <h1 class="text-2xl font-bold text-slate-800 mb-6">帳單 &amp; 訂閱</h1>
+
+  {% if subscription %}
+  <div class="bg-white rounded-xl shadow p-6 space-y-4">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-slate-600">目前方案</span>
+      <span class="font-semibold text-blue-700 capitalize">{{ subscription.plan }}</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-slate-600">狀態</span>
+      <span class="text-sm
+        {% if subscription.status == 'active' %}text-green-600{% else %}text-slate-500{% endif %}">
+        {{ subscription.status }}
+      </span>
+    </div>
+    {% if subscription.next_charge_at %}
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-slate-600">下次扣款日</span>
+      <span class="text-sm text-slate-700">{{ subscription.next_charge_at.strftime('%Y-%m-%d') }}</span>
+    </div>
+    {% endif %}
+    <div class="pt-4 border-t border-slate-100">
+      <form method="post" action="/billing/cancel">
+        <button
+          type="submit"
+          class="text-sm text-red-600 hover:underline"
+          onclick="return confirm('確定要取消訂閱嗎？')"
+        >
+          取消訂閱
+        </button>
+      </form>
+    </div>
+  </div>
+  {% else %}
+  <div class="bg-white rounded-xl shadow p-8 text-center space-y-6">
+    <div>
+      <p class="text-lg font-semibold text-slate-700">免費方案</p>
+      <p class="text-sm text-slate-400 mt-1">升級以解鎖無限標案推播與歷史查詢。</p>
+    </div>
+    <a
+      href="/billing/checkout?plan=solo"
+      class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors"
+    >
+      升級至 Solo 方案
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
