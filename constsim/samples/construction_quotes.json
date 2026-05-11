@@ -1,0 +1,578 @@
+{
+  "training_cases": [
+    {
+      "case_id": "C001",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "桃園",
+        "grade": "高級",
+        "ping": 7,
+        "building_age_years": 6,
+        "duration_weeks": 16,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 3178.0
+    },
+    {
+      "case_id": "C002",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "高雄",
+        "grade": "高級",
+        "ping": 20,
+        "building_age_years": 37,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 3116.0
+    },
+    {
+      "case_id": "C003",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "桃園",
+        "grade": "經濟",
+        "ping": 6,
+        "building_age_years": 0,
+        "duration_weeks": 15,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 1521.0
+    },
+    {
+      "case_id": "C004",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 16,
+        "building_age_years": 24,
+        "duration_weeks": 13,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 1692.0
+    },
+    {
+      "case_id": "C005",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "高雄",
+        "grade": "標準",
+        "ping": 14,
+        "building_age_years": 29,
+        "duration_weeks": 4,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 938.0
+    },
+    {
+      "case_id": "C006",
+      "features": {
+        "project_type": "整屋裝潢",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 33,
+        "building_age_years": 5,
+        "duration_weeks": 8,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 3872.0
+    },
+    {
+      "case_id": "C007",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "高雄",
+        "grade": "高級",
+        "ping": 20,
+        "building_age_years": 25,
+        "duration_weeks": 16,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 3375.0
+    },
+    {
+      "case_id": "C008",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "高雄",
+        "grade": "高級",
+        "ping": 5,
+        "building_age_years": 36,
+        "duration_weeks": 5,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 827.0
+    },
+    {
+      "case_id": "C009",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "台北",
+        "grade": "高級",
+        "ping": 24,
+        "building_age_years": 27,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 2252.0
+    },
+    {
+      "case_id": "C010",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "台中",
+        "grade": "高級",
+        "ping": 6,
+        "building_age_years": 34,
+        "duration_weeks": 6,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 3700.0
+    },
+    {
+      "case_id": "C011",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "高雄",
+        "grade": "高級",
+        "ping": 20,
+        "building_age_years": 25,
+        "duration_weeks": 8,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1498.0
+    },
+    {
+      "case_id": "C012",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "台北",
+        "grade": "經濟",
+        "ping": 8,
+        "building_age_years": 38,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 2546.0
+    },
+    {
+      "case_id": "C013",
+      "features": {
+        "project_type": "整屋裝潢",
+        "region": "台中",
+        "grade": "標準",
+        "ping": 36,
+        "building_age_years": 31,
+        "duration_weeks": 14,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 4326.0
+    },
+    {
+      "case_id": "C014",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 6,
+        "building_age_years": 6,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 2153.0
+    },
+    {
+      "case_id": "C015",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "台中",
+        "grade": "高級",
+        "ping": 6,
+        "building_age_years": 4,
+        "duration_weeks": 12,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1676.0
+    },
+    {
+      "case_id": "C016",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "台中",
+        "grade": "經濟",
+        "ping": 6,
+        "building_age_years": 0,
+        "duration_weeks": 3,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 738.0
+    },
+    {
+      "case_id": "C017",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "高雄",
+        "grade": "經濟",
+        "ping": 4,
+        "building_age_years": 7,
+        "duration_weeks": 11,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 961.0
+    },
+    {
+      "case_id": "C018",
+      "features": {
+        "project_type": "局部翻新",
+        "region": "桃園",
+        "grade": "經濟",
+        "ping": 5,
+        "building_age_years": 20,
+        "duration_weeks": 12,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 341.0
+    },
+    {
+      "case_id": "C019",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "高雄",
+        "grade": "經濟",
+        "ping": 6,
+        "building_age_years": 37,
+        "duration_weeks": 4,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 913.0
+    },
+    {
+      "case_id": "C020",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "新北",
+        "grade": "高級",
+        "ping": 5,
+        "building_age_years": 32,
+        "duration_weeks": 8,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1550.0
+    },
+    {
+      "case_id": "C021",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "台中",
+        "grade": "經濟",
+        "ping": 3,
+        "building_age_years": 24,
+        "duration_weeks": 16,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 385.0
+    },
+    {
+      "case_id": "C022",
+      "features": {
+        "project_type": "局部翻新",
+        "region": "桃園",
+        "grade": "經濟",
+        "ping": 5,
+        "building_age_years": 32,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 342.0
+    },
+    {
+      "case_id": "C023",
+      "features": {
+        "project_type": "整屋裝潢",
+        "region": "台北",
+        "grade": "標準",
+        "ping": 50,
+        "building_age_years": 29,
+        "duration_weeks": 11,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 5438.0
+    },
+    {
+      "case_id": "C024",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "新北",
+        "grade": "標準",
+        "ping": 24,
+        "building_age_years": 21,
+        "duration_weeks": 9,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 1356.0
+    },
+    {
+      "case_id": "C025",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "台中",
+        "grade": "經濟",
+        "ping": 11,
+        "building_age_years": 11,
+        "duration_weeks": 2,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 414.0
+    },
+    {
+      "case_id": "C026",
+      "features": {
+        "project_type": "局部翻新",
+        "region": "新北",
+        "grade": "標準",
+        "ping": 5,
+        "building_age_years": 8,
+        "duration_weeks": 12,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 416.0
+    },
+    {
+      "case_id": "C027",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "新北",
+        "grade": "高級",
+        "ping": 4,
+        "building_age_years": 24,
+        "duration_weeks": 6,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 1239.0
+    },
+    {
+      "case_id": "C028",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "台中",
+        "grade": "標準",
+        "ping": 4,
+        "building_age_years": 22,
+        "duration_weeks": 4,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1334.0
+    },
+    {
+      "case_id": "C029",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 10,
+        "building_age_years": 20,
+        "duration_weeks": 10,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1089.0
+    },
+    {
+      "case_id": "C030",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "桃園",
+        "grade": "經濟",
+        "ping": 11,
+        "building_age_years": 14,
+        "duration_weeks": 2,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 399.0
+    },
+    {
+      "case_id": "C031",
+      "features": {
+        "project_type": "客廳重整",
+        "region": "高雄",
+        "grade": "高級",
+        "ping": 10,
+        "building_age_years": 1,
+        "duration_weeks": 7,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1430.0
+    },
+    {
+      "case_id": "C032",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "高雄",
+        "grade": "經濟",
+        "ping": 8,
+        "building_age_years": 39,
+        "duration_weeks": 13,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 414.0
+    },
+    {
+      "case_id": "C033",
+      "features": {
+        "project_type": "局部翻新",
+        "region": "新北",
+        "grade": "高級",
+        "ping": 14,
+        "building_age_years": 36,
+        "duration_weeks": 6,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1604.0
+    },
+    {
+      "case_id": "C034",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "台中",
+        "grade": "經濟",
+        "ping": 3,
+        "building_age_years": 3,
+        "duration_weeks": 14,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 829.0
+    },
+    {
+      "case_id": "C035",
+      "features": {
+        "project_type": "局部翻新",
+        "region": "台北",
+        "grade": "高級",
+        "ping": 15,
+        "building_age_years": 17,
+        "duration_weeks": 11,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 1876.0
+    },
+    {
+      "case_id": "C036",
+      "features": {
+        "project_type": "衛浴翻修",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 3,
+        "building_age_years": 0,
+        "duration_weeks": 8,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 650.0
+    },
+    {
+      "case_id": "C037",
+      "features": {
+        "project_type": "廚房改造",
+        "region": "台北",
+        "grade": "經濟",
+        "ping": 3,
+        "building_age_years": 19,
+        "duration_weeks": 3,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 775.0
+    },
+    {
+      "case_id": "C038",
+      "features": {
+        "project_type": "整屋裝潢",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 39,
+        "building_age_years": 40,
+        "duration_weeks": 12,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 4228.0
+    },
+    {
+      "case_id": "C039",
+      "features": {
+        "project_type": "整屋裝潢",
+        "region": "高雄",
+        "grade": "經濟",
+        "ping": 39,
+        "building_age_years": 29,
+        "duration_weeks": 8,
+        "has_plumbing_rewire": 0,
+        "has_demolition": 1
+      },
+      "target_NTD_K": 2901.0
+    },
+    {
+      "case_id": "C040",
+      "features": {
+        "project_type": "陽台改造",
+        "region": "桃園",
+        "grade": "標準",
+        "ping": 14,
+        "building_age_years": 22,
+        "duration_weeks": 2,
+        "has_plumbing_rewire": 1,
+        "has_demolition": 0
+      },
+      "target_NTD_K": 786.0
+    }
+  ],
+  "new_query": {
+    "_meta": "陳家衛浴翻修 (台北信義 18 年公寓), 6 坪主衛 + 客衛, 想做標準等級 (磁磚 + 中價位馬桶 + 鏡櫃), 預計 4 週工期, 需要遷水電位置 — 找了 3 家報價 NT$80-180 萬差很大, 想知道合理區間",
+    "client": "陳建宏家庭 (台北信義)",
+    "features": {
+      "project_type": "衛浴翻修",
+      "region": "台北",
+      "grade": "標準",
+      "ping": 6,
+      "building_age_years": 18,
+      "duration_weeks": 4,
+      "has_plumbing_rewire": 1,
+      "has_demolition": 0
+    }
+  }
+}
