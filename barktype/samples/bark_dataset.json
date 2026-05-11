@@ -1,0 +1,61 @@
+{
+  "dataset_name": "毛孩之聲 voice clinic 收集樣本 (合成資料 + 犬行為文獻特徵)",
+  "query": {
+    "_meta": "陳太太家貴賓犬 3 歲, 早上 9 點出門上班, 過 30 分鐘鄰居反映狗持續低中強度吠叫, 想知道是警戒還是分離焦慮",
+    "features": {
+      "pitch_mean_hz": 420,
+      "pitch_std_hz": 35,
+      "duration_ms": 1100,
+      "energy_mean": 0.42,
+      "spectral_centroid_hz": 950,
+      "zero_crossing_rate": 0.085,
+      "bark_rate_per_sec": 0.8,
+      "spectral_rolloff_hz": 1650
+    }
+  },
+  "training_barks": [
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 620, "pitch_std_hz": 25, "duration_ms": 400, "energy_mean": 0.72, "spectral_centroid_hz": 1450, "zero_crossing_rate": 0.18, "bark_rate_per_sec": 2.5, "spectral_rolloff_hz": 2800}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 580, "pitch_std_hz": 22, "duration_ms": 350, "energy_mean": 0.68, "spectral_centroid_hz": 1380, "zero_crossing_rate": 0.16, "bark_rate_per_sec": 2.8, "spectral_rolloff_hz": 2700}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 650, "pitch_std_hz": 30, "duration_ms": 450, "energy_mean": 0.75, "spectral_centroid_hz": 1520, "zero_crossing_rate": 0.19, "bark_rate_per_sec": 2.3, "spectral_rolloff_hz": 2900}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 600, "pitch_std_hz": 28, "duration_ms": 380, "energy_mean": 0.70, "spectral_centroid_hz": 1420, "zero_crossing_rate": 0.17, "bark_rate_per_sec": 2.6, "spectral_rolloff_hz": 2750}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 640, "pitch_std_hz": 26, "duration_ms": 420, "energy_mean": 0.73, "spectral_centroid_hz": 1480, "zero_crossing_rate": 0.18, "bark_rate_per_sec": 2.4, "spectral_rolloff_hz": 2850}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 590, "pitch_std_hz": 23, "duration_ms": 360, "energy_mean": 0.69, "spectral_centroid_hz": 1400, "zero_crossing_rate": 0.16, "bark_rate_per_sec": 2.7, "spectral_rolloff_hz": 2680}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 660, "pitch_std_hz": 32, "duration_ms": 460, "energy_mean": 0.77, "spectral_centroid_hz": 1540, "zero_crossing_rate": 0.20, "bark_rate_per_sec": 2.2, "spectral_rolloff_hz": 2950}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 610, "pitch_std_hz": 27, "duration_ms": 390, "energy_mean": 0.71, "spectral_centroid_hz": 1440, "zero_crossing_rate": 0.17, "bark_rate_per_sec": 2.5, "spectral_rolloff_hz": 2780}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 630, "pitch_std_hz": 24, "duration_ms": 410, "energy_mean": 0.74, "spectral_centroid_hz": 1460, "zero_crossing_rate": 0.18, "bark_rate_per_sec": 2.6, "spectral_rolloff_hz": 2820}},
+    {"label": "警戒吠叫", "features": {"pitch_mean_hz": 600, "pitch_std_hz": 26, "duration_ms": 400, "energy_mean": 0.70, "spectral_centroid_hz": 1420, "zero_crossing_rate": 0.17, "bark_rate_per_sec": 2.5, "spectral_rolloff_hz": 2750}},
+
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 420, "pitch_std_hz": 40, "duration_ms": 1200, "energy_mean": 0.45, "spectral_centroid_hz": 1000, "zero_crossing_rate": 0.09, "bark_rate_per_sec": 0.7, "spectral_rolloff_hz": 1800}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 400, "pitch_std_hz": 35, "duration_ms": 1100, "energy_mean": 0.42, "spectral_centroid_hz": 950, "zero_crossing_rate": 0.08, "bark_rate_per_sec": 0.8, "spectral_rolloff_hz": 1700}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 440, "pitch_std_hz": 42, "duration_ms": 1300, "energy_mean": 0.48, "spectral_centroid_hz": 1050, "zero_crossing_rate": 0.10, "bark_rate_per_sec": 0.6, "spectral_rolloff_hz": 1850}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 410, "pitch_std_hz": 38, "duration_ms": 1150, "energy_mean": 0.43, "spectral_centroid_hz": 970, "zero_crossing_rate": 0.08, "bark_rate_per_sec": 0.75, "spectral_rolloff_hz": 1750}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 430, "pitch_std_hz": 41, "duration_ms": 1250, "energy_mean": 0.46, "spectral_centroid_hz": 1020, "zero_crossing_rate": 0.09, "bark_rate_per_sec": 0.65, "spectral_rolloff_hz": 1820}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 395, "pitch_std_hz": 33, "duration_ms": 1080, "energy_mean": 0.40, "spectral_centroid_hz": 940, "zero_crossing_rate": 0.07, "bark_rate_per_sec": 0.85, "spectral_rolloff_hz": 1680}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 425, "pitch_std_hz": 39, "duration_ms": 1180, "energy_mean": 0.44, "spectral_centroid_hz": 990, "zero_crossing_rate": 0.08, "bark_rate_per_sec": 0.7, "spectral_rolloff_hz": 1780}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 415, "pitch_std_hz": 36, "duration_ms": 1130, "energy_mean": 0.43, "spectral_centroid_hz": 960, "zero_crossing_rate": 0.08, "bark_rate_per_sec": 0.75, "spectral_rolloff_hz": 1720}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 435, "pitch_std_hz": 40, "duration_ms": 1220, "energy_mean": 0.47, "spectral_centroid_hz": 1010, "zero_crossing_rate": 0.09, "bark_rate_per_sec": 0.68, "spectral_rolloff_hz": 1800}},
+    {"label": "焦慮孤獨", "features": {"pitch_mean_hz": 405, "pitch_std_hz": 37, "duration_ms": 1170, "energy_mean": 0.44, "spectral_centroid_hz": 980, "zero_crossing_rate": 0.08, "bark_rate_per_sec": 0.72, "spectral_rolloff_hz": 1750}},
+
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 500, "pitch_std_hz": 90, "duration_ms": 250, "energy_mean": 0.65, "spectral_centroid_hz": 1300, "zero_crossing_rate": 0.14, "bark_rate_per_sec": 1.5, "spectral_rolloff_hz": 2400}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 520, "pitch_std_hz": 85, "duration_ms": 280, "energy_mean": 0.68, "spectral_centroid_hz": 1350, "zero_crossing_rate": 0.15, "bark_rate_per_sec": 1.7, "spectral_rolloff_hz": 2500}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 480, "pitch_std_hz": 95, "duration_ms": 220, "energy_mean": 0.62, "spectral_centroid_hz": 1250, "zero_crossing_rate": 0.13, "bark_rate_per_sec": 1.4, "spectral_rolloff_hz": 2350}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 510, "pitch_std_hz": 88, "duration_ms": 240, "energy_mean": 0.66, "spectral_centroid_hz": 1320, "zero_crossing_rate": 0.14, "bark_rate_per_sec": 1.6, "spectral_rolloff_hz": 2450}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 495, "pitch_std_hz": 92, "duration_ms": 260, "energy_mean": 0.64, "spectral_centroid_hz": 1290, "zero_crossing_rate": 0.14, "bark_rate_per_sec": 1.5, "spectral_rolloff_hz": 2400}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 530, "pitch_std_hz": 87, "duration_ms": 290, "energy_mean": 0.69, "spectral_centroid_hz": 1370, "zero_crossing_rate": 0.15, "bark_rate_per_sec": 1.8, "spectral_rolloff_hz": 2550}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 470, "pitch_std_hz": 98, "duration_ms": 210, "energy_mean": 0.60, "spectral_centroid_hz": 1220, "zero_crossing_rate": 0.13, "bark_rate_per_sec": 1.3, "spectral_rolloff_hz": 2300}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 505, "pitch_std_hz": 89, "duration_ms": 250, "energy_mean": 0.65, "spectral_centroid_hz": 1310, "zero_crossing_rate": 0.14, "bark_rate_per_sec": 1.6, "spectral_rolloff_hz": 2420}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 490, "pitch_std_hz": 91, "duration_ms": 230, "energy_mean": 0.63, "spectral_centroid_hz": 1270, "zero_crossing_rate": 0.13, "bark_rate_per_sec": 1.4, "spectral_rolloff_hz": 2370}},
+    {"label": "玩耍興奮", "features": {"pitch_mean_hz": 515, "pitch_std_hz": 86, "duration_ms": 270, "energy_mean": 0.67, "spectral_centroid_hz": 1340, "zero_crossing_rate": 0.15, "bark_rate_per_sec": 1.7, "spectral_rolloff_hz": 2480}},
+
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 220, "pitch_std_hz": 15, "duration_ms": 1800, "energy_mean": 0.25, "spectral_centroid_hz": 600, "zero_crossing_rate": 0.05, "bark_rate_per_sec": 0.3, "spectral_rolloff_hz": 1100}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 200, "pitch_std_hz": 13, "duration_ms": 1700, "energy_mean": 0.23, "spectral_centroid_hz": 580, "zero_crossing_rate": 0.04, "bark_rate_per_sec": 0.35, "spectral_rolloff_hz": 1050}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 240, "pitch_std_hz": 18, "duration_ms": 1900, "energy_mean": 0.27, "spectral_centroid_hz": 620, "zero_crossing_rate": 0.05, "bark_rate_per_sec": 0.28, "spectral_rolloff_hz": 1150}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 210, "pitch_std_hz": 14, "duration_ms": 1750, "energy_mean": 0.24, "spectral_centroid_hz": 590, "zero_crossing_rate": 0.04, "bark_rate_per_sec": 0.32, "spectral_rolloff_hz": 1080}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 230, "pitch_std_hz": 16, "duration_ms": 1850, "energy_mean": 0.26, "spectral_centroid_hz": 610, "zero_crossing_rate": 0.05, "bark_rate_per_sec": 0.30, "spectral_rolloff_hz": 1120}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 195, "pitch_std_hz": 12, "duration_ms": 1680, "energy_mean": 0.22, "spectral_centroid_hz": 570, "zero_crossing_rate": 0.04, "bark_rate_per_sec": 0.36, "spectral_rolloff_hz": 1030}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 215, "pitch_std_hz": 14, "duration_ms": 1770, "energy_mean": 0.24, "spectral_centroid_hz": 595, "zero_crossing_rate": 0.04, "bark_rate_per_sec": 0.31, "spectral_rolloff_hz": 1090}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 225, "pitch_std_hz": 15, "duration_ms": 1820, "energy_mean": 0.25, "spectral_centroid_hz": 605, "zero_crossing_rate": 0.05, "bark_rate_per_sec": 0.29, "spectral_rolloff_hz": 1110}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 205, "pitch_std_hz": 13, "duration_ms": 1720, "energy_mean": 0.23, "spectral_centroid_hz": 585, "zero_crossing_rate": 0.04, "bark_rate_per_sec": 0.33, "spectral_rolloff_hz": 1060}},
+    {"label": "痛苦不適", "features": {"pitch_mean_hz": 220, "pitch_std_hz": 15, "duration_ms": 1800, "energy_mean": 0.25, "spectral_centroid_hz": 600, "zero_crossing_rate": 0.05, "bark_rate_per_sec": 0.30, "spectral_rolloff_hz": 1100}}
+  ]
+}
