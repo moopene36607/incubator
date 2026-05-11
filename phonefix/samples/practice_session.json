@@ -1,0 +1,45 @@
+{
+  "_meta": "陳小美 5 歲女童, 媽媽記錄 7 天居家發音練習結果。語言治療師排隊還要 2 個月才能初診, 家長想知道孩子哪邊發音錯 + 怎麼在家練。",
+  "child_name": "陳小美",
+  "child_age_years": 5,
+  "child_age_months": 8,
+  "session_date": "2026-05-11",
+  "practice_topic": "日常常用詞語 — 翹舌音 (ㄓㄔㄕㄖ) + 唇齒音 (ㄈ)",
+  "exercises": [
+    {
+      "phrase_chinese": "張先生來吃晚飯",
+      "target_bopomofo": "ㄓㄤ ㄒㄧㄢ ㄕㄥ ㄌㄞˊ ㄔ ㄨㄢˇ ㄈㄢˋ",
+      "actual_bopomofo": "ㄗㄤ ㄒㄧㄢ ㄙㄥ ㄌㄞˊ ㄘ ㄨㄢˇ ㄏㄢˋ"
+    },
+    {
+      "phrase_chinese": "獅子在公園跑步",
+      "target_bopomofo": "ㄕ ㄗˇ ㄗㄞˋ ㄍㄨㄥ ㄩㄢˊ ㄆㄠˇ ㄅㄨˋ",
+      "actual_bopomofo": "ㄙ ㄗˇ ㄗㄞˋ ㄍㄨㄥ ㄩㄢˊ ㄆㄠˇ ㄅㄨˋ"
+    },
+    {
+      "phrase_chinese": "知道時間了嗎",
+      "target_bopomofo": "ㄓ ㄉㄠˋ ㄕˊ ㄐㄧㄢ ㄌㄜ ㄇㄚ",
+      "actual_bopomofo": "ㄗ ㄉㄠˋ ㄙˊ ㄐㄧㄢ ㄌㄜ ㄇㄚ"
+    },
+    {
+      "phrase_chinese": "飛機在天上飛",
+      "target_bopomofo": "ㄈㄟ ㄐㄧ ㄗㄞˋ ㄊㄧㄢ ㄕㄤˋ ㄈㄟ",
+      "actual_bopomofo": "ㄏㄟ ㄐㄧ ㄗㄞˋ ㄊㄧㄢ ㄙㄤˋ ㄏㄟ"
+    },
+    {
+      "phrase_chinese": "吃蘋果",
+      "target_bopomofo": "ㄔ ㄆㄧㄥˊ ㄍㄨㄛˇ",
+      "actual_bopomofo": "ㄘ ㄆㄧㄥˊ ㄍㄨㄛˇ"
+    },
+    {
+      "phrase_chinese": "下雨了",
+      "target_bopomofo": "ㄒㄧㄚˋ ㄩˇ ㄌㄜ",
+      "actual_bopomofo": "ㄒㄧㄚˋ ㄩˇ ㄌㄜ"
+    },
+    {
+      "phrase_chinese": "日子過得很開心",
+      "target_bopomofo": "ㄖˋ ㄗˇ ㄍㄨㄛˋ ㄉㄜ ㄏㄣˇ ㄎㄞ ㄒㄧㄣ",
+      "actual_bopomofo": "ㄌˋ ㄗˇ ㄍㄨㄛˋ ㄉㄜ ㄏㄣˇ ㄎㄞ ㄒㄧㄣ"
+    }
+  ]
+}
