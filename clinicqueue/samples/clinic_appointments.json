@@ -1,0 +1,3741 @@
+{
+  "clinic_name": "好牙好醫 中山自費牙科診所",
+  "_meta": "中山自費牙科診所 過去 6 個月 200 個 appointment 完整紀錄 (有 no_show label), 未來 1 週 20 個 upcoming appointments (需預測 no-show 機率)",
+  "feature_names": [
+    "patient_age",
+    "days_since_last_visit",
+    "booking_lead_time_days",
+    "prev_no_show_count",
+    "prev_visit_count",
+    "appointment_hour",
+    "weekday",
+    "is_winter",
+    "is_aesthetic",
+    "is_self_pay",
+    "weather_rain_prob"
+  ],
+  "historical_appointments": [
+    {
+      "appointment_id": "A0001",
+      "features": {
+        "patient_age": 25,
+        "days_since_last_visit": 163,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 5,
+        "appointment_hour": 10,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.57
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0002",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 300,
+        "booking_lead_time_days": 14,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 10,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.89
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0003",
+      "features": {
+        "patient_age": 38,
+        "days_since_last_visit": 107,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 17,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.56
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0004",
+      "features": {
+        "patient_age": 63,
+        "days_since_last_visit": 295,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 16,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.5
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0005",
+      "features": {
+        "patient_age": 50,
+        "days_since_last_visit": 307,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.52
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0006",
+      "features": {
+        "patient_age": 21,
+        "days_since_last_visit": 360,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 3,
+        "appointment_hour": 8,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.89
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0007",
+      "features": {
+        "patient_age": 47,
+        "days_since_last_visit": 345,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 17,
+        "appointment_hour": 15,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.65
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0008",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 150,
+        "booking_lead_time_days": 26,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 11,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.93
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0009",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 133,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.29
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0010",
+      "features": {
+        "patient_age": 63,
+        "days_since_last_visit": 263,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 5,
+        "appointment_hour": 17,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.9
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0011",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 210,
+        "booking_lead_time_days": 4,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 10,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.61
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0012",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 137,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 11,
+        "appointment_hour": 11,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0013",
+      "features": {
+        "patient_age": 64,
+        "days_since_last_visit": 69,
+        "booking_lead_time_days": 17,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 18,
+        "appointment_hour": 11,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.67
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0014",
+      "features": {
+        "patient_age": 37,
+        "days_since_last_visit": 259,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.89
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0015",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 330,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 0,
+        "appointment_hour": 9,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.91
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0016",
+      "features": {
+        "patient_age": 28,
+        "days_since_last_visit": 78,
+        "booking_lead_time_days": 18,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 13,
+        "appointment_hour": 8,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.55
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0017",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 88,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 1,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.88
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0018",
+      "features": {
+        "patient_age": 51,
+        "days_since_last_visit": 70,
+        "booking_lead_time_days": 5,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 5,
+        "appointment_hour": 17,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.3
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0019",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 237,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 3,
+        "appointment_hour": 15,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.53
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0020",
+      "features": {
+        "patient_age": 31,
+        "days_since_last_visit": 118,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 3,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.67
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0021",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 80,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 18,
+        "appointment_hour": 19,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.57
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0022",
+      "features": {
+        "patient_age": 53,
+        "days_since_last_visit": 67,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 3,
+        "appointment_hour": 17,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.8
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0023",
+      "features": {
+        "patient_age": 24,
+        "days_since_last_visit": 259,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 15,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.87
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0024",
+      "features": {
+        "patient_age": 21,
+        "days_since_last_visit": 49,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 3,
+        "appointment_hour": 10,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.31
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0025",
+      "features": {
+        "patient_age": 58,
+        "days_since_last_visit": 335,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 12,
+        "appointment_hour": 16,
+        "weekday": 5,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.88
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0026",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 199,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 2,
+        "appointment_hour": 9,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.33
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0027",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 62,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 10,
+        "appointment_hour": 8,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.72
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0028",
+      "features": {
+        "patient_age": 26,
+        "days_since_last_visit": 267,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 15,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.38
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0029",
+      "features": {
+        "patient_age": 60,
+        "days_since_last_visit": 112,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 17,
+        "appointment_hour": 9,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.89
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0030",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 245,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 10,
+        "appointment_hour": 11,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.65
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0031",
+      "features": {
+        "patient_age": 50,
+        "days_since_last_visit": 135,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 10,
+        "appointment_hour": 9,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.06
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0032",
+      "features": {
+        "patient_age": 65,
+        "days_since_last_visit": 204,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 1,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.46
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0033",
+      "features": {
+        "patient_age": 69,
+        "days_since_last_visit": 242,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 18,
+        "appointment_hour": 15,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0034",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 19,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 9,
+        "appointment_hour": 16,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 1.0
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0035",
+      "features": {
+        "patient_age": 31,
+        "days_since_last_visit": 356,
+        "booking_lead_time_days": 18,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.66
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0036",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 170,
+        "booking_lead_time_days": 17,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 8,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.54
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0037",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 96,
+        "booking_lead_time_days": 23,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 19,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.78
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0038",
+      "features": {
+        "patient_age": 19,
+        "days_since_last_visit": 91,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 5,
+        "appointment_hour": 9,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0039",
+      "features": {
+        "patient_age": 41,
+        "days_since_last_visit": 154,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 8,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.87
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0040",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 60,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 15,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.46
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0041",
+      "features": {
+        "patient_age": 23,
+        "days_since_last_visit": 35,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 3,
+        "appointment_hour": 15,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.51
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0042",
+      "features": {
+        "patient_age": 72,
+        "days_since_last_visit": 252,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 6,
+        "appointment_hour": 18,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.35
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0043",
+      "features": {
+        "patient_age": 55,
+        "days_since_last_visit": 195,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 18,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.32
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0044",
+      "features": {
+        "patient_age": 58,
+        "days_since_last_visit": 137,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.4
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0045",
+      "features": {
+        "patient_age": 63,
+        "days_since_last_visit": 168,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 3,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0046",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 331,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 11,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.58
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0047",
+      "features": {
+        "patient_age": 71,
+        "days_since_last_visit": 243,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 10,
+        "appointment_hour": 9,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.94
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0048",
+      "features": {
+        "patient_age": 50,
+        "days_since_last_visit": 141,
+        "booking_lead_time_days": 19,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 2,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.16
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0049",
+      "features": {
+        "patient_age": 47,
+        "days_since_last_visit": 105,
+        "booking_lead_time_days": 19,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 9,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.13
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0050",
+      "features": {
+        "patient_age": 53,
+        "days_since_last_visit": 262,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 3,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.26
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0051",
+      "features": {
+        "patient_age": 71,
+        "days_since_last_visit": 128,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 4,
+        "appointment_hour": 9,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.2
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0052",
+      "features": {
+        "patient_age": 31,
+        "days_since_last_visit": 297,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 2,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.98
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0053",
+      "features": {
+        "patient_age": 72,
+        "days_since_last_visit": 260,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 15,
+        "appointment_hour": 16,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.86
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0054",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 270,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 20,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.43
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0055",
+      "features": {
+        "patient_age": 26,
+        "days_since_last_visit": 263,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 8,
+        "appointment_hour": 18,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 1.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0056",
+      "features": {
+        "patient_age": 27,
+        "days_since_last_visit": 310,
+        "booking_lead_time_days": 17,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 4,
+        "appointment_hour": 11,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.8
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0057",
+      "features": {
+        "patient_age": 35,
+        "days_since_last_visit": 153,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 4,
+        "appointment_hour": 15,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.69
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0058",
+      "features": {
+        "patient_age": 57,
+        "days_since_last_visit": 250,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 15,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.68
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0059",
+      "features": {
+        "patient_age": 75,
+        "days_since_last_visit": 166,
+        "booking_lead_time_days": 4,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 1,
+        "appointment_hour": 18,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.7
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0060",
+      "features": {
+        "patient_age": 50,
+        "days_since_last_visit": 97,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 13,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.66
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0061",
+      "features": {
+        "patient_age": 41,
+        "days_since_last_visit": 81,
+        "booking_lead_time_days": 17,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 3,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.63
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0062",
+      "features": {
+        "patient_age": 23,
+        "days_since_last_visit": 108,
+        "booking_lead_time_days": 23,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 16,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.2
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0063",
+      "features": {
+        "patient_age": 75,
+        "days_since_last_visit": 219,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0064",
+      "features": {
+        "patient_age": 49,
+        "days_since_last_visit": 70,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 17,
+        "appointment_hour": 14,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.93
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0065",
+      "features": {
+        "patient_age": 38,
+        "days_since_last_visit": 130,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 14,
+        "appointment_hour": 18,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0066",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 35,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 4,
+        "appointment_hour": 10,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.61
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0067",
+      "features": {
+        "patient_age": 27,
+        "days_since_last_visit": 163,
+        "booking_lead_time_days": 4,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 10,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.75
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0068",
+      "features": {
+        "patient_age": 72,
+        "days_since_last_visit": 171,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 15,
+        "appointment_hour": 14,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.24
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0069",
+      "features": {
+        "patient_age": 38,
+        "days_since_last_visit": 214,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 11,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.38
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0070",
+      "features": {
+        "patient_age": 64,
+        "days_since_last_visit": 17,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 15,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.86
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0071",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 308,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.17
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0072",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 205,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.08
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0073",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 111,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 17,
+        "appointment_hour": 10,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.98
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0074",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 97,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 15,
+        "appointment_hour": 9,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0075",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 241,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 17,
+        "appointment_hour": 11,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.82
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0076",
+      "features": {
+        "patient_age": 23,
+        "days_since_last_visit": 124,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 19,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.16
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0077",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 172,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 19,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.75
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0078",
+      "features": {
+        "patient_age": 33,
+        "days_since_last_visit": 242,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 10,
+        "appointment_hour": 11,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.09
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0079",
+      "features": {
+        "patient_age": 58,
+        "days_since_last_visit": 214,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 16,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.24
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0080",
+      "features": {
+        "patient_age": 61,
+        "days_since_last_visit": 295,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 1,
+        "appointment_hour": 15,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.74
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0081",
+      "features": {
+        "patient_age": 55,
+        "days_since_last_visit": 49,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 5,
+        "appointment_hour": 8,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0082",
+      "features": {
+        "patient_age": 19,
+        "days_since_last_visit": 227,
+        "booking_lead_time_days": 19,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 17,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.23
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0083",
+      "features": {
+        "patient_age": 69,
+        "days_since_last_visit": 34,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.45
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0084",
+      "features": {
+        "patient_age": 70,
+        "days_since_last_visit": 86,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 0,
+        "appointment_hour": 14,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 1.0
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0085",
+      "features": {
+        "patient_age": 62,
+        "days_since_last_visit": 340,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 3,
+        "appointment_hour": 14,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.21
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0086",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 355,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 14,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.2
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0087",
+      "features": {
+        "patient_age": 45,
+        "days_since_last_visit": 343,
+        "booking_lead_time_days": 18,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.8
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0088",
+      "features": {
+        "patient_age": 32,
+        "days_since_last_visit": 353,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 16,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.83
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0089",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 269,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.8
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0090",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 14,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 5,
+        "appointment_hour": 18,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.51
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0091",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 43,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 10,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.63
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0092",
+      "features": {
+        "patient_age": 24,
+        "days_since_last_visit": 33,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 18,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.19
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0093",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 248,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 3,
+        "appointment_hour": 10,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.92
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0094",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 67,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.75
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0095",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 92,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 8,
+        "appointment_hour": 19,
+        "weekday": 5,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0096",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 222,
+        "booking_lead_time_days": 25,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 7,
+        "appointment_hour": 16,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.77
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0097",
+      "features": {
+        "patient_age": 45,
+        "days_since_last_visit": 314,
+        "booking_lead_time_days": 27,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 7,
+        "appointment_hour": 8,
+        "weekday": 5,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.61
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0098",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 133,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 18,
+        "appointment_hour": 18,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.31
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0099",
+      "features": {
+        "patient_age": 33,
+        "days_since_last_visit": 0,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 16,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.66
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0100",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 345,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 3,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.76
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0101",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 128,
+        "booking_lead_time_days": 25,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.54
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0102",
+      "features": {
+        "patient_age": 45,
+        "days_since_last_visit": 133,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 9,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.71
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0103",
+      "features": {
+        "patient_age": 57,
+        "days_since_last_visit": 276,
+        "booking_lead_time_days": 14,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 19,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.87
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0104",
+      "features": {
+        "patient_age": 24,
+        "days_since_last_visit": 36,
+        "booking_lead_time_days": 18,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 12,
+        "appointment_hour": 9,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.76
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0105",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 189,
+        "booking_lead_time_days": 17,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 14,
+        "appointment_hour": 14,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.99
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0106",
+      "features": {
+        "patient_age": 47,
+        "days_since_last_visit": 293,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 14,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.09
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0107",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 138,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 16,
+        "appointment_hour": 8,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.3
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0108",
+      "features": {
+        "patient_age": 41,
+        "days_since_last_visit": 200,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 16,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.34
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0109",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 287,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 2,
+        "appointment_hour": 14,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.17
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0110",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 301,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 6,
+        "appointment_hour": 14,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.64
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0111",
+      "features": {
+        "patient_age": 36,
+        "days_since_last_visit": 273,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 2,
+        "appointment_hour": 14,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.31
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0112",
+      "features": {
+        "patient_age": 63,
+        "days_since_last_visit": 52,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.13
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0113",
+      "features": {
+        "patient_age": 71,
+        "days_since_last_visit": 24,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 13,
+        "appointment_hour": 10,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.98
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0114",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 255,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 10,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.58
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0115",
+      "features": {
+        "patient_age": 61,
+        "days_since_last_visit": 250,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.55
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0116",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 41,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 0,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.47
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0117",
+      "features": {
+        "patient_age": 48,
+        "days_since_last_visit": 206,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 20,
+        "appointment_hour": 16,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.21
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0118",
+      "features": {
+        "patient_age": 25,
+        "days_since_last_visit": 19,
+        "booking_lead_time_days": 23,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 3,
+        "appointment_hour": 16,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0119",
+      "features": {
+        "patient_age": 37,
+        "days_since_last_visit": 91,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 9,
+        "appointment_hour": 17,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.38
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0120",
+      "features": {
+        "patient_age": 56,
+        "days_since_last_visit": 293,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 15,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0121",
+      "features": {
+        "patient_age": 39,
+        "days_since_last_visit": 281,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 8,
+        "appointment_hour": 11,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.93
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0122",
+      "features": {
+        "patient_age": 35,
+        "days_since_last_visit": 148,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.07
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0123",
+      "features": {
+        "patient_age": 51,
+        "days_since_last_visit": 261,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 13,
+        "appointment_hour": 10,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.52
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0124",
+      "features": {
+        "patient_age": 38,
+        "days_since_last_visit": 115,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 8,
+        "appointment_hour": 9,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.78
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0125",
+      "features": {
+        "patient_age": 51,
+        "days_since_last_visit": 38,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 15,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.37
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0126",
+      "features": {
+        "patient_age": 18,
+        "days_since_last_visit": 35,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 1,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.77
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0127",
+      "features": {
+        "patient_age": 24,
+        "days_since_last_visit": 227,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 11,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.03
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0128",
+      "features": {
+        "patient_age": 46,
+        "days_since_last_visit": 355,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 3,
+        "appointment_hour": 17,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.4
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0129",
+      "features": {
+        "patient_age": 23,
+        "days_since_last_visit": 2,
+        "booking_lead_time_days": 5,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 14,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0130",
+      "features": {
+        "patient_age": 46,
+        "days_since_last_visit": 44,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 3,
+        "appointment_hour": 16,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.08
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0131",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 225,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 11,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.87
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0132",
+      "features": {
+        "patient_age": 63,
+        "days_since_last_visit": 316,
+        "booking_lead_time_days": 5,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 10,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.84
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0133",
+      "features": {
+        "patient_age": 61,
+        "days_since_last_visit": 51,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.59
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0134",
+      "features": {
+        "patient_age": 19,
+        "days_since_last_visit": 340,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 10,
+        "appointment_hour": 16,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.97
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0135",
+      "features": {
+        "patient_age": 39,
+        "days_since_last_visit": 49,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 11,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.72
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0136",
+      "features": {
+        "patient_age": 75,
+        "days_since_last_visit": 350,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 12,
+        "appointment_hour": 15,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0137",
+      "features": {
+        "patient_age": 28,
+        "days_since_last_visit": 293,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 5,
+        "prev_visit_count": 4,
+        "appointment_hour": 11,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.7
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0138",
+      "features": {
+        "patient_age": 36,
+        "days_since_last_visit": 69,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 7,
+        "appointment_hour": 18,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.59
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0139",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 195,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 20,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0140",
+      "features": {
+        "patient_age": 21,
+        "days_since_last_visit": 53,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 11,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.74
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0141",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 330,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 18,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.69
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0142",
+      "features": {
+        "patient_age": 30,
+        "days_since_last_visit": 270,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 18,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 1.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0143",
+      "features": {
+        "patient_age": 43,
+        "days_since_last_visit": 307,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 14,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.86
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0144",
+      "features": {
+        "patient_age": 41,
+        "days_since_last_visit": 61,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 1,
+        "appointment_hour": 17,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.72
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0145",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 242,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 0,
+        "appointment_hour": 11,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.37
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0146",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 284,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 17,
+        "appointment_hour": 9,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.08
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0147",
+      "features": {
+        "patient_age": 58,
+        "days_since_last_visit": 12,
+        "booking_lead_time_days": 4,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 11,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.72
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0148",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 128,
+        "booking_lead_time_days": 26,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 14,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0149",
+      "features": {
+        "patient_age": 43,
+        "days_since_last_visit": 325,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 11,
+        "appointment_hour": 11,
+        "weekday": 6,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.94
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0150",
+      "features": {
+        "patient_age": 62,
+        "days_since_last_visit": 193,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 17,
+        "appointment_hour": 18,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.3
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0151",
+      "features": {
+        "patient_age": 71,
+        "days_since_last_visit": 198,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 9,
+        "appointment_hour": 19,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.83
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0152",
+      "features": {
+        "patient_age": 75,
+        "days_since_last_visit": 321,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.92
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0153",
+      "features": {
+        "patient_age": 32,
+        "days_since_last_visit": 313,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 1,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0154",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 356,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.84
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0155",
+      "features": {
+        "patient_age": 18,
+        "days_since_last_visit": 319,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 3,
+        "appointment_hour": 15,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.82
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0156",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 276,
+        "booking_lead_time_days": 7,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 4,
+        "appointment_hour": 17,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.39
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0157",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 181,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 9,
+        "appointment_hour": 19,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0158",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 297,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 17,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.62
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0159",
+      "features": {
+        "patient_age": 18,
+        "days_since_last_visit": 13,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 18,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0160",
+      "features": {
+        "patient_age": 23,
+        "days_since_last_visit": 321,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 19,
+        "appointment_hour": 11,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.52
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0161",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 78,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 6,
+        "appointment_hour": 10,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.8
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0162",
+      "features": {
+        "patient_age": 45,
+        "days_since_last_visit": 357,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 3,
+        "appointment_hour": 8,
+        "weekday": 2,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0163",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 148,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 19,
+        "appointment_hour": 19,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.06
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0164",
+      "features": {
+        "patient_age": 31,
+        "days_since_last_visit": 86,
+        "booking_lead_time_days": 2,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 13,
+        "appointment_hour": 17,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.17
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0165",
+      "features": {
+        "patient_age": 32,
+        "days_since_last_visit": 269,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 0,
+        "appointment_hour": 11,
+        "weekday": 5,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.66
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0166",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 317,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 5,
+        "appointment_hour": 9,
+        "weekday": 4,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.5
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0167",
+      "features": {
+        "patient_age": 48,
+        "days_since_last_visit": 49,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 6,
+        "appointment_hour": 15,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.43
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0168",
+      "features": {
+        "patient_age": 22,
+        "days_since_last_visit": 39,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 9,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.84
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0169",
+      "features": {
+        "patient_age": 39,
+        "days_since_last_visit": 23,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 8,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.0
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0170",
+      "features": {
+        "patient_age": 41,
+        "days_since_last_visit": 219,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 19,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.9
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0171",
+      "features": {
+        "patient_age": 71,
+        "days_since_last_visit": 329,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 19,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.58
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0172",
+      "features": {
+        "patient_age": 36,
+        "days_since_last_visit": 134,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 10,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.62
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0173",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 35,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 11,
+        "appointment_hour": 15,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.81
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0174",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 258,
+        "booking_lead_time_days": 19,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 1,
+        "appointment_hour": 15,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.3
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0175",
+      "features": {
+        "patient_age": 58,
+        "days_since_last_visit": 117,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 20,
+        "appointment_hour": 8,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.42
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0176",
+      "features": {
+        "patient_age": 47,
+        "days_since_last_visit": 155,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 4,
+        "appointment_hour": 9,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.73
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0177",
+      "features": {
+        "patient_age": 51,
+        "days_since_last_visit": 181,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 16,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.08
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0178",
+      "features": {
+        "patient_age": 34,
+        "days_since_last_visit": 14,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 14,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.7
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0179",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 197,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 3,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.95
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0180",
+      "features": {
+        "patient_age": 49,
+        "days_since_last_visit": 140,
+        "booking_lead_time_days": 14,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 12,
+        "appointment_hour": 14,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.65
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0181",
+      "features": {
+        "patient_age": 18,
+        "days_since_last_visit": 157,
+        "booking_lead_time_days": 23,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 8,
+        "appointment_hour": 10,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.65
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0182",
+      "features": {
+        "patient_age": 45,
+        "days_since_last_visit": 314,
+        "booking_lead_time_days": 20,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 7,
+        "appointment_hour": 10,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.36
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0183",
+      "features": {
+        "patient_age": 43,
+        "days_since_last_visit": 56,
+        "booking_lead_time_days": 16,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 16,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.96
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0184",
+      "features": {
+        "patient_age": 28,
+        "days_since_last_visit": 75,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 1,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.33
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0185",
+      "features": {
+        "patient_age": 69,
+        "days_since_last_visit": 80,
+        "booking_lead_time_days": 21,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.83
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0186",
+      "features": {
+        "patient_age": 54,
+        "days_since_last_visit": 294,
+        "booking_lead_time_days": 18,
+        "prev_no_show_count": 4,
+        "prev_visit_count": 5,
+        "appointment_hour": 10,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.34
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0187",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 219,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 11,
+        "appointment_hour": 15,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.66
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0188",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 250,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 15,
+        "appointment_hour": 19,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.78
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0189",
+      "features": {
+        "patient_age": 47,
+        "days_since_last_visit": 34,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 14,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0190",
+      "features": {
+        "patient_age": 57,
+        "days_since_last_visit": 27,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 14,
+        "appointment_hour": 16,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.47
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0191",
+      "features": {
+        "patient_age": 69,
+        "days_since_last_visit": 172,
+        "booking_lead_time_days": 22,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 15,
+        "appointment_hour": 8,
+        "weekday": 1,
+        "is_winter": 1,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.58
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0192",
+      "features": {
+        "patient_age": 65,
+        "days_since_last_visit": 271,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 18,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.73
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0193",
+      "features": {
+        "patient_age": 73,
+        "days_since_last_visit": 61,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 6,
+        "appointment_hour": 18,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.77
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0194",
+      "features": {
+        "patient_age": 37,
+        "days_since_last_visit": 239,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 11,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.77
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0195",
+      "features": {
+        "patient_age": 49,
+        "days_since_last_visit": 245,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 15,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.82
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0196",
+      "features": {
+        "patient_age": 28,
+        "days_since_last_visit": 158,
+        "booking_lead_time_days": 30,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 1,
+        "appointment_hour": 10,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.88
+      },
+      "no_show": 1
+    },
+    {
+      "appointment_id": "A0197",
+      "features": {
+        "patient_age": 66,
+        "days_since_last_visit": 105,
+        "booking_lead_time_days": 29,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 15,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.87
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0198",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 195,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 20,
+        "appointment_hour": 18,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.02
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0199",
+      "features": {
+        "patient_age": 37,
+        "days_since_last_visit": 325,
+        "booking_lead_time_days": 4,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 10,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.18
+      },
+      "no_show": 0
+    },
+    {
+      "appointment_id": "A0200",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 120,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 19,
+        "appointment_hour": 9,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.36
+      },
+      "no_show": 0
+    }
+  ],
+  "upcoming_appointments": [
+    {
+      "appointment_id": "A1001",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 203,
+        "booking_lead_time_days": 11,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 9,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.51
+      }
+    },
+    {
+      "appointment_id": "A1002",
+      "features": {
+        "patient_age": 46,
+        "days_since_last_visit": 34,
+        "booking_lead_time_days": 9,
+        "prev_no_show_count": 2,
+        "prev_visit_count": 10,
+        "appointment_hour": 16,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.85
+      }
+    },
+    {
+      "appointment_id": "A1003",
+      "features": {
+        "patient_age": 51,
+        "days_since_last_visit": 118,
+        "booking_lead_time_days": 1,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 1,
+        "appointment_hour": 11,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.52
+      }
+    },
+    {
+      "appointment_id": "A1004",
+      "features": {
+        "patient_age": 35,
+        "days_since_last_visit": 106,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 10,
+        "appointment_hour": 8,
+        "weekday": 6,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.62
+      }
+    },
+    {
+      "appointment_id": "A1005",
+      "features": {
+        "patient_age": 46,
+        "days_since_last_visit": 189,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 10,
+        "appointment_hour": 15,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.27
+      }
+    },
+    {
+      "appointment_id": "A1006",
+      "features": {
+        "patient_age": 54,
+        "days_since_last_visit": 163,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 3,
+        "prev_visit_count": 5,
+        "appointment_hour": 16,
+        "weekday": 5,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.6
+      }
+    },
+    {
+      "appointment_id": "A1007",
+      "features": {
+        "patient_age": 52,
+        "days_since_last_visit": 44,
+        "booking_lead_time_days": 14,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 6,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.01
+      }
+    },
+    {
+      "appointment_id": "A1008",
+      "features": {
+        "patient_age": 44,
+        "days_since_last_visit": 261,
+        "booking_lead_time_days": 0,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 16,
+        "appointment_hour": 17,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.8
+      }
+    },
+    {
+      "appointment_id": "A1009",
+      "features": {
+        "patient_age": 67,
+        "days_since_last_visit": 338,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 4,
+        "appointment_hour": 16,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.18
+      }
+    },
+    {
+      "appointment_id": "A1010",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 241,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 0,
+        "appointment_hour": 8,
+        "weekday": 1,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.23
+      }
+    },
+    {
+      "appointment_id": "A1011",
+      "features": {
+        "patient_age": 70,
+        "days_since_last_visit": 142,
+        "booking_lead_time_days": 10,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 9,
+        "appointment_hour": 14,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.12
+      }
+    },
+    {
+      "appointment_id": "A1012",
+      "features": {
+        "patient_age": 43,
+        "days_since_last_visit": 45,
+        "booking_lead_time_days": 8,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 4,
+        "appointment_hour": 11,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.89
+      }
+    },
+    {
+      "appointment_id": "A1013",
+      "features": {
+        "patient_age": 59,
+        "days_since_last_visit": 173,
+        "booking_lead_time_days": 15,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 11,
+        "appointment_hour": 19,
+        "weekday": 7,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.68
+      }
+    },
+    {
+      "appointment_id": "A1014",
+      "features": {
+        "patient_age": 40,
+        "days_since_last_visit": 276,
+        "booking_lead_time_days": 24,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 6,
+        "appointment_hour": 19,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.97
+      }
+    },
+    {
+      "appointment_id": "A1015",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 308,
+        "booking_lead_time_days": 3,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 18,
+        "weekday": 3,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.05
+      }
+    },
+    {
+      "appointment_id": "A1016",
+      "features": {
+        "patient_age": 42,
+        "days_since_last_visit": 155,
+        "booking_lead_time_days": 28,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 14,
+        "appointment_hour": 8,
+        "weekday": 4,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.58
+      }
+    },
+    {
+      "appointment_id": "A1017",
+      "features": {
+        "patient_age": 25,
+        "days_since_last_visit": 238,
+        "booking_lead_time_days": 23,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 13,
+        "appointment_hour": 9,
+        "weekday": 2,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.31
+      }
+    },
+    {
+      "appointment_id": "A1018",
+      "features": {
+        "patient_age": 20,
+        "days_since_last_visit": 92,
+        "booking_lead_time_days": 13,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 7,
+        "appointment_hour": 18,
+        "weekday": 3,
+        "is_winter": 1,
+        "is_aesthetic": 1,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.99
+      }
+    },
+    {
+      "appointment_id": "A1019",
+      "features": {
+        "patient_age": 60,
+        "days_since_last_visit": 96,
+        "booking_lead_time_days": 6,
+        "prev_no_show_count": 1,
+        "prev_visit_count": 14,
+        "appointment_hour": 15,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 1,
+        "is_self_pay": 0,
+        "weather_rain_prob": 0.39
+      }
+    },
+    {
+      "appointment_id": "A1020",
+      "features": {
+        "patient_age": 37,
+        "days_since_last_visit": 131,
+        "booking_lead_time_days": 12,
+        "prev_no_show_count": 0,
+        "prev_visit_count": 2,
+        "appointment_hour": 10,
+        "weekday": 7,
+        "is_winter": 0,
+        "is_aesthetic": 0,
+        "is_self_pay": 1,
+        "weather_rain_prob": 0.48
+      }
+    }
+  ]
+}
