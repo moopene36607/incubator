@@ -1,0 +1,40 @@
+{
+  "_meta": "陳老闆 30 歲, 從金融業離職創業, 想在台北市開 30 坪日式定食. 兩個月找店面, 已花 4 週看了 15 間. 房東 P 要求 24h 內決定.",
+  "search_weeks_elapsed": 4,
+  "expected_search_weeks": 8,
+  "estimated_total_stores": 30,
+  "user_must_decide": true,
+  "weights": {
+    "location": 0.30,
+    "rent": 0.25,
+    "size": 0.20,
+    "deposit": 0.10,
+    "contract": 0.15
+  },
+  "seen_stores": [
+    {"name": "信義店 A (1F 25坪 NT$72K)", "location_score": 75, "rent_score": 50, "size_score": 80, "deposit_score": 70, "contract_score": 60},
+    {"name": "信義店 B (B1 30坪 NT$45K)", "location_score": 50, "rent_score": 85, "size_score": 90, "deposit_score": 80, "contract_score": 70},
+    {"name": "松山店 C (1F 28坪 NT$65K)", "location_score": 80, "rent_score": 65, "size_score": 75, "deposit_score": 75, "contract_score": 80},
+    {"name": "中山店 D (1F 22坪 NT$80K)", "location_score": 85, "rent_score": 55, "size_score": 65, "deposit_score": 60, "contract_score": 70},
+    {"name": "大安店 E (1F 35坪 NT$70K)", "location_score": 78, "rent_score": 60, "size_score": 90, "deposit_score": 70, "contract_score": 65},
+    {"name": "信義店 F (2F 30坪 NT$60K)", "location_score": 60, "rent_score": 75, "size_score": 80, "deposit_score": 80, "contract_score": 75},
+    {"name": "士林店 G (1F 28坪 NT$55K)", "location_score": 70, "rent_score": 80, "size_score": 75, "deposit_score": 75, "contract_score": 80},
+    {"name": "內湖店 H (1F 32坪 NT$50K)", "location_score": 55, "rent_score": 90, "size_score": 85, "deposit_score": 85, "contract_score": 80},
+    {"name": "信義店 I (1F 25坪 NT$80K)", "location_score": 88, "rent_score": 50, "size_score": 75, "deposit_score": 65, "contract_score": 60},
+    {"name": "東區店 J (1F 30坪 NT$68K)", "location_score": 80, "rent_score": 70, "size_score": 80, "deposit_score": 70, "contract_score": 70},
+    {"name": "永康店 K (1F 26坪 NT$62K)", "location_score": 75, "rent_score": 75, "size_score": 75, "deposit_score": 75, "contract_score": 75},
+    {"name": "松山店 L (1F 28坪 NT$66K)", "location_score": 78, "rent_score": 68, "size_score": 78, "deposit_score": 72, "contract_score": 75},
+    {"name": "信義店 M (1F 22坪 NT$78K)", "location_score": 82, "rent_score": 55, "size_score": 70, "deposit_score": 65, "contract_score": 65},
+    {"name": "中山店 N (1F 28坪 NT$64K)", "location_score": 70, "rent_score": 70, "size_score": 80, "deposit_score": 75, "contract_score": 80},
+    {"name": "大安店 O (1F 32坪 NT$66K)", "location_score": 75, "rent_score": 72, "size_score": 85, "deposit_score": 78, "contract_score": 75}
+  ],
+  "current_store": {
+    "name": "松菸店 P (1F 30坪 NT$62K)",
+    "location_score": 88,
+    "rent_score": 70,
+    "size_score": 85,
+    "deposit_score": 75,
+    "contract_score": 80,
+    "_landlord_note": "房東說已有兩組詢問, 要求今晚 11 點前回覆"
+  }
+}
