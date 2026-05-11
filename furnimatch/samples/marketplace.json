@@ -1,0 +1,1060 @@
+{
+  "marketplace_name": "FurniSwap (台灣二手家具買賣社群)",
+  "_meta": "30 listings × 60 users 過去 favorite history. 6 個風格 cluster: 日系木質 / 北歐簡約 / 工業風 / 中式古典 / 韓系少女 / IKEA實用. 每位 user 主要 favorite 自己風格的 60-85%, 其餘 crossover.",
+  "items": [
+    {
+      "item_id": "I001",
+      "name": "日系木質 沙發 (#01)",
+      "price_ntd": 5148,
+      "location": "台北",
+      "category": "沙發",
+      "style_tag": "日系木質",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I002",
+      "name": "日系木質 餐桌 (#02)",
+      "price_ntd": 9524,
+      "location": "新北",
+      "category": "餐桌",
+      "style_tag": "日系木質",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I003",
+      "name": "日系木質 衣櫥 (#03)",
+      "price_ntd": 4858,
+      "location": "台北",
+      "category": "衣櫥",
+      "style_tag": "日系木質",
+      "condition": "WORN"
+    },
+    {
+      "item_id": "I004",
+      "name": "日系木質 床架 (#04)",
+      "price_ntd": 15325,
+      "location": "台北",
+      "category": "床架",
+      "style_tag": "日系木質",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I005",
+      "name": "日系木質 茶几 (#05)",
+      "price_ntd": 4570,
+      "location": "新北",
+      "category": "茶几",
+      "style_tag": "日系木質",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I006",
+      "name": "北歐簡約 沙發 (#06)",
+      "price_ntd": 2369,
+      "location": "新北",
+      "category": "沙發",
+      "style_tag": "北歐簡約",
+      "condition": "WORN"
+    },
+    {
+      "item_id": "I007",
+      "name": "北歐簡約 餐桌 (#07)",
+      "price_ntd": 15246,
+      "location": "新北",
+      "category": "餐桌",
+      "style_tag": "北歐簡約",
+      "condition": "FAIR"
+    },
+    {
+      "item_id": "I008",
+      "name": "北歐簡約 衣櫥 (#08)",
+      "price_ntd": 10615,
+      "location": "台北",
+      "category": "衣櫥",
+      "style_tag": "北歐簡約",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I009",
+      "name": "北歐簡約 床架 (#09)",
+      "price_ntd": 15348,
+      "location": "桃園",
+      "category": "床架",
+      "style_tag": "北歐簡約",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I010",
+      "name": "北歐簡約 茶几 (#10)",
+      "price_ntd": 6594,
+      "location": "新北",
+      "category": "茶几",
+      "style_tag": "北歐簡約",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I011",
+      "name": "工業風 沙發 (#11)",
+      "price_ntd": 4849,
+      "location": "台北",
+      "category": "沙發",
+      "style_tag": "工業風",
+      "condition": "FAIR"
+    },
+    {
+      "item_id": "I012",
+      "name": "工業風 餐桌 (#12)",
+      "price_ntd": 4669,
+      "location": "桃園",
+      "category": "餐桌",
+      "style_tag": "工業風",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I013",
+      "name": "工業風 衣櫥 (#13)",
+      "price_ntd": 10167,
+      "location": "台北",
+      "category": "衣櫥",
+      "style_tag": "工業風",
+      "condition": "FAIR"
+    },
+    {
+      "item_id": "I014",
+      "name": "工業風 床架 (#14)",
+      "price_ntd": 5590,
+      "location": "台中",
+      "category": "床架",
+      "style_tag": "工業風",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I015",
+      "name": "工業風 茶几 (#15)",
+      "price_ntd": 11106,
+      "location": "桃園",
+      "category": "茶几",
+      "style_tag": "工業風",
+      "condition": "WORN"
+    },
+    {
+      "item_id": "I016",
+      "name": "中式古典 沙發 (#16)",
+      "price_ntd": 7800,
+      "location": "台北",
+      "category": "沙發",
+      "style_tag": "中式古典",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I017",
+      "name": "中式古典 餐桌 (#17)",
+      "price_ntd": 8967,
+      "location": "桃園",
+      "category": "餐桌",
+      "style_tag": "中式古典",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I018",
+      "name": "中式古典 衣櫥 (#18)",
+      "price_ntd": 9128,
+      "location": "台北",
+      "category": "衣櫥",
+      "style_tag": "中式古典",
+      "condition": "FAIR"
+    },
+    {
+      "item_id": "I019",
+      "name": "中式古典 床架 (#19)",
+      "price_ntd": 10608,
+      "location": "台中",
+      "category": "床架",
+      "style_tag": "中式古典",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I020",
+      "name": "中式古典 茶几 (#20)",
+      "price_ntd": 6829,
+      "location": "桃園",
+      "category": "茶几",
+      "style_tag": "中式古典",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I021",
+      "name": "韓系少女 沙發 (#21)",
+      "price_ntd": 8365,
+      "location": "桃園",
+      "category": "沙發",
+      "style_tag": "韓系少女",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I022",
+      "name": "韓系少女 餐桌 (#22)",
+      "price_ntd": 7107,
+      "location": "新北",
+      "category": "餐桌",
+      "style_tag": "韓系少女",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I023",
+      "name": "韓系少女 衣櫥 (#23)",
+      "price_ntd": 16647,
+      "location": "台中",
+      "category": "衣櫥",
+      "style_tag": "韓系少女",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I024",
+      "name": "韓系少女 床架 (#24)",
+      "price_ntd": 8696,
+      "location": "桃園",
+      "category": "床架",
+      "style_tag": "韓系少女",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I025",
+      "name": "韓系少女 茶几 (#25)",
+      "price_ntd": 9005,
+      "location": "台北",
+      "category": "茶几",
+      "style_tag": "韓系少女",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I026",
+      "name": "IKEA實用 沙發 (#26)",
+      "price_ntd": 14645,
+      "location": "桃園",
+      "category": "沙發",
+      "style_tag": "IKEA實用",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I027",
+      "name": "IKEA實用 餐桌 (#27)",
+      "price_ntd": 8413,
+      "location": "桃園",
+      "category": "餐桌",
+      "style_tag": "IKEA實用",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I028",
+      "name": "IKEA實用 衣櫥 (#28)",
+      "price_ntd": 17858,
+      "location": "台中",
+      "category": "衣櫥",
+      "style_tag": "IKEA實用",
+      "condition": "FAIR"
+    },
+    {
+      "item_id": "I029",
+      "name": "IKEA實用 床架 (#29)",
+      "price_ntd": 6181,
+      "location": "桃園",
+      "category": "床架",
+      "style_tag": "IKEA實用",
+      "condition": "GOOD"
+    },
+    {
+      "item_id": "I030",
+      "name": "IKEA實用 茶几 (#30)",
+      "price_ntd": 9581,
+      "location": "桃園",
+      "category": "茶几",
+      "style_tag": "IKEA實用",
+      "condition": "WORN"
+    }
+  ],
+  "users": [
+    {
+      "user_id": "U001",
+      "name": "User001_日系木質",
+      "favorite_item_ids": [
+        "I004",
+        "I003",
+        "I001",
+        "I005",
+        "I002",
+        "I008",
+        "I030"
+      ]
+    },
+    {
+      "user_id": "U002",
+      "name": "User002_日系木質",
+      "favorite_item_ids": [
+        "I002",
+        "I005",
+        "I003",
+        "I004",
+        "I025"
+      ]
+    },
+    {
+      "user_id": "U003",
+      "name": "User003_日系木質",
+      "favorite_item_ids": [
+        "I005",
+        "I004",
+        "I003",
+        "I014",
+        "I023"
+      ]
+    },
+    {
+      "user_id": "U004",
+      "name": "User004_日系木質",
+      "favorite_item_ids": [
+        "I001",
+        "I003",
+        "I004",
+        "I016",
+        "I009"
+      ]
+    },
+    {
+      "user_id": "U005",
+      "name": "User005_日系木質",
+      "favorite_item_ids": [
+        "I004",
+        "I001",
+        "I003",
+        "I002",
+        "I022",
+        "I030",
+        "I011"
+      ]
+    },
+    {
+      "user_id": "U006",
+      "name": "User006_日系木質",
+      "favorite_item_ids": [
+        "I003",
+        "I002",
+        "I001",
+        "I004",
+        "I005",
+        "I023",
+        "I030"
+      ]
+    },
+    {
+      "user_id": "U007",
+      "name": "User007_日系木質",
+      "favorite_item_ids": [
+        "I005",
+        "I003",
+        "I002",
+        "I001",
+        "I004",
+        "I017",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U008",
+      "name": "User008_日系木質",
+      "favorite_item_ids": [
+        "I005",
+        "I001",
+        "I004",
+        "I029",
+        "I021",
+        "I008"
+      ]
+    },
+    {
+      "user_id": "U009",
+      "name": "User009_日系木質",
+      "favorite_item_ids": [
+        "I002",
+        "I004",
+        "I003",
+        "I001",
+        "I005",
+        "I022",
+        "I025"
+      ]
+    },
+    {
+      "user_id": "U010",
+      "name": "User010_日系木質",
+      "favorite_item_ids": [
+        "I005",
+        "I002",
+        "I003",
+        "I004",
+        "I001",
+        "I027",
+        "I026"
+      ]
+    },
+    {
+      "user_id": "U011",
+      "name": "User011_北歐簡約",
+      "favorite_item_ids": [
+        "I010",
+        "I009",
+        "I006",
+        "I008",
+        "I013",
+        "I003",
+        "I016"
+      ]
+    },
+    {
+      "user_id": "U012",
+      "name": "User012_北歐簡約",
+      "favorite_item_ids": [
+        "I007",
+        "I010",
+        "I006",
+        "I003",
+        "I028"
+      ]
+    },
+    {
+      "user_id": "U013",
+      "name": "User013_北歐簡約",
+      "favorite_item_ids": [
+        "I006",
+        "I010",
+        "I007",
+        "I009",
+        "I008",
+        "I014",
+        "I027",
+        "I021",
+        "I012"
+      ]
+    },
+    {
+      "user_id": "U014",
+      "name": "User014_北歐簡約",
+      "favorite_item_ids": [
+        "I010",
+        "I009",
+        "I006",
+        "I007",
+        "I008",
+        "I012",
+        "I004",
+        "I027",
+        "I019"
+      ]
+    },
+    {
+      "user_id": "U015",
+      "name": "User015_北歐簡約",
+      "favorite_item_ids": [
+        "I009",
+        "I006",
+        "I008",
+        "I010",
+        "I002",
+        "I018",
+        "I029"
+      ]
+    },
+    {
+      "user_id": "U016",
+      "name": "User016_北歐簡約",
+      "favorite_item_ids": [
+        "I006",
+        "I007",
+        "I010",
+        "I008",
+        "I009",
+        "I005",
+        "I019"
+      ]
+    },
+    {
+      "user_id": "U017",
+      "name": "User017_北歐簡約",
+      "favorite_item_ids": [
+        "I007",
+        "I006",
+        "I010",
+        "I009",
+        "I002",
+        "I026"
+      ]
+    },
+    {
+      "user_id": "U018",
+      "name": "User018_北歐簡約",
+      "favorite_item_ids": [
+        "I006",
+        "I007",
+        "I010",
+        "I009",
+        "I008",
+        "I021",
+        "I012"
+      ]
+    },
+    {
+      "user_id": "U019",
+      "name": "User019_北歐簡約",
+      "favorite_item_ids": [
+        "I007",
+        "I009",
+        "I006",
+        "I010",
+        "I008",
+        "I020",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U020",
+      "name": "User020_北歐簡約",
+      "favorite_item_ids": [
+        "I010",
+        "I009",
+        "I006",
+        "I008",
+        "I007",
+        "I012",
+        "I002"
+      ]
+    },
+    {
+      "user_id": "U021",
+      "name": "User021_工業風",
+      "favorite_item_ids": [
+        "I011",
+        "I013",
+        "I015",
+        "I014",
+        "I012",
+        "I022",
+        "I006"
+      ]
+    },
+    {
+      "user_id": "U022",
+      "name": "User022_工業風",
+      "favorite_item_ids": [
+        "I011",
+        "I012",
+        "I015",
+        "I013",
+        "I027"
+      ]
+    },
+    {
+      "user_id": "U023",
+      "name": "User023_工業風",
+      "favorite_item_ids": [
+        "I015",
+        "I012",
+        "I013",
+        "I011",
+        "I025",
+        "I003"
+      ]
+    },
+    {
+      "user_id": "U024",
+      "name": "User024_工業風",
+      "favorite_item_ids": [
+        "I015",
+        "I013",
+        "I012",
+        "I011",
+        "I014",
+        "I008",
+        "I009"
+      ]
+    },
+    {
+      "user_id": "U025",
+      "name": "User025_工業風",
+      "favorite_item_ids": [
+        "I013",
+        "I014",
+        "I012",
+        "I011",
+        "I015",
+        "I020",
+        "I025",
+        "I024"
+      ]
+    },
+    {
+      "user_id": "U026",
+      "name": "User026_工業風",
+      "favorite_item_ids": [
+        "I012",
+        "I013",
+        "I011",
+        "I017",
+        "I003"
+      ]
+    },
+    {
+      "user_id": "U027",
+      "name": "User027_工業風",
+      "favorite_item_ids": [
+        "I012",
+        "I014",
+        "I013",
+        "I015",
+        "I025",
+        "I026"
+      ]
+    },
+    {
+      "user_id": "U028",
+      "name": "User028_工業風",
+      "favorite_item_ids": [
+        "I015",
+        "I013",
+        "I014",
+        "I011",
+        "I012",
+        "I009",
+        "I004",
+        "I029",
+        "I023"
+      ]
+    },
+    {
+      "user_id": "U029",
+      "name": "User029_工業風",
+      "favorite_item_ids": [
+        "I015",
+        "I012",
+        "I013",
+        "I014",
+        "I007",
+        "I027"
+      ]
+    },
+    {
+      "user_id": "U030",
+      "name": "User030_工業風",
+      "favorite_item_ids": [
+        "I015",
+        "I014",
+        "I012",
+        "I011",
+        "I013",
+        "I026",
+        "I019"
+      ]
+    },
+    {
+      "user_id": "U031",
+      "name": "User031_中式古典",
+      "favorite_item_ids": [
+        "I018",
+        "I017",
+        "I020",
+        "I019",
+        "I006",
+        "I029",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U032",
+      "name": "User032_中式古典",
+      "favorite_item_ids": [
+        "I020",
+        "I016",
+        "I019",
+        "I018",
+        "I017",
+        "I023",
+        "I002",
+        "I012"
+      ]
+    },
+    {
+      "user_id": "U033",
+      "name": "User033_中式古典",
+      "favorite_item_ids": [
+        "I019",
+        "I017",
+        "I016",
+        "I020",
+        "I018",
+        "I002",
+        "I012",
+        "I007"
+      ]
+    },
+    {
+      "user_id": "U034",
+      "name": "User034_中式古典",
+      "favorite_item_ids": [
+        "I016",
+        "I018",
+        "I019",
+        "I017",
+        "I020",
+        "I008",
+        "I006",
+        "I014",
+        "I001"
+      ]
+    },
+    {
+      "user_id": "U035",
+      "name": "User035_中式古典",
+      "favorite_item_ids": [
+        "I018",
+        "I019",
+        "I020",
+        "I016",
+        "I009",
+        "I006"
+      ]
+    },
+    {
+      "user_id": "U036",
+      "name": "User036_中式古典",
+      "favorite_item_ids": [
+        "I016",
+        "I019",
+        "I020",
+        "I018",
+        "I017",
+        "I012",
+        "I010",
+        "I008",
+        "I001"
+      ]
+    },
+    {
+      "user_id": "U037",
+      "name": "User037_中式古典",
+      "favorite_item_ids": [
+        "I018",
+        "I020",
+        "I016",
+        "I017",
+        "I019",
+        "I026",
+        "I022",
+        "I013",
+        "I027"
+      ]
+    },
+    {
+      "user_id": "U038",
+      "name": "User038_中式古典",
+      "favorite_item_ids": [
+        "I016",
+        "I020",
+        "I017",
+        "I019",
+        "I018",
+        "I002",
+        "I004",
+        "I025"
+      ]
+    },
+    {
+      "user_id": "U039",
+      "name": "User039_中式古典",
+      "favorite_item_ids": [
+        "I018",
+        "I019",
+        "I020",
+        "I016",
+        "I017",
+        "I024",
+        "I007",
+        "I009"
+      ]
+    },
+    {
+      "user_id": "U040",
+      "name": "User040_中式古典",
+      "favorite_item_ids": [
+        "I016",
+        "I017",
+        "I019",
+        "I014",
+        "I003"
+      ]
+    },
+    {
+      "user_id": "U041",
+      "name": "User041_韓系少女",
+      "favorite_item_ids": [
+        "I025",
+        "I023",
+        "I024",
+        "I021",
+        "I022",
+        "I017",
+        "I010"
+      ]
+    },
+    {
+      "user_id": "U042",
+      "name": "User042_韓系少女",
+      "favorite_item_ids": [
+        "I024",
+        "I023",
+        "I025",
+        "I021",
+        "I022",
+        "I014",
+        "I027",
+        "I013"
+      ]
+    },
+    {
+      "user_id": "U043",
+      "name": "User043_韓系少女",
+      "favorite_item_ids": [
+        "I022",
+        "I023",
+        "I025",
+        "I021",
+        "I024",
+        "I010",
+        "I007",
+        "I014"
+      ]
+    },
+    {
+      "user_id": "U044",
+      "name": "User044_韓系少女",
+      "favorite_item_ids": [
+        "I023",
+        "I024",
+        "I022",
+        "I025",
+        "I021",
+        "I017",
+        "I016",
+        "I029"
+      ]
+    },
+    {
+      "user_id": "U045",
+      "name": "User045_韓系少女",
+      "favorite_item_ids": [
+        "I023",
+        "I025",
+        "I021",
+        "I024",
+        "I027",
+        "I010"
+      ]
+    },
+    {
+      "user_id": "U046",
+      "name": "User046_韓系少女",
+      "favorite_item_ids": [
+        "I022",
+        "I021",
+        "I024",
+        "I023",
+        "I016",
+        "I020"
+      ]
+    },
+    {
+      "user_id": "U047",
+      "name": "User047_韓系少女",
+      "favorite_item_ids": [
+        "I025",
+        "I022",
+        "I023",
+        "I028",
+        "I013"
+      ]
+    },
+    {
+      "user_id": "U048",
+      "name": "User048_韓系少女",
+      "favorite_item_ids": [
+        "I022",
+        "I021",
+        "I024",
+        "I025",
+        "I023",
+        "I006",
+        "I028",
+        "I017"
+      ]
+    },
+    {
+      "user_id": "U049",
+      "name": "User049_韓系少女",
+      "favorite_item_ids": [
+        "I022",
+        "I021",
+        "I025",
+        "I024",
+        "I015",
+        "I027",
+        "I017",
+        "I018"
+      ]
+    },
+    {
+      "user_id": "U050",
+      "name": "User050_韓系少女",
+      "favorite_item_ids": [
+        "I024",
+        "I025",
+        "I023",
+        "I022",
+        "I021",
+        "I029",
+        "I016",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U051",
+      "name": "User051_IKEA實用",
+      "favorite_item_ids": [
+        "I028",
+        "I029",
+        "I030",
+        "I026",
+        "I027",
+        "I015",
+        "I003"
+      ]
+    },
+    {
+      "user_id": "U052",
+      "name": "User052_IKEA實用",
+      "favorite_item_ids": [
+        "I028",
+        "I030",
+        "I027",
+        "I026",
+        "I029",
+        "I005",
+        "I008",
+        "I013",
+        "I023"
+      ]
+    },
+    {
+      "user_id": "U053",
+      "name": "User053_IKEA實用",
+      "favorite_item_ids": [
+        "I026",
+        "I029",
+        "I027",
+        "I028",
+        "I018",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U054",
+      "name": "User054_IKEA實用",
+      "favorite_item_ids": [
+        "I029",
+        "I030",
+        "I028",
+        "I026",
+        "I025",
+        "I019",
+        "I013",
+        "I016"
+      ]
+    },
+    {
+      "user_id": "U055",
+      "name": "User055_IKEA實用",
+      "favorite_item_ids": [
+        "I028",
+        "I029",
+        "I027",
+        "I026",
+        "I016"
+      ]
+    },
+    {
+      "user_id": "U056",
+      "name": "User056_IKEA實用",
+      "favorite_item_ids": [
+        "I029",
+        "I026",
+        "I027",
+        "I028",
+        "I022",
+        "I013"
+      ]
+    },
+    {
+      "user_id": "U057",
+      "name": "User057_IKEA實用",
+      "favorite_item_ids": [
+        "I029",
+        "I027",
+        "I028",
+        "I026",
+        "I030",
+        "I019",
+        "I022",
+        "I001",
+        "I003"
+      ]
+    },
+    {
+      "user_id": "U058",
+      "name": "User058_IKEA實用",
+      "favorite_item_ids": [
+        "I029",
+        "I027",
+        "I026",
+        "I030",
+        "I028",
+        "I011",
+        "I007",
+        "I015"
+      ]
+    },
+    {
+      "user_id": "U059",
+      "name": "User059_IKEA實用",
+      "favorite_item_ids": [
+        "I029",
+        "I028",
+        "I027",
+        "I030",
+        "I003",
+        "I016",
+        "I001"
+      ]
+    },
+    {
+      "user_id": "U060",
+      "name": "User060_IKEA實用",
+      "favorite_item_ids": [
+        "I028",
+        "I027",
+        "I030",
+        "I026",
+        "I029",
+        "I025",
+        "I001",
+        "I008"
+      ]
+    }
+  ]
+}
