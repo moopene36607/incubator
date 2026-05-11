@@ -1,0 +1,102 @@
+{
+  "seller_name": "海鷗精選 (蝦皮 / 露天 / Yahoo 賣家)",
+  "shop_url": "shopee.tw/seagull-select",
+  "monthly_orders": 850,
+  "_meta": "中型蝦皮賣家, 5 個商品線, 3 個月共 175 條評論。海鷗看星等是 4.3 / 5 不錯, 但不知道差評到底在抱怨什麼。",
+  "products": [
+    {
+      "product_id": "A-bluetooth-headphone",
+      "name": "藍牙耳機 V5.0 (NT$590)",
+      "category": "3C 配件"
+    },
+    {
+      "product_id": "B-cotton-tshirt",
+      "name": "純棉 T-shirt 短袖 (NT$390)",
+      "category": "服飾"
+    },
+    {
+      "product_id": "C-skincare-set",
+      "name": "韓國保養 3 件組 (NT$1290)",
+      "category": "美妝保養"
+    },
+    {
+      "product_id": "D-thermos",
+      "name": "保溫瓶 500ml (NT$450)",
+      "category": "生活用品"
+    },
+    {
+      "product_id": "E-bedding",
+      "name": "雙人床包組 (NT$890)",
+      "category": "寢具"
+    }
+  ],
+  "reviews": [
+    {"product_id": "A-bluetooth-headphone", "rating": 5, "text": "音質不錯藍牙連線穩定通勤剛好用一陣子沒問題"},
+    {"product_id": "A-bluetooth-headphone", "rating": 4, "text": "音質可以但續航沒到說的那麼久電池只有 3-4 小時"},
+    {"product_id": "A-bluetooth-headphone", "rating": 2, "text": "音質不錯但連線一直斷藍牙連線非常不穩定"},
+    {"product_id": "A-bluetooth-headphone", "rating": 2, "text": "藍牙會自動斷線真的很煩開會中常常掉訊號"},
+    {"product_id": "A-bluetooth-headphone", "rating": 1, "text": "連線品質太差用沒幾次就一直斷藍牙超不穩"},
+    {"product_id": "A-bluetooth-headphone", "rating": 3, "text": "藍牙連線時好時壞音質還行不過容易斷線"},
+    {"product_id": "A-bluetooth-headphone", "rating": 5, "text": "C/P 值高音質清楚耳塞舒適推薦"},
+    {"product_id": "A-bluetooth-headphone", "rating": 2, "text": "說好藍牙 5.0 結果連線品質跟 4.0 差不多會斷"},
+    {"product_id": "A-bluetooth-headphone", "rating": 4, "text": "音質好低音夠用配對快很滿意"},
+    {"product_id": "A-bluetooth-headphone", "rating": 1, "text": "用一週就壞掉了一邊聲音變很小品質有問題"},
+    {"product_id": "A-bluetooth-headphone", "rating": 2, "text": "說明書講中文但很多句子看不懂翻得很爛"},
+    {"product_id": "A-bluetooth-headphone", "rating": 3, "text": "中文說明書翻譯怪怪的看不太懂"},
+    {"product_id": "A-bluetooth-headphone", "rating": 5, "text": "送朋友很滿意音質還可以"},
+
+    {"product_id": "B-cotton-tshirt", "rating": 5, "text": "純棉很舒服尺寸合身洗完不縮水"},
+    {"product_id": "B-cotton-tshirt", "rating": 2, "text": "尺寸比想像中小很多 M 號穿起來像 S 號"},
+    {"product_id": "B-cotton-tshirt", "rating": 1, "text": "尺寸完全不對 L 號根本是 M 號要換貨"},
+    {"product_id": "B-cotton-tshirt", "rating": 3, "text": "棉質還可以但尺寸偏小要買大一號"},
+    {"product_id": "B-cotton-tshirt", "rating": 2, "text": "顏色跟照片差很多照片米白色實際偏黃"},
+    {"product_id": "B-cotton-tshirt", "rating": 2, "text": "拿到實品顏色跟網頁差太多色差有夠大"},
+    {"product_id": "B-cotton-tshirt", "rating": 4, "text": "材質不錯但尺寸偏小下次買大一號"},
+    {"product_id": "B-cotton-tshirt", "rating": 5, "text": "材質厚實顏色漂亮版型 ok 滿意"},
+    {"product_id": "B-cotton-tshirt", "rating": 1, "text": "洗一次就變形領口被撐開了縫線品質差"},
+    {"product_id": "B-cotton-tshirt", "rating": 2, "text": "縫線歪歪的領口縫得不齊細節做工很差"},
+    {"product_id": "B-cotton-tshirt", "rating": 3, "text": "整體還可以但領口處縫線有點脫線"},
+    {"product_id": "B-cotton-tshirt", "rating": 5, "text": "穿起來舒服剪裁合身 C/P 值高"},
+    {"product_id": "B-cotton-tshirt", "rating": 2, "text": "顏色色差大實品比照片暗很多很失望"},
+
+    {"product_id": "C-skincare-set", "rating": 5, "text": "化妝水保濕度不錯精華吸收快推薦"},
+    {"product_id": "C-skincare-set", "rating": 1, "text": "拿到時其中一瓶包裝壓壞了瓶身凹陷物流真的很粗暴"},
+    {"product_id": "C-skincare-set", "rating": 2, "text": "包裝破損瓶子被壓凹了泡棉根本不夠"},
+    {"product_id": "C-skincare-set", "rating": 1, "text": "包裝太簡陋直接丟箱子裡沒泡棉到貨時瓶子裂了"},
+    {"product_id": "C-skincare-set", "rating": 2, "text": "盒子被壓得變形包裝品質有夠爛"},
+    {"product_id": "C-skincare-set", "rating": 4, "text": "東西好用但收到時盒子有點凹陷"},
+    {"product_id": "C-skincare-set", "rating": 3, "text": "東西可以但寄送過程粗暴包裝盒嚴重變形"},
+    {"product_id": "C-skincare-set", "rating": 5, "text": "保濕效果很棒精華液好用價格合理"},
+    {"product_id": "C-skincare-set", "rating": 2, "text": "想退貨客服一直已讀不回沒人理"},
+    {"product_id": "C-skincare-set", "rating": 1, "text": "客服已讀不回想退貨完全沒人處理"},
+    {"product_id": "C-skincare-set", "rating": 4, "text": "保濕效果好但寄來時包裝破損"},
+    {"product_id": "C-skincare-set", "rating": 5, "text": "用了一週皮膚變細緻很喜歡推薦"},
+
+    {"product_id": "D-thermos", "rating": 1, "text": "保溫差說保 12 小時實際 4 小時就涼了"},
+    {"product_id": "D-thermos", "rating": 2, "text": "保溫不如預期早上裝熱水中午就微溫"},
+    {"product_id": "D-thermos", "rating": 5, "text": "保溫效果很好早上裝晚上還溫熱"},
+    {"product_id": "D-thermos", "rating": 1, "text": "保溫只有 3-4 小時跟說明完全不符差評"},
+    {"product_id": "D-thermos", "rating": 2, "text": "保溫力不行裝熱水兩小時就冷了"},
+    {"product_id": "D-thermos", "rating": 5, "text": "外型好看保溫不錯 C/P 值高"},
+    {"product_id": "D-thermos", "rating": 3, "text": "外觀漂亮但保溫只能維持半天有點失望"},
+    {"product_id": "D-thermos", "rating": 1, "text": "用一個月就漏水瓶蓋密封不佳品質差"},
+    {"product_id": "D-thermos", "rating": 2, "text": "瓶蓋漏水包包都濕了品質有問題"},
+    {"product_id": "D-thermos", "rating": 4, "text": "外型超喜歡顏色漂亮保溫普通"},
+    {"product_id": "D-thermos", "rating": 1, "text": "用兩週瓶蓋就裂開了塑膠質感很差"},
+    {"product_id": "D-thermos", "rating": 5, "text": "保溫力強而且輕便很滿意"},
+    {"product_id": "D-thermos", "rating": 2, "text": "瓶蓋容易卡死打不開很難用"},
+
+    {"product_id": "E-bedding", "rating": 5, "text": "床包觸感很好顏色漂亮值得購買"},
+    {"product_id": "E-bedding", "rating": 1, "text": "出貨真的很慢等了 10 天才到差評"},
+    {"product_id": "E-bedding", "rating": 2, "text": "出貨速度有夠慢等了一個禮拜以上"},
+    {"product_id": "E-bedding", "rating": 1, "text": "說 3-5 天到貨結果等了 12 天物流超慢"},
+    {"product_id": "E-bedding", "rating": 2, "text": "等貨等好久物流時間比預期長很多"},
+    {"product_id": "E-bedding", "rating": 4, "text": "品質不錯但出貨太慢等了 9 天"},
+    {"product_id": "E-bedding", "rating": 5, "text": "材質親膚舒服洗完不縮水推薦"},
+    {"product_id": "E-bedding", "rating": 1, "text": "床包尺寸不對家裡標準雙人床根本套不上"},
+    {"product_id": "E-bedding", "rating": 2, "text": "尺寸標示有問題說雙人實際比較小"},
+    {"product_id": "E-bedding", "rating": 3, "text": "材質還可以但尺寸跟說的差一點"},
+    {"product_id": "E-bedding", "rating": 5, "text": "顏色漂亮觸感舒服很滿意"},
+    {"product_id": "E-bedding", "rating": 1, "text": "出貨太慢加上尺寸不對退貨流程很麻煩"}
+  ]
+}
