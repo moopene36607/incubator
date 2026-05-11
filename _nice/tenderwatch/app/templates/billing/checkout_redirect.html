@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset="utf-8"><title>付款跳轉中…</title></head><body>
+<form id="f" method="post" action="{{ ecpay_url }}">
+{% for k, v in fields.items() %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endfor %}
+</form>
+<script>document.getElementById('f').submit();</script>
+</body></html>
