@@ -1,0 +1,78 @@
+{
+  "driver_id": "大都會 #88452 (10 年資 / 自有車)",
+  "query": {
+    "_meta": "陳大哥週六凌晨 02:30 收到一筆 LINE Taxi 訂單: 信義區 → 新店捷運站 (約 22km, 預估 50min), 估價 NT$ 360 但 surge x1.1 + 路況 2/5 (凌晨無塞車). 司機猶豫: 路途長但凌晨無客可挑, 該接還是繼續等?",
+    "order": {
+      "fare_ntd": 360,
+      "distance_km": 22,
+      "duration_min": 50,
+      "surge": 1.1,
+      "pickup_zone_density": 0.4,
+      "traffic_level": 2,
+      "hour": 2,
+      "is_weekend": true
+    }
+  },
+  "historical_orders": [
+    {"fare_ntd": 180, "distance_km": 4, "duration_min": 10, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 2, "hour": 10, "is_weekend": false},
+    {"fare_ntd": 150, "distance_km": 3, "duration_min": 8, "surge": 1.0, "pickup_zone_density": 0.8, "traffic_level": 3, "hour": 11, "is_weekend": false},
+    {"fare_ntd": 200, "distance_km": 5, "duration_min": 12, "surge": 1.1, "pickup_zone_density": 0.7, "traffic_level": 2, "hour": 14, "is_weekend": false},
+    {"fare_ntd": 165, "distance_km": 4, "duration_min": 11, "surge": 1.0, "pickup_zone_density": 0.6, "traffic_level": 2, "hour": 15, "is_weekend": false},
+    {"fare_ntd": 175, "distance_km": 3.5, "duration_min": 9, "surge": 1.0, "pickup_zone_density": 0.75, "traffic_level": 2, "hour": 16, "is_weekend": false},
+    {"fare_ntd": 185, "distance_km": 4.5, "duration_min": 11, "surge": 1.1, "pickup_zone_density": 0.8, "traffic_level": 2, "hour": 12, "is_weekend": false},
+    {"fare_ntd": 155, "distance_km": 3, "duration_min": 9, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 13, "is_weekend": false},
+    {"fare_ntd": 195, "distance_km": 5, "duration_min": 13, "surge": 1.1, "pickup_zone_density": 0.7, "traffic_level": 2, "hour": 14, "is_weekend": false},
+    {"fare_ntd": 160, "distance_km": 3.5, "duration_min": 10, "surge": 1.0, "pickup_zone_density": 0.75, "traffic_level": 2, "hour": 11, "is_weekend": false},
+    {"fare_ntd": 170, "distance_km": 4, "duration_min": 10, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 15, "is_weekend": false},
+    {"fare_ntd": 190, "distance_km": 4.5, "duration_min": 12, "surge": 1.1, "pickup_zone_density": 0.8, "traffic_level": 2, "hour": 13, "is_weekend": false},
+    {"fare_ntd": 145, "distance_km": 3, "duration_min": 8, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 2, "hour": 10, "is_weekend": false},
+    {"fare_ntd": 200, "distance_km": 5, "duration_min": 13, "surge": 1.1, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 14, "is_weekend": false},
+    {"fare_ntd": 175, "distance_km": 4, "duration_min": 11, "surge": 1.0, "pickup_zone_density": 0.75, "traffic_level": 2, "hour": 12, "is_weekend": false},
+    {"fare_ntd": 165, "distance_km": 3.5, "duration_min": 10, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 2, "hour": 16, "is_weekend": false},
+
+    {"fare_ntd": 450, "distance_km": 18, "duration_min": 32, "surge": 1.5, "pickup_zone_density": 0.6, "traffic_level": 3, "hour": 19, "is_weekend": true},
+    {"fare_ntd": 550, "distance_km": 22, "duration_min": 38, "surge": 1.7, "pickup_zone_density": 0.5, "traffic_level": 3, "hour": 20, "is_weekend": true},
+    {"fare_ntd": 600, "distance_km": 25, "duration_min": 42, "surge": 1.8, "pickup_zone_density": 0.5, "traffic_level": 2, "hour": 21, "is_weekend": true},
+    {"fare_ntd": 420, "distance_km": 16, "duration_min": 28, "surge": 1.4, "pickup_zone_density": 0.6, "traffic_level": 3, "hour": 18, "is_weekend": true},
+    {"fare_ntd": 500, "distance_km": 20, "duration_min": 35, "surge": 1.6, "pickup_zone_density": 0.55, "traffic_level": 3, "hour": 19, "is_weekend": true},
+    {"fare_ntd": 580, "distance_km": 23, "duration_min": 40, "surge": 1.7, "pickup_zone_density": 0.5, "traffic_level": 2, "hour": 20, "is_weekend": true},
+    {"fare_ntd": 460, "distance_km": 19, "duration_min": 34, "surge": 1.5, "pickup_zone_density": 0.6, "traffic_level": 3, "hour": 21, "is_weekend": true},
+    {"fare_ntd": 520, "distance_km": 21, "duration_min": 36, "surge": 1.6, "pickup_zone_density": 0.55, "traffic_level": 2, "hour": 19, "is_weekend": true},
+    {"fare_ntd": 440, "distance_km": 17, "duration_min": 30, "surge": 1.5, "pickup_zone_density": 0.65, "traffic_level": 3, "hour": 18, "is_weekend": true},
+    {"fare_ntd": 480, "distance_km": 18, "duration_min": 32, "surge": 1.5, "pickup_zone_density": 0.6, "traffic_level": 2, "hour": 20, "is_weekend": true},
+
+    {"fare_ntd": 280, "distance_km": 22, "duration_min": 50, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 2, "hour": 2, "is_weekend": false},
+    {"fare_ntd": 300, "distance_km": 25, "duration_min": 55, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 1, "hour": 3, "is_weekend": false},
+    {"fare_ntd": 290, "distance_km": 23, "duration_min": 52, "surge": 1.0, "pickup_zone_density": 0.25, "traffic_level": 2, "hour": 2, "is_weekend": false},
+    {"fare_ntd": 320, "distance_km": 26, "duration_min": 58, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 2, "hour": 4, "is_weekend": false},
+    {"fare_ntd": 270, "distance_km": 21, "duration_min": 48, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 2, "hour": 3, "is_weekend": false},
+    {"fare_ntd": 310, "distance_km": 24, "duration_min": 53, "surge": 1.0, "pickup_zone_density": 0.25, "traffic_level": 1, "hour": 4, "is_weekend": false},
+    {"fare_ntd": 285, "distance_km": 22, "duration_min": 50, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 2, "hour": 2, "is_weekend": false},
+    {"fare_ntd": 305, "distance_km": 24, "duration_min": 55, "surge": 1.0, "pickup_zone_density": 0.3, "traffic_level": 1, "hour": 3, "is_weekend": false},
+
+    {"fare_ntd": 300, "distance_km": 9, "duration_min": 42, "surge": 1.1, "pickup_zone_density": 0.6, "traffic_level": 5, "hour": 8, "is_weekend": false},
+    {"fare_ntd": 320, "distance_km": 10, "duration_min": 48, "surge": 1.1, "pickup_zone_density": 0.65, "traffic_level": 5, "hour": 17, "is_weekend": false},
+    {"fare_ntd": 290, "distance_km": 8, "duration_min": 40, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 5, "hour": 8, "is_weekend": false},
+    {"fare_ntd": 310, "distance_km": 9, "duration_min": 45, "surge": 1.1, "pickup_zone_density": 0.65, "traffic_level": 4, "hour": 9, "is_weekend": false},
+    {"fare_ntd": 295, "distance_km": 8.5, "duration_min": 42, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 5, "hour": 17, "is_weekend": false},
+    {"fare_ntd": 325, "distance_km": 10, "duration_min": 48, "surge": 1.1, "pickup_zone_density": 0.6, "traffic_level": 5, "hour": 18, "is_weekend": false},
+    {"fare_ntd": 305, "distance_km": 9, "duration_min": 44, "surge": 1.0, "pickup_zone_density": 0.65, "traffic_level": 4, "hour": 8, "is_weekend": false},
+    {"fare_ntd": 280, "distance_km": 8, "duration_min": 40, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 5, "hour": 17, "is_weekend": false},
+
+    {"fare_ntd": 250, "distance_km": 9, "duration_min": 25, "surge": 1.1, "pickup_zone_density": 0.5, "traffic_level": 3, "hour": 14, "is_weekend": false},
+    {"fare_ntd": 230, "distance_km": 8, "duration_min": 22, "surge": 1.0, "pickup_zone_density": 0.5, "traffic_level": 3, "hour": 15, "is_weekend": false},
+    {"fare_ntd": 270, "distance_km": 11, "duration_min": 28, "surge": 1.1, "pickup_zone_density": 0.5, "traffic_level": 3, "hour": 13, "is_weekend": false},
+    {"fare_ntd": 240, "distance_km": 9, "duration_min": 24, "surge": 1.0, "pickup_zone_density": 0.5, "traffic_level": 3, "hour": 16, "is_weekend": false},
+    {"fare_ntd": 260, "distance_km": 10, "duration_min": 26, "surge": 1.0, "pickup_zone_density": 0.55, "traffic_level": 3, "hour": 14, "is_weekend": false},
+
+    {"fare_ntd": 350, "distance_km": 14, "duration_min": 25, "surge": 1.3, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 18, "is_weekend": true},
+    {"fare_ntd": 380, "distance_km": 15, "duration_min": 28, "surge": 1.4, "pickup_zone_density": 0.6, "traffic_level": 3, "hour": 19, "is_weekend": true},
+    {"fare_ntd": 360, "distance_km": 14, "duration_min": 26, "surge": 1.3, "pickup_zone_density": 0.65, "traffic_level": 3, "hour": 17, "is_weekend": true},
+    {"fare_ntd": 390, "distance_km": 15.5, "duration_min": 28, "surge": 1.4, "pickup_zone_density": 0.6, "traffic_level": 2, "hour": 20, "is_weekend": true},
+
+    {"fare_ntd": 220, "distance_km": 6, "duration_min": 18, "surge": 1.1, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 12, "is_weekend": false},
+    {"fare_ntd": 210, "distance_km": 5.5, "duration_min": 16, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 14, "is_weekend": false},
+    {"fare_ntd": 235, "distance_km": 6.5, "duration_min": 20, "surge": 1.1, "pickup_zone_density": 0.65, "traffic_level": 2, "hour": 13, "is_weekend": false},
+    {"fare_ntd": 215, "distance_km": 6, "duration_min": 17, "surge": 1.0, "pickup_zone_density": 0.7, "traffic_level": 3, "hour": 15, "is_weekend": false}
+  ]
+}
