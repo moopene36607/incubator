@@ -1,0 +1,72 @@
+{
+  "wedding_info": {
+    "couple": "陳大華 + 林惠美",
+    "venue": "台北圓山大飯店金龍廳",
+    "date": "2026-09-19",
+    "total_guests": 50,
+    "total_tables": 6
+  },
+  "tables": [
+    {"table_id": "T01", "name": "主桌(新郎新娘 + 雙方父母 + VIP 長輩)", "capacity": 10, "is_vip": true, "preferred_groups": ["新人", "家族-新郎", "家族-新娘"]},
+    {"table_id": "T02", "name": "新郎家族桌", "capacity": 10, "is_vip": false, "preferred_groups": ["家族-新郎"]},
+    {"table_id": "T03", "name": "新娘家族桌", "capacity": 10, "is_vip": false, "preferred_groups": ["家族-新娘"]},
+    {"table_id": "T04", "name": "新郎同事桌", "capacity": 10, "is_vip": false, "preferred_groups": ["同事-新郎"]},
+    {"table_id": "T05", "name": "新娘同事桌", "capacity": 10, "is_vip": false, "preferred_groups": ["同事-新娘"]},
+    {"table_id": "T06", "name": "同學桌(新郎 + 新娘共同朋友)", "capacity": 10, "is_vip": false, "preferred_groups": ["同學"]}
+  ],
+  "guests": [
+    {"guest_id": "G001", "name": "陳大華(新郎)", "group": "新人", "is_vip": true, "must_pair_with": ["G002"]},
+    {"guest_id": "G002", "name": "林惠美(新娘)", "group": "新人", "is_vip": true, "must_pair_with": ["G001"]},
+    {"guest_id": "G003", "name": "陳父(新郎父親)", "group": "家族-新郎", "is_vip": true, "must_pair_with": ["G004"]},
+    {"guest_id": "G004", "name": "陳母(新郎母親)", "group": "家族-新郎", "is_vip": true, "must_pair_with": ["G003"]},
+    {"guest_id": "G005", "name": "林父(新娘父親)", "group": "家族-新娘", "is_vip": true, "must_pair_with": ["G006"]},
+    {"guest_id": "G006", "name": "林母(新娘母親)", "group": "家族-新娘", "is_vip": true, "must_pair_with": ["G005"]},
+    {"guest_id": "G007", "name": "陳爺爺(VIP 長輩)", "group": "家族-新郎", "is_vip": true},
+    {"guest_id": "G008", "name": "林奶奶(VIP 長輩)", "group": "家族-新娘", "is_vip": true},
+
+    {"guest_id": "G011", "name": "陳大叔(新郎 uncle)", "group": "家族-新郎", "avoid_pair_with": ["G014"], "notes": "跟陳二叔有歷史過節,不能同桌"},
+    {"guest_id": "G012", "name": "陳大嬸(新郎大嬸)", "group": "家族-新郎", "must_pair_with": ["G011"]},
+    {"guest_id": "G013", "name": "陳堂哥(新郎堂哥)", "group": "家族-新郎"},
+    {"guest_id": "G014", "name": "陳二叔(新郎 uncle)", "group": "家族-新郎", "avoid_pair_with": ["G011"]},
+    {"guest_id": "G015", "name": "陳二嬸", "group": "家族-新郎", "must_pair_with": ["G014"]},
+    {"guest_id": "G016", "name": "陳姑姑", "group": "家族-新郎"},
+    {"guest_id": "G017", "name": "陳堂妹", "group": "家族-新郎"},
+    {"guest_id": "G018", "name": "陳堂弟", "group": "家族-新郎"},
+
+    {"guest_id": "G021", "name": "林舅舅", "group": "家族-新娘"},
+    {"guest_id": "G022", "name": "林舅媽", "group": "家族-新娘", "must_pair_with": ["G021"]},
+    {"guest_id": "G023", "name": "林表姊", "group": "家族-新娘"},
+    {"guest_id": "G024", "name": "林表姊夫", "group": "家族-新娘", "must_pair_with": ["G023"]},
+    {"guest_id": "G025", "name": "林大姨", "group": "家族-新娘"},
+    {"guest_id": "G026", "name": "林二姨", "group": "家族-新娘"},
+    {"guest_id": "G027", "name": "林姨丈", "group": "家族-新娘", "must_pair_with": ["G025"]},
+    {"guest_id": "G028", "name": "林表弟", "group": "家族-新娘"},
+
+    {"guest_id": "G031", "name": "陳同事張總", "group": "同事-新郎", "notes": "新郎主管"},
+    {"guest_id": "G032", "name": "陳同事 RD 小李", "group": "同事-新郎"},
+    {"guest_id": "G033", "name": "陳同事 RD 小張", "group": "同事-新郎"},
+    {"guest_id": "G034", "name": "陳同事 PM 小王", "group": "同事-新郎"},
+    {"guest_id": "G035", "name": "陳同事 PM 小陳", "group": "同事-新郎"},
+    {"guest_id": "G036", "name": "陳前同事老趙", "group": "同事-新郎"},
+    {"guest_id": "G037", "name": "陳前同事老錢", "group": "同事-新郎", "avoid_pair_with": ["G036"], "notes": "離職前曾與老趙不愉快,避免同桌"},
+    {"guest_id": "G038", "name": "陳前同事老孫", "group": "同事-新郎"},
+
+    {"guest_id": "G041", "name": "林同事 HR 王經理", "group": "同事-新娘", "notes": "新娘主管"},
+    {"guest_id": "G042", "name": "林同事 marketing 阿芳", "group": "同事-新娘"},
+    {"guest_id": "G043", "name": "林同事 marketing 阿玲", "group": "同事-新娘"},
+    {"guest_id": "G044", "name": "林同事 sales 阿美", "group": "同事-新娘"},
+    {"guest_id": "G045", "name": "林同事 sales 阿君", "group": "同事-新娘"},
+    {"guest_id": "G046", "name": "林前同事麗珠", "group": "同事-新娘"},
+    {"guest_id": "G047", "name": "林前同事美鳳", "group": "同事-新娘"},
+    {"guest_id": "G048", "name": "林前同事玉嬌", "group": "同事-新娘"},
+
+    {"guest_id": "G051", "name": "陳大學同學阿強", "group": "同學"},
+    {"guest_id": "G052", "name": "陳大學同學阿明", "group": "同學"},
+    {"guest_id": "G053", "name": "陳大學同學阿輝", "group": "同學"},
+    {"guest_id": "G054", "name": "陳大學同學阿傑", "group": "同學"},
+    {"guest_id": "G055", "name": "林大學同學小芸", "group": "同學"},
+    {"guest_id": "G056", "name": "林大學同學小靜", "group": "同學"},
+    {"guest_id": "G057", "name": "林大學同學小雯", "group": "同學"},
+    {"guest_id": "G058", "name": "林大學同學小琪", "group": "同學"}
+  ]
+}
