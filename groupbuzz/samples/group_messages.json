@@ -1,0 +1,1836 @@
+{
+  "group_name": "中和媽咪愛買團 (LINE 團購)",
+  "_meta": "50 人 LINE 團購群, 阿美團媽主導 + 麗華團長協助, 3 名 loyal followers, 5 名最近加入 lurker. 7 天 ~220 訊息.",
+  "members": {
+    "U001": "阿美團媽",
+    "U002": "麗華團長",
+    "U003": "美月學姐",
+    "U004": "雅婷",
+    "U005": "小婷婷",
+    "U006": "玲玲",
+    "U007": "Mary",
+    "U008": "Tracy",
+    "U009": "Anita",
+    "U010": "Karen",
+    "U011": "怡君",
+    "U012": "淑芳",
+    "U013": "佩玲",
+    "U014": "佩珊",
+    "U015": "佩玉",
+    "U016": "婉君",
+    "U017": "宜君",
+    "U018": "雅芳",
+    "U019": "雅芬",
+    "U020": "麗君",
+    "U021": "玉鳳",
+    "U022": "玉雯",
+    "U023": "玉芬",
+    "U024": "美雲",
+    "U025": "美麗",
+    "U026": "淑慧",
+    "U027": "淑娟",
+    "U028": "淑貞",
+    "U029": "淑英",
+    "U030": "玉珍",
+    "U031": "Linda",
+    "U032": "Wendy",
+    "U033": "Cherry",
+    "U034": "Ivy",
+    "U035": "Vivi",
+    "U036": "媽咪 A",
+    "U037": "媽咪 B",
+    "U038": "媽咪 C",
+    "U039": "媽咪 D",
+    "U040": "媽咪 E",
+    "U041": "Aunt 1",
+    "U042": "Aunt 2",
+    "U043": "Aunt 3",
+    "U044": "Aunt 4",
+    "U045": "Aunt 5",
+    "U046": "新加入 1",
+    "U047": "新加入 2",
+    "U048": "新加入 3",
+    "U049": "新加入 4",
+    "U050": "新加入 5"
+  },
+  "messages": [
+    {
+      "msg_id": "M0001",
+      "sender_id": "U001",
+      "timestamp": "2026-05-05T09:00",
+      "text": "今天開新團! 第 1 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U011",
+          "U039",
+          "U005",
+          "U041",
+          "U004",
+          "U023",
+          "U048"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0002",
+      "sender_id": "U048",
+      "timestamp": "2026-05-05T10:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0003",
+      "sender_id": "U032",
+      "timestamp": "2026-05-05T11:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0004",
+      "sender_id": "U034",
+      "timestamp": "2026-05-05T12:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0005",
+      "sender_id": "U027",
+      "timestamp": "2026-05-05T13:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0006",
+      "sender_id": "U018",
+      "timestamp": "2026-05-05T14:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0007",
+      "sender_id": "U015",
+      "timestamp": "2026-05-05T15:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0008",
+      "sender_id": "U031",
+      "timestamp": "2026-05-05T16:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0009",
+      "sender_id": "U022",
+      "timestamp": "2026-05-05T17:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0010",
+      "sender_id": "U002",
+      "timestamp": "2026-05-05T18:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U036",
+          "U038",
+          "U045",
+          "U031",
+          "U047"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0011",
+      "sender_id": "U009",
+      "timestamp": "2026-05-05T19:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0012",
+      "sender_id": "U013",
+      "timestamp": "2026-05-05T20:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0013",
+      "sender_id": "U040",
+      "timestamp": "2026-05-05T21:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0014",
+      "sender_id": "U042",
+      "timestamp": "2026-05-05T08:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0001",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0015",
+      "sender_id": "U001",
+      "timestamp": "2026-05-05T09:00",
+      "text": "今天開新團! 第 2 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U008",
+          "U014",
+          "U025",
+          "U029",
+          "U043",
+          "U018",
+          "U027",
+          "U049"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0016",
+      "sender_id": "U025",
+      "timestamp": "2026-05-05T10:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0017",
+      "sender_id": "U023",
+      "timestamp": "2026-05-05T11:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0018",
+      "sender_id": "U012",
+      "timestamp": "2026-05-05T12:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0019",
+      "sender_id": "U045",
+      "timestamp": "2026-05-05T13:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0020",
+      "sender_id": "U007",
+      "timestamp": "2026-05-05T14:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0021",
+      "sender_id": "U021",
+      "timestamp": "2026-05-05T15:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0022",
+      "sender_id": "U038",
+      "timestamp": "2026-05-05T16:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0023",
+      "sender_id": "U037",
+      "timestamp": "2026-05-05T17:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0024",
+      "sender_id": "U013",
+      "timestamp": "2026-05-05T18:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0025",
+      "sender_id": "U022",
+      "timestamp": "2026-05-05T19:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0026",
+      "sender_id": "U032",
+      "timestamp": "2026-05-05T20:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0015",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0027",
+      "sender_id": "U001",
+      "timestamp": "2026-05-05T21:00",
+      "text": "今天開新團! 第 3 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U028",
+          "U038",
+          "U015",
+          "U040",
+          "U002",
+          "U044"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0028",
+      "sender_id": "U008",
+      "timestamp": "2026-05-05T08:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0029",
+      "sender_id": "U044",
+      "timestamp": "2026-05-05T09:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0030",
+      "sender_id": "U033",
+      "timestamp": "2026-05-05T10:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0031",
+      "sender_id": "U011",
+      "timestamp": "2026-05-05T11:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0032",
+      "sender_id": "U029",
+      "timestamp": "2026-05-05T12:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0033",
+      "sender_id": "U022",
+      "timestamp": "2026-05-05T13:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0034",
+      "sender_id": "U021",
+      "timestamp": "2026-05-05T14:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0035",
+      "sender_id": "U003",
+      "timestamp": "2026-05-06T15:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U001",
+          "U029",
+          "U007",
+          "U045",
+          "U008",
+          "U027",
+          "U016"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0036",
+      "sender_id": "U035",
+      "timestamp": "2026-05-06T16:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0027",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0037",
+      "sender_id": "U001",
+      "timestamp": "2026-05-06T17:00",
+      "text": "今天開新團! 第 4 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U003",
+          "U024",
+          "U028",
+          "U002"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0038",
+      "sender_id": "U028",
+      "timestamp": "2026-05-06T18:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0039",
+      "sender_id": "U003",
+      "timestamp": "2026-05-06T19:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U026",
+          "U009",
+          "U029",
+          "U031"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0040",
+      "sender_id": "U038",
+      "timestamp": "2026-05-06T20:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0041",
+      "sender_id": "U017",
+      "timestamp": "2026-05-06T21:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0042",
+      "sender_id": "U002",
+      "timestamp": "2026-05-06T08:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U040",
+          "U023",
+          "U043"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0043",
+      "sender_id": "U013",
+      "timestamp": "2026-05-06T09:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0044",
+      "sender_id": "U025",
+      "timestamp": "2026-05-06T10:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0045",
+      "sender_id": "U031",
+      "timestamp": "2026-05-06T11:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0046",
+      "sender_id": "U050",
+      "timestamp": "2026-05-06T12:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0047",
+      "sender_id": "U033",
+      "timestamp": "2026-05-06T13:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0048",
+      "sender_id": "U009",
+      "timestamp": "2026-05-06T14:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0037",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0049",
+      "sender_id": "U001",
+      "timestamp": "2026-05-06T15:00",
+      "text": "今天開新團! 第 5 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U017",
+          "U010",
+          "U044",
+          "U006",
+          "U018",
+          "U005"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0050",
+      "sender_id": "U038",
+      "timestamp": "2026-05-06T16:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0051",
+      "sender_id": "U045",
+      "timestamp": "2026-05-06T17:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0052",
+      "sender_id": "U039",
+      "timestamp": "2026-05-06T18:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0053",
+      "sender_id": "U042",
+      "timestamp": "2026-05-06T19:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0054",
+      "sender_id": "U018",
+      "timestamp": "2026-05-06T20:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0055",
+      "sender_id": "U002",
+      "timestamp": "2026-05-06T21:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U016",
+          "U033",
+          "U036",
+          "U022",
+          "U037",
+          "U043"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0056",
+      "sender_id": "U016",
+      "timestamp": "2026-05-06T08:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0057",
+      "sender_id": "U037",
+      "timestamp": "2026-05-06T09:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0058",
+      "sender_id": "U027",
+      "timestamp": "2026-05-06T10:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0059",
+      "sender_id": "U010",
+      "timestamp": "2026-05-06T11:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0049",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0060",
+      "sender_id": "U001",
+      "timestamp": "2026-05-06T12:00",
+      "text": "今天開新團! 第 6 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {
+        "❤️": [
+          "U018",
+          "U020",
+          "U026",
+          "U042"
+        ]
+      }
+    },
+    {
+      "msg_id": "M0061",
+      "sender_id": "U048",
+      "timestamp": "2026-05-06T13:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0062",
+      "sender_id": "U029",
+      "timestamp": "2026-05-06T14:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0063",
+      "sender_id": "U037",
+      "timestamp": "2026-05-06T15:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0064",
+      "sender_id": "U013",
+      "timestamp": "2026-05-06T16:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0065",
+      "sender_id": "U022",
+      "timestamp": "2026-05-06T17:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0066",
+      "sender_id": "U027",
+      "timestamp": "2026-05-06T18:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0067",
+      "sender_id": "U023",
+      "timestamp": "2026-05-06T19:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0068",
+      "sender_id": "U020",
+      "timestamp": "2026-05-06T20:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0069",
+      "sender_id": "U025",
+      "timestamp": "2026-05-06T21:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0070",
+      "sender_id": "U017",
+      "timestamp": "2026-05-07T08:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0071",
+      "sender_id": "U018",
+      "timestamp": "2026-05-07T09:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0072",
+      "sender_id": "U024",
+      "timestamp": "2026-05-07T10:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0073",
+      "sender_id": "U034",
+      "timestamp": "2026-05-07T11:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0074",
+      "sender_id": "U006",
+      "timestamp": "2026-05-07T12:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0060",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0075",
+      "sender_id": "U001",
+      "timestamp": "2026-05-07T13:00",
+      "text": "今天開新團! 第 7 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0076",
+      "sender_id": "U013",
+      "timestamp": "2026-05-07T14:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0077",
+      "sender_id": "U031",
+      "timestamp": "2026-05-07T15:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0078",
+      "sender_id": "U002",
+      "timestamp": "2026-05-07T16:00",
+      "text": "+1",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0079",
+      "sender_id": "U021",
+      "timestamp": "2026-05-07T17:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0080",
+      "sender_id": "U014",
+      "timestamp": "2026-05-07T18:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0081",
+      "sender_id": "U029",
+      "timestamp": "2026-05-07T19:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0082",
+      "sender_id": "U041",
+      "timestamp": "2026-05-07T20:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0083",
+      "sender_id": "U036",
+      "timestamp": "2026-05-07T21:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0084",
+      "sender_id": "U044",
+      "timestamp": "2026-05-07T08:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0085",
+      "sender_id": "U017",
+      "timestamp": "2026-05-07T09:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0086",
+      "sender_id": "U032",
+      "timestamp": "2026-05-07T10:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0087",
+      "sender_id": "U034",
+      "timestamp": "2026-05-07T11:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0088",
+      "sender_id": "U005",
+      "timestamp": "2026-05-07T12:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0075",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0089",
+      "sender_id": "U001",
+      "timestamp": "2026-05-07T13:00",
+      "text": "今天開新團! 第 8 團 NT$XXX 截單明晚 8 點",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0090",
+      "sender_id": "U016",
+      "timestamp": "2026-05-07T14:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0091",
+      "sender_id": "U043",
+      "timestamp": "2026-05-07T15:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0092",
+      "sender_id": "U013",
+      "timestamp": "2026-05-07T16:00",
+      "text": "我也要",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0093",
+      "sender_id": "U032",
+      "timestamp": "2026-05-07T17:00",
+      "text": "+2",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0094",
+      "sender_id": "U007",
+      "timestamp": "2026-05-07T18:00",
+      "text": "我要一份",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0095",
+      "sender_id": "U024",
+      "timestamp": "2026-05-07T19:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0096",
+      "sender_id": "U044",
+      "timestamp": "2026-05-07T20:00",
+      "text": "幫我 +1 謝謝",
+      "reply_to_msg_id": "M0089",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0097",
+      "sender_id": "U002",
+      "timestamp": "2026-05-07T21:00",
+      "text": "提醒一下大家明天截單 + 集貨地點: XX 公園",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0098",
+      "sender_id": "U009",
+      "timestamp": "2026-05-07T08:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0099",
+      "sender_id": "U034",
+      "timestamp": "2026-05-07T09:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0100",
+      "sender_id": "U014",
+      "timestamp": "2026-05-07T10:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0101",
+      "sender_id": "U027",
+      "timestamp": "2026-05-07T11:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0102",
+      "sender_id": "U008",
+      "timestamp": "2026-05-07T12:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0103",
+      "sender_id": "U001",
+      "timestamp": "2026-05-07T13:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0104",
+      "sender_id": "U024",
+      "timestamp": "2026-05-07T14:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0105",
+      "sender_id": "U010",
+      "timestamp": "2026-05-08T15:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0106",
+      "sender_id": "U006",
+      "timestamp": "2026-05-08T16:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0107",
+      "sender_id": "U023",
+      "timestamp": "2026-05-08T17:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0097",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0108",
+      "sender_id": "U002",
+      "timestamp": "2026-05-08T18:00",
+      "text": "提醒一下大家明天截單 + 集貨地點: XX 公園",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0109",
+      "sender_id": "U044",
+      "timestamp": "2026-05-08T19:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0108",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0110",
+      "sender_id": "U015",
+      "timestamp": "2026-05-08T20:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0108",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0111",
+      "sender_id": "U005",
+      "timestamp": "2026-05-08T21:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0108",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0112",
+      "sender_id": "U016",
+      "timestamp": "2026-05-08T08:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0108",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0113",
+      "sender_id": "U017",
+      "timestamp": "2026-05-08T09:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0108",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0114",
+      "sender_id": "U002",
+      "timestamp": "2026-05-08T10:00",
+      "text": "提醒一下大家明天截單 + 集貨地點: XX 公園",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0115",
+      "sender_id": "U044",
+      "timestamp": "2026-05-08T11:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0116",
+      "sender_id": "U033",
+      "timestamp": "2026-05-08T12:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0117",
+      "sender_id": "U026",
+      "timestamp": "2026-05-08T13:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0118",
+      "sender_id": "U003",
+      "timestamp": "2026-05-08T14:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0119",
+      "sender_id": "U035",
+      "timestamp": "2026-05-08T15:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0120",
+      "sender_id": "U019",
+      "timestamp": "2026-05-08T16:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0121",
+      "sender_id": "U010",
+      "timestamp": "2026-05-08T17:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0114",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0122",
+      "sender_id": "U002",
+      "timestamp": "2026-05-08T18:00",
+      "text": "提醒一下大家明天截單 + 集貨地點: XX 公園",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0123",
+      "sender_id": "U026",
+      "timestamp": "2026-05-08T19:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0122",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0124",
+      "sender_id": "U011",
+      "timestamp": "2026-05-08T20:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0122",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0125",
+      "sender_id": "U013",
+      "timestamp": "2026-05-08T21:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0122",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0126",
+      "sender_id": "U012",
+      "timestamp": "2026-05-08T08:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0122",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0127",
+      "sender_id": "U003",
+      "timestamp": "2026-05-08T09:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0122",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0128",
+      "sender_id": "U002",
+      "timestamp": "2026-05-08T10:00",
+      "text": "提醒一下大家明天截單 + 集貨地點: XX 公園",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0129",
+      "sender_id": "U023",
+      "timestamp": "2026-05-08T11:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0130",
+      "sender_id": "U028",
+      "timestamp": "2026-05-08T12:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0131",
+      "sender_id": "U005",
+      "timestamp": "2026-05-08T13:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0132",
+      "sender_id": "U043",
+      "timestamp": "2026-05-08T14:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0133",
+      "sender_id": "U038",
+      "timestamp": "2026-05-08T15:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0134",
+      "sender_id": "U045",
+      "timestamp": "2026-05-08T16:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0135",
+      "sender_id": "U014",
+      "timestamp": "2026-05-08T17:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [
+        "U002"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0136",
+      "sender_id": "U019",
+      "timestamp": "2026-05-08T18:00",
+      "text": "好的收到",
+      "reply_to_msg_id": "M0128",
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0137",
+      "sender_id": "U003",
+      "timestamp": "2026-05-08T19:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0138",
+      "sender_id": "U005",
+      "timestamp": "2026-05-08T20:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0139",
+      "sender_id": "U003",
+      "timestamp": "2026-05-08T21:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0140",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T08:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0141",
+      "sender_id": "U003",
+      "timestamp": "2026-05-09T09:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0142",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T10:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0143",
+      "sender_id": "U004",
+      "timestamp": "2026-05-09T11:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0144",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T12:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0145",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T13:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0146",
+      "sender_id": "U003",
+      "timestamp": "2026-05-09T14:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0147",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T15:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0148",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T16:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0149",
+      "sender_id": "U003",
+      "timestamp": "2026-05-09T17:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0150",
+      "sender_id": "U005",
+      "timestamp": "2026-05-09T18:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0151",
+      "sender_id": "U003",
+      "timestamp": "2026-05-09T19:00",
+      "text": "@阿美團媽 上次那個商品真的不錯 + 推薦",
+      "reply_to_msg_id": null,
+      "mentions": [
+        "U001"
+      ],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0152",
+      "sender_id": "U014",
+      "timestamp": "2026-05-09T20:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0153",
+      "sender_id": "U040",
+      "timestamp": "2026-05-09T21:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0154",
+      "sender_id": "U008",
+      "timestamp": "2026-05-09T08:00",
+      "text": "我問問家人",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0155",
+      "sender_id": "U030",
+      "timestamp": "2026-05-09T09:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0156",
+      "sender_id": "U028",
+      "timestamp": "2026-05-09T10:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0157",
+      "sender_id": "U045",
+      "timestamp": "2026-05-09T11:00",
+      "text": "我問問家人",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0158",
+      "sender_id": "U045",
+      "timestamp": "2026-05-09T12:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0159",
+      "sender_id": "U027",
+      "timestamp": "2026-05-09T13:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0160",
+      "sender_id": "U027",
+      "timestamp": "2026-05-09T14:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0161",
+      "sender_id": "U018",
+      "timestamp": "2026-05-09T15:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0162",
+      "sender_id": "U017",
+      "timestamp": "2026-05-09T16:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0163",
+      "sender_id": "U015",
+      "timestamp": "2026-05-09T17:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0164",
+      "sender_id": "U039",
+      "timestamp": "2026-05-09T18:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0165",
+      "sender_id": "U020",
+      "timestamp": "2026-05-09T19:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0166",
+      "sender_id": "U012",
+      "timestamp": "2026-05-09T20:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0167",
+      "sender_id": "U042",
+      "timestamp": "2026-05-09T21:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0168",
+      "sender_id": "U044",
+      "timestamp": "2026-05-09T08:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0169",
+      "sender_id": "U016",
+      "timestamp": "2026-05-09T09:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0170",
+      "sender_id": "U034",
+      "timestamp": "2026-05-09T10:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0171",
+      "sender_id": "U022",
+      "timestamp": "2026-05-09T11:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0172",
+      "sender_id": "U043",
+      "timestamp": "2026-05-09T12:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0173",
+      "sender_id": "U043",
+      "timestamp": "2026-05-09T13:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0174",
+      "sender_id": "U007",
+      "timestamp": "2026-05-09T14:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0175",
+      "sender_id": "U016",
+      "timestamp": "2026-05-10T15:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0176",
+      "sender_id": "U006",
+      "timestamp": "2026-05-10T16:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0177",
+      "sender_id": "U041",
+      "timestamp": "2026-05-10T17:00",
+      "text": "等等看",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0178",
+      "sender_id": "U024",
+      "timestamp": "2026-05-10T18:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0179",
+      "sender_id": "U037",
+      "timestamp": "2026-05-10T19:00",
+      "text": "考慮一下",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0180",
+      "sender_id": "U010",
+      "timestamp": "2026-05-10T20:00",
+      "text": "嗯",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    },
+    {
+      "msg_id": "M0181",
+      "sender_id": "U028",
+      "timestamp": "2026-05-10T21:00",
+      "text": "好喔",
+      "reply_to_msg_id": null,
+      "mentions": [],
+      "reactions": {}
+    }
+  ]
+}
