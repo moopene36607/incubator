@@ -1,0 +1,5 @@
+### Round 20 — `cropscan/` (Taiwan 🇹🇼 — crop disease vision classification, **ninth non-doc-gen pattern**)
+
+- **題目**: 台灣作物 AI 病蟲害辨識 + 台灣許可農藥建議(作物 + 病徵描述 → Top 3 候選病害 + 防治建議 + 農改場聯絡)
+- **解決的問題**: 台灣 77 萬農家,中小型 1-5 公頃蔬果農遇病蟲害時:農改場推廣員每位覆蓋上百戶,LINE 回覆 3-5 天;農藥誤噴每次損失 NT$3,000-8,000;錯過黃金 24 小時處理期損失差 10x。PlantVillage / Plantix 訓練集偏歐美印,**台灣本土作物(蓮霧 / 鳳梨釋迦 / 火龍果 / 芒果炭疽)覆蓋極低**;農委會「農業易」App 只有圖鑑無 AI;iPlant(中國)用大陸農藥不符台灣法規。**架構:Pure Vision Classification**(prototype 用文字描述代替真實照片)— `pest_db.py` 25+ 條台灣本土病蟲害 corpus(每筆完整 metadata:典型症狀關鍵字 / 嚴重度判斷 / 台灣許可農藥 / 採收安全期 / 預防 / 何時必聯絡農改場);Claude 比對使用者症狀描述 vs corpus → Top 3 候選 + 0-100 confidence + 命中症狀明細 + 嚴重度推估。**LLM 永不編造農藥名**(所有用藥建議來自 corpus 預存的台灣許可清單)。Low confidence 自動建議聯絡農改場。
+- **目標市場**: 30 萬戶中小型農家 + 各區農改場 6 處 + 鄉鎮農會 + 農藥行。農民 Pro NT$299/月、農會 / 農資行白標 NT$5,000/月、農改場授權 NT$15,000/月、農藥行 sponsored NT$5/click。WTP:1 次農藥誤噴 NT$3-8K vs Pro NT$299 = 單次回本年費。TAM 3% 滲透 = 9,000 戶 × NT$299 = **月 NT$270 萬 MRR / 年 NT$3,240 萬 ARR**;加 B2B + 農藥 sponsored → 翻倍。Distribution: 農業易 FB 社團 5 萬人、PTT Agriculture、各區農改場 partner、鄉鎮農會 LINE 白標、農藥行 partner、農委會數位推動補助。

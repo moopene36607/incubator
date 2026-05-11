@@ -1,0 +1,5 @@
+### Round 14 — `subsidybot/` (Taiwan 🇹🇼 — government subsidy RAG Q&A, **third non-doc-gen pattern**)
+
+- **題目**: 台灣中小企業 / 創業 / 個人補助 RAG Q&A 助手(用戶條件 + 自由問題 → 30 秒比對符合方案)
+- **解決的問題**: 台灣補助散在 N 個機關(經濟部 / 勞動部 / 農業部 / 數位部 / 各縣市),普通創業者每次自己 Google 2-3 小時還可能漏。PTT Entrepreneur:「請問台灣創業補助有哪些?每次都要自己去 N 個不同網站找資料」。SBIR 官網是靜態 FAQ;104 補助資料庫無法答「我符合嗎」;ChatGPT 直接問**幻覺嚴重**(常給已截止方案);律師諮詢一次 NT$3,000-5,000 小企業負擔不起。架構:**`subsidies_db.py` 結構化 corpus(8 個方案 metadata)+ `retrieval.py` 純函式硬條件比對(年齡 / 設立年限 / 員工 / 行業 / 性別)+ Claude 嚴格 RAG(只 cite 提供 corpus,絕不編造)**。Bug fix during testing: 性別 substring 比對誤判 25 男符合「男(45歲以上)」— 改 exact match。
+- **目標市場**: 1-10 人微型企業主 ~150,000 人 + 自由工作者 + 個人創業者 = 200,000+ 潛在用戶。Pro NT$299/月、企業版 NT$799/月、API NT$0.5/call、Enterprise NT$5,000+/月。WTP:每月省 2-3 小時查補助 × 機會成本 = NT$600-1,800 vs Pro NT$299 = 2-6x ROI。TAM 1% 滲透 = 2,000 人 × NT$299 = **月 NT$60 萬 MRR / 年 NT$720 萬 ARR**;加 API + Enterprise + 橫移 RAG(勞基法/健保/農委會)→ 翻倍。Distribution: PTT Entrepreneur / Dcard 創業版、創業 podcast、會計師 / 記帳士事務所合作 partner、政府單位 partner、創業育成中心、長尾 SEO 關鍵字。

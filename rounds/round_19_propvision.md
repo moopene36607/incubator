@@ -1,0 +1,5 @@
+### Round 19 — `propvision/` (Taiwan 🇹🇼 — real-estate vision-aided valuation, **eighth non-doc-gen pattern**)
+
+- **題目**: 台灣房屋室內照片 Vision AI 估價(物件資料 + 3-5 張照片 → 純函式 6 步驟估值 + 加減分透明)
+- **解決的問題**: 台灣每年 30 萬棟交易、60,000 房仲業務員,Dcard 房地產版:「仲介帶看說老屋但裝潢還新,報價比周邊高 15%,後來查實價發現完全灌水」。591 / 樂居 / 信義 AI 估價 **完全不看照片屋況**,只看交易歷史數字;Opendoor / HouseCanary 不在台灣;ChatGPT 不知道你家照片。實價登錄 2.0 open data 公開可用但**沒人把照片屋況與成交價連結**。**架構:Vertical pricing model + Vision identification 組合** — `pricing_model.py` 100% 純函式 6 步驟(base × 屋齡 × 樓層 × 朝向 × 裝修評分 × 加減分);AI 只負責 ① 從照片描述抽 renovation_score 1-10 + concerns ② 為估值寫人性化說明。**金額計算永不交給 LLM**;加減分透明列出 + 細項上限 ±15%。
+- **目標市場**: 60,000 房仲業務員 + 30 萬棟年交易屋主 / 買方。B2C NT$1,500/份(衝動消費)、B2B 個人業務員 NT$3,000/月、B2B 事務所 NT$8,000/月、Enterprise 客製(信義 / 永慶連鎖)。WTP:房仲一月成交 1-2 件抽 NT$10-30 萬,NT$1,500/份小錢;屋主自售開價錯 5% = NT$50-100K 損失 vs NT$1,500 = 完美保險。TAM 5% 滲透 = 3,000 業務員 × NT$3,000 = **月 NT$900 萬 MRR / 年 NT$1.08 億 ARR**;加 B2C pay-per-use + Enterprise → 翻倍。Distribution: PTT home-sale / Dcard 房地產、永慶 / 信義 / 中信 業務員 LINE 社群、YouTube 房產 KOL、裝修平台 partner、銀行貸款業務員 partner。

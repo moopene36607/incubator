@@ -1,0 +1,5 @@
+### Round 16 — `weddingmatch/` (Taiwan 🇹🇼 — wedding photographer style matching, **fifth non-doc-gen pattern**)
+
+- **題目**: 台灣準新人婚攝風格 AI 配對(自由文字風格描述 → 12 維風格向量 → 純函式 cosine similarity → Top 5 婚攝)
+- **解決的問題**: 台灣每年 12-13 萬對新人籌備婚禮,**婚攝挑選平均花 2-6 週** — 因為每家工作室都自稱 film 風 / 日系 / 電影感,新人**根本分不清誰是真的什麼風**。婚攝預算 NT$5-15 萬選錯成本高,但無客觀比對工具。WeddingDay (台灣最大平台) 是純廣告刊登模式 + 婚攝地圖只是人工瀏覽,**全球 (The Knot / Zankyou) 也都沒有 CLIP-based 風格 embedding 配對**。**架構:Matching with embedding similarity** — `photographers_db.py` 12 位 mock 婚攝師,每位附 12 維 0/1 風格 tag(film_emulation / candid / cinematic / outdoor 等);`matching.py` 100% 純函式 cosine similarity + 預算 / 地區過濾 + 排序;AI 只在兩個地方介入(① 解析自由文字「日系底片感不要太擺拍」→ 12 維 0/1 向量 ② 為配對結果寫人性化推薦理由)。**LLM 永不挑 Top 1** — 那是純函式工作。
+- **目標市場**: 5,000-8,000 位專業婚攝 + 12-13 萬對新人/年。Pro 婚攝師 NT$800/月(對標 WeddingDay 廣告位 NT$1,500-3,000 便宜 + 多 AI 配對)、Studio Pro NT$2,500/月、成交佣金 NT$1-2K/對(1-2%)。TAM 10% 滲透 = 500-800 婚攝 × NT$800 = **月 NT$40-64 萬 MRR**;加成交佣金 + 海外港新馬 → x2。Distribution: PTT wedding / Dcard 婚禮版、FB 婚禮社團、IG 婚禮 KOL、Google Ads 競價 WeddingDay 關鍵字、婚禮顧問 partner。

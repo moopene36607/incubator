@@ -1,0 +1,5 @@
+### Round 17 — `tenderwatch/` (Taiwan 🇹🇼 — government tender real-time monitoring, **sixth non-doc-gen pattern**)
+
+- **題目**: 台灣中小企業政府標案 AI 即時警示(政採網每日新公告 → 個人化匹配 → LINE 推播)
+- **解決的問題**: 台灣政府電子採購網每年發 20 萬件招標公告,中小企業老闆 / 業務員每日刷 1-2 小時還可能漏。PTT Soft_Job 板:「政採網搜尋介面真的爛到爆」。招標王 NT$299/月 是 2018 年介面 + 純關鍵字 + **無 AI 分類**;TenderAlert.tw 已停服;ChatGPT 不知道每日新公告 + 不知道你公司能力 + 沒推播。海外工具(Bonfire / GovWin)只服務美國 SAM.gov 不認識台灣政採。**Gap 結構性**:政府採購 OpenData API 公開可合法取用,但沒人有動力做「個人化 AI 助理」。**架構:Real-time monitoring + alerting + LLM semantic match scoring** — `tender_filter.py` 100% 純函式硬條件過濾(投標廠商資本額 / 預算 / 截止日 / 排除類別 / 必備認證,**通常剩下 5-15% 標案進入 LLM**)+ Claude 對通過件做 0-100 semantic match scoring(列 key_match_points + key_gaps + recommendation,但**最終投不投仍是老闆決定**)。雙輸出(markdown 詳細報告 + LINE 純文字推播只列 score >= 70)。
+- **目標市場**: 全台中小型 IT / 顧問 / 設計 / 工程 / 教育訓練 公司估 30,000+ 家承接政府標案。Solo NT$799/月、Pro NT$2,500/月、Enterprise 客製、API NT$1.5/call。WTP 錨點:每日刷 1-2h × NT$500 × 22 天 = 月省 NT$11-44K vs NT$799 = **14-55x ROI**;1 件中標 NT$30 萬+ = 單次回本 30+ 年費。TAM 3% 滲透 = 900 家 × NT$799 = **月 NT$72 萬 MRR / 年 NT$860 萬 ARR**。Distribution: PTT Soft_Job / SOHO 板、FB SI 廠商社群、政採網 SEO 競價、記帳士 partner、公會、創業育成中心。
