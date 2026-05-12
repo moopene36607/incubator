@@ -13,7 +13,7 @@ from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import get_settings
-from app.routes import public
+from app.routes import auth, billing, dashboard, ecpay_hooks, linebot, onboarding, public
 
 log = structlog.get_logger(__name__)
 
@@ -40,3 +40,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="tenderwatch", lifespan=lifespan)
 app.add_middleware(SessionMiddleware, secret_key=get_settings().session_secret)
 app.include_router(public.router)
+app.include_router(auth.router)
+app.include_router(onboarding.router)
+app.include_router(dashboard.router)
+app.include_router(linebot.router)
+app.include_router(billing.router)
+app.include_router(ecpay_hooks.router)
