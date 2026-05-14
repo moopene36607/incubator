@@ -104,6 +104,21 @@ python3 fitlog.py samples/sample_input.json \
 
 每堂課 API 成本約 NT$0.5,毛利空間極大。
 
+### 多學員批次模式 (`--batch`)
+
+PT 一天 6-8 節 1 對 1 課,把當日所有 session JSON 放同一目錄,
+一行 CLI 全部產出 markdown 報告:
+
+```bash
+python3 fitlog.py --batch students_today/ --no-ai
+# → students_today/aming.json → students_today/aming.md
+# → students_today/chiawei.json → students_today/chiawei.md
+# → ...
+```
+
+每份報告寫在原 JSON 旁同名 `.md`,教練可以直接 LINE 截圖傳。
+範例輸出見 `examples/batch_demo/` (3 學員 → 3 .md)。
+
 ### 跨堂進步追蹤 (PR 標記)
 
 ```bash

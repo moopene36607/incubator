@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
+from batch import discover_session_jsons
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_volume_summary
 from progress import (
@@ -291,15 +292,49 @@ def render_line_friendly(session: SessionInput, body: str, pr_summary: str | Non
     )
 
 
+def _run_batch(args: argparse.Namespace) -> int:
+    """批次模式:掃 args.batch 目錄下的 *.json,各產一份 <stem>.md 寫在原檔旁。"""
+    sessions = discover_session_jsons(args.batch)
+    if not sessions:
+        print(f"warning: 在 {args.batch} 找不到任何 session JSON", file=sys.stderr)
+        return 0
+    use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
+    if not use_ai and not args.no_ai:
+        print("info: ANTHROPIC_API_KEY 未設,批次輸出骨架版", file=sys.stderr)
+    for path in sessions:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            session = parse_payload(payload)
+        except (json.JSONDecodeError, KeyError, ValueError) as e:
+            print(f"warning: 跳過 {path.name}: {e}", file=sys.stderr)
+            continue
+        for w in validate_session(session):
+            print(f"warning [{path.name}]: {w}", file=sys.stderr)
+        body = ai_write_body(session) if use_ai else render_skeleton_body()
+        full = render_full_report(session, body)
+        out_path = path.with_suffix(".md")
+        out_path.write_text(full, encoding="utf-8")
+        print(f"已寫入 {out_path}", file=sys.stderr)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("input", type=Path, help="本堂課訓練紀錄 JSON")
-    parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout)")
+    parser.add_argument("input", type=Path, nargs="?", help="本堂課訓練紀錄 JSON (單堂模式)")
+    parser.add_argument("--batch", type=Path, help="批次模式:掃描目錄下所有 *.json 各產一份 .md")
+    parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
     parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     args = parser.parse_args()
+
+    if args.batch:
+        return _run_batch(args)
+
+    if args.input is None:
+        print("error: 請指定 input JSON 或用 --batch DIR", file=sys.stderr)
+        return 2
 
     if not args.input.exists():
         print(f"error: 找不到 {args.input}", file=sys.stderr)

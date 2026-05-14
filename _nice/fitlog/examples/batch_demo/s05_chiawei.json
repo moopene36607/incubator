@@ -1,0 +1,94 @@
+{
+  "student": {
+    "name": "王嘉偉",
+    "age": 28,
+    "goal": "減脂同時維持肌肉量,目標 6 個月內體脂從 22% 降到 15%、Bench Press 突破 60 kg"
+  },
+  "coach": {
+    "name": "陳威廷",
+    "studio_name": "F1 Fitness Studio (大安區)",
+    "contact": "LINE @f1fit"
+  },
+  "session": {
+    "session_no": 5,
+    "date": "2026-05-10",
+    "duration_min": 60,
+    "theme": "全身肌力 / Day A — push + 下肢主導",
+    "sets": [
+      {
+        "exercise_code": "WORLDS_GREATEST",
+        "sets": 2,
+        "reps_or_duration": "5 reps/side",
+        "weight_kg": null,
+        "rpe": 2,
+        "note": "暖身,胸椎旋轉感今日比上次好"
+      },
+      {
+        "exercise_code": "BB_BACK_SQUAT",
+        "sets": 4,
+        "reps_or_duration": "10",
+        "weight_kg": 70,
+        "rpe": 8,
+        "note": "深度本次達 110 度,上次為 90 度;膝蓋追蹤良好,沒有內夾"
+      },
+      {
+        "exercise_code": "BENCH_PRESS",
+        "sets": 4,
+        "reps_or_duration": "8",
+        "weight_kg": 50,
+        "rpe": 8,
+        "note": "突破前次 47.5 kg 瓶頸,4 組都完整完成"
+      },
+      {
+        "exercise_code": "ROMANIAN_DL",
+        "sets": 3,
+        "reps_or_duration": "10",
+        "weight_kg": 60,
+        "rpe": 7,
+        "note": "髖鉸鏈動作模式正確,下背無代償"
+      },
+      {
+        "exercise_code": "PULL_UP",
+        "sets": 3,
+        "reps_or_duration": "6",
+        "weight_kg": null,
+        "rpe": 9,
+        "note": "輔助 band 從 yellow 換到 red,負重逐漸減輕中"
+      },
+      {
+        "exercise_code": "PLANK",
+        "sets": 3,
+        "reps_or_duration": "60 sec",
+        "weight_kg": null,
+        "rpe": 6,
+        "note": "核心穩定度比 4 週前明顯改善,腰椎不再過度前凸"
+      }
+    ]
+  },
+  "coach_observations": [
+    "Squat 深度從第 8 堂的 90° 進步到本次 110° 完整深蹲,代表踝關節活動度與髖屈活動度都在改善",
+    "Bench Press 突破 47.5 kg 連續 3 堂卡關的瓶頸,本次 4×8×50 kg 完成度高",
+    "握力穩定度比 4 週前明顯,可開始嘗試 mixed grip 拉系訓練",
+    "熱身時的胸椎旋轉度比第 1 堂時改善約 30%,日常坐姿可能有調整效果"
+  ],
+  "student_subjective": [
+    "Deadlift 後下背稍有緊繃感,沒有刺痛或放射痛,整體好動",
+    "本週工作壓力較大,睡眠時間比平常少 1-2 小時"
+  ],
+  "next_session": {
+    "date": "2026-05-13",
+    "theme": "全身肌力 / Day B — pull + 核心 + 心肺",
+    "focus": [
+      "Pull-up 嘗試從 red band 降到 black band 輔助",
+      "增加 Lat Pulldown 4×10 強化背闊肌",
+      "Assault Bike 4×30 sec sprint / 60 sec rest 提升心肺",
+      "考慮加入 Pallof Press 訓練核心抗旋轉"
+    ]
+  },
+  "recovery_diet": {
+    "protein_target_g": 130,
+    "kcal_deficit": 300,
+    "sleep_target_hr": 7,
+    "notes": "本週工作累,提醒學員睡眠優先於額外有氧"
+  }
+}
