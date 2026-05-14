@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
+from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_volume_summary
 from validation import validate_session
 
@@ -285,6 +286,7 @@ def main() -> int:
     parser.add_argument("input", type=Path, help="本堂課訓練紀錄 JSON")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
+    parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     args = parser.parse_args()
 
@@ -314,6 +316,10 @@ def main() -> int:
     if args.out_line:
         args.out_line.write_text(render_line_friendly(session, body), encoding="utf-8")
         print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
+
+    if args.csv:
+        write_session_csv(session, args.csv)
+        print(f"已寫入 CSV: {args.csv}", file=sys.stderr)
     return 0
 
 

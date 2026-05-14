@@ -104,6 +104,19 @@ python3 fitlog.py samples/sample_input.json \
 
 每堂課 API 成本約 NT$0.5,毛利空間極大。
 
+### CSV 匯出 (Excel / Google Sheets 友好)
+
+```bash
+python3 fitlog.py samples/sample_input.json --no-ai \
+    --csv reports/lin_aming_s12.csv
+```
+
+每筆 set 一行,欄位:date / student_name / session_no / set_index /
+exercise_code / exercise_zh / exercise_en / category / sets /
+reps_or_duration / weight_kg / rpe / tonnage_kg / note。
+多堂 CSV 可直接 `cat` 串起做進步 dashboard / pivot table。
+範例輸出見 `examples/sample_session.csv`。
+
 ### 預先產出的 demo
 
 `examples/sample_output.md` 是完整課後報告,展示典型 60 分鐘全身肌力課程(學員:32 yo 男性,目標減脂 + 增肌,第 12 堂):
