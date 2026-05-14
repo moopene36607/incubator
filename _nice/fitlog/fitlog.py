@@ -30,6 +30,7 @@ from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
 from metrics import render_category_breakdown, render_volume_summary
+from validation import validate_session
 
 
 REPORT_SYSTEM = """你是台灣健身教練 (PT) 的課後報告助理,協助教練把訓練紀錄與觀察轉成
@@ -293,6 +294,9 @@ def main() -> int:
 
     payload = json.loads(args.input.read_text(encoding="utf-8"))
     session = parse_payload(payload)
+
+    for w in validate_session(session):
+        print(f"warning: {w}", file=sys.stderr)
 
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
