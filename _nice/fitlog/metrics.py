@@ -36,3 +36,19 @@ def compute_total_tonnage(sets: Iterable["SetRecord"]) -> float:
             continue
         total += float(s.sets) * float(reps) * float(s.weight_kg)
     return total
+
+
+def _format_kg(value: float) -> str:
+    # 整數值不顯示小數;非整數保留一位小數。永遠加千位逗號。
+    if value == int(value):
+        return f"{int(value):,} kg"
+    return f"{value:,.1f} kg"
+
+
+def render_volume_summary(sets: Iterable["SetRecord"]) -> str | None:
+    """回傳「**訓練總噸位**: X kg」一行字串;若無加權 set 則回 None
+    (顯示 0 kg 反而誤導學員以為今天沒練到)。"""
+    total = compute_total_tonnage(sets)
+    if total <= 0:
+        return None
+    return f"**訓練總噸位**: {_format_kg(total)}"

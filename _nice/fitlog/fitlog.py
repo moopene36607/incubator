@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
+from metrics import render_volume_summary
 
 
 REPORT_SYSTEM = """你是台灣健身教練 (PT) 的課後報告助理,協助教練把訓練紀錄與觀察轉成
@@ -221,6 +222,10 @@ def render_full_report(session: SessionInput, body: str) -> str:
     out.append("## 訓練量化紀錄")
     out.append("")
     out.extend(render_session_table(session))
+    summary = render_volume_summary(session.sets)
+    if summary:
+        out.append("")
+        out.append(summary)
     out.append("")
     out.append("---")
     out.append("")
@@ -246,6 +251,8 @@ def render_line_friendly(session: SessionInput, body: str) -> str:
         weight = f"{s.weight_kg}kg" if s.weight_kg is not None else "BW"
         rpe = f" RPE{s.rpe}" if s.rpe is not None else ""
         quick_table_rows.append(f"  {i}. {name} {s.sets}×{s.reps_or_duration} @{weight}{rpe}")
+    summary = render_volume_summary(session.sets)
+    summary_line = f"\n🏋️ 總噸位:{summary.split(': ', 1)[1]}\n" if summary else "\n"
     return (
         f"💪 {session.student_name} 第 {session.session_no} 堂課後報告\n"
         f"📅 {session.session_date}  ⏱ {session.duration_min} min\n"
@@ -253,7 +260,8 @@ def render_line_friendly(session: SessionInput, body: str) -> str:
         f"━━━━━━━━━━━━━━\n"
         "📊 訓練紀錄:\n"
         + "\n".join(quick_table_rows)
-        + "\n━━━━━━━━━━━━━━\n"
+        + summary_line
+        + "━━━━━━━━━━━━━━\n"
         + plain.strip()
         + f"\n━━━━━━━━━━━━━━\n"
         f"教練 {session.coach_name} | {session.studio_name}\n"
