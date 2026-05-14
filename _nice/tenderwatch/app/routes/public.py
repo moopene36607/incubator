@@ -1,27 +1,52 @@
-"""Public routes — landing page + heartbeat.
+"""Public marketing + legal routes.
 
-The marketing site lives in a separate Astro project (faster + SEO-friendly).
-This is the bare-minimum landing so the FastAPI service has a 200-returning
-root path for uptime monitors.
+Pages here are reachable WITHOUT login. They power the marketing funnel
+(landing → pricing → checkout) and the legally-required documents
+(ToS / Privacy / Refund) cited from every footer.
+
+Templates live under app/templates/marketing/ and app/templates/legal/ and
+extend marketing_base.html (which has no logged-in nav).
 """
 
 from __future__ import annotations
 
-from fastapi import APIRouter
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi import APIRouter, Request
+from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
+templates = Jinja2Templates(directory="app/templates")
 
-@router.get("/", response_class=HTMLResponse)
-def landing() -> str:
-    return (
-        "<!doctype html><html lang=zh-Hant><meta charset=utf-8>"
-        "<title>tenderwatch — 政府標案 AI 即時警示</title>"
-        "<h1>tenderwatch</h1>"
-        "<p>台灣政府電子採購網 AI 個人化標案警示。</p>"
-        "<p><a href=/healthz>healthz</a></p>"
-    )
+
+@router.get("/")
+def landing(request: Request):
+    return templates.TemplateResponse(request, "marketing/landing.html", {})
+
+
+@router.get("/pricing")
+def pricing(request: Request):
+    return templates.TemplateResponse(request, "marketing/pricing.html", {})
+
+
+@router.get("/faq")
+def faq(request: Request):
+    return templates.TemplateResponse(request, "marketing/faq.html", {})
+
+
+@router.get("/tos")
+def tos(request: Request):
+    return templates.TemplateResponse(request, "legal/tos.html", {})
+
+
+@router.get("/privacy")
+def privacy(request: Request):
+    return templates.TemplateResponse(request, "legal/privacy.html", {})
+
+
+@router.get("/refund")
+def refund(request: Request):
+    return templates.TemplateResponse(request, "legal/refund.html", {})
 
 
 @router.get("/healthz")

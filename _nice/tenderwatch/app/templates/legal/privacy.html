@@ -1,0 +1,110 @@
+{% extends "marketing_base.html" %}
+
+{% block title %}隱私政策 — tenderwatch{% endblock %}
+{% block meta_description %}tenderwatch 個人資料保護法（PDPA）告知聲明 — 我們收集什麼、為什麼收、保留多久、你的權利。{% endblock %}
+
+{% block content %}
+
+<section class="bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+    <a href="/" class="text-sm text-slate-500 hover:text-sky-700 inline-flex items-center gap-1 cursor-pointer mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      回首頁
+    </a>
+    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">隱私政策</h1>
+    <p class="mt-4 text-sm text-slate-500">最後更新：2026 年 5 月 11 日 · 個資法第 8 條告知聲明</p>
+  </div>
+</section>
+
+<section class="pb-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <article class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-8">
+
+      <div class="bg-sky-50 border border-sky-200 rounded-xl p-5">
+        <h2 class="text-base font-bold text-sky-900 mb-2">一句話版</h2>
+        <p class="text-sm text-sky-900">我們只收 LINE user id、公司 Profile、扣款記錄。不轉售、不給第三方廣告、不看你 LINE 對話。隨時可以刪。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">1. 蒐集個人資料的目的</h2>
+        <p>本服務蒐集個人資料之目的，限於以下範圍：</p>
+        <ol class="list-decimal pl-6 space-y-1 mt-2">
+          <li>提供本服務功能（標案匹配、推播）— 法定目的代號 144</li>
+          <li>會員管理與身分驗證 — 法定目的代號 090</li>
+          <li>金流交易與發票開立 — 法定目的代號 067</li>
+          <li>客服聯繫與系統通知 — 法定目的代號 069</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">2. 蒐集個人資料之類別</h2>
+        <table class="w-full text-sm mt-2 border border-slate-200 rounded-lg overflow-hidden">
+          <thead class="bg-slate-50">
+            <tr class="text-left">
+              <th class="px-4 py-2 font-semibold text-slate-700">類別</th>
+              <th class="px-4 py-2 font-semibold text-slate-700">實際蒐集項目</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr><td class="px-4 py-2">辨識類</td><td class="px-4 py-2">LINE user ID、顯示名稱、頭像 URL、email（選填）</td></tr>
+            <tr><td class="px-4 py-2">特徵類</td><td class="px-4 py-2">公司名稱、資本額、員工數（由您自行輸入）</td></tr>
+            <tr><td class="px-4 py-2">財務類</td><td class="px-4 py-2">綠界交易序號、扣款金額、發票號碼（不含卡號）</td></tr>
+            <tr><td class="px-4 py-2">行為類</td><td class="px-4 py-2">登入時間、點擊推播次數、頁面瀏覽紀錄</td></tr>
+          </tbody>
+        </table>
+        <p class="mt-3 text-sm text-slate-600">我們不蒐集您的 LINE 對話內容、好友清單、信用卡號（卡號由綠界儲存）。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">3. 個資利用期間、地區、對象及方式</h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><strong>期間</strong>：自您建立帳號起，至您要求刪除或帳號停用 6 個月後。</li>
+          <li><strong>地區</strong>：台灣（伺服器位於 AWS 東京區域，符合台灣個資法之跨境保護標準）。</li>
+          <li><strong>對象</strong>：本服務之合作金流（綠界）、AI 模型供應商（Anthropic，僅傳送匿名化內容）、Email 發送商（Resend）、錯誤監測（Sentry）。我們<strong>絕不</strong>將個資轉售或提供給廣告商。</li>
+          <li><strong>方式</strong>：電子檔儲存於加密資料庫；傳輸使用 TLS 1.3。</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">4. 您依個資法第 3 條享有之權利</h2>
+        <ol class="list-decimal pl-6 space-y-1">
+          <li>查詢或請求閱覽您的個人資料</li>
+          <li>請求製給複製本</li>
+          <li>請求補充或更正</li>
+          <li>請求停止蒐集、處理、利用</li>
+          <li>請求刪除</li>
+        </ol>
+        <p class="mt-3 text-sm">行使方式：登入後在「Profile」頁面點「刪除帳號」一鍵刪除全部資料；或寄信至 <a href="mailto:hi@tenderwatch.tw" class="text-sky-700 hover:underline cursor-pointer">hi@tenderwatch.tw</a>，我們會在 7 天內處理。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">5. 不提供個人資料的影響</h2>
+        <p>若您拒絕提供 LINE user ID 或公司 Profile，將無法使用本服務之標案推播功能。基本瀏覽（首頁、定價、FAQ）不需登入。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">6. Cookie 與追蹤</h2>
+        <p>本服務僅使用維持登入狀態之必要 Cookie（session cookie），不使用 Google Analytics、Facebook Pixel 等第三方追蹤。
+        匿名流量分析使用 Plausible（無 cookie、不指紋）。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">7. 兒少保護</h2>
+        <p>本服務不向 18 歲以下使用者提供服務。若我們發現未成年人註冊，將立即刪除其資料。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">8. 政策修訂</h2>
+        <p>本政策更新時，將於本頁公告並透過 LINE 或 email 通知已註冊使用者。重大變更（如新增第三方共享對象）需取得您再次同意。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">9. 個資保護聯絡人</h2>
+        <p>個資相關問題請寄 <a href="mailto:hi@tenderwatch.tw" class="text-sky-700 hover:underline cursor-pointer">hi@tenderwatch.tw</a>。</p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+{% endblock %}

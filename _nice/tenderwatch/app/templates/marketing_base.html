@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{% block meta_description %}台灣政府電子採購網 AI 個人化標案監測。每日新公告自動篩選、LINE 推播高匹配標案，中小企業老闆每月省下 22 小時搜尋時間。{% endblock %}" />
+  <title>{% block title %}tenderwatch — 政府標案 AI 即時警示{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, sans-serif; }
+    .text-balance { text-wrap: balance; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <header class="border-b border-slate-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 cursor-pointer">
+        <span class="inline-flex w-8 h-8 rounded-lg bg-sky-700 items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5M5 9v11h14V9M9 14h6"/>
+          </svg>
+        </span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg">tenderwatch</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+        <a href="/pricing" class="hover:text-sky-700 transition-colors duration-150 cursor-pointer">定價</a>
+        <a href="/faq" class="hover:text-sky-700 transition-colors duration-150 cursor-pointer">常見問題</a>
+        <a href="/login" class="hover:text-sky-700 transition-colors duration-150 cursor-pointer">登入</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/login" class="md:hidden text-sm text-slate-600 px-3 py-1.5 cursor-pointer">登入</a>
+        <a href="/pricing" class="inline-flex items-center gap-1 bg-sky-700 hover:bg-sky-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-150 cursor-pointer">
+          開始使用
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-slate-100 bg-slate-50 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+        <div class="col-span-2">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex w-7 h-7 rounded-lg bg-sky-700 items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5M5 9v11h14V9M9 14h6"/>
+              </svg>
+            </span>
+            <span class="font-bold text-slate-900">tenderwatch</span>
+          </div>
+          <p class="text-slate-500 leading-relaxed max-w-xs">台灣政府電子採購網 AI 個人化標案監測。每日新公告自動篩選、LINE 推播。</p>
+        </div>
+        <div>
+          <div class="font-semibold text-slate-900 mb-3">產品</div>
+          <ul class="space-y-2 text-slate-600">
+            <li><a href="/pricing" class="hover:text-sky-700 cursor-pointer">定價</a></li>
+            <li><a href="/faq" class="hover:text-sky-700 cursor-pointer">常見問題</a></li>
+            <li><a href="/login" class="hover:text-sky-700 cursor-pointer">登入</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold text-slate-900 mb-3">法規</div>
+          <ul class="space-y-2 text-slate-600">
+            <li><a href="/tos" class="hover:text-sky-700 cursor-pointer">服務條款</a></li>
+            <li><a href="/privacy" class="hover:text-sky-700 cursor-pointer">隱私政策</a></li>
+            <li><a href="/refund" class="hover:text-sky-700 cursor-pointer">退費政策</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-500">
+        <div>© 2026 tenderwatch. All rights reserved.</div>
+        <div>聯絡 <a href="mailto:hi@tenderwatch.tw" class="hover:text-sky-700 cursor-pointer">hi@tenderwatch.tw</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

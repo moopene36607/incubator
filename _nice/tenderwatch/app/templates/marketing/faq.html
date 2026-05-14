@@ -1,0 +1,153 @@
+{% extends "marketing_base.html" %}
+
+{% block title %}常見問題 — tenderwatch{% endblock %}
+{% block meta_description %}tenderwatch 常見問題：免費版能用什麼、退費規則、LINE 推播時間、資料來源、是否可以取消訂閱。{% endblock %}
+
+{% block content %}
+
+<section class="bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-10 text-center">
+    <div class="text-sm font-semibold text-sky-700 mb-3">FAQ</div>
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">常見問題</h1>
+    <p class="mt-5 text-lg text-slate-600">最常被問的 12 個問題。其他問題寄 <a href="mailto:hi@tenderwatch.tw" class="text-sky-700 font-medium hover:underline cursor-pointer">hi@tenderwatch.tw</a>。</p>
+  </div>
+</section>
+
+<section class="pb-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-3">
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        免費版可以做什麼？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        免費版可建 1 組公司 Profile，每天最多收到 3 件 LINE 推播，歷史記錄保留 14 天。
+        不限試用時間 — 用到不夠用再升級 Solo。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        退費規則？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        付費前提供 14 天試用，試用期內取消不扣款。試用期過後扣的當期月費不退，但隨時可取消（取消後不再續扣，當期到期日前仍可使用）。
+        年付方案前 30 天內可全額退費。詳見 <a href="/refund" class="text-sky-700 hover:underline cursor-pointer">退費政策</a>。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        LINE 推播什麼時候會到？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        每天早上 09:00 (UTC+8) 推當日符合條件的標案。
+        系統在 06:00 + 14:00 兩次抓政府電子採購網 OpenData，下午抓到的會併入隔日推播，截止日急的會立刻推。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        標案資料從哪來？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        資料源是行政院公共工程委員會「政府電子採購網」（web.pcc.gov.tw）每日公開 OpenData。
+        我們不爬不公開的資料，也不轉售。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        我的資料安全嗎？會被賣嗎？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        絕不轉售。公司 Profile 只用於匹配演算法，AI 計算時不附帶可識別個資。
+        詳細參考 <a href="/privacy" class="text-sky-700 hover:underline cursor-pointer">隱私政策</a>。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        為什麼要用 LINE 登入而不是 Email？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        台灣 SMB 老闆 99% 用 LINE，不用記新密碼最方便。
+        我們只拿 LINE 的「user id + 顯示名稱」用於推播，不會看你的對話記錄、好友清單。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        AI 評分準嗎？會不會誤推？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        會。AI 是輔助篩選 — 我們會強制顯示「key_match_points」+「key_gaps」，最終投不投仍是老闆決定。
+        如果你發現某類標案常被誤推，回 LINE Bot「不要這類」會自動加入你的排除列表。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        刷卡安全嗎？會自動續扣？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        透過台灣綠界（ECPay）AIO 金流定期定額。卡號不經過我們的伺服器，直接刷在綠界。
+        是的，會每月自動續扣，可在「帳單」頁面隨時取消。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        電子發票會自動開嗎？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        會。每次扣款成功自動透過綠界開立電子發票，寄到你登記的 email。
+        如需公司戶統編請在「帳單」頁面填入，已扣款的發票無法事後改開公司戶。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        和招標王、台灣採購公報網有什麼不一樣？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        招標王是純關鍵字 + 純 email 訂閱、2018 年介面、無 AI 評分。tenderwatch 對每件標案做語意匹配 + 0-100 分評分 + LINE 推播。
+        定價接近，但你可以先用 Free 版比較準確度再決定。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        我是 freelancer / 一人公司，適合用嗎？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        適合。政府勞務採購法允許自然人投標（如顧問、設計、翻譯類）。Profile 的「資本額」可填 0，能力描述照寫個人專長即可。
+      </div>
+    </details>
+
+    <details class="group bg-white border border-slate-200 rounded-xl p-5 [&[open]]:border-sky-300 cursor-pointer">
+      <summary class="flex justify-between items-center font-semibold text-slate-900 cursor-pointer list-none">
+        你們是誰？會不會明年就收掉？
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-150"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="mt-3 text-sm text-slate-600 leading-relaxed">
+        tenderwatch 是台灣行號（獨資商號）。我們在「決策點」（Month 9）會公開財務狀況，若決定收掉會提前 60 天通知並退剩餘月份比例款。
+        Codebase 公開於 GitHub，最壞情況也能交由社群維護。
+      </div>
+    </details>
+
+  </div>
+</section>
+
+{% endblock %}

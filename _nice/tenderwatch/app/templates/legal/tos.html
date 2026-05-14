@@ -1,0 +1,99 @@
+{% extends "marketing_base.html" %}
+
+{% block title %}服務條款 — tenderwatch{% endblock %}
+{% block meta_description %}tenderwatch 服務條款 — 中華民國消費者保護法、定型化契約相關條款。{% endblock %}
+
+{% block content %}
+
+<section class="bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+    <a href="/" class="text-sm text-slate-500 hover:text-sky-700 inline-flex items-center gap-1 cursor-pointer mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      回首頁
+    </a>
+    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">服務條款</h1>
+    <p class="mt-4 text-sm text-slate-500">最後更新：2026 年 5 月 11 日</p>
+  </div>
+</section>
+
+<section class="pb-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <article class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-8">
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第一條　服務提供者</h2>
+        <p>tenderwatch（以下稱「本服務」）由台灣行號 tenderwatch 商號（以下稱「我們」）提供。
+        本服務內容包含政府電子採購網標案資料抓取、AI 評分匹配、LINE 推播、Email 摘要等。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第二條　契約成立</h2>
+        <p>使用者完成 LINE Login、建立 Profile 並按下「同意」鍵時，本契約即告成立。
+        付費方案以扣款成功時為計費起算日。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第三條　使用者義務</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>使用者應提供正確之公司名稱、能力描述等 Profile 資料，並負保持資料正確之責。</li>
+          <li>使用者不得逆向工程、爬取本服務 API、轉售推播內容、規避使用上限。</li>
+          <li>使用者不得將帳號借予他人使用。發現帳號異常請立即通知我們。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第四條　服務內容與免責</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li><strong>AI 評分為輔助工具，非投標決策建議。</strong>本服務僅就政府公開資料協助篩選，最終是否投標、是否中標皆由使用者自行判斷與承擔。</li>
+          <li>我們不保證標案資訊即時性、完整性 — 政府電子採購網 OpenData 可能延遲或缺漏。</li>
+          <li>本服務不保證使用者得標、決標、入圍或任何商業結果。任何因標案投資產生之損益均由使用者自行負擔。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第五條　付費與扣款</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>付費方案透過綠界（ECPay）金流刷卡，採每月自動續扣。</li>
+          <li>卡片資訊由綠界儲存，我們不接觸卡號。</li>
+          <li>連續 3 次續扣失敗自動降級為 Free 方案。</li>
+          <li>升級立即生效；降級於當期到期日生效。</li>
+          <li>退費規則另見「<a href="/refund" class="text-sky-700 hover:underline cursor-pointer">退費政策</a>」。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第六條　智慧財產權</h2>
+        <p>本服務之介面設計、程式碼、AI 評分演算法之表達形式皆為我們所有。
+        標案原始資料來自政府公開 OpenData，使用者引用時應自行確認政府網站之開放授權條款。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第七條　帳號終止</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>使用者可隨時於「帳單」頁面取消訂閱。</li>
+          <li>我們保留於使用者違反本條款（如逆向工程、轉售）時終止帳號之權利，並不退費。</li>
+          <li>因服務停止營運而終止時，將於 60 日前公告並按比例退費。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第八條　服務變更</h2>
+        <p>我們得依營運需要調整定價、功能、服務內容，調整將於 30 日前公告。
+        既有付費使用者於當期合約到期前不受漲價影響。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第九條　準據法與管轄</h2>
+        <p>本條款以中華民國法律為準據法。因本服務涉訟，以台灣台北地方法院為第一審管轄法院。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">第十條　聯絡資訊</h2>
+        <p>客服信箱：<a href="mailto:hi@tenderwatch.tw" class="text-sky-700 hover:underline cursor-pointer">hi@tenderwatch.tw</a></p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+{% endblock %}

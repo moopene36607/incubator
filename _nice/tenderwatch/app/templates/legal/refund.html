@@ -1,0 +1,103 @@
+{% extends "marketing_base.html" %}
+
+{% block title %}退費政策 — tenderwatch{% endblock %}
+{% block meta_description %}tenderwatch 退費規則：14 天免費試用、月費隨時取消、年付前 30 天全額退費。{% endblock %}
+
+{% block content %}
+
+<section class="bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+    <a href="/" class="text-sm text-slate-500 hover:text-sky-700 inline-flex items-center gap-1 cursor-pointer mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      回首頁
+    </a>
+    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">退費政策</h1>
+    <p class="mt-4 text-sm text-slate-500">最後更新：2026 年 5 月 11 日</p>
+  </div>
+</section>
+
+<section class="pb-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <article class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-8">
+
+      <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h2 class="text-base font-bold text-emerald-900 mb-2">摘要</h2>
+        <ul class="text-sm text-emerald-900 space-y-1 list-disc pl-5">
+          <li>付費前先 14 天免費試用</li>
+          <li>月費隨時可取消，當期到期後不再續扣</li>
+          <li>年付方案 30 天內可全額退費</li>
+          <li>第三方手續費（綠界 2.x%）依實際扣除</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">1. 14 天免費試用</h2>
+        <p>任何付費方案（Solo、Pro）皆提供 14 天試用。試用期間：</p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>不會收取任何費用</li>
+          <li>使用全部付費功能</li>
+          <li>隨時可取消，取消後不會扣款</li>
+        </ul>
+        <p class="mt-2">試用期過後若未取消，將於第 15 天自動扣第一期費用。</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">2. 月費方案</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>月費為「先付後用」，扣款成功即取得當月服務權利。</li>
+          <li>您可隨時於「帳單」頁面取消訂閱，取消後當期到期日前仍可使用。</li>
+          <li><strong>已扣款的當期月費不另退費</strong>，因服務已開始提供。</li>
+          <li>連續 3 次續扣失敗將自動降級為 Free 方案，不另扣款。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">3. 年付方案</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>年付方案扣款後 <strong>30 天內</strong>可申請全額退費（扣除綠界手續費約 2.x%）。</li>
+          <li>30 天後申請退費，按未使用月份比例退還（每月 = 年費 ÷ 10，年付折 2 個月）。</li>
+          <li>退費將於 7-14 個工作天內匯回原刷卡帳戶。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">4. 退費不適用情況</h2>
+        <p>下列情況我們無法退費：</p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>違反<a href="/tos" class="text-sky-700 hover:underline cursor-pointer">服務條款</a>而被終止帳號</li>
+          <li>已超過年付方案的 30 天退費期</li>
+          <li>已通過試用期、已使用付費功能 30 日以上之月費期</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">5. 服務終止之退費</h2>
+        <p>若我們因任何原因停止營運：</p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>將於 60 日前公告</li>
+          <li>年付使用者依未使用月份比例退費</li>
+          <li>月費使用者退還已扣但尚未開始之週期</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">6. 退費申請流程</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>寄信至 <a href="mailto:hi@tenderwatch.tw" class="text-sky-700 hover:underline cursor-pointer">hi@tenderwatch.tw</a>，主旨「退費申請」。</li>
+          <li>內文請附：LINE 顯示名稱、綠界交易序號、申請原因。</li>
+          <li>我們將於 3 個工作天內回覆審核結果。</li>
+          <li>審核通過後 7-14 個工作天內匯回。</li>
+        </ol>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">7. 消保法權利</h2>
+        <p>本退費政策不影響您依《消費者保護法》第 19 條於通訊交易享有 7 日無條件解除權之權利。
+        7 日鑑賞期自服務首次啟用日起算（並非從註冊免費帳號日起算）。</p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+{% endblock %}

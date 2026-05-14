@@ -1,0 +1,182 @@
+{% extends "marketing_base.html" %}
+
+{% block title %}tenderwatch — 政府標案 AI 即時警示 · 每日 LINE 推播{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-16 md:pt-28 md:pb-24">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-sky-50 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mb-6">
+        <span class="w-1.5 h-1.5 bg-sky-600 rounded-full"></span>
+        政府電子採購網 OpenData 串接 · 每日 06:00 / 14:00 同步
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight text-balance">
+        政府標案<br class="hidden md:inline" />
+        <span class="text-sky-700">AI 幫你篩。</span><br />
+        LINE 推給你看。
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl text-balance">
+        台灣政採網每日 500–800 件新公告，老闆刷 1–2 小時還會漏。
+        tenderwatch 用 AI 即時對你公司能力打 0–100 分，只把高匹配的推給你。
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3">
+        <a href="/pricing" class="inline-flex items-center justify-center gap-2 bg-sky-700 hover:bg-sky-800 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors duration-150 cursor-pointer text-base">
+          免費開始 — 不用信用卡
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="/faq" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold px-6 py-3.5 rounded-lg transition-colors duration-150 cursor-pointer text-base">
+          看常見問題
+        </a>
+      </div>
+      <div class="mt-8 flex items-center gap-6 text-xs text-slate-500">
+        <div class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4 text-emerald-600"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          14 天試用免費
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4 text-emerald-600"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          月費隨時取消
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4 text-emerald-600"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          台灣綠界刷卡
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Key Benefits -->
+<section class="border-t border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+    <div class="text-center mb-14">
+      <div class="text-sm font-semibold text-sky-700 mb-3">為什麼選 tenderwatch</div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-balance">招標王 8 年沒變，<br class="md:hidden">我們從零做給你。</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="border border-slate-200 rounded-2xl p-7 hover:border-sky-300 transition-colors duration-150">
+        <div class="w-11 h-11 rounded-lg bg-sky-50 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.5 14.25l-5.584 2.718a.75.75 0 01-1.046-.917L4.06 10.5l-3.5-3.413a.75.75 0 01.416-1.28L6.32 5.16 8.752.34a.75.75 0 011.345 0L12.532 5.16l5.343.647a.75.75 0 01.416 1.28L14.79 10.5l1.19 5.55a.75.75 0 01-1.046.918L9.5 14.25z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">AI 語意匹配</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          純關鍵字搜尋會漏。Claude 對每件標案讀你的能力描述，給 0–100 分並列「為什麼適合 / 缺什麼」，比關鍵字準 5×。
+        </p>
+      </div>
+
+      <div class="border border-slate-200 rounded-2xl p-7 hover:border-sky-300 transition-colors duration-150">
+        <div class="w-11 h-11 rounded-lg bg-emerald-50 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">LINE 即時推播</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          每天早上 09:00，符合條件的標案直接推到老闆 LINE。截止日逼近會加推提醒，不用每天刷網站。
+        </p>
+      </div>
+
+      <div class="border border-slate-200 rounded-2xl p-7 hover:border-sky-300 transition-colors duration-150">
+        <div class="w-11 h-11 rounded-lg bg-amber-50 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">硬條件過濾 + AI 評分</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          資本額、預算、認證、排除類別先用純函式過濾，通常剩 5–15% 才丟給 AI。API 成本砍 80%，月費才能壓在 NT$799。
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="bg-slate-50 border-y border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="text-sm font-semibold text-sky-700 mb-3">省下來的時間，回到本業</div>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight text-balance">每天刷 1 小時政採網，<br />一年是 <span class="text-sky-700">22 萬</span> 的人事費。</h2>
+        <p class="mt-5 text-slate-600 leading-relaxed">
+          時薪 NT$500、每天刷 2 小時、月 22 天 = 每月 NT$22,000。
+          tenderwatch Solo NT$799/月，幫老闆換回 27× ROI。
+          一年只要中 1 件 NT$30 萬的案子，就回本 30 年。
+        </p>
+        <div class="mt-8">
+          <a href="/pricing" class="inline-flex items-center gap-1 bg-sky-700 hover:bg-sky-800 text-white font-semibold px-5 py-3 rounded-lg transition-colors duration-150 cursor-pointer">
+            看完整定價
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">每月帳本</div>
+        <div class="text-sm text-slate-500 mb-6">中小型 SI 廠商 · 業務 1 人</div>
+        <dl class="space-y-4">
+          <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+            <dt class="text-slate-700">業務刷網站工時成本</dt>
+            <dd class="text-slate-900 font-semibold">NT$22,000</dd>
+          </div>
+          <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+            <dt class="text-slate-700">漏掉標案的機會成本</dt>
+            <dd class="text-slate-400">無法估計</dd>
+          </div>
+          <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+            <dt class="text-slate-700">tenderwatch Solo</dt>
+            <dd class="text-sky-700 font-semibold">−NT$799</dd>
+          </div>
+          <div class="flex justify-between items-center pt-2">
+            <dt class="text-slate-900 font-semibold">每月淨省</dt>
+            <dd class="text-emerald-700 font-bold text-xl">NT$21,201</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+    <div class="text-center mb-14">
+      <div class="text-sm font-semibold text-sky-700 mb-3">運作流程</div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">3 步驟，老闆零學習成本</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="relative">
+        <div class="text-4xl font-extrabold text-sky-200 mb-3">01</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">LINE 登入 + 填 Profile</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">填公司資本額、能力描述、預算區間、ISO 認證。約 3 分鐘填完。</p>
+      </div>
+      <div class="relative">
+        <div class="text-4xl font-extrabold text-sky-200 mb-3">02</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">系統自動跑</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">每日 06:00 / 14:00 抓政採網新公告。embedding pre-filter 砍掉 80% 不相關，剩下交給 Claude 打分。</p>
+      </div>
+      <div class="relative">
+        <div class="text-4xl font-extrabold text-sky-200 mb-3">03</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">LINE 收推播</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">早上 09:00 LINE 推 70 分以上的案子，點開看完整 AI 分析、下載評選文件連結。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="bg-sky-700">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white text-balance">今天就讓 AI 幫你刷政採網</h2>
+    <p class="mt-4 text-sky-100 text-lg">免費版可以用到爽。需要更多再付。</p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/pricing" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-sky-700 font-semibold px-6 py-3.5 rounded-lg transition-colors duration-150 cursor-pointer text-base">
+        看定價 · 立即開始
+      </a>
+      <a href="/faq" class="inline-flex items-center justify-center gap-2 bg-sky-800 hover:bg-sky-900 text-white border border-sky-600 font-semibold px-6 py-3.5 rounded-lg transition-colors duration-150 cursor-pointer text-base">
+        我有問題
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -9,3 +9,6 @@ htmlcov/
 node_modules/
 dist/
 .astro/
+*.db
+*.sqlite
+*.sqlite3
