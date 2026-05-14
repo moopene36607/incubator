@@ -153,18 +153,18 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 - 下次課程主題切到 pull + 核心 + 心肺,並解釋為什麼這樣安排
 - 恢復飲食提醒 prioritize 睡眠 > 蛋白質 > 有氧
 
-## 收錄動作分類(prototype seed,30 動作)
+## 收錄動作分類(56 動作 v2 擴充版)
 
-| 大類 | 範例代碼 |
-|------|----------|
-| **legs**(腿系) | BB_BACK_SQUAT, ROMANIAN_DL, LEG_PRESS, BULGARIAN_SPLIT, DUMBBELL_LUNGE |
-| **pull**(拉系) | DEADLIFT, PULL_UP, LAT_PULLDOWN, BB_ROW, FACE_PULL |
-| **push**(推系) | BENCH_PRESS, OHP, INCLINE_PRESS, DIPS, DB_BENCH |
-| **core**(核心) | PLANK, DEAD_BUG, PALLOF_PRESS, HANGING_LEG_RAISE |
-| **cardio**(心肺) | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, JUMP_ROPE |
-| **mobility**(活動度 / 暖身) | HIP_OPENER, THORACIC_ROT, WORLDS_GREATEST |
+| 大類 | 動作數 | 範例代碼 |
+|------|------|----------|
+| **legs**(腿系) | 11 | BB_BACK_SQUAT, ROMANIAN_DL, LEG_PRESS, HACK_SQUAT, HIP_THRUST, GOBLET_SQUAT, LEG_EXTENSION, LEG_CURL, CALF_RAISE |
+| **pull**(拉系) | 11 | DEADLIFT, PULL_UP, CHIN_UP, LAT_PULLDOWN, BB_ROW, T_BAR_ROW, CABLE_ROW, INVERTED_ROW, KETTLEBELL_SWING |
+| **push**(推系) | 12 | BENCH_PRESS, OHP, INCLINE_DB_PRESS, DECLINE_PRESS, LATERAL_RAISE, CABLE_FLY, MACHINE_CHEST_PRESS, DIPS |
+| **core**(核心) | 9 | PLANK, AB_WHEEL, V_UP, HANGING_KNEE_RAISE, CABLE_WOODCHOP, PALLOF_PRESS |
+| **cardio**(心肺) | 7 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, BURPEE, KETTLEBELL_SWING, BATTLE_ROPE, STAIR_CLIMBER |
+| **mobility**(活動度) | 6 | HIP_OPENER, THORACIC_ROT, WORLDS_GREATEST, CAT_COW, COSSACK_SQUAT, CHILD_POSE |
 
-(實際產品需擴充至 200+ 動作,涵蓋 powerlifting / 街健 / 機械式 / 瑜珈 / 普拉提。)
+(實際產品需擴充至 200+ 動作,涵蓋 powerlifting / 進階街健 / 普拉提全模組。)
 
 ## 專案結構
 

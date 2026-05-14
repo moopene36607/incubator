@@ -69,6 +69,46 @@ EXERCISES: list[Exercise] = [
     Exercise("HIP_OPENER", "髖部活動", "90/90 Hip Opener", "mobility", "髖關節活動度", "rep", (1, 3)),
     Exercise("THORACIC_ROT", "胸椎旋轉", "Thoracic Rotation", "mobility", "胸椎活動度", "rep", (1, 3)),
     Exercise("WORLDS_GREATEST", "世界最強拉伸", "World's Greatest Stretch", "mobility", "全身動態", "rep", (1, 3)),
+
+    # ===== v2 擴充 (機械式 / 街健 / 瑜珈) =====
+
+    # ---------- legs (+6) ----------
+    Exercise("HACK_SQUAT", "Hack 蹲", "Hack Squat", "legs", "股四頭/臀大肌", "rep", (6, 8)),
+    Exercise("LEG_EXTENSION", "腿伸機", "Leg Extension", "legs", "股四頭", "rep", (5, 8)),
+    Exercise("LEG_CURL", "腿彎舉機", "Leg Curl", "legs", "股二頭", "rep", (5, 8)),
+    Exercise("HIP_THRUST", "臀推", "Hip Thrust", "legs", "臀大肌/股二頭", "rep", (6, 9)),
+    Exercise("CALF_RAISE", "小腿提踵", "Calf Raise", "legs", "腓腸肌/比目魚肌", "rep", (5, 8)),
+    Exercise("GOBLET_SQUAT", "高腳杯深蹲", "Goblet Squat", "legs", "股四頭/臀大肌/核心", "rep", (5, 7)),
+
+    # ---------- pull (+5) ----------
+    Exercise("T_BAR_ROW", "T-bar 划船", "T-bar Row", "pull", "中背/背闊肌", "rep", (6, 9)),
+    Exercise("CABLE_ROW", "坐姿划船機", "Seated Cable Row", "pull", "中背/背闊肌", "rep", (5, 8)),
+    Exercise("CHIN_UP", "反握引體向上", "Chin-up", "pull", "背闊肌/二頭", "rep", (7, 10)),
+    Exercise("INVERTED_ROW", "反式划船", "Inverted Row", "pull", "中背/後三角", "rep", (5, 8)),
+    Exercise("KETTLEBELL_SWING", "壺鈴擺盪", "Kettlebell Swing", "pull", "臀大肌/下背/全身爆發", "rep", (6, 9)),
+
+    # ---------- push (+5) ----------
+    Exercise("INCLINE_DB_PRESS", "上斜啞鈴推", "Incline Dumbbell Press", "push", "上胸/前三角", "rep", (5, 8)),
+    Exercise("DECLINE_PRESS", "下斜推", "Decline Press", "push", "下胸/三頭", "rep", (5, 8)),
+    Exercise("LATERAL_RAISE", "啞鈴側平舉", "Lateral Raise", "push", "三角肌側束", "rep", (4, 7)),
+    Exercise("CABLE_FLY", "滑輪夾胸", "Cable Fly", "push", "胸大肌", "rep", (5, 8)),
+    Exercise("MACHINE_CHEST_PRESS", "蝴蝶機臥推", "Machine Chest Press", "push", "胸大肌/三頭", "rep", (5, 8)),
+
+    # ---------- core (+4) ----------
+    Exercise("AB_WHEEL", "健腹輪", "Ab Wheel Rollout", "core", "腹直肌/核心穩定", "rep", (6, 9)),
+    Exercise("HANGING_KNEE_RAISE", "懸吊屈膝", "Hanging Knee Raise", "core", "腹直肌下段", "rep", (5, 8)),
+    Exercise("V_UP", "V 字仰臥", "V-up", "core", "腹直肌全段", "rep", (5, 8)),
+    Exercise("CABLE_WOODCHOP", "滑輪斜砍", "Cable Woodchop", "core", "腹斜肌/核心抗旋轉", "rep", (4, 7)),
+
+    # ---------- cardio (+3) ----------
+    Exercise("STAIR_CLIMBER", "階梯機", "Stair Climber", "cardio", "下肢/心肺", "min", (5, 8)),
+    Exercise("BURPEE", "波比跳", "Burpee", "cardio", "全身/心肺", "rep", (7, 10)),
+    Exercise("BATTLE_ROPE", "戰繩", "Battle Rope", "cardio", "上肢/心肺", "sec", (6, 9)),
+
+    # ---------- mobility (+3) ----------
+    Exercise("CAT_COW", "貓牛式", "Cat-Cow Stretch", "mobility", "脊椎活動度", "rep", (1, 3)),
+    Exercise("COSSACK_SQUAT", "哥薩克深蹲", "Cossack Squat", "mobility", "髖內收/活動度", "rep", (2, 4)),
+    Exercise("CHILD_POSE", "嬰兒式", "Child Pose", "mobility", "下背/髖部放鬆", "sec", (1, 2)),
 ]
 
 
