@@ -111,13 +111,18 @@ PT 一天 6-8 節 1 對 1 課,把當日所有 session JSON 放同一目錄,
 
 ```bash
 python3 fitlog.py --batch students_today/ --no-ai
-# → students_today/aming.json → students_today/aming.md
-# → students_today/chiawei.json → students_today/chiawei.md
-# → ...
+# → students_today/aming.json → students_today/aming.md (+ _batch_summary.md)
 ```
 
-每份報告寫在原 JSON 旁同名 `.md`,教練可以直接 LINE 截圖傳。
-範例輸出見 `examples/batch_demo/` (3 學員 → 3 .md)。
+報告預設寫在原 JSON 旁同名 `.md`。也可用 `--out-dir` 把輸出
+分到獨立目錄(輸入目錄保持只有 .json,易於 .gitignore reports/):
+
+```bash
+python3 fitlog.py --batch students_today/ --out-dir reports/today/ --no-ai
+# → reports/today/aming.md, reports/today/wang.md, reports/today/_batch_summary.md
+```
+
+範例輸出見 `examples/batch_demo/` (3 學員 → 3 .md + summary)。
 
 ### 跨堂進步追蹤 (PR 標記)
 

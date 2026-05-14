@@ -311,7 +311,8 @@ def render_line_friendly(
 
 
 def _run_batch(args: argparse.Namespace) -> int:
-    """批次模式:掃 args.batch 目錄下的 *.json,各產一份 <stem>.md 寫在原檔旁。"""
+    """批次模式:掃 args.batch 目錄下的 *.json,各產一份 <stem>.md。
+    --out-dir 指定時寫到該目錄;否則寫在原檔旁 (向後相容)。"""
     sessions = discover_session_jsons(args.batch)
     if not sessions:
         print(f"warning: 在 {args.batch} 找不到任何 session JSON", file=sys.stderr)
@@ -319,6 +320,9 @@ def _run_batch(args: argparse.Namespace) -> int:
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
         print("info: ANTHROPIC_API_KEY 未設,批次輸出骨架版", file=sys.stderr)
+    out_dir: Path | None = args.out_dir
+    if out_dir is not None:
+        out_dir.mkdir(parents=True, exist_ok=True)
     parsed_sessions: list[SessionInput] = []
     for path in sessions:
         try:
@@ -340,12 +344,13 @@ def _run_batch(args: argparse.Namespace) -> int:
             print(f"warning [{path.name}]: {w}", file=sys.stderr)
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body)
-        out_path = path.with_suffix(".md")
+        out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
         parsed_sessions.append(session)
     if parsed_sessions:
-        summary_path = args.batch / "_batch_summary.md"
+        summary_dir = out_dir if out_dir is not None else args.batch
+        summary_path = summary_dir / "_batch_summary.md"
         summary_path.write_text(
             render_batch_summary(aggregate_batch(parsed_sessions)),
             encoding="utf-8",
@@ -358,6 +363,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("input", type=Path, nargs="?", help="本堂課訓練紀錄 JSON (單堂模式)")
     parser.add_argument("--batch", type=Path, help="批次模式:掃描目錄下所有 *.json 各產一份 .md")
+    parser.add_argument("--out-dir", type=Path,
+                        help="批次模式輸出目錄 (預設寫在原 .json 檔旁)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
