@@ -30,6 +30,7 @@ from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
 from batch import discover_session_jsons
+from coaching import render_next_weight_suggestions, suggest_next_session_weights
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_volume_summary
 from progress import (
@@ -213,7 +214,12 @@ def ai_write_body(session: SessionInput) -> str:
     return "".join(b.text for b in response.content if b.type == "text").strip()
 
 
-def render_full_report(session: SessionInput, body: str, pr_summary: str | None = None) -> str:
+def render_full_report(
+    session: SessionInput,
+    body: str,
+    pr_summary: str | None = None,
+    next_weight_summary: str | None = None,
+) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
     out.append("")
@@ -233,7 +239,7 @@ def render_full_report(session: SessionInput, body: str, pr_summary: str | None 
     out.extend(render_session_table(session))
     summary = render_volume_summary(session.sets)
     breakdown = render_category_breakdown(session.sets)
-    if summary or breakdown or pr_summary:
+    if summary or breakdown or pr_summary or next_weight_summary:
         out.append("")
     if summary:
         out.append(summary)
@@ -241,6 +247,8 @@ def render_full_report(session: SessionInput, body: str, pr_summary: str | None 
         out.append(breakdown)
     if pr_summary:
         out.append(pr_summary)
+    if next_weight_summary:
+        out.append(next_weight_summary)
     out.append("")
     out.append("---")
     out.append("")
@@ -256,7 +264,12 @@ def render_full_report(session: SessionInput, body: str, pr_summary: str | None 
     return "\n".join(out) + "\n"
 
 
-def render_line_friendly(session: SessionInput, body: str, pr_summary: str | None = None) -> str:
+def render_line_friendly(
+    session: SessionInput,
+    body: str,
+    pr_summary: str | None = None,
+    next_weight_summary: str | None = None,
+) -> str:
     """LINE 純文字版,去 markdown 符號,加 emoji 分段。"""
     plain = body.replace("### ", "\n").replace("## ", "\n").replace("**", "")
     quick_table_rows = []
@@ -275,6 +288,8 @@ def render_line_friendly(session: SessionInput, body: str, pr_summary: str | Non
         summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
     if pr_summary:
         summary_parts.append(f"🏆 進步:{pr_summary.split(': ', 1)[1]}")
+    if next_weight_summary:
+        summary_parts.append(f"➡️ 下次建議:{next_weight_summary.split(': ', 1)[1]}")
     summary_line = "\n" + "\n".join(summary_parts) + "\n" if summary_parts else "\n"
     return (
         f"💪 {session.student_name} 第 {session.session_no} 堂課後報告\n"
@@ -363,8 +378,12 @@ def main() -> int:
     if not use_ai and not args.no_ai:
         print("info: ANTHROPIC_API_KEY 未設,輸出骨架版", file=sys.stderr)
 
+    next_weight_summary = render_next_weight_suggestions(
+        suggest_next_session_weights(session.sets)
+    )
+
     body = ai_write_body(session) if use_ai else render_skeleton_body()
-    full = render_full_report(session, body, pr_summary)
+    full = render_full_report(session, body, pr_summary, next_weight_summary)
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")
@@ -373,7 +392,9 @@ def main() -> int:
         sys.stdout.write(full)
 
     if args.out_line:
-        args.out_line.write_text(render_line_friendly(session, body, pr_summary), encoding="utf-8")
+        args.out_line.write_text(
+            render_line_friendly(session, body, pr_summary, next_weight_summary),
+            encoding="utf-8")
         print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
 
     if args.csv:
