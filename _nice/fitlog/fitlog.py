@@ -31,6 +31,7 @@ from typing import Any
 from exercise_db import EXERCISES, Exercise, lookup
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_volume_summary
+from progress import compute_pr_deltas, render_pr_summary
 from validation import validate_session
 
 
@@ -206,7 +207,7 @@ def ai_write_body(session: SessionInput) -> str:
     return "".join(b.text for b in response.content if b.type == "text").strip()
 
 
-def render_full_report(session: SessionInput, body: str) -> str:
+def render_full_report(session: SessionInput, body: str, pr_summary: str | None = None) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
     out.append("")
@@ -226,12 +227,14 @@ def render_full_report(session: SessionInput, body: str) -> str:
     out.extend(render_session_table(session))
     summary = render_volume_summary(session.sets)
     breakdown = render_category_breakdown(session.sets)
-    if summary or breakdown:
+    if summary or breakdown or pr_summary:
         out.append("")
     if summary:
         out.append(summary)
     if breakdown:
         out.append(breakdown)
+    if pr_summary:
+        out.append(pr_summary)
     out.append("")
     out.append("---")
     out.append("")
@@ -247,7 +250,7 @@ def render_full_report(session: SessionInput, body: str) -> str:
     return "\n".join(out) + "\n"
 
 
-def render_line_friendly(session: SessionInput, body: str) -> str:
+def render_line_friendly(session: SessionInput, body: str, pr_summary: str | None = None) -> str:
     """LINE 純文字版,去 markdown 符號,加 emoji 分段。"""
     plain = body.replace("### ", "\n").replace("## ", "\n").replace("**", "")
     quick_table_rows = []
@@ -264,6 +267,8 @@ def render_line_friendly(session: SessionInput, body: str) -> str:
         summary_parts.append(f"🏋️ 總噸位:{summary.split(': ', 1)[1]}")
     if breakdown:
         summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
+    if pr_summary:
+        summary_parts.append(f"🏆 進步:{pr_summary.split(': ', 1)[1]}")
     summary_line = "\n" + "\n".join(summary_parts) + "\n" if summary_parts else "\n"
     return (
         f"💪 {session.student_name} 第 {session.session_no} 堂課後報告\n"
@@ -287,6 +292,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
+    parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     args = parser.parse_args()
 
@@ -300,12 +306,23 @@ def main() -> int:
     for w in validate_session(session):
         print(f"warning: {w}", file=sys.stderr)
 
+    pr_summary: str | None = None
+    if args.prev:
+        if not args.prev.exists():
+            print(f"warning: --prev 檔案找不到: {args.prev}", file=sys.stderr)
+        else:
+            prev_payload = json.loads(args.prev.read_text(encoding="utf-8"))
+            prev_session = parse_payload(prev_payload)
+            pr_summary = render_pr_summary(
+                compute_pr_deltas(prev_session.sets, session.sets)
+            )
+
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
         print("info: ANTHROPIC_API_KEY 未設,輸出骨架版", file=sys.stderr)
 
     body = ai_write_body(session) if use_ai else render_skeleton_body()
-    full = render_full_report(session, body)
+    full = render_full_report(session, body, pr_summary)
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")
@@ -314,7 +331,7 @@ def main() -> int:
         sys.stdout.write(full)
 
     if args.out_line:
-        args.out_line.write_text(render_line_friendly(session, body), encoding="utf-8")
+        args.out_line.write_text(render_line_friendly(session, body, pr_summary), encoding="utf-8")
         print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
 
     if args.csv:

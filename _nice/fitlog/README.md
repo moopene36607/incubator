@@ -104,6 +104,18 @@ python3 fitlog.py samples/sample_input.json \
 
 每堂課 API 成本約 NT$0.5,毛利空間極大。
 
+### 跨堂進步追蹤 (PR 標記)
+
+```bash
+python3 fitlog.py samples/sample_input.json --no-ai \
+    --prev samples/sample_prev_input.json \
+    --out reports/lin_aming_s12.md
+```
+
+把上次課程 JSON 用 `--prev` 帶進來,fitlog 會自動算出每個動作的 PR
+(personal record):重量上升標 PR、噸位上升標噸位 delta。範例輸出:
+「槓鈴臥推 47.5→50 kg (+2.5 kg PR)」。
+
 ### CSV 匯出 (Excel / Google Sheets 友好)
 
 ```bash
