@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
+from aggregate import aggregate_batch, render_batch_summary
 from batch import discover_session_jsons
 from coaching import render_next_weight_suggestions, suggest_next_session_weights
 from csv_export import write_session_csv
@@ -316,6 +317,7 @@ def _run_batch(args: argparse.Namespace) -> int:
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
         print("info: ANTHROPIC_API_KEY 未設,批次輸出骨架版", file=sys.stderr)
+    parsed_sessions: list[SessionInput] = []
     for path in sessions:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
@@ -330,6 +332,14 @@ def _run_batch(args: argparse.Namespace) -> int:
         out_path = path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
+        parsed_sessions.append(session)
+    if parsed_sessions:
+        summary_path = args.batch / "_batch_summary.md"
+        summary_path.write_text(
+            render_batch_summary(aggregate_batch(parsed_sessions)),
+            encoding="utf-8",
+        )
+        print(f"已寫入彙總: {summary_path}", file=sys.stderr)
     return 0
 
 
