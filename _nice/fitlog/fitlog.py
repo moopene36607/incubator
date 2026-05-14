@@ -40,6 +40,7 @@ from progress import (
     compute_pr_deltas,
     render_pr_summary,
 )
+from schema import validate_payload_schema
 from validation import validate_session
 
 
@@ -321,8 +322,17 @@ def _run_batch(args: argparse.Namespace) -> int:
     for path in sessions:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            print(f"warning: 跳過 {path.name}: JSON 解析錯誤 {e}", file=sys.stderr)
+            continue
+        schema_errors = validate_payload_schema(payload)
+        if schema_errors:
+            for e in schema_errors:
+                print(f"warning [{path.name}]: schema {e}", file=sys.stderr)
+            continue
+        try:
             session = parse_payload(payload)
-        except (json.JSONDecodeError, KeyError, ValueError) as e:
+        except (KeyError, ValueError) as e:
             print(f"warning: 跳過 {path.name}: {e}", file=sys.stderr)
             continue
         for w in validate_session(session):
@@ -366,6 +376,13 @@ def main() -> int:
         return 2
 
     payload = json.loads(args.input.read_text(encoding="utf-8"))
+
+    schema_errors = validate_payload_schema(payload)
+    if schema_errors:
+        for e in schema_errors:
+            print(f"error: schema {e}", file=sys.stderr)
+        return 2
+
     session = parse_payload(payload)
 
     for w in validate_session(session):
