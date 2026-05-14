@@ -34,6 +34,17 @@ class ProgressDelta:
     is_weight_pr: bool
 
 
+@dataclass(frozen=True)
+class BwRepsDelta:
+    """Bodyweight 動作 (Pull-up / Dips / Push-up) 的 reps PR 追蹤。
+    用 max single-set reps 為基準 (同 exercise 多 set 取最高那組)。"""
+    exercise_code: str
+    prev_top_reps: int
+    curr_top_reps: int
+    reps_delta: int
+    is_reps_pr: bool
+
+
 def _top_weight(sets: Iterable["SetRecord"], code: str) -> float | None:
     """同 exercise 的 max weight_kg;全 BW 或無此 exercise → None。"""
     weights = [s.weight_kg for s in sets if s.exercise_code == code and s.weight_kg is not None]
@@ -75,6 +86,44 @@ def compute_pr_deltas(
     return deltas
 
 
+def _top_reps_bw(sets: Iterable["SetRecord"], code: str) -> int | None:
+    """同 exercise 的 BW set 中,max integer reps;沒任何 BW int-reps set → None。"""
+    candidates: list[int] = []
+    for s in sets:
+        if s.exercise_code != code:
+            continue
+        if s.weight_kg is not None:
+            continue  # 不是 BW
+        s_reps = s.reps_or_duration.strip()
+        if not s_reps.isdigit():
+            continue  # 不是純整數 (時間/距離型跳過)
+        candidates.append(int(s_reps))
+    return max(candidates) if candidates else None
+
+
+def compute_bw_reps_deltas(
+    prev_sets: list["SetRecord"],
+    curr_sets: list["SetRecord"],
+) -> dict[str, BwRepsDelta]:
+    """Bodyweight reps PR 追蹤。只計算「兩邊都做過 + 兩邊都是 BW int-reps」的 exercise。"""
+    overlap = ({s.exercise_code for s in prev_sets}
+               & {s.exercise_code for s in curr_sets})
+    deltas: dict[str, BwRepsDelta] = {}
+    for code in overlap:
+        pr = _top_reps_bw(prev_sets, code)
+        cr = _top_reps_bw(curr_sets, code)
+        if pr is None or cr is None:
+            continue
+        deltas[code] = BwRepsDelta(
+            exercise_code=code,
+            prev_top_reps=pr,
+            curr_top_reps=cr,
+            reps_delta=cr - pr,
+            is_reps_pr=cr > pr,
+        )
+    return deltas
+
+
 def _format_weight(value: float) -> str:
     """50.0 → "50";47.5 → "47.5"。"""
     return str(int(value)) if value == int(value) else f"{value:.1f}"
@@ -86,6 +135,16 @@ def _format_signed(value: float) -> str:
     if value == int(value):
         return f"{sign}{int(value)}"
     return f"{sign}{value:.1f}"
+
+
+def _format_one_bw(d: BwRepsDelta) -> str | None:
+    if d.reps_delta == 0:
+        return None
+    name = (lookup(d.exercise_code).chinese
+            if lookup(d.exercise_code) else d.exercise_code)
+    suffix = " PR" if d.is_reps_pr else ""
+    return (f"{name} {d.prev_top_reps}→{d.curr_top_reps} reps "
+            f"({_format_signed(d.reps_delta)} reps{suffix})")
 
 
 def _format_one_delta(d: ProgressDelta) -> str | None:
@@ -103,20 +162,33 @@ def _format_one_delta(d: ProgressDelta) -> str | None:
     return None
 
 
-def render_pr_summary(deltas: dict[str, ProgressDelta]) -> str | None:
-    """**進步亮點**: A 47.5→50 kg (+2.5 kg PR) · B 65→70 kg (+5 kg PR)
-    無交集 / 全持平 → None。排序: 重量 delta 由大到小,再以噸位 delta 為次序。"""
-    if not deltas:
+def render_pr_summary(
+    deltas: dict[str, ProgressDelta],
+    bw_reps: dict[str, BwRepsDelta] | None = None,
+) -> str | None:
+    """**進步亮點**: 加權動作 PR + BW reps PR 串接。
+    無交集 / 全持平 → None。
+    排序:加權 delta 由大到小,接著 BW reps delta 由大到小。"""
+    bw_reps = bw_reps or {}
+    if not deltas and not bw_reps:
         return None
-    items = sorted(
+
+    weighted_items = sorted(
         deltas.values(),
         key=lambda d: (-d.weight_delta_kg, -d.tonnage_delta),
     )
+    bw_items = sorted(bw_reps.values(), key=lambda d: -d.reps_delta)
+
     parts: list[str] = []
-    for d in items:
+    for d in weighted_items:
         line = _format_one_delta(d)
         if line:
             parts.append(line)
+    for d in bw_items:
+        line = _format_one_bw(d)
+        if line:
+            parts.append(line)
+
     if not parts:
         return None
     return "**進步亮點**: " + " · ".join(parts)
