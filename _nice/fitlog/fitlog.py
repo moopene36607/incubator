@@ -31,7 +31,12 @@ from typing import Any
 from exercise_db import EXERCISES, Exercise, lookup
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_volume_summary
-from progress import compute_bw_reps_deltas, compute_pr_deltas, render_pr_summary
+from progress import (
+    compute_bw_reps_deltas,
+    compute_duration_deltas,
+    compute_pr_deltas,
+    render_pr_summary,
+)
 from validation import validate_session
 
 
@@ -316,6 +321,7 @@ def main() -> int:
             pr_summary = render_pr_summary(
                 compute_pr_deltas(prev_session.sets, session.sets),
                 compute_bw_reps_deltas(prev_session.sets, session.sets),
+                compute_duration_deltas(prev_session.sets, session.sets),
             )
 
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
