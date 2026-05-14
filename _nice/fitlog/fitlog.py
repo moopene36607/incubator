@@ -29,7 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
-from metrics import render_volume_summary
+from metrics import render_category_breakdown, render_volume_summary
 
 
 REPORT_SYSTEM = """你是台灣健身教練 (PT) 的課後報告助理,協助教練把訓練紀錄與觀察轉成
@@ -223,9 +223,13 @@ def render_full_report(session: SessionInput, body: str) -> str:
     out.append("")
     out.extend(render_session_table(session))
     summary = render_volume_summary(session.sets)
-    if summary:
+    breakdown = render_category_breakdown(session.sets)
+    if summary or breakdown:
         out.append("")
+    if summary:
         out.append(summary)
+    if breakdown:
+        out.append(breakdown)
     out.append("")
     out.append("---")
     out.append("")
@@ -252,7 +256,13 @@ def render_line_friendly(session: SessionInput, body: str) -> str:
         rpe = f" RPE{s.rpe}" if s.rpe is not None else ""
         quick_table_rows.append(f"  {i}. {name} {s.sets}×{s.reps_or_duration} @{weight}{rpe}")
     summary = render_volume_summary(session.sets)
-    summary_line = f"\n🏋️ 總噸位:{summary.split(': ', 1)[1]}\n" if summary else "\n"
+    breakdown = render_category_breakdown(session.sets)
+    summary_parts: list[str] = []
+    if summary:
+        summary_parts.append(f"🏋️ 總噸位:{summary.split(': ', 1)[1]}")
+    if breakdown:
+        summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
+    summary_line = "\n" + "\n".join(summary_parts) + "\n" if summary_parts else "\n"
     return (
         f"💪 {session.student_name} 第 {session.session_no} 堂課後報告\n"
         f"📅 {session.session_date}  ⏱ {session.duration_min} min\n"

@@ -52,3 +52,44 @@ def render_volume_summary(sets: Iterable["SetRecord"]) -> str | None:
     if total <= 0:
         return None
     return f"**訓練總噸位**: {_format_kg(total)}"
+
+
+# 顯示用的中文分類標籤;與 exercise_db.Exercise.category 對應。
+CATEGORY_ZH: dict[str, str] = {
+    "legs": "腿系",
+    "pull": "拉系",
+    "push": "推系",
+    "core": "核心",
+    "cardio": "心肺",
+    "mobility": "活動度",
+}
+
+
+def compute_category_tonnage(sets: Iterable["SetRecord"]) -> dict[str, float]:
+    """按 exercise_db 分類加總噸位。未知 exercise_code 直接跳過,不歸到
+    "unknown" bucket (避免污染分類顯示)。"""
+    from exercise_db import lookup
+    breakdown: dict[str, float] = {}
+    for s in sets:
+        if s.weight_kg is None:
+            continue
+        reps = _parse_reps(s.reps_or_duration)
+        if reps is None:
+            continue
+        ex = lookup(s.exercise_code)
+        if ex is None:
+            continue
+        v = float(s.sets) * float(reps) * float(s.weight_kg)
+        breakdown[ex.category] = breakdown.get(ex.category, 0.0) + v
+    return breakdown
+
+
+def render_category_breakdown(sets: Iterable["SetRecord"]) -> str | None:
+    """回傳「**訓練量分解**: 腿系 4,600 kg · 推系 1,600 kg」(由高到低排)。
+    無加權 set → None。"""
+    breakdown = compute_category_tonnage(sets)
+    if not breakdown:
+        return None
+    items = sorted(breakdown.items(), key=lambda kv: -kv[1])
+    parts = [f"{CATEGORY_ZH.get(cat, cat)} {_format_kg(v)}" for cat, v in items]
+    return "**訓練量分解**: " + " · ".join(parts)
