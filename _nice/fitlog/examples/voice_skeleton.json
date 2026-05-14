@@ -1,0 +1,72 @@
+{
+  "student": {
+    "name": "",
+    "age": null,
+    "goal": ""
+  },
+  "coach": {
+    "name": "",
+    "studio_name": "",
+    "contact": ""
+  },
+  "session": {
+    "session_no": 1,
+    "date": "2026-05-14",
+    "duration_min": 60,
+    "theme": "(請填寫主題)",
+    "sets": [
+      {
+        "exercise_code": "WORLDS_GREATEST",
+        "sets": 2,
+        "reps_or_duration": "5",
+        "weight_kg": null,
+        "rpe": null,
+        "note": ""
+      },
+      {
+        "exercise_code": "BB_BACK_SQUAT",
+        "sets": 4,
+        "reps_or_duration": "10",
+        "weight_kg": 70.0,
+        "rpe": 8,
+        "note": "深度本次達 110 度"
+      },
+      {
+        "exercise_code": "BENCH_PRESS",
+        "sets": 4,
+        "reps_or_duration": "8",
+        "weight_kg": 50.0,
+        "rpe": 8,
+        "note": "突破前次 47.5 kg 瓶頸"
+      },
+      {
+        "exercise_code": "ROMANIAN_DL",
+        "sets": 3,
+        "reps_or_duration": "10",
+        "weight_kg": 60.0,
+        "rpe": 7,
+        "note": ""
+      },
+      {
+        "exercise_code": "PULL_UP",
+        "sets": 3,
+        "reps_or_duration": "6",
+        "weight_kg": null,
+        "rpe": 9,
+        "note": "band 從 yellow 換到 red"
+      },
+      {
+        "exercise_code": "PLANK",
+        "sets": 3,
+        "reps_or_duration": "60sec",
+        "weight_kg": null,
+        "rpe": 6,
+        "note": ""
+      }
+    ]
+  },
+  "coach_observations": [],
+  "student_subjective": [],
+  "next_session": {},
+  "recovery_diet": {}
+}
