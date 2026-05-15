@@ -38,6 +38,7 @@ from aggregate import (
     compute_exercise_progression,
     compute_favorite_exercise,
     compute_goal_etas,
+    compute_studio_weekly_tonnage,
     compute_training_streak,
     detect_new_prs,
     compute_goal_progress,
@@ -56,6 +57,7 @@ from aggregate import (
     render_batch_summary,
     render_day_of_week_distribution,
     render_new_pr_banner,
+    render_studio_weekly_tonnage,
     render_session_goal_banner,
     render_session_one_liner,
     render_student_trend,
@@ -569,6 +571,11 @@ def _run_batch(args: argparse.Namespace) -> int:
         summary_path = summary_dir / "_batch_summary.md"
         batch_summary_obj = aggregate_batch(parsed_sessions)
         summary_md = render_batch_summary(batch_summary_obj)
+        studio_section = render_studio_weekly_tonnage(
+            compute_studio_weekly_tonnage(parsed_sessions)
+        )
+        if studio_section:
+            summary_md = summary_md.rstrip("\n") + "\n\n" + studio_section
         # 用批次中最近一堂的日期當 "as_of",讓 demo/test 可預測
         latest_date = max(
             (s.session_date for s in parsed_sessions),

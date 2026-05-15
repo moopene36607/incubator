@@ -637,6 +637,88 @@ def render_bw_reps_progressions(
 
 
 @dataclass(frozen=True)
+class StudioWeek:
+    """工作室 (cross-student) 單一 ISO 週的訓練量加總。week_start 為週一 ISO date。"""
+    week_start: str
+    total_tonnage_kg: float
+    n_sessions: int
+    n_students: int
+
+
+def compute_studio_weekly_tonnage(
+    sessions: Iterable["SessionInput"],
+) -> list[StudioWeek]:
+    """跨所有學員按 ISO 週分組,回傳 list (按 week_start 排序)。"""
+    from datetime import date
+    # week_start_iso → (total_kg, set[student_name], n_sessions)
+    buckets: dict[str, tuple[float, set[str], int]] = {}
+    for sess in sessions:
+        try:
+            d = date.fromisoformat(sess.session_date)
+        except ValueError:
+            continue
+        y, w, _ = d.isocalendar()
+        week_start = date.fromisocalendar(y, w, 1).isoformat()
+        t = compute_total_tonnage(sess.sets)
+        prev_total, prev_students, prev_n = buckets.get(
+            week_start, (0.0, set(), 0)
+        )
+        prev_students.add(sess.student_name)
+        buckets[week_start] = (
+            prev_total + t,
+            prev_students,
+            prev_n + 1,
+        )
+    return [
+        StudioWeek(
+            week_start=ws,
+            total_tonnage_kg=total,
+            n_sessions=n,
+            n_students=len(students),
+        )
+        for ws, (total, students, n) in sorted(buckets.items())
+    ]
+
+
+def render_studio_weekly_tonnage(rows: list[StudioWeek]) -> str:
+    """產出「## 工作室週訓練量」section。空 list → "" 。
+    2+ 列時加 sparkline。"""
+    if not rows:
+        return ""
+    lines: list[str] = ["## 工作室週訓練量", ""]
+    lines.append("| 週起 (週一) | 噸位 | 堂數 | 學員數 |")
+    lines.append("|------------|------|------|--------|")
+    for r in rows:
+        lines.append(
+            f"| {r.week_start} | {_format_kg(r.total_tonnage_kg)} "
+            f"| {r.n_sessions} | {r.n_students} |"
+        )
+    lines.append("")
+    if len(rows) >= 2:
+        tons = [r.total_tonnage_kg for r in rows]
+        lo, hi = min(tons), max(tons)
+        if hi == lo:
+            bars = _SPARKLINE_BARS[4] * len(tons)
+        else:
+            last_idx = len(_SPARKLINE_BARS) - 1
+            bars = "".join(
+                _SPARKLINE_BARS[int((t - lo) / (hi - lo) * last_idx)]
+                for t in tons
+            )
+        first, last = tons[0], tons[-1]
+        delta_str = (
+            f"{(last - first) / first * 100:+.1f}%"
+            if first > 0 else f"{last - first:+.0f}"
+        )
+        lines.append(
+            f"**工作室週訓練量趨勢**: {bars}  "
+            f"({_format_kg(first)} → {_format_kg(last)}, {delta_str})"
+        )
+        lines.append("")
+    return "\n".join(lines)
+
+
+@dataclass(frozen=True)
 class FavoriteExercise:
     """學員累積 tonnage 最大的 weighted exercise + 占該學員總 tonnage 比例。"""
     exercise_code: str
