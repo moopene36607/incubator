@@ -87,6 +87,55 @@ def _format_weight(value: float) -> str:
     return str(int(value)) if value == int(value) else f"{value:.1f}"
 
 
+# Epley 1RM 估算的 reps 上限 (>12 reps 公式不可靠;業界共識)
+_EPLEY_REPS_CAP = 12
+
+
+def estimate_1rm(weight_kg: float, reps: int) -> float | None:
+    """Epley 公式: 1RM = weight × (1 + reps/30)。
+    reps 不在 [1, 12] 或重量 <= 0 → None (公式不可靠 / 無意義)。"""
+    if weight_kg <= 0:
+        return None
+    if reps < 1 or reps > _EPLEY_REPS_CAP:
+        return None
+    return weight_kg * (1.0 + reps / 30.0)
+
+
+def compute_session_1rm_estimates(
+    sets: Iterable["SetRecord"],
+) -> dict[str, float]:
+    """每個 weighted exercise 取「最高估計 1RM」的 set 為代表。BW / 時間型
+    跳過 (沒重量可估或 reps 不可解析)。"""
+    result: dict[str, float] = {}
+    for s in sets:
+        if s.weight_kg is None:
+            continue
+        reps_str = s.reps_or_duration.strip()
+        if not reps_str.isdigit():
+            continue
+        est = estimate_1rm(s.weight_kg, int(reps_str))
+        if est is None:
+            continue
+        cur = result.get(s.exercise_code)
+        if cur is None or est > cur:
+            result[s.exercise_code] = est
+    return result
+
+
+def render_1rm_estimates(estimates: dict[str, float]) -> str | None:
+    """**估計 1RM (Epley)**: A ~ 60 kg · B ~ 90 kg。空 → None。
+    排序: estimate desc。每筆四捨五入到整數 kg。"""
+    if not estimates:
+        return None
+    items = sorted(estimates.items(), key=lambda kv: -kv[1])
+    parts: list[str] = []
+    for code, est in items:
+        ex = lookup(code)
+        name = ex.chinese if ex else code
+        parts.append(f"{name} ~ {round(est)} kg")
+    return "**估計 1RM (Epley)**: " + " · ".join(parts)
+
+
 def render_next_weight_suggestions(
     suggestions: dict[str, WeightSuggestion],
 ) -> str | None:
