@@ -636,6 +636,129 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+@dataclass(frozen=True)
+class NewPrRecord:
+    """當堂打破歷來最佳的 PR 紀錄。
+    kind: "weight" (top weight kg) | "bw_reps" (BW 動作 top reps)。
+    prev_best=0 → 從沒做過這個動作 (首次嘗試也算 PR)。"""
+    exercise_code: str
+    kind: str  # "weight" | "bw_reps"
+    curr_value: float        # 重量 kg 或 reps int (用 float 包通用)
+    prev_best: float
+
+
+def _curr_max_weight(sets: Iterable["SetRecord"], code: str) -> float | None:
+    weights = [s.weight_kg for s in sets
+               if s.exercise_code == code and s.weight_kg is not None]
+    return max(weights) if weights else None
+
+
+def _curr_max_bw_reps(sets: Iterable["SetRecord"], code: str) -> int | None:
+    candidates: list[int] = []
+    for s in sets:
+        if s.exercise_code != code or s.weight_kg is not None:
+            continue
+        reps_str = s.reps_or_duration.strip()
+        if not reps_str.isdigit():
+            continue
+        candidates.append(int(reps_str))
+    return max(candidates) if candidates else None
+
+
+def detect_new_prs(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+) -> list[NewPrRecord]:
+    """偵測 current_session 中,有哪個 exercise 的 max weight (或 BW max reps)
+    嚴格大於該學員所有「嚴格早於當堂」的 sessions 的 max。回傳 list,排序:
+    weight (delta desc) → bw_reps (delta desc)。"""
+    cur_key = (current_session.session_date, current_session.session_no)
+    prior = [
+        s for s in sessions
+        if s.student_name == student_name
+        and (s.session_date, s.session_no) < cur_key
+    ]
+    if not prior:
+        # 第一堂沒歷史可比,不算 PR (避免每位學員的處女堂都被狂歡)
+        return []
+    # 歷來 weight max per exercise
+    prior_weight_max: dict[str, float] = {}
+    prior_bw_max: dict[str, int] = {}
+    for sess in prior:
+        for s in sess.sets:
+            if s.weight_kg is not None:
+                cur = prior_weight_max.get(s.exercise_code, 0.0)
+                if s.weight_kg > cur:
+                    prior_weight_max[s.exercise_code] = s.weight_kg
+            else:
+                reps_str = s.reps_or_duration.strip()
+                if not reps_str.isdigit():
+                    continue
+                r = int(reps_str)
+                cur_r = prior_bw_max.get(s.exercise_code, 0)
+                if r > cur_r:
+                    prior_bw_max[s.exercise_code] = r
+
+    weight_prs: list[NewPrRecord] = []
+    bw_prs: list[NewPrRecord] = []
+    seen_codes: set[str] = set()
+    for s in current_session.sets:
+        if s.exercise_code in seen_codes:
+            continue
+        seen_codes.add(s.exercise_code)
+        # weight track
+        curr_w = _curr_max_weight(current_session.sets, s.exercise_code)
+        if curr_w is not None:
+            prev = prior_weight_max.get(s.exercise_code, 0.0)
+            if curr_w > prev:
+                weight_prs.append(NewPrRecord(
+                    exercise_code=s.exercise_code, kind="weight",
+                    curr_value=curr_w, prev_best=prev,
+                ))
+            continue
+        # BW reps track
+        curr_r = _curr_max_bw_reps(current_session.sets, s.exercise_code)
+        if curr_r is not None:
+            prev_r = prior_bw_max.get(s.exercise_code, 0)
+            if curr_r > prev_r:
+                bw_prs.append(NewPrRecord(
+                    exercise_code=s.exercise_code, kind="bw_reps",
+                    curr_value=float(curr_r), prev_best=float(prev_r),
+                ))
+    weight_prs.sort(key=lambda r: -(r.curr_value - r.prev_best))
+    bw_prs.sort(key=lambda r: -(r.curr_value - r.prev_best))
+    return weight_prs + bw_prs
+
+
+def _format_pr_value(v: float) -> str:
+    if v == int(v):
+        return str(int(v))
+    return f"{v:.1f}"
+
+
+def render_new_pr_banner(prs: list[NewPrRecord]) -> str | None:
+    """「🏆 **PR 突破**!: 槓鈴臥推 50 kg (打破歷來最高 45 kg) · 引體向上 8 reps ...」。
+    空 → None。prev_best 0 → 「首次」標記。"""
+    if not prs:
+        return None
+    parts: list[str] = []
+    for pr in prs:
+        ex = lookup(pr.exercise_code)
+        name = ex.chinese if ex else pr.exercise_code
+        unit = "kg" if pr.kind == "weight" else "reps"
+        curr_str = _format_pr_value(pr.curr_value)
+        if pr.prev_best <= 0:
+            parts.append(f"{name} {curr_str} {unit} (首次)")
+        else:
+            prev_str = _format_pr_value(pr.prev_best)
+            parts.append(
+                f"{name} {curr_str} {unit} "
+                f"(打破歷來最高 {prev_str} {unit})"
+            )
+    return "🏆 **PR 突破**!: " + " · ".join(parts)
+
+
 def compute_duration_progression(
     sessions: Iterable["SessionInput"],
     student_name: str,

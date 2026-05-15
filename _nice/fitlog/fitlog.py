@@ -34,6 +34,7 @@ from aggregate import (
     compute_bw_reps_progression,
     compute_duration_progression,
     compute_exercise_progression,
+    detect_new_prs,
     compute_goal_progress,
     compute_student_1rm_progression,
     compute_student_bw_prs,
@@ -47,6 +48,7 @@ from aggregate import (
     find_prev_session,
     render_batch_one_liner,
     render_batch_summary,
+    render_new_pr_banner,
     render_session_goal_banner,
     render_session_one_liner,
     render_student_trend,
@@ -279,6 +281,7 @@ def render_full_report(
     deload_banner: str | None = None,
     imbalance_banner: str | None = None,
     milestone_banner: str | None = None,
+    new_pr_banner: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -287,6 +290,9 @@ def render_full_report(
                f"**時長**: {session.duration_min} 分鐘    "
                f"**今日主題**: {session.theme}")
     out.append("")
+    if new_pr_banner:
+        out.append(new_pr_banner)
+        out.append("")
     if goal_banner:
         out.append(goal_banner)
     if milestone_banner:
@@ -468,6 +474,9 @@ def _run_batch(args: argparse.Namespace) -> int:
         milestone_banner = render_milestone_banner(
             detect_milestone_crossed(prev_total, current_total)
         )
+        new_pr_banner = render_new_pr_banner(
+            detect_new_prs(parsed_sessions, session.student_name, session)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
@@ -475,7 +484,8 @@ def _run_batch(args: argparse.Namespace) -> int:
                                   density_summary=density_summary,
                                   deload_banner=deload_banner,
                                   imbalance_banner=imbalance_banner,
-                                  milestone_banner=milestone_banner)
+                                  milestone_banner=milestone_banner,
+                                  new_pr_banner=new_pr_banner)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
