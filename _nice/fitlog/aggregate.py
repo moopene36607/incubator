@@ -82,6 +82,14 @@ class AllTimeBwBest:
 
 
 @dataclass(frozen=True)
+class StudentFrequency:
+    """學員訓練頻率 (avg sessions / week + adherence 判讀)。"""
+    total_sessions: int
+    span_days: int               # first → last session 日期差
+    sessions_per_week: float     # span 0 時為 0
+
+
+@dataclass(frozen=True)
 class GoalAchievement:
     """單堂報告 banner 用:該堂第一次達成的目標 (exercise + target)。"""
     exercise_code: str
@@ -504,6 +512,41 @@ def render_exercise_progressions(
     return "\n".join(["## 主要動作進度", "", *body, ""])
 
 
+def compute_student_session_frequency(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> StudentFrequency | None:
+    """計算該學員的 first→last 期間平均週訓練次數 (adherence 指標)。
+    無 session → None;單堂或同日多堂 (span 0) → freq 0 (不能 div0)。"""
+    from datetime import date as _date
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    if not student_sessions:
+        return None
+    first = _date.fromisoformat(student_sessions[0].session_date)
+    last = _date.fromisoformat(student_sessions[-1].session_date)
+    span_days = (last - first).days
+    sessions_per_week = (
+        len(student_sessions) / (span_days / 7.0) if span_days > 0 else 0.0
+    )
+    return StudentFrequency(
+        total_sessions=len(student_sessions),
+        span_days=span_days,
+        sessions_per_week=sessions_per_week,
+    )
+
+
+def render_session_frequency(freq: StudentFrequency | None) -> str:
+    """**訓練頻率**: 平均 X 次/週 (N 堂 / D 天)。
+    None / 單堂 / span 0 → "" (沒進步可講)。"""
+    if freq is None or freq.total_sessions < 2 or freq.span_days == 0:
+        return ""
+    return (f"**訓練頻率**: 平均 {freq.sessions_per_week:.1f} 次/週 "
+            f"({freq.total_sessions} 堂 / {freq.span_days} 天)")
+
+
 def find_newly_achieved_goals(
     session: "SessionInput",
     all_sessions: Iterable["SessionInput"],
@@ -673,6 +716,7 @@ def render_student_trend(
     goals: list[GoalProgress] | None = None,
     one_rm_progressions: dict[str, list[tuple[str, float]]] | None = None,
     density_progression: list[tuple[str, float]] | None = None,
+    frequency: StudentFrequency | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -700,6 +744,11 @@ def render_student_trend(
         density_line = render_density_progression(density_progression)
         if density_line:
             lines.append(density_line)
+            lines.append("")
+    if frequency:
+        freq_line = render_session_frequency(frequency)
+        if freq_line:
+            lines.append(freq_line)
             lines.append("")
     if progressions:
         prog_str = render_exercise_progressions(progressions)

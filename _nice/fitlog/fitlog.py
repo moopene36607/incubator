@@ -37,6 +37,7 @@ from aggregate import (
     compute_student_bw_prs,
     compute_student_density_progression,
     compute_student_prs,
+    compute_student_session_frequency,
     compute_student_trend,
     find_newly_achieved_goals,
     find_prev_session,
@@ -443,6 +444,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             progressions = compute_exercise_progression(parsed_sessions, name)
             one_rm_progressions = compute_student_1rm_progression(parsed_sessions, name)
             density_progression = compute_student_density_progression(parsed_sessions, name)
+            frequency = compute_student_session_frequency(parsed_sessions, name)
             # 取該學員最近一堂的 targets (學員可能會調整目標)
             student_sorted = sorted(
                 (s for s in parsed_sessions if s.student_name == name),
@@ -464,6 +466,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                     goals=goals,
                     one_rm_progressions=one_rm_progressions,
                     density_progression=density_progression,
+                    frequency=frequency,
                 ),
                 encoding="utf-8",
             )
