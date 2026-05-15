@@ -1136,11 +1136,16 @@ def compute_goal_progress(
     return result
 
 
-def render_goal_progress(progress: list[GoalProgress]) -> str:
+def render_goal_progress(
+    progress: list[GoalProgress],
+    etas: dict[str, str] | None = None,
+) -> str:
     """產出「## 目標達成進度」section,每行 progress bar (10 字寬)。
-    達 100% 加 ✅;空 list → ""。"""
+    達 100% 加 ✅;空 list → ""。
+    傳 etas={code: iso_date} 時,未達標的目標附加「(預估達成 DATE)」。"""
     if not progress:
         return ""
+    etas = etas or {}
     lines: list[str] = ["## 目標達成進度", ""]
     for p in sorted(progress, key=lambda x: -x.percent):
         ex = lookup(p.exercise_code)
@@ -1152,12 +1157,85 @@ def render_goal_progress(progress: list[GoalProgress]) -> str:
         achievement = ""
         if p.achieved_on_session_no is not None:
             achievement = f" 達成於第 {p.achieved_on_session_no} 堂 ({p.achieved_on_date})"
+        eta_str = ""
+        if p.percent < 100 and p.exercise_code in etas:
+            eta_str = f" (預估達成 {etas[p.exercise_code]})"
         lines.append(
             f"- {name}: {_format_kg(p.current_kg)} / {_format_kg(p.target_kg)} "
-            f"({p.percent:.0f}%) {bar}{check}{achievement}"
+            f"({p.percent:.0f}%) {bar}{check}{achievement}{eta_str}"
         )
     lines.append("")
     return "\n".join(lines)
+
+
+# 目標預估的最遠外推距離 (超過視為不切實際,不顯示;避免「2 年後達標」這種無意義 ETA)
+DEFAULT_ETA_HORIZON_DAYS = 365
+
+
+def project_goal_eta(
+    points: list[tuple[str, float]],
+    target_kg: float,
+    today_iso: str,
+    max_horizon_days: int = DEFAULT_ETA_HORIZON_DAYS,
+) -> str | None:
+    """linear regression on (days_since_first, weight),外推到 target_kg。
+    回傳預估達成日 (ISO date) 或 None。
+    None 觸發條件:點少於 2、slope ≤ 0、已達標、預估超過 horizon。"""
+    from datetime import date
+    if len(points) < 2:
+        return None
+    base = date.fromisoformat(points[0][0])
+    xs = [(date.fromisoformat(d) - base).days for d, _ in points]
+    ys = [w for _, w in points]
+    n = len(points)
+    mean_x = sum(xs) / n
+    mean_y = sum(ys) / n
+    num = sum((xs[i] - mean_x) * (ys[i] - mean_y) for i in range(n))
+    den = sum((xs[i] - mean_x) ** 2 for i in range(n))
+    if den == 0:
+        return None
+    slope = num / den  # kg per day
+    if slope <= 0:
+        return None
+    current = ys[-1]
+    if current >= target_kg:
+        return None
+    days_needed = (target_kg - current) / slope
+    if days_needed > max_horizon_days:
+        return None
+    today = date.fromisoformat(today_iso)
+    from datetime import timedelta
+    eta = today + timedelta(days=int(round(days_needed)))
+    return eta.isoformat()
+
+
+def compute_goal_etas(
+    targets: list[dict],
+    progressions: dict[str, list[tuple[str, float]]],
+    today_iso: str,
+    max_horizon_days: int = DEFAULT_ETA_HORIZON_DAYS,
+) -> dict[str, str]:
+    """對每個 target 找對應的 progression 跑 projection。空 / 已達標 / 無進步
+    都跳過。回傳 dict[code, eta_iso_date]。"""
+    result: dict[str, str] = {}
+    for t in targets:
+        code = t.get("exercise_code")
+        target = t.get("target_weight_kg")
+        if not code or target is None:
+            continue
+        try:
+            target_f = float(target)
+        except (TypeError, ValueError):
+            continue
+        if target_f <= 0:
+            continue
+        points = progressions.get(code)
+        if not points:
+            continue
+        eta = project_goal_eta(points, target_f, today_iso, max_horizon_days)
+        if eta is not None:
+            result[code] = eta
+    return result
 
 
 def _insert_toc(text: str) -> str:
@@ -1190,6 +1268,7 @@ def render_student_trend(
     bw_reps_progressions: dict[str, list[tuple[str, int]]] | None = None,
     duration_progressions: dict[str, tuple[str, list[tuple[str, int]]]] | None = None,
     training_streak: int | None = None,
+    goal_etas: dict[str, str] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1253,7 +1332,7 @@ def render_student_trend(
         if dur_str:
             lines.append(dur_str)
     if goals:
-        lines.append(render_goal_progress(goals))
+        lines.append(render_goal_progress(goals, etas=goal_etas))
     if all_time_prs or all_time_bw_prs:
         lines.append(render_all_time_prs(all_time_prs or {}, all_time_bw_prs))
     lines.append("---")
