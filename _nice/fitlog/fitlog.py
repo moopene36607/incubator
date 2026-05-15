@@ -30,6 +30,15 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+# --quiet 控制:靜音 info / 進度訊息 (「已寫入 X」),但 warning / error 永遠印
+_QUIET = False
+
+
+def _info(msg: str) -> None:
+    """印進度 / info 訊息到 stderr;--quiet 時靜音。"""
+    if not _QUIET:
+        print(msg, file=sys.stderr)
+
 from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
@@ -459,7 +468,7 @@ def _run_batch(args: argparse.Namespace) -> int:
         return 0
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
-        print("info: ANTHROPIC_API_KEY 未設,批次輸出骨架版", file=sys.stderr)
+        _info("info: ANTHROPIC_API_KEY 未設,批次輸出骨架版")
     out_dir: Path | None = args.out_dir
     if out_dir is not None:
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -502,16 +511,15 @@ def _run_batch(args: argparse.Namespace) -> int:
             )
             return 0
         else:
-            print(
+            _info(
                 f"info: --student {target} → 保留 {len(parsed_sessions)} / "
-                f"{before} 堂",
-                file=sys.stderr,
+                f"{before} 堂"
             )
 
     # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary + next_weight_summary
     # --summary-only 時跳過個別 session 渲染與寫檔 (Pass 1 仍跑供彙總用)
     if args.summary_only:
-        print("info: --summary-only,跳過個別 session .md", file=sys.stderr)
+        _info("info: --summary-only,跳過個別 session .md")
     for path, session in (pairs if not args.summary_only else []):
         prev = find_prev_session(session, parsed_sessions)
         pr_summary: str | None = None
@@ -558,7 +566,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                                   new_pr_banner=new_pr_banner)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
-        print(f"已寫入 {out_path}", file=sys.stderr)
+        _info(f"已寫入 {out_path}")
         # PR count = 三類 deltas 加總 (粗略估計;只算非空)
         pr_count = 0
         if prev is not None:
@@ -577,7 +585,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 render_html_page(html_title, markdown_to_html(full)),
                 encoding="utf-8",
             )
-            print(f"已寫入 {html_path}", file=sys.stderr)
+            _info(f"已寫入 {html_path}")
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
@@ -606,24 +614,24 @@ def _run_batch(args: argparse.Namespace) -> int:
         if dow_section:
             summary_md = summary_md.rstrip("\n") + "\n\n" + dow_section
         summary_path.write_text(summary_md, encoding="utf-8")
-        print(f"已寫入彙總: {summary_path}", file=sys.stderr)
+        _info(f"已寫入彙總: {summary_path}")
         if args.batch_csv:
             batch_csv_path = summary_dir / "_batch.csv"
             write_batch_csv(parsed_sessions, batch_csv_path,
                             with_bom=args.csv_bom)
-            print(f"已寫入批次 CSV: {batch_csv_path}", file=sys.stderr)
+            _info(f"已寫入批次 CSV: {batch_csv_path}")
         one_liner = render_batch_one_liner(batch_summary_obj)
         if one_liner:
             one_liner_path = summary_dir / "_one_liner.txt"
             one_liner_path.write_text(one_liner + "\n", encoding="utf-8")
-            print(f"已寫入單行摘要: {one_liner_path}", file=sys.stderr)
+            _info(f"已寫入單行摘要: {one_liner_path}")
         if args.batch_html:
             summary_html_path = summary_path.with_suffix(".html")
             summary_html_path.write_text(
                 render_html_page("批次彙總報告", markdown_to_html(summary_md)),
                 encoding="utf-8",
             )
-            print(f"已寫入彙總 HTML: {summary_html_path}", file=sys.stderr)
+            _info(f"已寫入彙總 HTML: {summary_html_path}")
         for name in sorted({s.student_name for s in parsed_sessions}):
             trend = compute_student_trend(parsed_sessions, name)
             prs = compute_student_prs(parsed_sessions, name)
@@ -684,7 +692,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 intensity_progression=intensity_progression,
             )
             student_path.write_text(student_md, encoding="utf-8")
-            print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)
+            _info(f"已寫入學員趨勢: {student_path}")
             if args.batch_html:
                 student_html_path = student_path.with_suffix(".html")
                 student_html_path.write_text(
@@ -692,7 +700,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                                      markdown_to_html(student_md)),
                     encoding="utf-8",
                 )
-                print(f"已寫入學員趨勢 HTML: {student_html_path}", file=sys.stderr)
+                _info(f"已寫入學員趨勢 HTML: {student_html_path}")
     return 0
 
 
@@ -727,7 +735,12 @@ def main() -> int:
     parser.add_argument("--list-exercises", action="store_true",
                         help="列出 exercise_db 所有動作代碼 (依分類分組);PT 查 code 用")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
+    parser.add_argument("--quiet", action="store_true",
+                        help="靜音 info / 進度訊息 (warning / error 仍保留;適合 cron / pipeline)")
     args = parser.parse_args()
+
+    global _QUIET
+    _QUIET = args.quiet
 
     if args.list_exercises:
         sys.stdout.write(render_exercise_listing() + "\n")
@@ -787,7 +800,7 @@ def main() -> int:
 
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not use_ai and not args.no_ai:
-        print("info: ANTHROPIC_API_KEY 未設,輸出骨架版", file=sys.stderr)
+        _info("info: ANTHROPIC_API_KEY 未設,輸出骨架版")
 
     next_weight_summary = render_next_weight_suggestions(
         suggest_next_session_weights(session.sets)
@@ -804,7 +817,7 @@ def main() -> int:
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")
-        print(f"已寫入 markdown: {args.out}", file=sys.stderr)
+        _info(f"已寫入 markdown: {args.out}")
     else:
         sys.stdout.write(full)
 
@@ -814,17 +827,17 @@ def main() -> int:
                                  one_rm_summary=one_rm_summary,
                                  density_summary=density_summary),
             encoding="utf-8")
-        print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
+        _info(f"已寫入 LINE 版: {args.out_line}")
 
     if args.csv:
         write_session_csv(session, args.csv, with_bom=args.csv_bom)
-        print(f"已寫入 CSV: {args.csv}", file=sys.stderr)
+        _info(f"已寫入 CSV: {args.csv}")
 
     if args.html:
         body_html = markdown_to_html(full)
         title = f"{session.student_name} 課後訓練報告 (第 {session.session_no} 堂)"
         args.html.write_text(render_html_page(title, body_html), encoding="utf-8")
-        print(f"已寫入 HTML: {args.html}", file=sys.stderr)
+        _info(f"已寫入 HTML: {args.html}")
     return 0
 
 
