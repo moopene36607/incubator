@@ -29,7 +29,12 @@ from pathlib import Path
 from typing import Any
 
 from exercise_db import EXERCISES, Exercise, lookup
-from aggregate import aggregate_batch, render_batch_summary
+from aggregate import (
+    aggregate_batch,
+    compute_student_trend,
+    render_batch_summary,
+    render_student_trend,
+)
 from batch import discover_session_jsons
 from coaching import render_next_weight_suggestions, suggest_next_session_weights
 from csv_export import write_session_csv
@@ -356,6 +361,12 @@ def _run_batch(args: argparse.Namespace) -> int:
             encoding="utf-8",
         )
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
+        for name in sorted({s.student_name for s in parsed_sessions}):
+            trend = compute_student_trend(parsed_sessions, name)
+            safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
+            student_path = summary_dir / f"_student_{safe}.md"
+            student_path.write_text(render_student_trend(trend), encoding="utf-8")
+            print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)
     return 0
 
 
