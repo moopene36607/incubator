@@ -50,15 +50,19 @@ from aggregate import (
 )
 from batch import discover_session_jsons
 from coaching import (
+    compute_cumulative_tonnage_before,
     compute_session_1rm_estimates,
     detect_deload_signal,
     detect_imbalance_warning,
+    detect_milestone_crossed,
     render_1rm_estimates,
     render_deload_banner,
     render_imbalance_warning,
+    render_milestone_banner,
     render_next_weight_suggestions,
     suggest_next_session_weights,
 )
+from metrics import compute_total_tonnage
 from html_export import markdown_to_html, render_html_page
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_training_density, render_volume_summary
@@ -259,6 +263,7 @@ def render_full_report(
     density_summary: str | None = None,
     deload_banner: str | None = None,
     imbalance_banner: str | None = None,
+    milestone_banner: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -269,6 +274,9 @@ def render_full_report(
     out.append("")
     if goal_banner:
         out.append(goal_banner)
+    if milestone_banner:
+        out.append(milestone_banner)
+        out.append("")
     if deload_banner:
         out.append(deload_banner)
         out.append("")
@@ -433,13 +441,21 @@ def _run_batch(args: argparse.Namespace) -> int:
         imbalance_banner = render_imbalance_warning(
             detect_imbalance_warning(parsed_sessions, session.student_name, session)
         )
+        prev_total = compute_cumulative_tonnage_before(
+            parsed_sessions, session.student_name, session,
+        )
+        current_total = prev_total + compute_total_tonnage(session.sets)
+        milestone_banner = render_milestone_banner(
+            detect_milestone_crossed(prev_total, current_total)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
                                   one_rm_summary=one_rm_summary,
                                   density_summary=density_summary,
                                   deload_banner=deload_banner,
-                                  imbalance_banner=imbalance_banner)
+                                  imbalance_banner=imbalance_banner,
+                                  milestone_banner=milestone_banner)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)

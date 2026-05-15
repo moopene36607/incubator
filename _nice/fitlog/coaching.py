@@ -95,6 +95,41 @@ DELOAD_MIN_SESSIONS = 3
 DELOAD_RPE_THRESHOLD = 8.5
 
 
+# 累計訓練量里程碑 (kg) — 5 個 retention 階段
+MILESTONES_KG = (10_000, 50_000, 100_000, 500_000, 1_000_000)
+
+
+def detect_milestone_crossed(prev_total_kg: float, current_total_kg: float) -> int | None:
+    """偵測 prev_total → current_total 期間跨越的最高里程碑。沒跨越 → None。"""
+    crossed = [m for m in MILESTONES_KG if prev_total_kg < m <= current_total_kg]
+    return max(crossed) if crossed else None
+
+
+def compute_cumulative_tonnage_before(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+) -> float:
+    """加總該學員所有「嚴格早於當堂」的 session tonnage。"""
+    from metrics import compute_total_tonnage
+    cur_key = (current_session.session_date, current_session.session_no)
+    return sum(
+        compute_total_tonnage(s.sets)
+        for s in sessions
+        if s.student_name == student_name
+        and (s.session_date, s.session_no) < cur_key
+    )
+
+
+def render_milestone_banner(milestone_kg: int | None) -> str:
+    """產出「🏅 累計訓練量里程碑」單段 markdown。None → ""。"""
+    if milestone_kg is None:
+        return ""
+    tonnes = milestone_kg / 1000
+    return (f"🏅 **累計訓練量里程碑**:突破 {milestone_kg:,} kg "
+            f"({tonnes:.0f} 噸) 累計訓練量!")
+
+
 # 動作分類失衡偵測:近 N 堂 + 單分類占 >= 閾值 → 警告
 IMBALANCE_WINDOW = 3
 IMBALANCE_THRESHOLD = 0.7
