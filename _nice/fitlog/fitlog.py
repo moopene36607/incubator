@@ -432,6 +432,12 @@ def render_line_friendly(
         quick_table_rows.append(f"  {i}. {name} {s.sets}×{s.reps_or_duration} @{weight}{rpe}")
     summary = render_volume_summary(session.sets)
     breakdown = render_category_breakdown(session.sets)
+    zone_summary = render_rpe_zone_distribution(
+        compute_rpe_zone_distribution(session.sets)
+    )
+    intensity_summary = render_session_intensity_score(
+        compute_session_intensity_score(session)
+    )
     summary_parts: list[str] = []
     if summary:
         summary_parts.append(f"🏋️ 總噸位:{summary.split(': ', 1)[1]}")
@@ -439,6 +445,10 @@ def render_line_friendly(
         summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
     if density_summary:
         summary_parts.append(f"⚡ 密度:{density_summary.split(': ', 1)[1]}")
+    if intensity_summary:
+        summary_parts.append(f"🔥 強度分數:{intensity_summary.split(': ', 1)[1]}")
+    if zone_summary:
+        summary_parts.append(f"📈 強度分布:{zone_summary.split(': ', 1)[1]}")
     if pr_summary:
         summary_parts.append(f"🏆 進步:{pr_summary.split(': ', 1)[1]}")
     if one_rm_summary:
