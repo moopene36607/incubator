@@ -636,6 +636,53 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+def compute_student_intensity_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> list[tuple[str, float]]:
+    """For 該學員,逐堂算 intensity_score (tonnage × avg_rpe/10),按 date 排序。
+    score=None (全 BW / 無 RPE) 的堂跳過。"""
+    from metrics import compute_session_intensity_score
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    points: list[tuple[str, float]] = []
+    for sess in student_sessions:
+        score = compute_session_intensity_score(sess)
+        if score is not None and score > 0:
+            points.append((sess.session_date, score))
+    return points
+
+
+def render_intensity_progression(points: list[tuple[str, float]]) -> str:
+    """單行 sparkline + delta% (e.g. '**訓練強度分數趨勢**: ▁▄█  (252 → 360, +42.9%)')。
+    < 2 點 → ""。"""
+    if len(points) < 2:
+        return ""
+    vals = [v for _, v in points]
+    lo, hi = min(vals), max(vals)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(vals)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((v - lo) / (hi - lo) * last_idx)]
+            for v in vals
+        )
+    first, last = vals[0], vals[-1]
+    if first == 0:
+        delta_str = f"{round(last - first):+d}"
+    else:
+        pct = (last - first) / first * 100
+        sign = "+" if pct >= 0 else ""
+        delta_str = f"{sign}{pct:.1f}%"
+    return (
+        f"**訓練強度分數趨勢**: {bars}  "
+        f"({round(first)} → {round(last)}, {delta_str})"
+    )
+
+
 @dataclass(frozen=True)
 class ExerciseVariety:
     """學員動作多樣性指標 (recent window vs all-time)。"""
@@ -1501,6 +1548,7 @@ def render_student_trend(
     goal_etas: dict[str, str] | None = None,
     favorite_exercise: FavoriteExercise | None = None,
     exercise_variety: ExerciseVariety | None = None,
+    intensity_progression: list[tuple[str, float]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1545,6 +1593,11 @@ def render_student_trend(
         rpe_line = render_rpe_progression(rpe_progression)
         if rpe_line:
             lines.append(rpe_line)
+            lines.append("")
+    if intensity_progression:
+        intensity_line = render_intensity_progression(intensity_progression)
+        if intensity_line:
+            lines.append(intensity_line)
             lines.append("")
     if frequency:
         freq_line = render_session_frequency(frequency)
