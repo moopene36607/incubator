@@ -30,52 +30,28 @@
     "theme": "全身肌力 / Day A — push + 下肢主導",
     "sets": [
       {
-        "exercise_code": "WORLDS_GREATEST",
-        "sets": 2,
-        "reps_or_duration": "5 reps/side",
-        "weight_kg": null,
-        "rpe": 9,
-        "note": "暖身,胸椎旋轉感今日比上次好"
-      },
-      {
-        "exercise_code": "BB_BACK_SQUAT",
-        "sets": 4,
-        "reps_or_duration": "10",
-        "weight_kg": 70.0,
-        "rpe": 9,
-        "note": "深度本次達 110 度,上次為 90 度;膝蓋追蹤良好,沒有內夾"
-      },
-      {
         "exercise_code": "BENCH_PRESS",
         "sets": 4,
         "reps_or_duration": "8",
         "weight_kg": 50.0,
-        "rpe": 9,
-        "note": "突破前次 47.5 kg 瓶頸,4 組都完整完成"
+        "rpe": 8,
+        "note": "push only demo"
       },
       {
-        "exercise_code": "ROMANIAN_DL",
+        "exercise_code": "OHP",
+        "sets": 4,
+        "reps_or_duration": "8",
+        "weight_kg": 30.0,
+        "rpe": 8,
+        "note": "push only demo"
+      },
+      {
+        "exercise_code": "INCLINE_DB_PRESS",
         "sets": 3,
         "reps_or_duration": "10",
-        "weight_kg": 60,
-        "rpe": 9,
-        "note": "髖鉸鏈動作模式正確,下背無代償"
-      },
-      {
-        "exercise_code": "PULL_UP",
-        "sets": 3,
-        "reps_or_duration": "6",
-        "weight_kg": null,
-        "rpe": 9,
-        "note": "輔助 band 從 yellow 換到 red,負重逐漸減輕中"
-      },
-      {
-        "exercise_code": "PLANK",
-        "sets": 3,
-        "reps_or_duration": "60 sec",
-        "weight_kg": null,
-        "rpe": 9,
-        "note": "核心穩定度比 4 週前明顯改善,腰椎不再過度前凸"
+        "weight_kg": 22.5,
+        "rpe": 7,
+        "note": "push only demo"
       }
     ]
   },

@@ -95,6 +95,82 @@ DELOAD_MIN_SESSIONS = 3
 DELOAD_RPE_THRESHOLD = 8.5
 
 
+# 動作分類失衡偵測:近 N 堂 + 單分類占 >= 閾值 → 警告
+IMBALANCE_WINDOW = 3
+IMBALANCE_THRESHOLD = 0.7
+
+# 偏向某分類時建議補哪些 (基於 push/pull/leg 對抗肌群與大肌群覆蓋邏輯)
+_IMBALANCE_SUGGESTIONS = {
+    "push": ["pull", "legs"],
+    "pull": ["push", "legs"],
+    "legs": ["push", "pull"],
+    "core": ["legs", "push"],
+    "cardio": ["legs", "push"],
+    "mobility": ["legs", "push"],
+}
+
+
+@dataclass(frozen=True)
+class ImbalanceWarning:
+    """近期訓練單一分類占比過高的警示。"""
+    dominant_category: str
+    dominant_pct: float
+    suggested_categories: list[str]
+
+
+def detect_imbalance_warning(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+    window: int = IMBALANCE_WINDOW,
+) -> ImbalanceWarning | None:
+    """偵測該學員近 N 堂 (含當堂) 訓練分類分布,單一分類占 >= 閾值 → 警告。"""
+    from metrics import compute_category_tonnage
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    cur_key = (current_session.session_date, current_session.session_no)
+    relevant = [s for s in student_sessions
+                if (s.session_date, s.session_no) <= cur_key]
+    if len(relevant) < window:
+        return None
+    recent = relevant[-window:]
+
+    per_cat: dict[str, float] = {}
+    for sess in recent:
+        for cat, t in compute_category_tonnage(sess.sets).items():
+            per_cat[cat] = per_cat.get(cat, 0.0) + t
+
+    total = sum(per_cat.values())
+    if total <= 0:
+        return None
+
+    dominant_cat, dominant_t = max(per_cat.items(), key=lambda kv: kv[1])
+    dominant_pct = dominant_t / total
+    if dominant_pct < IMBALANCE_THRESHOLD:
+        return None
+
+    return ImbalanceWarning(
+        dominant_category=dominant_cat,
+        dominant_pct=dominant_pct,
+        suggested_categories=_IMBALANCE_SUGGESTIONS.get(dominant_cat, []),
+    )
+
+
+def render_imbalance_warning(w: ImbalanceWarning | None) -> str:
+    """產出「⚠️ 動作分類失衡」單段 markdown。None → ""。"""
+    if w is None:
+        return ""
+    from metrics import CATEGORY_ZH
+    name = CATEGORY_ZH.get(w.dominant_category, w.dominant_category)
+    suggested = " / ".join(
+        CATEGORY_ZH.get(c, c) for c in w.suggested_categories
+    ) or "其他分類"
+    return (f"⚠️ **動作分類失衡**:近 {IMBALANCE_WINDOW} 堂"
+            f"{name}佔 {w.dominant_pct:.0%},建議下次補 {suggested}。")
+
+
 @dataclass(frozen=True)
 class DeloadSignal:
     """近期過度訓練訊號 — 建議下次 deload。"""
