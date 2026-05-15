@@ -22,7 +22,7 @@ from typing import TYPE_CHECKING, Iterable
 from exercise_db import lookup
 
 if TYPE_CHECKING:
-    from fitlog import SetRecord
+    from fitlog import SessionInput, SetRecord
 
 
 @dataclass(frozen=True)
@@ -89,6 +89,61 @@ def _format_weight(value: float) -> str:
 
 # Epley 1RM 估算的 reps 上限 (>12 reps 公式不可靠;業界共識)
 _EPLEY_REPS_CAP = 12
+
+# Deload 偵測閾值: 近 N 堂平均 RPE >= threshold → 建議 deload (降量週)
+DELOAD_MIN_SESSIONS = 3
+DELOAD_RPE_THRESHOLD = 8.5
+
+
+@dataclass(frozen=True)
+class DeloadSignal:
+    """近期過度訓練訊號 — 建議下次 deload。"""
+    avg_rpe: float
+    n_recent_sessions: int
+
+
+def _avg_rpe_for_session(session: "SessionInput") -> float | None:
+    """Avg RPE across all sets that have RPE。沒任何 set 有 RPE → None。"""
+    rpes = [s.rpe for s in session.sets if s.rpe is not None]
+    if not rpes:
+        return None
+    return sum(rpes) / len(rpes)
+
+
+def detect_deload_signal(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+) -> DeloadSignal | None:
+    """看該學員到當堂為止的最近 N 堂 (含當堂),avg RPE >= 閾值 → signal。
+    不足 N 堂或低 avg → None。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    cur_key = (current_session.session_date, current_session.session_no)
+    relevant = [s for s in student_sessions
+                if (s.session_date, s.session_no) <= cur_key]
+    if len(relevant) < DELOAD_MIN_SESSIONS:
+        return None
+    recent = relevant[-DELOAD_MIN_SESSIONS:]
+    avg_rpes = [_avg_rpe_for_session(s) for s in recent]
+    avg_rpes = [a for a in avg_rpes if a is not None]
+    if len(avg_rpes) < DELOAD_MIN_SESSIONS:
+        return None
+    overall = sum(avg_rpes) / len(avg_rpes)
+    if overall < DELOAD_RPE_THRESHOLD:
+        return None
+    return DeloadSignal(avg_rpe=overall, n_recent_sessions=len(avg_rpes))
+
+
+def render_deload_banner(signal: DeloadSignal | None) -> str:
+    """產出「📉 建議下次 deload」單段 markdown。None → ""。"""
+    if signal is None:
+        return ""
+    return (f"📉 **建議下次 deload**:近 {signal.n_recent_sessions} 堂"
+            f"平均 RPE {signal.avg_rpe:.1f},高於建議閾值 "
+            f"{DELOAD_RPE_THRESHOLD:.1f},降量讓身體恢復。")
 
 
 def estimate_1rm(weight_kg: float, reps: int) -> float | None:

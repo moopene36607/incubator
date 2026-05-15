@@ -47,7 +47,9 @@ from aggregate import (
 from batch import discover_session_jsons
 from coaching import (
     compute_session_1rm_estimates,
+    detect_deload_signal,
     render_1rm_estimates,
+    render_deload_banner,
     render_next_weight_suggestions,
     suggest_next_session_weights,
 )
@@ -248,6 +250,7 @@ def render_full_report(
     goal_banner: str | None = None,
     one_rm_summary: str | None = None,
     density_summary: str | None = None,
+    deload_banner: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -258,6 +261,9 @@ def render_full_report(
     out.append("")
     if goal_banner:
         out.append(goal_banner)
+    if deload_banner:
+        out.append(deload_banner)
+        out.append("")
     out.append("## 學員資料")
     out.append("")
     out.append(f"- 姓名: {session.student_name}"
@@ -410,11 +416,15 @@ def _run_batch(args: argparse.Namespace) -> int:
         goal_banner = render_session_goal_banner(
             find_newly_achieved_goals(session, parsed_sessions, session.student_targets)
         )
+        deload_banner = render_deload_banner(
+            detect_deload_signal(parsed_sessions, session.student_name, session)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
                                   one_rm_summary=one_rm_summary,
-                                  density_summary=density_summary)
+                                  density_summary=density_summary,
+                                  deload_banner=deload_banner)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
