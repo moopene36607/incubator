@@ -441,11 +441,16 @@ def _run_batch(args: argparse.Namespace) -> int:
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
-        summary_path.write_text(
-            render_batch_summary(aggregate_batch(parsed_sessions)),
-            encoding="utf-8",
-        )
+        summary_md = render_batch_summary(aggregate_batch(parsed_sessions))
+        summary_path.write_text(summary_md, encoding="utf-8")
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
+        if args.batch_html:
+            summary_html_path = summary_path.with_suffix(".html")
+            summary_html_path.write_text(
+                render_html_page("批次彙總報告", markdown_to_html(summary_md)),
+                encoding="utf-8",
+            )
+            print(f"已寫入彙總 HTML: {summary_html_path}", file=sys.stderr)
         for name in sorted({s.student_name for s in parsed_sessions}):
             trend = compute_student_trend(parsed_sessions, name)
             prs = compute_student_prs(parsed_sessions, name)
@@ -466,20 +471,26 @@ def _run_batch(args: argparse.Namespace) -> int:
             )
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
-            student_path.write_text(
-                render_student_trend(
-                    trend,
-                    all_time_prs=prs,
-                    all_time_bw_prs=bw_prs,
-                    progressions=progressions,
-                    goals=goals,
-                    one_rm_progressions=one_rm_progressions,
-                    density_progression=density_progression,
-                    frequency=frequency,
-                ),
-                encoding="utf-8",
+            student_md = render_student_trend(
+                trend,
+                all_time_prs=prs,
+                all_time_bw_prs=bw_prs,
+                progressions=progressions,
+                goals=goals,
+                one_rm_progressions=one_rm_progressions,
+                density_progression=density_progression,
+                frequency=frequency,
             )
+            student_path.write_text(student_md, encoding="utf-8")
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)
+            if args.batch_html:
+                student_html_path = student_path.with_suffix(".html")
+                student_html_path.write_text(
+                    render_html_page(f"{name} 個人訓練趨勢",
+                                     markdown_to_html(student_md)),
+                    encoding="utf-8",
+                )
+                print(f"已寫入學員趨勢 HTML: {student_html_path}", file=sys.stderr)
     return 0
 
 
