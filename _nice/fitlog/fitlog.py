@@ -31,6 +31,7 @@ from typing import Any
 from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
+    compute_absent_students,
     compute_bw_reps_progression,
     compute_duration_progression,
     compute_exercise_progression,
@@ -47,6 +48,7 @@ from aggregate import (
     compute_weekly_tonnage,
     find_newly_achieved_goals,
     find_prev_session,
+    render_absent_students,
     render_batch_one_liner,
     render_batch_summary,
     render_new_pr_banner,
@@ -514,6 +516,18 @@ def _run_batch(args: argparse.Namespace) -> int:
         summary_path = summary_dir / "_batch_summary.md"
         batch_summary_obj = aggregate_batch(parsed_sessions)
         summary_md = render_batch_summary(batch_summary_obj)
+        # 用批次中最近一堂的日期當 "as_of",讓 demo/test 可預測
+        latest_date = max(
+            (s.session_date for s in parsed_sessions),
+            default=None,
+        )
+        if latest_date:
+            absent_section = render_absent_students(
+                compute_absent_students(parsed_sessions, latest_date)
+            )
+            if absent_section:
+                # 插在末尾 footer (---) 之前
+                summary_md = summary_md.rstrip("\n") + "\n\n" + absent_section
         summary_path.write_text(summary_md, encoding="utf-8")
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
         if args.batch_csv:

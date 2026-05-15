@@ -636,6 +636,58 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+@dataclass(frozen=True)
+class AbsentStudent:
+    """超過門檻天數沒進場的學員。"""
+    student_name: str
+    last_session_date: str
+    days_since: int
+
+
+# 從沒一堂課就上不到名單 (沒「上次」可比);> 此天數才算缺席
+DEFAULT_ABSENT_THRESHOLD_DAYS = 14
+
+
+def compute_absent_students(
+    sessions: Iterable["SessionInput"],
+    as_of_iso: str,
+    threshold_days: int = DEFAULT_ABSENT_THRESHOLD_DAYS,
+) -> list[AbsentStudent]:
+    """as_of_iso 為準,列出 days_since > threshold 的學員。
+    sort: days desc, ties by name asc。從沒上過課的人不入名單。"""
+    from datetime import date
+    as_of = date.fromisoformat(as_of_iso)
+    latest_per_student: dict[str, str] = {}
+    for s in sessions:
+        cur = latest_per_student.get(s.student_name)
+        if cur is None or s.session_date > cur:
+            latest_per_student[s.student_name] = s.session_date
+    absents: list[AbsentStudent] = []
+    for name, last_date in latest_per_student.items():
+        days = (as_of - date.fromisoformat(last_date)).days
+        if days > threshold_days:
+            absents.append(AbsentStudent(
+                student_name=name, last_session_date=last_date,
+                days_since=days,
+            ))
+    absents.sort(key=lambda a: (-a.days_since, a.student_name))
+    return absents
+
+
+def render_absent_students(absents: list[AbsentStudent]) -> str:
+    """產出「## 長期缺席學員」section。空 list → ""(不渲染)。"""
+    if not absents:
+        return ""
+    lines = ["## 長期缺席學員 (>2 週)", ""]
+    for a in absents:
+        lines.append(
+            f"- {a.student_name}: 最後一堂 {a.last_session_date} "
+            f"({a.days_since} 天前)"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def compute_training_streak(
     sessions: Iterable["SessionInput"],
     student_name: str,
