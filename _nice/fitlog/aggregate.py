@@ -823,6 +823,24 @@ def render_student_trend(
     return _insert_toc("\n".join(lines) + "\n")
 
 
+def render_session_one_liner(
+    session: "SessionInput",
+    pr_count: int = 0,
+) -> str:
+    """單堂 1-liner 給該學員 LINE 推播。
+    格式: '💪 NAME 第 N 堂 · X kg · M min · 主題:T [· P PR]'。
+    全 BW (tonnage 0) → 'BW only';0 PR / 無 theme → 不顯示對應段。"""
+    tonnage = compute_total_tonnage(session.sets)
+    parts: list[str] = [f"💪 {session.student_name} 第 {session.session_no} 堂"]
+    parts.append(_format_kg(tonnage) if tonnage > 0 else "BW only")
+    parts.append(f"{session.duration_min} min")
+    if session.theme.strip():
+        parts.append(f"主題:{session.theme}")
+    if pr_count > 0:
+        parts.append(f"{pr_count} PR")
+    return parts[0] + " · " + " · ".join(parts[1:])
+
+
 def render_batch_one_liner(summary: BatchSummary) -> str:
     """產出一行 emoji 摘要適合 LINE/手機分享。
     格式: '💪 今日 N 堂 / X kg · M 位學員 · 領先 NAME Y kg'。

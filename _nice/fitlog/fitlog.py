@@ -45,6 +45,7 @@ from aggregate import (
     render_batch_one_liner,
     render_batch_summary,
     render_session_goal_banner,
+    render_session_one_liner,
     render_student_trend,
 )
 from batch import discover_session_jsons
@@ -432,6 +433,17 @@ def _run_batch(args: argparse.Namespace) -> int:
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
+        # PR count = 三類 deltas 加總 (粗略估計;只算非空)
+        pr_count = 0
+        if prev is not None:
+            pr_count = (
+                len(compute_pr_deltas(prev.sets, session.sets))
+                + len(compute_bw_reps_deltas(prev.sets, session.sets))
+                + len(compute_duration_deltas(prev.sets, session.sets))
+            )
+        one_liner = render_session_one_liner(session, pr_count=pr_count)
+        one_liner_path = out_path.with_suffix(".one_liner.txt")
+        one_liner_path.write_text(one_liner + "\n", encoding="utf-8")
         if args.batch_html:
             html_path = out_path.with_suffix(".html")
             html_title = f"{session.student_name} 第 {session.session_no} 堂"
