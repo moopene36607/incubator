@@ -473,6 +473,26 @@ def _run_batch(args: argparse.Namespace) -> int:
 
     parsed_sessions: list[SessionInput] = [s for _, s in pairs]
 
+    # --student NAME 過濾 (放在 parse 完之後,讓 schema/validation 警告仍會印)
+    if args.student:
+        target = args.student.strip()
+        before = len(parsed_sessions)
+        pairs = [(p, s) for p, s in pairs if s.student_name == target]
+        parsed_sessions = [s for _, s in pairs]
+        if not parsed_sessions:
+            print(
+                f"warning: --student {target} 沒匹配到任何 session "
+                f"({before} 堂掃過),不產出任何檔",
+                file=sys.stderr,
+            )
+            return 0
+        else:
+            print(
+                f"info: --student {target} → 保留 {len(parsed_sessions)} / "
+                f"{before} 堂",
+                file=sys.stderr,
+            )
+
     # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary + next_weight_summary
     # --summary-only 時跳過個別 session 渲染與寫檔 (Pass 1 仍跑供彙總用)
     if args.summary_only:
@@ -659,6 +679,8 @@ def main() -> int:
                         help="批次模式同時產出 .html (與 .md 同名,適合 LINE 分享)")
     parser.add_argument("--batch-csv", action="store_true",
                         help="批次模式同時寫 _batch.csv (所有 sessions 的 sets concat,Excel pivot 用)")
+    parser.add_argument("--student", type=str,
+                        help="批次模式只跑指定學員 (其他學員 .json 略過)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
