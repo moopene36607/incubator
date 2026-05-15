@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Iterable
 
 from exercise_db import lookup
-from metrics import _format_kg, compute_total_tonnage
+from metrics import _format_kg, compute_total_tonnage, compute_training_density
 
 if TYPE_CHECKING:
     from fitlog import SessionInput
@@ -380,6 +380,52 @@ def _render_progression_line(name: str, points: list[tuple[str, float]]) -> str:
             f"({_format_kg(first)} → {_format_kg(last)}, {delta_str})")
 
 
+def compute_student_density_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> list[tuple[str, float]]:
+    """For 該學員,逐堂計算訓練密度 (tonnage / min),按日期排序。
+    全 BW (tonnage 0) 或 0 時長的 session 跳過。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    points: list[tuple[str, float]] = []
+    for sess in student_sessions:
+        density = compute_training_density(
+            compute_total_tonnage(sess.sets), sess.duration_min,
+        )
+        if density is not None and density > 0:
+            points.append((sess.session_date, density))
+    return points
+
+
+def render_density_progression(points: list[tuple[str, float]]) -> str:
+    """單行 sparkline + delta% (e.g. '**訓練密度趨勢**: ▁▄█  (90 → 100 kg/min, +11.1%)')。
+    < 2 點 → ""。"""
+    if len(points) < 2:
+        return ""
+    densities = [d for _, d in points]
+    lo, hi = min(densities), max(densities)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(densities)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((d - lo) / (hi - lo) * last_idx)]
+            for d in densities
+        )
+    first, last = densities[0], densities[-1]
+    if first == 0:
+        delta_str = f"{round(last - first)} kg/min"
+    else:
+        pct = (last - first) / first * 100
+        sign = "+" if pct >= 0 else ""
+        delta_str = f"{sign}{pct:.1f}%"
+    return (f"**訓練密度趨勢**: {bars}  "
+            f"({round(first)} → {round(last)} kg/min, {delta_str})")
+
+
 def compute_student_1rm_progression(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -626,6 +672,7 @@ def render_student_trend(
     progressions: dict[str, list[tuple[str, float]]] | None = None,
     goals: list[GoalProgress] | None = None,
     one_rm_progressions: dict[str, list[tuple[str, float]]] | None = None,
+    density_progression: list[tuple[str, float]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -649,6 +696,11 @@ def render_student_trend(
     if sparkline:
         lines.append(sparkline)
         lines.append("")
+    if density_progression:
+        density_line = render_density_progression(density_progression)
+        if density_line:
+            lines.append(density_line)
+            lines.append("")
     if progressions:
         prog_str = render_exercise_progressions(progressions)
         if prog_str:
