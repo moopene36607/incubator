@@ -10,7 +10,7 @@ aggregate_batch 純函式產出 BatchSummary;render_batch_summary 把它
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Iterable
 
 from exercise_db import lookup
@@ -21,11 +21,21 @@ if TYPE_CHECKING:
 
 
 @dataclass(frozen=True)
+class SessionRanking:
+    """單堂課的排行榜資料 (跨學員 leaderboard 用)。"""
+    student_name: str
+    session_no: int
+    session_date: str
+    tonnage_kg: float
+
+
+@dataclass(frozen=True)
 class BatchSummary:
     n_sessions: int
     total_tonnage_kg: float
     students: dict[str, int]                     # 姓名 → session 數
     top_exercises: list[tuple[str, float]]       # (exercise_code, tonnage) 由高到低
+    leaderboard: list[SessionRanking] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -71,8 +81,27 @@ class GoalProgress:
     percent: float
 
 
+def compute_session_leaderboard(
+    sessions: Iterable["SessionInput"],
+    top_n: int = 5,
+) -> list[SessionRanking]:
+    """產出跨學員單堂訓練量排行榜 (Top N)。
+    Tie-break: 同 tonnage → (date, session_no, student_name) 字典序小者前。"""
+    rankings = [
+        SessionRanking(
+            student_name=s.student_name,
+            session_no=s.session_no,
+            session_date=s.session_date,
+            tonnage_kg=compute_total_tonnage(s.sets),
+        )
+        for s in sessions
+    ]
+    rankings.sort(key=lambda r: (-r.tonnage_kg, r.session_date, r.session_no, r.student_name))
+    return rankings[:top_n]
+
+
 def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
-    """彙總多堂 session 的整體訓練量、學員出席、動作排行。"""
+    """彙總多堂 session 的整體訓練量、學員出席、動作排行、單堂排行。"""
     sessions = list(sessions)
     students: dict[str, int] = {}
     exercise_tonnage: dict[str, float] = {}
@@ -92,6 +121,7 @@ def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
         total_tonnage_kg=total,
         students=students,
         top_exercises=top,
+        leaderboard=compute_session_leaderboard(sessions),
     )
 
 
@@ -446,6 +476,18 @@ def render_batch_summary(summary: BatchSummary) -> str:
             lines.append(f"- {name}: {_format_kg(tonnage)}")
     else:
         lines.append("- (沒有加權動作可統計)")
+    lines.append("")
+
+    lines.append("## 單堂訓練量排行 (Top 5)")
+    lines.append("")
+    if summary.leaderboard:
+        for i, r in enumerate(summary.leaderboard, 1):
+            lines.append(
+                f"{i}. {r.student_name} 第 {r.session_no} 堂 ({r.session_date}): "
+                f"{_format_kg(r.tonnage_kg)}"
+            )
+    else:
+        lines.append("- (沒有 sessions 可排)")
     lines.append("")
     lines.append("---")
     lines.append("")
