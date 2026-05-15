@@ -442,6 +442,48 @@ def render_density_progression(points: list[tuple[str, float]]) -> str:
             f"({round(first)} → {round(last)} kg/min, {delta_str})")
 
 
+def compute_student_rpe_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> list[tuple[str, float]]:
+    """For 該學員,逐堂計算 avg RPE (該堂所有有 RPE 的 set 平均),按日期排序。
+    全 set 無 RPE 的 session → 跳過 (避免 0 誤導)。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    points: list[tuple[str, float]] = []
+    for sess in student_sessions:
+        rpes = [s.rpe for s in sess.sets if s.rpe is not None]
+        if not rpes:
+            continue
+        avg = sum(rpes) / len(rpes)
+        points.append((sess.session_date, avg))
+    return points
+
+
+def render_rpe_progression(points: list[tuple[str, float]]) -> str:
+    """單行 sparkline + delta (e.g. '**訓練強度趨勢 (avg RPE)**: ▁▄█  (7.0 → 9.0, +2.0)')。
+    < 2 點 → ""。"""
+    if len(points) < 2:
+        return ""
+    rpes = [r for _, r in points]
+    lo, hi = min(rpes), max(rpes)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(rpes)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((r - lo) / (hi - lo) * last_idx)]
+            for r in rpes
+        )
+    first, last = rpes[0], rpes[-1]
+    delta = last - first
+    sign = "+" if delta >= 0 else ""
+    return (f"**訓練強度趨勢 (avg RPE)**: {bars}  "
+            f"({first:.1f} → {last:.1f}, {sign}{delta:.1f})")
+
+
 def compute_student_1rm_progression(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -768,6 +810,7 @@ def render_student_trend(
     density_progression: list[tuple[str, float]] | None = None,
     frequency: StudentFrequency | None = None,
     weekly_tonnage: list[WeeklyTonnage] | None = None,
+    rpe_progression: list[tuple[str, float]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -795,6 +838,11 @@ def render_student_trend(
         density_line = render_density_progression(density_progression)
         if density_line:
             lines.append(density_line)
+            lines.append("")
+    if rpe_progression:
+        rpe_line = render_rpe_progression(rpe_progression)
+        if rpe_line:
+            lines.append(rpe_line)
             lines.append("")
     if frequency:
         freq_line = render_session_frequency(frequency)
