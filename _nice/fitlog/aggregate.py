@@ -636,6 +636,55 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+@dataclass(frozen=True)
+class FavoriteExercise:
+    """學員累積 tonnage 最大的 weighted exercise + 占該學員總 tonnage 比例。"""
+    exercise_code: str
+    total_tonnage_kg: float
+    pct: float  # 0-100
+
+
+def compute_favorite_exercise(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> FavoriteExercise | None:
+    """找該學員累積 tonnage 最大的 exercise。全 BW (tonnage 0) → None。
+    Tie-break: 同 tonnage → exercise_code 字典序小者。"""
+    per_ex: dict[str, float] = {}
+    total = 0.0
+    for sess in sessions:
+        if sess.student_name != student_name:
+            continue
+        for s in sess.sets:
+            t = compute_total_tonnage([s])
+            if t <= 0:
+                continue
+            per_ex[s.exercise_code] = per_ex.get(s.exercise_code, 0.0) + t
+            total += t
+    if not per_ex or total <= 0:
+        return None
+    code, ton = max(per_ex.items(), key=lambda kv: (kv[1], -ord(kv[0][0])))
+    # 上面 tie-break 用 -ord(first_char) 不完美;改用穩定排序
+    code, ton = sorted(per_ex.items(), key=lambda kv: (-kv[1], kv[0]))[0]
+    return FavoriteExercise(
+        exercise_code=code,
+        total_tonnage_kg=ton,
+        pct=ton / total * 100,
+    )
+
+
+def render_favorite_exercise(fav: FavoriteExercise | None) -> str | None:
+    """🌟 **最常練**:槓鈴臥推 1,600 kg (52% 累積訓練量)。None → None。"""
+    if fav is None:
+        return None
+    ex = lookup(fav.exercise_code)
+    name = ex.chinese if ex else fav.exercise_code
+    return (
+        f"🌟 **最常練**:{name} {_format_kg(fav.total_tonnage_kg)} "
+        f"({round(fav.pct)}% 累積訓練量)"
+    )
+
+
 # 開課日分布;0=Monday ... 6=Sunday (符合 Python date.weekday())
 _WEEKDAY_ZH = ["週一", "週二", "週三", "週四", "週五", "週六", "週日"]
 # 8 級方塊 bar 字元 (1/8 to 8/8)
@@ -1317,6 +1366,7 @@ def render_student_trend(
     duration_progressions: dict[str, tuple[str, list[tuple[str, int]]]] | None = None,
     training_streak: int | None = None,
     goal_etas: dict[str, str] | None = None,
+    favorite_exercise: FavoriteExercise | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1329,6 +1379,10 @@ def render_student_trend(
         streak_line = render_training_streak(training_streak)
         if streak_line:
             lines.append(f"- {streak_line}")
+    if favorite_exercise is not None:
+        fav_line = render_favorite_exercise(favorite_exercise)
+        if fav_line:
+            lines.append(f"- {fav_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")
