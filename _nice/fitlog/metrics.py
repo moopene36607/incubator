@@ -199,6 +199,36 @@ def render_session_intensity_score(score: float | None) -> str | None:
     return f"**訓練強度分數**: {round(score)} (tonnage × avg_rpe/10)"
 
 
+def build_session_metrics_json(session: "SessionInput") -> dict:
+    """把單堂所有純函式算出的數字包成 json-serializable dict (供 dashboard /
+    LINE bot 整合)。AI 散文不進 JSON。全 BW 的 None 指標保留為 None (→ json null)。"""
+    total = compute_total_tonnage(session.sets)
+    density = compute_training_density(total, session.duration_min)
+    intensity = compute_session_intensity_score(session)
+    zone = compute_rpe_zone_distribution(session.sets)
+    zone_json = None
+    if zone is not None:
+        zone_json = {
+            "warmup": zone.warmup_count,
+            "working": zone.working_count,
+            "max": zone.max_count,
+            "total_rated": zone.total_rated,
+        }
+    return {
+        "student_name": session.student_name,
+        "session_no": session.session_no,
+        "session_date": session.session_date,
+        "duration_min": session.duration_min,
+        "theme": session.theme,
+        "n_set_records": len(session.sets),
+        "total_tonnage_kg": total,
+        "training_density_kg_per_min": density,
+        "intensity_score": intensity,
+        "category_tonnage_kg": compute_category_tonnage(session.sets),
+        "rpe_zones": zone_json,
+    }
+
+
 def render_category_breakdown(sets: Iterable["SetRecord"]) -> str | None:
     """回傳「**訓練量分解**: 腿系 4,600 kg · 推系 1,600 kg」(由高到低排)。
     無加權 set → None。"""

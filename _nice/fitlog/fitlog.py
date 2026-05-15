@@ -95,6 +95,7 @@ from csv_export import write_batch_csv, write_session_csv
 from metrics import (
     CATEGORY_EMOJI,
     CATEGORY_ZH,
+    build_session_metrics_json,
     compute_rpe_zone_distribution,
     compute_session_intensity_score,
     render_category_breakdown,
@@ -727,6 +728,8 @@ def main() -> int:
     parser.add_argument("--csv-bom", action="store_true",
                         help="CSV 檔前置 UTF-8 BOM (讓 Windows Excel 不會把中文當 Big5 → 亂碼)")
     parser.add_argument("--html", type=Path, help="把單堂報告匯出成 HTML 網頁 (適合 LINE / email / 列印)")
+    parser.add_argument("--out-json", type=Path,
+                        help="把單堂純函式指標 (噸位/密度/強度/RPE zone) 輸出成結構化 JSON")
     parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--voice", type=Path,
                         help="口述/語音轉文字 → JSON skeleton 印到 stdout (預處理模式)")
@@ -838,6 +841,14 @@ def main() -> int:
         title = f"{session.student_name} 課後訓練報告 (第 {session.session_no} 堂)"
         args.html.write_text(render_html_page(title, body_html), encoding="utf-8")
         _info(f"已寫入 HTML: {args.html}")
+
+    if args.out_json:
+        metrics_json = build_session_metrics_json(session)
+        args.out_json.write_text(
+            json.dumps(metrics_json, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        _info(f"已寫入 JSON 指標: {args.out_json}")
     return 0
 
 
