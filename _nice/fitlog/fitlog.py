@@ -42,6 +42,7 @@ from aggregate import (
     compute_weekly_tonnage,
     find_newly_achieved_goals,
     find_prev_session,
+    render_batch_one_liner,
     render_batch_summary,
     render_session_goal_banner,
     render_student_trend,
@@ -442,9 +443,15 @@ def _run_batch(args: argparse.Namespace) -> int:
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
-        summary_md = render_batch_summary(aggregate_batch(parsed_sessions))
+        batch_summary_obj = aggregate_batch(parsed_sessions)
+        summary_md = render_batch_summary(batch_summary_obj)
         summary_path.write_text(summary_md, encoding="utf-8")
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
+        one_liner = render_batch_one_liner(batch_summary_obj)
+        if one_liner:
+            one_liner_path = summary_dir / "_one_liner.txt"
+            one_liner_path.write_text(one_liner + "\n", encoding="utf-8")
+            print(f"已寫入單行摘要: {one_liner_path}", file=sys.stderr)
         if args.batch_html:
             summary_html_path = summary_path.with_suffix(".html")
             summary_html_path.write_text(

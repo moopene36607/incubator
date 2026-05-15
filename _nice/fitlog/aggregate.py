@@ -823,6 +823,23 @@ def render_student_trend(
     return _insert_toc("\n".join(lines) + "\n")
 
 
+def render_batch_one_liner(summary: BatchSummary) -> str:
+    """產出一行 emoji 摘要適合 LINE/手機分享。
+    格式: '💪 今日 N 堂 / X kg · M 位學員 · 領先 NAME Y kg'。
+    0 sessions → "" (沒東西可講)。"""
+    if summary.n_sessions == 0:
+        return ""
+    parts = [
+        f"💪 今日 {summary.n_sessions} 堂",
+        f"{_format_kg(summary.total_tonnage_kg)}",
+        f"{len(summary.students)} 位學員",
+    ]
+    if summary.leaderboard:
+        top = summary.leaderboard[0]
+        parts.append(f"領先 {top.student_name} {_format_kg(top.tonnage_kg)}")
+    return parts[0] + " / " + " · ".join(parts[1:])
+
+
 def render_batch_summary(summary: BatchSummary) -> str:
     """產出 markdown 批次彙總報告。"""
     lines: list[str] = []
