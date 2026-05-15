@@ -54,6 +54,38 @@ _RPE_RE = re.compile(r"RPE\s*(\d+)", re.IGNORECASE)
 _WEIGHT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:kg|公斤)?", re.IGNORECASE)
 
 
+# 中文數字 → int (支援 0-999,涵蓋 sets/reps/weight/RPE 所有實際範圍)
+_ZH_DIGITS = {
+    "零": 0, "一": 1, "二": 2, "兩": 2, "三": 3, "四": 4,
+    "五": 5, "六": 6, "七": 7, "八": 8, "九": 9,
+}
+_ZH_NUM_RUN = re.compile(r"[零一二三四五六七八九十百兩]+")
+
+
+def _zh_num_to_int(s: str) -> int:
+    """純中文數字字串 → int。十一→11、三十五→35、一百二十→120。"""
+    total = 0
+    section = 0
+    for ch in s:
+        if ch in _ZH_DIGITS:
+            section = _ZH_DIGITS[ch]
+        elif ch == "十":
+            section = (section or 1) * 10
+            total += section
+            section = 0
+        elif ch == "百":
+            section = (section or 1) * 100
+            total += section
+            section = 0
+    return total + section
+
+
+def _zh_to_arabic(text: str) -> str:
+    """把 text 中的中文數字串就地換成阿拉伯數字。
+    注意:呼叫端必須先抽掉 exercise name (例「三頭下壓」含「三」)。"""
+    return _ZH_NUM_RUN.sub(lambda m: str(_zh_num_to_int(m.group())), text)
+
+
 def _find_exercise(line: str) -> tuple[str | None, str]:
     """找出 line 中最長匹配的 exercise name,回傳 (code, 移除 name 後的剩餘)。"""
     line_lower = line.lower()
@@ -85,6 +117,9 @@ def parse_voice_transcript(text: str) -> list["SetRecord"]:
         if "#" in rest:
             rest, note = rest.split("#", 1)
             rest, note = rest.strip(), note.strip()
+
+        # 中文數字 → 阿拉伯 (exercise name 已抽掉,不會誤傷「三頭下壓」之類)
+        rest = _zh_to_arabic(rest)
 
         # 抽 RPE
         rpe: int | None = None
