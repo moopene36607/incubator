@@ -735,6 +735,58 @@ def render_exercise_variety(v: ExerciseVariety | None) -> str | None:
 
 
 @dataclass(frozen=True)
+class CoachWorkload:
+    """單一教練在批次內的工作量 (堂數 / 不重複學員數 / 總訓練量)。"""
+    coach_name: str
+    n_sessions: int
+    n_students: int
+    total_tonnage_kg: float
+
+
+def compute_coach_workload(
+    sessions: Iterable["SessionInput"],
+) -> list[CoachWorkload]:
+    """按 coach_name 匯總工作量。sort: 堂數 desc → 教練名字典序。"""
+    # coach → (n_sessions, set[student], total_tonnage)
+    buckets: dict[str, tuple[int, set[str], float]] = {}
+    for sess in sessions:
+        n, students, total = buckets.get(sess.coach_name, (0, set(), 0.0))
+        students.add(sess.student_name)
+        buckets[sess.coach_name] = (
+            n + 1,
+            students,
+            total + compute_total_tonnage(sess.sets),
+        )
+    rows = [
+        CoachWorkload(
+            coach_name=name,
+            n_sessions=n,
+            n_students=len(students),
+            total_tonnage_kg=total,
+        )
+        for name, (n, students, total) in buckets.items()
+    ]
+    rows.sort(key=lambda w: (-w.n_sessions, w.coach_name))
+    return rows
+
+
+def render_coach_workload(rows: list[CoachWorkload]) -> str:
+    """產出「## 教練工作量」section。空 / 只 1 位教練 → "" (無比較意義)。"""
+    if len(rows) < 2:
+        return ""
+    lines: list[str] = ["## 教練工作量", ""]
+    lines.append("| 教練 | 堂數 | 學員數 | 總訓練量 |")
+    lines.append("|------|------|--------|----------|")
+    for w in rows:
+        lines.append(
+            f"| {w.coach_name} | {w.n_sessions} | {w.n_students} "
+            f"| {_format_kg(w.total_tonnage_kg)} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
+@dataclass(frozen=True)
 class StudioWeek:
     """工作室 (cross-student) 單一 ISO 週的訓練量加總。week_start 為週一 ISO date。"""
     week_start: str

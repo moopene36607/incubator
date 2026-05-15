@@ -44,6 +44,7 @@ from aggregate import (
     aggregate_batch,
     compute_absent_students,
     compute_bw_reps_progression,
+    compute_coach_workload,
     compute_day_of_week_distribution,
     compute_duration_progression,
     compute_exercise_progression,
@@ -68,6 +69,7 @@ from aggregate import (
     render_absent_students,
     render_batch_one_liner,
     render_batch_summary,
+    render_coach_workload,
     render_day_of_week_distribution,
     render_new_pr_banner,
     render_studio_weekly_tonnage,
@@ -597,6 +599,11 @@ def _run_batch(args: argparse.Namespace) -> int:
         )
         if studio_section:
             summary_md = summary_md.rstrip("\n") + "\n\n" + studio_section
+        coach_section = render_coach_workload(
+            compute_coach_workload(parsed_sessions)
+        )
+        if coach_section:
+            summary_md = summary_md.rstrip("\n") + "\n\n" + coach_section
         # 用批次中最近一堂的日期當 "as_of",讓 demo/test 可預測
         latest_date = max(
             (s.session_date for s in parsed_sessions),
