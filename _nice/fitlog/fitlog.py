@@ -430,6 +430,14 @@ def _run_batch(args: argparse.Namespace) -> int:
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
+        if args.batch_html:
+            html_path = out_path.with_suffix(".html")
+            html_title = f"{session.student_name} 第 {session.session_no} 堂"
+            html_path.write_text(
+                render_html_page(html_title, markdown_to_html(full)),
+                encoding="utf-8",
+            )
+            print(f"已寫入 {html_path}", file=sys.stderr)
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
@@ -483,6 +491,8 @@ def main() -> int:
                         help="批次模式輸出目錄 (預設寫在原 .json 檔旁)")
     parser.add_argument("--summary-only", action="store_true",
                         help="批次模式只產 _batch_summary.md + _student_*.md,跳過個別 session .md")
+    parser.add_argument("--batch-html", action="store_true",
+                        help="批次模式同時產出 .html (與 .md 同名,適合 LINE 分享)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
