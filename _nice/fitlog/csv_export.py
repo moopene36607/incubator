@@ -76,10 +76,16 @@ def format_session_csv_rows(session: "SessionInput") -> list[list[str]]:
     return rows
 
 
-def write_session_csv(session: "SessionInput", path: Path) -> None:
-    """把 session 寫成 UTF-8 CSV 檔。"""
+def write_session_csv(
+    session: "SessionInput",
+    path: Path,
+    with_bom: bool = False,
+) -> None:
+    """把 session 寫成 UTF-8 CSV 檔。
+    with_bom=True 時前置 \\xef\\xbb\\xbf,讓 Excel-on-Windows 認得 UTF-8 中文。"""
     rows = format_session_csv_rows(session)
-    with path.open("w", encoding="utf-8", newline="") as f:
+    encoding = "utf-8-sig" if with_bom else "utf-8"
+    with path.open("w", encoding=encoding, newline="") as f:
         writer = csv.writer(f)
         writer.writerows(rows)
 
@@ -94,9 +100,14 @@ def format_batch_csv_rows(sessions: list["SessionInput"]) -> list[list[str]]:
     return rows
 
 
-def write_batch_csv(sessions: list["SessionInput"], path: Path) -> None:
-    """把多堂 sessions 一次寫成 UTF-8 CSV 檔。"""
+def write_batch_csv(
+    sessions: list["SessionInput"],
+    path: Path,
+    with_bom: bool = False,
+) -> None:
+    """把多堂 sessions 一次寫成 UTF-8 CSV 檔。with_bom=True 前置 UTF-8 BOM。"""
     rows = format_batch_csv_rows(sessions)
-    with path.open("w", encoding="utf-8", newline="") as f:
+    encoding = "utf-8-sig" if with_bom else "utf-8"
+    with path.open("w", encoding=encoding, newline="") as f:
         writer = csv.writer(f)
         writer.writerows(rows)

@@ -609,7 +609,8 @@ def _run_batch(args: argparse.Namespace) -> int:
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
         if args.batch_csv:
             batch_csv_path = summary_dir / "_batch.csv"
-            write_batch_csv(parsed_sessions, batch_csv_path)
+            write_batch_csv(parsed_sessions, batch_csv_path,
+                            with_bom=args.csv_bom)
             print(f"已寫入批次 CSV: {batch_csv_path}", file=sys.stderr)
         one_liner = render_batch_one_liner(batch_summary_obj)
         if one_liner:
@@ -715,6 +716,8 @@ def main() -> int:
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
+    parser.add_argument("--csv-bom", action="store_true",
+                        help="CSV 檔前置 UTF-8 BOM (讓 Windows Excel 不會把中文當 Big5 → 亂碼)")
     parser.add_argument("--html", type=Path, help="把單堂報告匯出成 HTML 網頁 (適合 LINE / email / 列印)")
     parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--voice", type=Path,
@@ -814,7 +817,7 @@ def main() -> int:
         print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
 
     if args.csv:
-        write_session_csv(session, args.csv)
+        write_session_csv(session, args.csv, with_bom=args.csv_bom)
         print(f"已寫入 CSV: {args.csv}", file=sys.stderr)
 
     if args.html:
