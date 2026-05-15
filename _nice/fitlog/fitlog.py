@@ -19,6 +19,8 @@ ANTHROPIC_API_KEY 在 AI 模式必要 (--no-ai 跳過,輸出骨架)。
 
 from __future__ import annotations
 
+__version__ = "0.18.0"
+
 import argparse
 import json
 import os
@@ -694,7 +696,10 @@ def _run_batch(args: argparse.Namespace) -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser = argparse.ArgumentParser(prog="fitlog",
+                                     description=__doc__.splitlines()[0])
+    parser.add_argument("--version", action="version",
+                        version=f"fitlog {__version__}")
     parser.add_argument("input", type=Path, nargs="?", help="本堂課訓練紀錄 JSON (單堂模式)")
     parser.add_argument("--batch", type=Path, help="批次模式:掃描目錄下所有 *.json 各產一份 .md")
     parser.add_argument("--out-dir", type=Path,
