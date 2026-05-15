@@ -191,18 +191,55 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 - 下次課程主題切到 pull + 核心 + 心肺,並解釋為什麼這樣安排
 - 恢復飲食提醒 prioritize 睡眠 > 蛋白質 > 有氧
 
-## 收錄動作分類(56 動作 v2 擴充版)
+## 收錄動作分類(74 動作 v3 擴充版)
 
 | 大類 | 動作數 | 範例代碼 |
 |------|------|----------|
-| **legs**(腿系) | 11 | BB_BACK_SQUAT, ROMANIAN_DL, LEG_PRESS, HACK_SQUAT, HIP_THRUST, GOBLET_SQUAT, LEG_EXTENSION, LEG_CURL, CALF_RAISE |
-| **pull**(拉系) | 11 | DEADLIFT, PULL_UP, CHIN_UP, LAT_PULLDOWN, BB_ROW, T_BAR_ROW, CABLE_ROW, INVERTED_ROW, KETTLEBELL_SWING |
-| **push**(推系) | 12 | BENCH_PRESS, OHP, INCLINE_DB_PRESS, DECLINE_PRESS, LATERAL_RAISE, CABLE_FLY, MACHINE_CHEST_PRESS, DIPS |
-| **core**(核心) | 9 | PLANK, AB_WHEEL, V_UP, HANGING_KNEE_RAISE, CABLE_WOODCHOP, PALLOF_PRESS |
-| **cardio**(心肺) | 7 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, BURPEE, KETTLEBELL_SWING, BATTLE_ROPE, STAIR_CLIMBER |
-| **mobility**(活動度) | 6 | HIP_OPENER, THORACIC_ROT, WORLDS_GREATEST, CAT_COW, COSSACK_SQUAT, CHILD_POSE |
+| **legs**(腿系) | 16 | BB_BACK_SQUAT, FRONT_SQUAT, SUMO_DEADLIFT, ROMANIAN_DL, LEG_PRESS, HACK_SQUAT, HIP_THRUST, GLUTE_BRIDGE, NORDIC_CURL |
+| **pull**(拉系) | 14 | DEADLIFT, PULL_UP, CHIN_UP, LAT_PULLDOWN, BB_ROW, T_BAR_ROW, PENDLAY_ROW, HIGH_PULL, KETTLEBELL_SWING |
+| **push**(推系) | 16 | BENCH_PRESS, OHP, ARNOLD_PRESS, CLOSE_GRIP_BENCH, LANDMINE_PRESS, INCLINE_DB_PRESS, LATERAL_RAISE, TRICEP_PUSHDOWN |
+| **core**(核心) | 11 | PLANK, AB_WHEEL, V_UP, RUSSIAN_TWIST, BIRD_DOG, HANGING_KNEE_RAISE, CABLE_WOODCHOP, PALLOF_PRESS |
+| **cardio**(心肺) | 9 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, SKI_ERG, SPRINT_INTERVAL, BURPEE, BATTLE_ROPE, STAIR_CLIMBER |
+| **mobility**(活動度) | 8 | HIP_OPENER, THORACIC_ROT, WORLDS_GREATEST, CAT_COW, COSSACK_SQUAT, COUCH_STRETCH, DOWNWARD_DOG |
+
+`python3 fitlog.py --list-exercises` 印出全部 74 個動作代碼(依分類分組)。
 
 (實際產品需擴充至 200+ 動作,涵蓋 powerlifting / 進階街健 / 普拉提全模組。)
+
+## CLI 旗標總覽
+
+| 旗標 | 用途 |
+|------|------|
+| `--no-ai` | 不呼叫 AI,輸出骨架版(免 API key) |
+| `--template` | 印出空白 session JSON 樣板到 stdout |
+| `--list-exercises` | 列出 exercise_db 全部動作代碼(依分類分組) |
+| `--version` | 印出 fitlog 版本 |
+| `--quiet` | 靜音 info / 進度訊息(warning / error 保留;適合 cron / pipeline) |
+| `--out` / `--out-line` | markdown / LINE 純文字版輸出路徑 |
+| `--html` | 單堂報告匯出 HTML 網頁 |
+| `--csv` / `--csv-bom` | 單堂 CSV 匯出;`--csv-bom` 前置 UTF-8 BOM 讓 Windows Excel 中文不亂碼 |
+| `--out-json` | 單堂純函式指標(噸位/密度/強度/RPE zone)輸出結構化 JSON |
+| `--prev` | 帶入上次課程 JSON 算 PR / 噸位 delta |
+| `--voice` | 口述/語音轉文字 → JSON skeleton(預處理) |
+| `--batch DIR` | 多學員批次模式 |
+| `--out-dir` | 批次輸出目錄 |
+| `--summary-only` | 批次只產彙總 + 學員 trend,跳過個別 session .md |
+| `--batch-html` | 批次同時產 .html |
+| `--batch-csv` | 批次合併所有 sessions 成單一 `_batch.csv`(Excel pivot) |
+| `--batch-json` | 批次層級結構化匯總 `_batch.json`(dashboard 整合) |
+| `--student NAME` | 批次只跑指定學員 |
+
+## 報表能力(純函式計算,LLM 不碰數字)
+
+- **單堂**:訓練總噸位、per-category 訓練量分解、訓練密度(kg/分)、
+  **訓練強度分數**(tonnage × avg_rpe/10)、**RPE 強度分布**(熱身/工作/極限)、
+  Epley 1RM 估算、RPE-based 下次重量建議、PR 突破 banner、里程碑 banner、
+  deload 警示、動作分類失衡警示。
+- **跨堂(學員 trend)**:訓練量 / 密度 / RPE / 強度分數 / 1RM / 加重動作 /
+  BW reps / 時間距離 等 sparkline 趨勢、**連續訓練週數 streak**、
+  **動作多樣性**、最常練動作、目標達成進度 + 線性外推預估達成日。
+- **批次(工作室)**:學員出席、單堂 / 累積訓練量排行、**工作室週訓練量**趨勢、
+  開課日(週幾)分布、教練工作量、長期缺席學員預警。
 
 ## 專案結構
 
