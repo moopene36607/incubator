@@ -84,8 +84,10 @@ from metrics import (
     CATEGORY_EMOJI,
     CATEGORY_ZH,
     compute_rpe_zone_distribution,
+    compute_session_intensity_score,
     render_category_breakdown,
     render_rpe_zone_distribution,
+    render_session_intensity_score,
     render_training_density,
     render_volume_summary,
 )
@@ -358,7 +360,11 @@ def render_full_report(
     zone_summary = render_rpe_zone_distribution(
         compute_rpe_zone_distribution(session.sets)
     )
-    if (summary or breakdown or density_summary or zone_summary or pr_summary
+    intensity_summary = render_session_intensity_score(
+        compute_session_intensity_score(session)
+    )
+    if (summary or breakdown or density_summary or zone_summary
+            or intensity_summary or pr_summary
             or next_weight_summary or one_rm_summary):
         out.append("")
     if summary:
@@ -369,6 +375,8 @@ def render_full_report(
         out.append(density_summary)
     if zone_summary:
         out.append(zone_summary)
+    if intensity_summary:
+        out.append(intensity_summary)
     if pr_summary:
         out.append(pr_summary)
     if one_rm_summary:

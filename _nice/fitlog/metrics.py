@@ -177,6 +177,28 @@ def render_rpe_zone_distribution(
     )
 
 
+def compute_session_intensity_score(
+    session: "SessionInput",
+) -> float | None:
+    """RPE-weighted volume = tonnage_kg × (avg_rpe / 10)。
+    跨堂可比的單一強度指標。tonnage 0 (全 BW) 或無任何 RPE → None。"""
+    total = compute_total_tonnage(session.sets)
+    if total <= 0:
+        return None
+    rpes = [s.rpe for s in session.sets if s.rpe is not None]
+    if not rpes:
+        return None
+    avg_rpe = sum(rpes) / len(rpes)
+    return total * (avg_rpe / 10.0)
+
+
+def render_session_intensity_score(score: float | None) -> str | None:
+    """「**訓練強度分數**: 960 (tonnage × avg_rpe/10)」。None → None。"""
+    if score is None:
+        return None
+    return f"**訓練強度分數**: {round(score)} (tonnage × avg_rpe/10)"
+
+
 def render_category_breakdown(sets: Iterable["SetRecord"]) -> str | None:
     """回傳「**訓練量分解**: 腿系 4,600 kg · 推系 1,600 kg」(由高到低排)。
     無加權 set → None。"""
