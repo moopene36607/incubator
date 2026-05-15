@@ -44,6 +44,12 @@ _SETS_REPS_RE = re.compile(
     r"(\d+)\s*[xX×]\s*(\d+(?:\s*(?:sec|min|m|km))?)",
     re.IGNORECASE,
 )
+# 中文量詞記法:N組M下 / N組M次 / N組M秒 / N組M分 (Whisper 轉錄中文口述用)
+_SETS_REPS_ZH_RE = re.compile(
+    r"(\d+)\s*組\s*(\d+)\s*(下|次|秒|分)?",
+)
+# 中文時間單位 → reps_or_duration 慣用後綴
+_ZH_UNIT_MAP = {"秒": "sec", "分": "min"}
 _RPE_RE = re.compile(r"RPE\s*(\d+)", re.IGNORECASE)
 _WEIGHT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:kg|公斤)?", re.IGNORECASE)
 
@@ -87,13 +93,21 @@ def parse_voice_transcript(text: str) -> list["SetRecord"]:
             rpe = int(rpe_m.group(1))
             rest = (rest[:rpe_m.start()] + rest[rpe_m.end():]).strip()
 
-        # 抽 sets x reps
+        # 抽 sets x reps:先試書寫式 NxM,再試中文 N組M下
         sr_m = _SETS_REPS_RE.search(rest)
-        if not sr_m:
-            continue
-        sets_count = int(sr_m.group(1))
-        reps_raw = re.sub(r"\s+", "", sr_m.group(2))  # "60 sec" → "60sec"
-        rest_after_sr = (rest[:sr_m.start()] + rest[sr_m.end():]).strip()
+        if sr_m:
+            sets_count = int(sr_m.group(1))
+            reps_raw = re.sub(r"\s+", "", sr_m.group(2))  # "60 sec" → "60sec"
+            rest_after_sr = (rest[:sr_m.start()] + rest[sr_m.end():]).strip()
+        else:
+            zh_m = _SETS_REPS_ZH_RE.search(rest)
+            if not zh_m:
+                continue
+            sets_count = int(zh_m.group(1))
+            reps_num = zh_m.group(2)
+            zh_unit = zh_m.group(3)  # 下/次/秒/分 or None
+            reps_raw = reps_num + _ZH_UNIT_MAP.get(zh_unit or "", "")
+            rest_after_sr = (rest[:zh_m.start()] + rest[zh_m.end():]).strip()
 
         # 抽 weight: BW / 數字
         weight_kg: float | None = None
