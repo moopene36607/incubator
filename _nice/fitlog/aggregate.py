@@ -30,12 +30,21 @@ class SessionRanking:
 
 
 @dataclass(frozen=True)
+class StudentRanking:
+    """學員累積訓練量排行 (高頻 + 高量學員脫穎而出)。"""
+    student_name: str
+    total_tonnage_kg: float
+    n_sessions: int
+
+
+@dataclass(frozen=True)
 class BatchSummary:
     n_sessions: int
     total_tonnage_kg: float
     students: dict[str, int]                     # 姓名 → session 數
     top_exercises: list[tuple[str, float]]       # (exercise_code, tonnage) 由高到低
     leaderboard: list[SessionRanking] = field(default_factory=list)
+    student_total_leaderboard: list[StudentRanking] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -100,8 +109,33 @@ def compute_session_leaderboard(
     return rankings[:top_n]
 
 
+def compute_student_total_leaderboard(
+    sessions: Iterable["SessionInput"],
+    top_n: int = 5,
+) -> list[StudentRanking]:
+    """產出學員累積訓練量排行 (整批跨堂加總,Top N)。
+    Tie-break: 同 tonnage → session 數 desc → 姓名字典序。"""
+    by_student: dict[str, tuple[float, int]] = {}
+    for sess in sessions:
+        prev_total, prev_count = by_student.get(sess.student_name, (0.0, 0))
+        by_student[sess.student_name] = (
+            prev_total + compute_total_tonnage(sess.sets),
+            prev_count + 1,
+        )
+    rankings = [
+        StudentRanking(
+            student_name=name,
+            total_tonnage_kg=total,
+            n_sessions=count,
+        )
+        for name, (total, count) in by_student.items()
+    ]
+    rankings.sort(key=lambda r: (-r.total_tonnage_kg, -r.n_sessions, r.student_name))
+    return rankings[:top_n]
+
+
 def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
-    """彙總多堂 session 的整體訓練量、學員出席、動作排行、單堂排行。"""
+    """彙總多堂 session 的整體訓練量、學員出席、動作排行、單堂排行、學員累積排行。"""
     sessions = list(sessions)
     students: dict[str, int] = {}
     exercise_tonnage: dict[str, float] = {}
@@ -122,6 +156,7 @@ def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
         students=students,
         top_exercises=top,
         leaderboard=compute_session_leaderboard(sessions),
+        student_total_leaderboard=compute_student_total_leaderboard(sessions),
     )
 
 
@@ -488,6 +523,18 @@ def render_batch_summary(summary: BatchSummary) -> str:
             )
     else:
         lines.append("- (沒有 sessions 可排)")
+    lines.append("")
+
+    lines.append("## 學員累積訓練量排行 (Top 5)")
+    lines.append("")
+    if summary.student_total_leaderboard:
+        for i, r in enumerate(summary.student_total_leaderboard, 1):
+            lines.append(
+                f"{i}. {r.student_name}: {_format_kg(r.total_tonnage_kg)} "
+                f"({r.n_sessions} 堂)"
+            )
+    else:
+        lines.append("- (沒有學員資料)")
     lines.append("")
     lines.append("---")
     lines.append("")
