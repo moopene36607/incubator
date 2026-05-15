@@ -636,6 +636,43 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+def compute_training_streak(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    today_iso: str,
+) -> int:
+    """該學員到 today_iso 為止,往回連續多少 ISO 週都有 session。
+    當週若沒 session → 直接 0 (避免假慶祝)。沒任何 session → 0。
+    today_iso 格式 YYYY-MM-DD。"""
+    from datetime import date, timedelta
+    today = date.fromisoformat(today_iso)
+    today_year, today_week, _ = today.isocalendar()
+    weeks = {
+        date.fromisoformat(s.session_date).isocalendar()[:2]
+        for s in sessions
+        if s.student_name == student_name
+    }
+    if (today_year, today_week) not in weeks:
+        return 0
+    # 從當週往回算連續週
+    streak = 0
+    y, w = today_year, today_week
+    while (y, w) in weeks:
+        streak += 1
+        # 退一週 (跨年: ISO 第 1 週前是上一年的 52 或 53)
+        # 用 date 去走 7 天前再取 isocalendar 最安全
+        prev = date.fromisocalendar(y, w, 1) - timedelta(days=1)
+        y, w, _ = prev.isocalendar()
+    return streak
+
+
+def render_training_streak(streak: int) -> str | None:
+    """🔥 **連續訓練 {N} 週**。0 → None (避免每個剛中斷的學員被打臉)。"""
+    if streak <= 0:
+        return None
+    return f"🔥 **連續訓練 {streak} 週**"
+
+
 @dataclass(frozen=True)
 class NewPrRecord:
     """當堂打破歷來最佳的 PR 紀錄。
@@ -1100,6 +1137,7 @@ def render_student_trend(
     rpe_progression: list[tuple[str, float]] | None = None,
     bw_reps_progressions: dict[str, list[tuple[str, int]]] | None = None,
     duration_progressions: dict[str, tuple[str, list[tuple[str, int]]]] | None = None,
+    training_streak: int | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1108,6 +1146,10 @@ def render_student_trend(
     lines.append("")
     lines.append(f"- **總堂數**: {len(trend.points)}")
     lines.append(f"- **總訓練量**: {_format_kg(trend.total_tonnage)}")
+    if training_streak:
+        streak_line = render_training_streak(training_streak)
+        if streak_line:
+            lines.append(f"- {streak_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")
