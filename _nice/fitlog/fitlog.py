@@ -31,6 +31,7 @@ from typing import Any
 from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
+    compute_exercise_progression,
     compute_student_bw_prs,
     compute_student_prs,
     compute_student_trend,
@@ -383,10 +384,16 @@ def _run_batch(args: argparse.Namespace) -> int:
             trend = compute_student_trend(parsed_sessions, name)
             prs = compute_student_prs(parsed_sessions, name)
             bw_prs = compute_student_bw_prs(parsed_sessions, name)
+            progressions = compute_exercise_progression(parsed_sessions, name)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_path.write_text(
-                render_student_trend(trend, all_time_prs=prs, all_time_bw_prs=bw_prs),
+                render_student_trend(
+                    trend,
+                    all_time_prs=prs,
+                    all_time_bw_prs=bw_prs,
+                    progressions=progressions,
+                ),
                 encoding="utf-8",
             )
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)

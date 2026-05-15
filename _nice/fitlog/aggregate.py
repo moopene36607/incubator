@@ -249,10 +249,81 @@ def render_tonnage_sparkline(points: list[StudentTrendPoint]) -> str:
             f"({_format_kg(first)} → {_format_kg(last)}, {delta_str})")
 
 
+def compute_exercise_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> dict[str, list[tuple[str, float]]]:
+    """For 該學員的每個 weighted exercise,逐堂取 max weight 為當天代表值,
+    回傳 dict[exercise_code, list[(date, top_weight)]] 按日期排序。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    result: dict[str, list[tuple[str, float]]] = {}
+    for sess in student_sessions:
+        per_ex_max: dict[str, float] = {}
+        for s in sess.sets:
+            if s.weight_kg is None:
+                continue
+            cur = per_ex_max.get(s.exercise_code)
+            if cur is None or s.weight_kg > cur:
+                per_ex_max[s.exercise_code] = s.weight_kg
+        for code, max_w in per_ex_max.items():
+            result.setdefault(code, []).append((sess.session_date, max_w))
+    return result
+
+
+def _render_progression_line(name: str, points: list[tuple[str, float]]) -> str:
+    """單行 sparkline + delta% (e.g. '槓鈴臥推: ▁▄█  (45 → 50 kg, +11.1%)')。"""
+    weights = [w for _, w in points]
+    lo, hi = min(weights), max(weights)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(weights)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((w - lo) / (hi - lo) * last_idx)]
+            for w in weights
+        )
+    first, last = weights[0], weights[-1]
+    if first == 0:
+        delta_str = _format_kg(last - first)
+    else:
+        pct = (last - first) / first * 100
+        sign = "+" if pct >= 0 else ""
+        delta_str = f"{sign}{pct:.1f}%"
+    return (f"- {name}: {bars}  "
+            f"({_format_kg(first)} → {_format_kg(last)}, {delta_str})")
+
+
+def render_exercise_progressions(
+    progressions: dict[str, list[tuple[str, float]]],
+) -> str:
+    """產出「## 主要動作進度」section。少於 2 點的 exercise 跳過。
+    全跳過 (或 dict 空) → ""。排序: 各 exercise 的 max weight desc。"""
+    if not progressions:
+        return ""
+    items = sorted(
+        progressions.items(),
+        key=lambda kv: -max(w for _, w in kv[1]) if kv[1] else 0,
+    )
+    body: list[str] = []
+    for code, points in items:
+        if len(points) < 2:
+            continue
+        ex = lookup(code)
+        name = ex.chinese if ex else code
+        body.append(_render_progression_line(name, points))
+    if not body:
+        return ""
+    return "\n".join(["## 主要動作進度", "", *body, ""])
+
+
 def render_student_trend(
     trend: StudentTrend,
     all_time_prs: dict[str, AllTimeBest] | None = None,
     all_time_bw_prs: dict[str, AllTimeBwBest] | None = None,
+    progressions: dict[str, list[tuple[str, float]]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -276,6 +347,10 @@ def render_student_trend(
     if sparkline:
         lines.append(sparkline)
         lines.append("")
+    if progressions:
+        prog_str = render_exercise_progressions(progressions)
+        if prog_str:
+            lines.append(prog_str)
     if all_time_prs or all_time_bw_prs:
         lines.append(render_all_time_prs(all_time_prs or {}, all_time_bw_prs))
     lines.append("---")
