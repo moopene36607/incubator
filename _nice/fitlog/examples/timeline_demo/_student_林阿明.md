@@ -19,6 +19,7 @@
 - 槓鈴背蹲舉 (Barbell Back Squat): **70 kg** (第 4 堂, 2026-05-13)
 - 羅馬尼亞硬舉 (Romanian Deadlift): **60 kg** (第 1 堂, 2026-04-22)
 - 槓鈴臥推 (Barbell Bench Press): **50 kg** (第 4 堂, 2026-05-13)
+- 引體向上 (Pull-up) (BW): **6 reps** (第 4 堂, 2026-05-13)
 
 ---
 

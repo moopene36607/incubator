@@ -53,6 +53,15 @@ class AllTimeBest:
     on_session_date: str
 
 
+@dataclass(frozen=True)
+class AllTimeBwBest:
+    """單一學員某 BW 動作的歷來最佳 reps (Pull-up 8 reps 之類)。"""
+    exercise_code: str
+    max_reps: int
+    on_session_no: int
+    on_session_date: str
+
+
 def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
     """彙總多堂 session 的整體訓練量、學員出席、動作排行。"""
     sessions = list(sessions)
@@ -106,17 +115,60 @@ def compute_student_prs(
     return result
 
 
-def render_all_time_prs(prs: dict[str, AllTimeBest]) -> str:
-    """產出「## 歷來最佳」section markdown。空 → 空字串 (caller 跳過)。"""
-    if not prs:
+def compute_student_bw_prs(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> dict[str, AllTimeBwBest]:
+    """單一學員每個 BW exercise (weight_kg=None + 整數 reps) 的歷來最高 reps。
+    Tie-break: 同 reps → 取最早達成的日子。"""
+    student_sessions = [s for s in sessions if s.student_name == student_name]
+    by_exercise: dict[str, list[tuple[int, str, int]]] = {}
+    for sess in student_sessions:
+        for s in sess.sets:
+            if s.weight_kg is not None:
+                continue
+            reps_str = s.reps_or_duration.strip()
+            if not reps_str.isdigit():
+                continue
+            by_exercise.setdefault(s.exercise_code, []).append(
+                (int(reps_str), sess.session_date, sess.session_no)
+            )
+    result: dict[str, AllTimeBwBest] = {}
+    for code, items in by_exercise.items():
+        items.sort(key=lambda t: (-t[0], t[1], t[2]))
+        max_r, date, sno = items[0]
+        result[code] = AllTimeBwBest(
+            exercise_code=code,
+            max_reps=max_r,
+            on_session_no=sno,
+            on_session_date=date,
+        )
+    return result
+
+
+def render_all_time_prs(
+    prs: dict[str, AllTimeBest],
+    bw_prs: dict[str, AllTimeBwBest] | None = None,
+) -> str:
+    """產出「## 歷來最佳」section markdown。
+    weighted (按重量 desc) 後接 BW (按 reps desc)。兩邊空 → "".
+    bw_prs 可省略 (向後相容上輪的單參數呼叫)。"""
+    bw_prs = bw_prs or {}
+    if not prs and not bw_prs:
         return ""
     lines: list[str] = ["## 歷來最佳", ""]
-    items = sorted(prs.values(), key=lambda b: -b.max_weight_kg)
-    for b in items:
+    for b in sorted(prs.values(), key=lambda b: -b.max_weight_kg):
         ex = lookup(b.exercise_code)
         name = f"{ex.chinese} ({ex.english})" if ex else b.exercise_code
         lines.append(
             f"- {name}: **{_format_kg(b.max_weight_kg)}** "
+            f"(第 {b.on_session_no} 堂, {b.on_session_date})"
+        )
+    for b in sorted(bw_prs.values(), key=lambda b: -b.max_reps):
+        ex = lookup(b.exercise_code)
+        name = f"{ex.chinese} ({ex.english})" if ex else b.exercise_code
+        lines.append(
+            f"- {name} (BW): **{b.max_reps} reps** "
             f"(第 {b.on_session_no} 堂, {b.on_session_date})"
         )
     lines.append("")
@@ -200,6 +252,7 @@ def render_tonnage_sparkline(points: list[StudentTrendPoint]) -> str:
 def render_student_trend(
     trend: StudentTrend,
     all_time_prs: dict[str, AllTimeBest] | None = None,
+    all_time_bw_prs: dict[str, AllTimeBwBest] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -223,8 +276,8 @@ def render_student_trend(
     if sparkline:
         lines.append(sparkline)
         lines.append("")
-    if all_time_prs:
-        lines.append(render_all_time_prs(all_time_prs))
+    if all_time_prs or all_time_bw_prs:
+        lines.append(render_all_time_prs(all_time_prs or {}, all_time_bw_prs))
     lines.append("---")
     lines.append("")
     lines.append("*由 fitlog --batch 自動產出*")
