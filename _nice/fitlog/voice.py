@@ -117,6 +117,44 @@ def parse_voice_transcript(text: str) -> list["SetRecord"]:
     return results
 
 
+def make_blank_session_template() -> dict[str, Any]:
+    """產出一份通過 schema 的「新 session 樣板」,含 placeholder 提示。
+    PT 用 `fitlog.py --template > new.json` 後手動填學員/動作資料。"""
+    from datetime import date as _date
+    return {
+        "student": {
+            "name": "(請填學員姓名)",
+            "age": None,
+            "goal": "(請填訓練目標,例如:減脂 + 增肌)",
+        },
+        "coach": {
+            "name": "(請填教練姓名)",
+            "studio_name": "(請填工作室名稱)",
+            "contact": "",
+        },
+        "session": {
+            "session_no": 1,
+            "date": _date.today().isoformat(),
+            "duration_min": 60,
+            "theme": "(請填今日訓練主題)",
+            "sets": [
+                {
+                    "exercise_code": "BENCH_PRESS",
+                    "sets": 4,
+                    "reps_or_duration": "8",
+                    "weight_kg": 50.0,
+                    "rpe": 8,
+                    "note": "範例 set — 請替換成今日實際訓練紀錄",
+                },
+            ],
+        },
+        "coach_observations": [],
+        "student_subjective": [],
+        "next_session": {},
+        "recovery_diet": {},
+    }
+
+
 def build_session_skeleton(sets: list["SetRecord"]) -> dict[str, Any]:
     """把解析出來的 sets 包成一份 JSON skeleton (其餘欄位 placeholder,
     讓 PT 拿去填 student/coach metadata 後跑正常 CLI)。"""

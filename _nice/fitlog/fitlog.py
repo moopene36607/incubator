@@ -75,7 +75,7 @@ from progress import (
 )
 from schema import validate_payload_schema
 from validation import validate_session
-from voice import build_session_skeleton, parse_voice_transcript
+from voice import build_session_skeleton, make_blank_session_template, parse_voice_transcript
 
 
 REPORT_SYSTEM = """你是台灣健身教練 (PT) 的課後報告助理,協助教練把訓練紀錄與觀察轉成
@@ -562,8 +562,15 @@ def main() -> int:
     parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--voice", type=Path,
                         help="口述/語音轉文字 → JSON skeleton 印到 stdout (預處理模式)")
+    parser.add_argument("--template", action="store_true",
+                        help="輸出新 session JSON 樣板到 stdout (PT 可 > new.json 後填寫)")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     args = parser.parse_args()
+
+    if args.template:
+        template = make_blank_session_template()
+        sys.stdout.write(json.dumps(template, ensure_ascii=False, indent=2) + "\n")
+        return 0
 
     if args.voice:
         if not args.voice.exists():

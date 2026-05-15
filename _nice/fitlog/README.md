@@ -81,6 +81,19 @@
 
 ## 動作
 
+### 從零開始(產出新 session JSON 樣板)
+
+第一次用 fitlog 不知道 JSON 該長怎樣?用 `--template` 印出 fillable
+樣板,直接重定向到新檔後填寫:
+
+```bash
+python3 fitlog.py --template > students/aming_s1.json
+# 編輯 students/aming_s1.json 填學員姓名 / 動作 / 重量 / RPE
+python3 fitlog.py students/aming_s1.json --no-ai
+```
+
+樣板已含一個範例 set,自動帶今天日期,通過所有 schema 驗證。
+
 ### 不開 AI(骨架版,免 API key)
 
 ```bash
