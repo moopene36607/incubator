@@ -362,7 +362,7 @@ def _run_batch(args: argparse.Namespace) -> int:
 
     parsed_sessions: list[SessionInput] = [s for _, s in pairs]
 
-    # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary
+    # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary + next_weight_summary
     for path, session in pairs:
         prev = find_prev_session(session, parsed_sessions)
         pr_summary: str | None = None
@@ -372,8 +372,11 @@ def _run_batch(args: argparse.Namespace) -> int:
                 compute_bw_reps_deltas(prev.sets, session.sets),
                 compute_duration_deltas(prev.sets, session.sets),
             )
+        next_weight_summary = render_next_weight_suggestions(
+            suggest_next_session_weights(session.sets)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
-        full = render_full_report(session, body, pr_summary)
+        full = render_full_report(session, body, pr_summary, next_weight_summary)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
