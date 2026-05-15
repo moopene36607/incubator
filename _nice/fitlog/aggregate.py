@@ -44,6 +44,15 @@ class StudentTrend:
     total_tonnage: float
 
 
+@dataclass(frozen=True)
+class AllTimeBest:
+    """單一學員某動作的歷來最佳 (max weight + 達成日)。"""
+    exercise_code: str
+    max_weight_kg: float
+    on_session_no: int
+    on_session_date: str
+
+
 def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
     """彙總多堂 session 的整體訓練量、學員出席、動作排行。"""
     sessions = list(sessions)
@@ -66,6 +75,52 @@ def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
         students=students,
         top_exercises=top,
     )
+
+
+def compute_student_prs(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> dict[str, AllTimeBest]:
+    """單一學員每個 weighted exercise 的歷來最重 set。
+    Tie-break: 同重量 → 取最早達成的日子 (歷史意義)。"""
+    student_sessions = [s for s in sessions if s.student_name == student_name]
+    by_exercise: dict[str, list[tuple[float, str, int]]] = {}
+    for sess in student_sessions:
+        for s in sess.sets:
+            if s.weight_kg is None:
+                continue
+            by_exercise.setdefault(s.exercise_code, []).append(
+                (s.weight_kg, sess.session_date, sess.session_no)
+            )
+    result: dict[str, AllTimeBest] = {}
+    for code, items in by_exercise.items():
+        # max weight 優先;同重量取最早 date 與最小 session_no
+        items.sort(key=lambda t: (-t[0], t[1], t[2]))
+        max_w, date, sno = items[0]
+        result[code] = AllTimeBest(
+            exercise_code=code,
+            max_weight_kg=max_w,
+            on_session_no=sno,
+            on_session_date=date,
+        )
+    return result
+
+
+def render_all_time_prs(prs: dict[str, AllTimeBest]) -> str:
+    """產出「## 歷來最佳」section markdown。空 → 空字串 (caller 跳過)。"""
+    if not prs:
+        return ""
+    lines: list[str] = ["## 歷來最佳", ""]
+    items = sorted(prs.values(), key=lambda b: -b.max_weight_kg)
+    for b in items:
+        ex = lookup(b.exercise_code)
+        name = f"{ex.chinese} ({ex.english})" if ex else b.exercise_code
+        lines.append(
+            f"- {name}: **{_format_kg(b.max_weight_kg)}** "
+            f"(第 {b.on_session_no} 堂, {b.on_session_date})"
+        )
+    lines.append("")
+    return "\n".join(lines)
 
 
 def find_prev_session(
@@ -106,8 +161,12 @@ def compute_student_trend(
     )
 
 
-def render_student_trend(trend: StudentTrend) -> str:
-    """產出單一學員的多堂進步趨勢 markdown。"""
+def render_student_trend(
+    trend: StudentTrend,
+    all_time_prs: dict[str, AllTimeBest] | None = None,
+) -> str:
+    """產出單一學員的多堂進步趨勢 markdown。
+    傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
     lines: list[str] = []
     lines.append(f"# {trend.student_name} 個人訓練趨勢")
     lines.append("")
@@ -124,6 +183,8 @@ def render_student_trend(trend: StudentTrend) -> str:
     else:
         lines.append("- (沒有此學員的 session)")
     lines.append("")
+    if all_time_prs:
+        lines.append(render_all_time_prs(all_time_prs))
     lines.append("---")
     lines.append("")
     lines.append("*由 fitlog --batch 自動產出*")

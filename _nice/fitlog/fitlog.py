@@ -31,6 +31,7 @@ from typing import Any
 from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
+    compute_student_prs,
     compute_student_trend,
     find_prev_session,
     render_batch_summary,
@@ -379,9 +380,13 @@ def _run_batch(args: argparse.Namespace) -> int:
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
         for name in sorted({s.student_name for s in parsed_sessions}):
             trend = compute_student_trend(parsed_sessions, name)
+            prs = compute_student_prs(parsed_sessions, name)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
-            student_path.write_text(render_student_trend(trend), encoding="utf-8")
+            student_path.write_text(
+                render_student_trend(trend, all_time_prs=prs),
+                encoding="utf-8",
+            )
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)
     return 0
 
