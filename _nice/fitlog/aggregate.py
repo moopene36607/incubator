@@ -1177,6 +1177,29 @@ def detect_new_prs(
     return weight_prs + bw_prs
 
 
+def count_student_prs(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> int:
+    """逐堂跑 detect_new_prs 對歷史,加總該學員整期打破紀錄的總次數。"""
+    all_sessions = list(sessions)
+    student_sessions = sorted(
+        (s for s in all_sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    return sum(
+        len(detect_new_prs(all_sessions, student_name, sess))
+        for sess in student_sessions
+    )
+
+
+def render_pr_tally(count: int) -> str | None:
+    """🎖️ **本期 PR 突破**:共 N 次。0 → None (避免 0 次洗版)。"""
+    if count <= 0:
+        return None
+    return f"🎖️ **本期 PR 突破**:共 {count} 次"
+
+
 def _format_pr_value(v: float) -> str:
     if v == int(v):
         return str(int(v))
@@ -1629,6 +1652,7 @@ def render_student_trend(
     favorite_exercise: FavoriteExercise | None = None,
     exercise_variety: ExerciseVariety | None = None,
     intensity_progression: list[tuple[str, float]] | None = None,
+    pr_tally: int | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1649,6 +1673,10 @@ def render_student_trend(
         variety_line = render_exercise_variety(exercise_variety)
         if variety_line:
             lines.append(f"- {variety_line}")
+    if pr_tally is not None:
+        tally_line = render_pr_tally(pr_tally)
+        if tally_line:
+            lines.append(f"- {tally_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")

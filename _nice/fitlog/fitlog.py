@@ -55,6 +55,7 @@ from aggregate import (
     compute_student_intensity_progression,
     compute_studio_weekly_tonnage,
     compute_training_streak,
+    count_student_prs,
     detect_new_prs,
     compute_goal_progress,
     compute_student_1rm_progression,
@@ -697,6 +698,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             intensity_progression = compute_student_intensity_progression(
                 parsed_sessions, name
             )
+            pr_tally = count_student_prs(parsed_sessions, name)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_md = render_student_trend(
@@ -717,6 +719,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 favorite_exercise=favorite_exercise,
                 exercise_variety=exercise_variety,
                 intensity_progression=intensity_progression,
+                pr_tally=pr_tally,
             )
             student_path.write_text(student_md, encoding="utf-8")
             _info(f"已寫入學員趨勢: {student_path}")
