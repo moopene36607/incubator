@@ -69,7 +69,9 @@ from html_export import markdown_to_html, render_html_page
 from csv_export import write_session_csv
 from metrics import (
     CATEGORY_EMOJI,
+    compute_rpe_zone_distribution,
     render_category_breakdown,
+    render_rpe_zone_distribution,
     render_training_density,
     render_volume_summary,
 )
@@ -307,7 +309,10 @@ def render_full_report(
     out.extend(render_session_table(session))
     summary = render_volume_summary(session.sets)
     breakdown = render_category_breakdown(session.sets)
-    if (summary or breakdown or density_summary or pr_summary
+    zone_summary = render_rpe_zone_distribution(
+        compute_rpe_zone_distribution(session.sets)
+    )
+    if (summary or breakdown or density_summary or zone_summary or pr_summary
             or next_weight_summary or one_rm_summary):
         out.append("")
     if summary:
@@ -316,6 +321,8 @@ def render_full_report(
         out.append(breakdown)
     if density_summary:
         out.append(density_summary)
+    if zone_summary:
+        out.append(zone_summary)
     if pr_summary:
         out.append(pr_summary)
     if one_rm_summary:

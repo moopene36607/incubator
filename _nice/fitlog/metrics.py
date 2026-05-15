@@ -11,6 +11,7 @@ bodyweight (e.g. Pull-up) / 時間型 (60 sec) / 距離型 (500 m) 一律排除,
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, Iterable
 
 if TYPE_CHECKING:
@@ -111,6 +112,69 @@ def render_training_density(session: "SessionInput") -> str | None:
         return None
     return (f"**訓練密度**: {round(density)} kg/分鐘 "
             f"({_format_kg(total)} / {session.duration_min} 分)")
+
+
+# 強度區間定義 — 教練在報告裡分辨「熱身 / 工作 / 極限」三段
+# 來源:RPE 1–10 量表常見分組 (Reactive Training Systems / Mike Tuchscherer)
+RPE_WARMUP_MAX = 5    # 1–5
+RPE_WORKING_MAX = 8   # 6–8;9–10 → max
+
+
+@dataclass(frozen=True)
+class RpeZoneDistribution:
+    warmup_count: int
+    working_count: int
+    max_count: int
+    total_rated: int  # 有 RPE 且在 1-10 範圍內的 set 數
+    warmup_pct: float
+    working_pct: float
+    max_pct: float
+
+
+def compute_rpe_zone_distribution(
+    sets: Iterable["SetRecord"],
+) -> RpeZoneDistribution | None:
+    """把每 set 按 RPE 分到 warmup (1–5) / working (6–8) / max (9–10)。
+    沒任何 RPE-rated set → None (沒判斷依據)。RPE 不在 1-10 跳過。"""
+    warmup = working = mx = 0
+    for s in sets:
+        if s.rpe is None:
+            continue
+        if s.rpe < 1 or s.rpe > 10:
+            continue
+        if s.rpe <= RPE_WARMUP_MAX:
+            warmup += 1
+        elif s.rpe <= RPE_WORKING_MAX:
+            working += 1
+        else:
+            mx += 1
+    total = warmup + working + mx
+    if total == 0:
+        return None
+    return RpeZoneDistribution(
+        warmup_count=warmup,
+        working_count=working,
+        max_count=mx,
+        total_rated=total,
+        warmup_pct=warmup / total * 100.0,
+        working_pct=working / total * 100.0,
+        max_pct=mx / total * 100.0,
+    )
+
+
+def render_rpe_zone_distribution(
+    dist: RpeZoneDistribution | None,
+) -> str | None:
+    """「**強度分布**: 熱身 1 set (25%) · 工作 2 set (50%) · 極限 1 set (25%)」。
+    None → None。三 zone 都顯示 (含 0 set) 給 PT 完整視角。"""
+    if dist is None:
+        return None
+    return (
+        f"**強度分布**: "
+        f"熱身 {dist.warmup_count} set ({round(dist.warmup_pct)}%) · "
+        f"工作 {dist.working_count} set ({round(dist.working_pct)}%) · "
+        f"極限 {dist.max_count} set ({round(dist.max_pct)}%)"
+    )
 
 
 def render_category_breakdown(sets: Iterable["SetRecord"]) -> str | None:
