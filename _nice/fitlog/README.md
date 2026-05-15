@@ -145,6 +145,17 @@ python3 fitlog.py samples/sample_input.json --no-ai \
 (personal record):重量上升標 PR、噸位上升標噸位 delta。範例輸出:
 「槓鈴臥推 47.5→50 kg (+2.5 kg PR)」。
 
+### HTML 匯出 (LINE / email / 列印)
+
+```bash
+python3 fitlog.py samples/sample_input.json --no-ai \
+    --html reports/lin_aming_s12.html
+```
+
+純 Python markdown→HTML 轉換,內嵌簡潔 CSS,適合用 LINE 內嵌瀏覽器
+分享給學員、印給學員留念,或寄到 email。範例見
+`examples/sample_output.html`。
+
 ### CSV 匯出 (Excel / Google Sheets 友好)
 
 ```bash

@@ -54,6 +54,7 @@ from coaching import (
     render_next_weight_suggestions,
     suggest_next_session_weights,
 )
+from html_export import markdown_to_html, render_html_page
 from csv_export import write_session_csv
 from metrics import render_category_breakdown, render_training_density, render_volume_summary
 from progress import (
@@ -485,6 +486,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
+    parser.add_argument("--html", type=Path, help="把單堂報告匯出成 HTML 網頁 (適合 LINE / email / 列印)")
     parser.add_argument("--prev", type=Path, help="上次課程 JSON,用來算 PR / 噸位 delta")
     parser.add_argument("--voice", type=Path,
                         help="口述/語音轉文字 → JSON skeleton 印到 stdout (預處理模式)")
@@ -572,6 +574,12 @@ def main() -> int:
     if args.csv:
         write_session_csv(session, args.csv)
         print(f"已寫入 CSV: {args.csv}", file=sys.stderr)
+
+    if args.html:
+        body_html = markdown_to_html(full)
+        title = f"{session.student_name} 課後訓練報告 (第 {session.session_no} 堂)"
+        args.html.write_text(render_html_page(title, body_html), encoding="utf-8")
+        print(f"已寫入 HTML: {args.html}", file=sys.stderr)
     return 0
 
 
