@@ -36,8 +36,10 @@ from aggregate import (
     compute_student_bw_prs,
     compute_student_prs,
     compute_student_trend,
+    find_newly_achieved_goals,
     find_prev_session,
     render_batch_summary,
+    render_session_goal_banner,
     render_student_trend,
 )
 from batch import discover_session_jsons
@@ -236,6 +238,7 @@ def render_full_report(
     body: str,
     pr_summary: str | None = None,
     next_weight_summary: str | None = None,
+    goal_banner: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -244,6 +247,8 @@ def render_full_report(
                f"**時長**: {session.duration_min} 分鐘    "
                f"**今日主題**: {session.theme}")
     out.append("")
+    if goal_banner:
+        out.append(goal_banner)
     out.append("## 學員資料")
     out.append("")
     out.append(f"- 姓名: {session.student_name}"
@@ -375,8 +380,12 @@ def _run_batch(args: argparse.Namespace) -> int:
         next_weight_summary = render_next_weight_suggestions(
             suggest_next_session_weights(session.sets)
         )
+        goal_banner = render_session_goal_banner(
+            find_newly_achieved_goals(session, parsed_sessions, session.student_targets)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
-        full = render_full_report(session, body, pr_summary, next_weight_summary)
+        full = render_full_report(session, body, pr_summary, next_weight_summary,
+                                  goal_banner=goal_banner)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)

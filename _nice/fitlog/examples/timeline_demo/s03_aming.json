@@ -6,7 +6,7 @@
     "targets": [
       {
         "exercise_code": "BENCH_PRESS",
-        "target_weight_kg": 60.0
+        "target_weight_kg": 50.0
       },
       {
         "exercise_code": "BB_BACK_SQUAT",

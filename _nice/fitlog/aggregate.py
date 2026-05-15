@@ -82,6 +82,13 @@ class AllTimeBwBest:
 
 
 @dataclass(frozen=True)
+class GoalAchievement:
+    """單堂報告 banner 用:該堂第一次達成的目標 (exercise + target)。"""
+    exercise_code: str
+    target_kg: float
+
+
+@dataclass(frozen=True)
 class GoalProgress:
     """學員某動作的目標 vs 現況 (target_kg / current_kg / percent)。
     若達標,achieved_on_session_no / date 記錄第一次達成那一堂 (歷史時刻)。"""
@@ -394,6 +401,66 @@ def render_exercise_progressions(
     if not body:
         return ""
     return "\n".join(["## 主要動作進度", "", *body, ""])
+
+
+def find_newly_achieved_goals(
+    session: "SessionInput",
+    all_sessions: Iterable["SessionInput"],
+    targets: list[dict],
+) -> list[GoalAchievement]:
+    """偵測 `session` 是否首次達成 `targets` 中任何目標 (本堂達標 + 歷史所有
+    prior session 該動作都未達)。同學員的較早 sessions 才算 prior。"""
+    sessions_list = list(all_sessions)
+    achievements: list[GoalAchievement] = []
+    for t in targets:
+        code = t.get("exercise_code")
+        target = t.get("target_weight_kg")
+        if not code or target is None:
+            continue
+        try:
+            target_f = float(target)
+        except (TypeError, ValueError):
+            continue
+        if target_f <= 0:
+            continue
+        # 本堂該動作的 max weight
+        max_w = max(
+            (s.weight_kg for s in session.sets
+             if s.exercise_code == code and s.weight_kg is not None),
+            default=None,
+        )
+        if max_w is None or max_w < target_f:
+            continue
+        # 看歷史 prior 是否也達過
+        prior_sessions = [
+            s for s in sessions_list
+            if s.student_name == session.student_name
+            and (s.session_date, s.session_no) < (session.session_date, session.session_no)
+        ]
+        prior_hit = any(
+            (sr.weight_kg is not None and sr.weight_kg >= target_f
+             and sr.exercise_code == code)
+            for sess in prior_sessions for sr in sess.sets
+        )
+        if not prior_hit:
+            achievements.append(GoalAchievement(
+                exercise_code=code,
+                target_kg=target_f,
+            ))
+    return achievements
+
+
+def render_session_goal_banner(achievements: list[GoalAchievement]) -> str:
+    """產出「🎉 目標達成」banner;空 list → ""。"""
+    if not achievements:
+        return ""
+    lines: list[str] = ["🎉 **目標達成!**", ""]
+    for a in achievements:
+        ex = lookup(a.exercise_code)
+        name = ex.chinese if ex else a.exercise_code
+        lines.append(f"- {name}: 突破 {_format_kg(a.target_kg)} 目標!")
+    lines.append("")
+    return "\n".join(lines)
 
 
 def _find_goal_achievement(
