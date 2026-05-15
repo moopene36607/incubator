@@ -548,6 +548,22 @@ def render_goal_progress(progress: list[GoalProgress]) -> str:
     return "\n".join(lines)
 
 
+def _insert_toc(text: str) -> str:
+    """掃 markdown text 中的 ## headers,2+ 個時插「## 目錄」section
+    在 # title 後 / 第一個 ## 前。已有的 ## 目錄 不會被列入避免遞迴。"""
+    lines = text.split("\n")
+    headers = [l[3:].strip() for l in lines
+               if l.startswith("## ") and l[3:].strip() != "目錄"]
+    if len(headers) < 2:
+        return text
+    toc_lines = ["## 目錄", ""]
+    for h in headers:
+        toc_lines.append(f"- {h}")
+    toc_lines.append("")
+    # 插在 # title (line 0) + 空行 (line 1) 後
+    return "\n".join(lines[:2] + toc_lines + lines[2:])
+
+
 def render_student_trend(
     trend: StudentTrend,
     all_time_prs: dict[str, AllTimeBest] | None = None,
@@ -588,7 +604,7 @@ def render_student_trend(
     lines.append("---")
     lines.append("")
     lines.append("*由 fitlog --batch 自動產出*")
-    return "\n".join(lines) + "\n"
+    return _insert_toc("\n".join(lines) + "\n")
 
 
 def render_batch_summary(summary: BatchSummary) -> str:
