@@ -45,6 +45,7 @@ from aggregate import (
     build_batch_metrics_json,
     compute_absent_students,
     compute_bw_reps_progression,
+    compute_category_coverage,
     compute_coach_workload,
     compute_day_of_week_distribution,
     compute_duration_progression,
@@ -712,6 +713,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 parsed_sessions, name
             )
             pr_tally = count_student_prs(parsed_sessions, name)
+            category_coverage = compute_category_coverage(parsed_sessions, name)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_md = render_student_trend(
@@ -733,6 +735,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 exercise_variety=exercise_variety,
                 intensity_progression=intensity_progression,
                 pr_tally=pr_tally,
+                category_coverage=category_coverage,
             )
             student_path.write_text(student_md, encoding="utf-8")
             _info(f"已寫入學員趨勢: {student_path}")

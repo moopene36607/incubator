@@ -683,6 +683,49 @@ def render_intensity_progression(points: list[tuple[str, float]]) -> str:
     )
 
 
+# 肌群覆蓋固定 6 大分類顯示順序
+_COVERAGE_CATEGORIES = ("legs", "pull", "push", "core", "cardio", "mobility")
+DEFAULT_COVERAGE_WINDOW = 4
+
+
+def compute_category_coverage(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    window: int = DEFAULT_COVERAGE_WINDOW,
+) -> dict[str, bool] | None:
+    """該學員近 N 堂,6 大分類各有沒有被練到。沒任何 session → None。
+    永遠回傳 6 個 keys (含 False),讓 render 端格式穩定。"""
+    from exercise_db import lookup
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    if not student_sessions:
+        return None
+    recent = student_sessions[-window:]
+    covered: set[str] = set()
+    for sess in recent:
+        for s in sess.sets:
+            ex = lookup(s.exercise_code)
+            if ex is not None:
+                covered.add(ex.category)
+    return {cat: cat in covered for cat in _COVERAGE_CATEGORIES}
+
+
+def render_category_coverage(coverage: dict[str, bool] | None) -> str | None:
+    """🗂️ **肌群覆蓋**:腿 ✓ · 拉 ✓ · 推 ✓ · 核心 ✗ · 心肺 ✗ · 活動度 ✓。
+    None → None。"""
+    if coverage is None:
+        return None
+    from metrics import CATEGORY_ZH
+    parts: list[str] = []
+    for cat in _COVERAGE_CATEGORIES:
+        name = CATEGORY_ZH.get(cat, cat)
+        mark = "✓" if coverage.get(cat) else "✗"
+        parts.append(f"{name} {mark}")
+    return "🗂️ **肌群覆蓋**:" + " · ".join(parts)
+
+
 @dataclass(frozen=True)
 class ExerciseVariety:
     """學員動作多樣性指標 (recent window vs all-time)。"""
@@ -1653,6 +1696,7 @@ def render_student_trend(
     exercise_variety: ExerciseVariety | None = None,
     intensity_progression: list[tuple[str, float]] | None = None,
     pr_tally: int | None = None,
+    category_coverage: dict[str, bool] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1677,6 +1721,10 @@ def render_student_trend(
         tally_line = render_pr_tally(pr_tally)
         if tally_line:
             lines.append(f"- {tally_line}")
+    if category_coverage is not None:
+        coverage_line = render_category_coverage(category_coverage)
+        if coverage_line:
+            lines.append(f"- {coverage_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")
