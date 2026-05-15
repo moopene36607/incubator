@@ -66,7 +66,12 @@ from coaching import (
 from metrics import compute_total_tonnage
 from html_export import markdown_to_html, render_html_page
 from csv_export import write_session_csv
-from metrics import render_category_breakdown, render_training_density, render_volume_summary
+from metrics import (
+    CATEGORY_EMOJI,
+    render_category_breakdown,
+    render_training_density,
+    render_volume_summary,
+)
 from progress import (
     compute_bw_reps_deltas,
     compute_duration_deltas,
@@ -199,7 +204,12 @@ def render_session_table(session: SessionInput) -> list[str]:
     out.append("|---|------|---------------|------|------|------|")
     for i, s in enumerate(session.sets, 1):
         ex = lookup(s.exercise_code)
-        name = f"{ex.chinese} ({ex.english})" if ex else f"{s.exercise_code}(代碼未知)"
+        if ex:
+            emoji = CATEGORY_EMOJI.get(ex.category, "")
+            prefix = f"{emoji} " if emoji else ""
+            name = f"{prefix}{ex.chinese} ({ex.english})"
+        else:
+            name = f"{s.exercise_code}(代碼未知)"
         weight = f"{s.weight_kg} kg" if s.weight_kg is not None else "BW"
         rpe_str = f"{s.rpe}" if s.rpe is not None else "—"
         out.append(f"| {i} | {name} | {s.sets} × {s.reps_or_duration} | {weight} | {rpe_str} | {s.note} |")

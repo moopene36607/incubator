@@ -65,6 +65,17 @@ CATEGORY_ZH: dict[str, str] = {
 }
 
 
+# 分類 emoji 圖示;render_session_table 的「動作」欄前 prepend
+CATEGORY_EMOJI: dict[str, str] = {
+    "legs": "🦵",
+    "pull": "🤜",
+    "push": "💪",
+    "core": "🎯",
+    "cardio": "🏃",
+    "mobility": "🧘",
+}
+
+
 def compute_category_tonnage(sets: Iterable["SetRecord"]) -> dict[str, float]:
     """按 exercise_db 分類加總噸位。未知 exercise_code 直接跳過,不歸到
     "unknown" bucket (避免污染分類顯示)。"""

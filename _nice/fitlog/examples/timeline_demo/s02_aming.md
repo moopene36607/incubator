@@ -15,9 +15,9 @@
 
 | # | 動作 | 組數 × 次/秒/m | 重量 | RPE | 備註 |
 |---|------|---------------|------|------|------|
-| 1 | 槓鈴臥推 (Barbell Bench Press) | 4 × 8 | 50.0 kg | 8 | push only demo |
-| 2 | 肩推 (Overhead Press) | 4 × 8 | 30.0 kg | 8 | push only demo |
-| 3 | 上斜啞鈴推 (Incline Dumbbell Press) | 3 × 10 | 22.5 kg | 7 | push only demo |
+| 1 | 💪 槓鈴臥推 (Barbell Bench Press) | 4 × 8 | 50.0 kg | 8 | push only demo |
+| 2 | 💪 肩推 (Overhead Press) | 4 × 8 | 30.0 kg | 8 | push only demo |
+| 3 | 💪 上斜啞鈴推 (Incline Dumbbell Press) | 3 × 10 | 22.5 kg | 7 | push only demo |
 
 **訓練總噸位**: 3,235 kg
 **訓練量分解**: 推系 3,235 kg
