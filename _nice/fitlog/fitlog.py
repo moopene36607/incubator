@@ -42,6 +42,7 @@ def _info(msg: str) -> None:
 from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
+    build_batch_metrics_json,
     compute_absent_students,
     compute_bw_reps_progression,
     compute_coach_workload,
@@ -638,6 +639,14 @@ def _run_batch(args: argparse.Namespace) -> int:
             write_batch_csv(parsed_sessions, batch_csv_path,
                             with_bom=args.csv_bom)
             _info(f"已寫入批次 CSV: {batch_csv_path}")
+        if args.batch_json:
+            batch_json_path = summary_dir / "_batch.json"
+            batch_json_path.write_text(
+                json.dumps(build_batch_metrics_json(parsed_sessions),
+                           ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            _info(f"已寫入批次 JSON: {batch_json_path}")
         one_liner = render_batch_one_liner(batch_summary_obj)
         if one_liner:
             one_liner_path = summary_dir / "_one_liner.txt"
@@ -737,6 +746,8 @@ def main() -> int:
                         help="批次模式同時產出 .html (與 .md 同名,適合 LINE 分享)")
     parser.add_argument("--batch-csv", action="store_true",
                         help="批次模式同時寫 _batch.csv (所有 sessions 的 sets concat,Excel pivot 用)")
+    parser.add_argument("--batch-json", action="store_true",
+                        help="批次模式同時寫 _batch.json (批次層級結構化匯總,供 dashboard 整合)")
     parser.add_argument("--student", type=str,
                         help="批次模式只跑指定學員 (其他學員 .json 略過)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")

@@ -734,6 +734,34 @@ def render_exercise_variety(v: ExerciseVariety | None) -> str | None:
     )
 
 
+def build_batch_metrics_json(
+    sessions: Iterable["SessionInput"],
+) -> dict:
+    """把批次層級的純函式匯總包成 json-serializable dict (供 dashboard 整合)。
+    組裝既有 aggregate 結果,no LLM。"""
+    sessions = list(sessions)
+    summary = aggregate_batch(sessions)
+    studio_weekly = [
+        {
+            "week_start": w.week_start,
+            "total_tonnage_kg": w.total_tonnage_kg,
+            "n_sessions": w.n_sessions,
+            "n_students": w.n_students,
+        }
+        for w in compute_studio_weekly_tonnage(sessions)
+    ]
+    dow = compute_day_of_week_distribution(sessions)
+    return {
+        "n_sessions": summary.n_sessions,
+        "n_students": len(summary.students),
+        "total_tonnage_kg": summary.total_tonnage_kg,
+        "students": dict(summary.students),
+        "top_exercises": [[code, ton] for code, ton in summary.top_exercises],
+        "studio_weekly": studio_weekly,
+        "day_of_week": {str(d): n for d, n in dow.items()},
+    }
+
+
 @dataclass(frozen=True)
 class CoachWorkload:
     """單一教練在批次內的工作量 (堂數 / 不重複學員數 / 總訓練量)。"""
