@@ -32,6 +32,7 @@ from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
     compute_exercise_progression,
+    compute_goal_progress,
     compute_student_bw_prs,
     compute_student_prs,
     compute_student_trend,
@@ -130,6 +131,9 @@ class SessionInput:
     student_subjective: list[str]      # 學員主述 (如「下背稍緊」)
     next_session: dict[str, Any]       # {"date": "...", "theme": "...", "focus": [...]}
     recovery_diet: dict[str, Any] = field(default_factory=dict)
+    student_targets: list[dict[str, Any]] = field(default_factory=list)
+    # student.targets: list of {"exercise_code": str, "target_weight_kg": number}
+    # 用於跨堂計算「達成 60 kg 目標 X%」progress bar
 
 
 def parse_payload(payload: dict[str, Any]) -> SessionInput:
@@ -162,6 +166,7 @@ def parse_payload(payload: dict[str, Any]) -> SessionInput:
         student_subjective=list(payload.get("student_subjective", [])),
         next_session=payload.get("next_session", {}),
         recovery_diet=payload.get("recovery_diet", {}),
+        student_targets=list(s.get("targets", []) or []),
     )
 
 
@@ -385,6 +390,13 @@ def _run_batch(args: argparse.Namespace) -> int:
             prs = compute_student_prs(parsed_sessions, name)
             bw_prs = compute_student_bw_prs(parsed_sessions, name)
             progressions = compute_exercise_progression(parsed_sessions, name)
+            # 取該學員最近一堂的 targets (學員可能會調整目標)
+            student_sorted = sorted(
+                (s for s in parsed_sessions if s.student_name == name),
+                key=lambda s: (s.session_date, s.session_no),
+            )
+            latest_targets = student_sorted[-1].student_targets if student_sorted else []
+            goals = compute_goal_progress(latest_targets, prs)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_path.write_text(
@@ -393,6 +405,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                     all_time_prs=prs,
                     all_time_bw_prs=bw_prs,
                     progressions=progressions,
+                    goals=goals,
                 ),
                 encoding="utf-8",
             )

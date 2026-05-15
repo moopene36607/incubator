@@ -75,6 +75,24 @@ def validate_payload_schema(payload: Any) -> list[str]:
         errors.append("student: 應為 object")
     else:
         _check_str(student, "name", "student", errors)
+        # targets 是 optional list of {exercise_code: str, target_weight_kg: number}
+        if "targets" in student:
+            targets = student["targets"]
+            if not isinstance(targets, list):
+                errors.append(
+                    f"student.targets: 應為 list (got {type(targets).__name__})"
+                )
+            else:
+                for i, t in enumerate(targets):
+                    prefix = f"student.targets[{i}]"
+                    if not isinstance(t, dict):
+                        errors.append(f"{prefix}: 應為 object")
+                        continue
+                    _check_str(t, "exercise_code", prefix, errors)
+                    if "target_weight_kg" not in t:
+                        errors.append(f"{prefix}.target_weight_kg: 缺失")
+                    elif not _is_float_like(t["target_weight_kg"]):
+                        errors.append(f"{prefix}.target_weight_kg: 應為數字")
 
     # ----- coach -----
     coach = payload.get("coach")

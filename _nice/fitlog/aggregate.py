@@ -62,6 +62,15 @@ class AllTimeBwBest:
     on_session_date: str
 
 
+@dataclass(frozen=True)
+class GoalProgress:
+    """學員某動作的目標 vs 現況 (target_kg / current_kg / percent)。"""
+    exercise_code: str
+    current_kg: float
+    target_kg: float
+    percent: float
+
+
 def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
     """彙總多堂 session 的整體訓練量、學員出席、動作排行。"""
     sessions = list(sessions)
@@ -319,11 +328,60 @@ def render_exercise_progressions(
     return "\n".join(["## 主要動作進度", "", *body, ""])
 
 
+def compute_goal_progress(
+    targets: list[dict],
+    prs: dict[str, AllTimeBest],
+) -> list[GoalProgress]:
+    """對每個 target,計算 (現況 / 目標) 百分比。target=0 跳過 (避免 div0)。"""
+    result: list[GoalProgress] = []
+    for t in targets:
+        code = t.get("exercise_code")
+        target = t.get("target_weight_kg")
+        if not code or target is None:
+            continue
+        try:
+            target_f = float(target)
+        except (TypeError, ValueError):
+            continue
+        if target_f <= 0:
+            continue
+        current = prs[code].max_weight_kg if code in prs else 0.0
+        result.append(GoalProgress(
+            exercise_code=code,
+            current_kg=current,
+            target_kg=target_f,
+            percent=current / target_f * 100,
+        ))
+    return result
+
+
+def render_goal_progress(progress: list[GoalProgress]) -> str:
+    """產出「## 目標達成進度」section,每行 progress bar (10 字寬)。
+    達 100% 加 ✅;空 list → ""。"""
+    if not progress:
+        return ""
+    lines: list[str] = ["## 目標達成進度", ""]
+    for p in sorted(progress, key=lambda x: -x.percent):
+        ex = lookup(p.exercise_code)
+        name = ex.chinese if ex else p.exercise_code
+        bar_pct = min(p.percent, 100.0)
+        filled = int(bar_pct / 10)
+        bar = "█" * filled + "░" * (10 - filled)
+        check = " ✅" if p.percent >= 100 else ""
+        lines.append(
+            f"- {name}: {_format_kg(p.current_kg)} / {_format_kg(p.target_kg)} "
+            f"({p.percent:.0f}%) {bar}{check}"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def render_student_trend(
     trend: StudentTrend,
     all_time_prs: dict[str, AllTimeBest] | None = None,
     all_time_bw_prs: dict[str, AllTimeBwBest] | None = None,
     progressions: dict[str, list[tuple[str, float]]] | None = None,
+    goals: list[GoalProgress] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -351,6 +409,8 @@ def render_student_trend(
         prog_str = render_exercise_progressions(progressions)
         if prog_str:
             lines.append(prog_str)
+    if goals:
+        lines.append(render_goal_progress(goals))
     if all_time_prs or all_time_bw_prs:
         lines.append(render_all_time_prs(all_time_prs or {}, all_time_bw_prs))
     lines.append("---")
