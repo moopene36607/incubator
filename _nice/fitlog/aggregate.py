@@ -83,11 +83,14 @@ class AllTimeBwBest:
 
 @dataclass(frozen=True)
 class GoalProgress:
-    """學員某動作的目標 vs 現況 (target_kg / current_kg / percent)。"""
+    """學員某動作的目標 vs 現況 (target_kg / current_kg / percent)。
+    若達標,achieved_on_session_no / date 記錄第一次達成那一堂 (歷史時刻)。"""
     exercise_code: str
     current_kg: float
     target_kg: float
     percent: float
+    achieved_on_session_no: int | None = None
+    achieved_on_date: str | None = None
 
 
 def compute_session_leaderboard(
@@ -393,11 +396,38 @@ def render_exercise_progressions(
     return "\n".join(["## 主要動作進度", "", *body, ""])
 
 
+def _find_goal_achievement(
+    exercise_code: str,
+    target_kg: float,
+    sessions: list["SessionInput"],
+    student_name: str,
+) -> tuple[int, str] | None:
+    """掃該學員的 sessions (按日期+session_no 排序),找第一個 max(weight) >= target
+    的 session,回傳 (session_no, date)。沒達標 → None。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    for sess in student_sessions:
+        max_w = max(
+            (s.weight_kg for s in sess.sets
+             if s.exercise_code == exercise_code and s.weight_kg is not None),
+            default=None,
+        )
+        if max_w is not None and max_w >= target_kg:
+            return (sess.session_no, sess.session_date)
+    return None
+
+
 def compute_goal_progress(
     targets: list[dict],
     prs: dict[str, AllTimeBest],
+    sessions: Iterable["SessionInput"] | None = None,
+    student_name: str | None = None,
 ) -> list[GoalProgress]:
-    """對每個 target,計算 (現況 / 目標) 百分比。target=0 跳過 (避免 div0)。"""
+    """對每個 target 算 (現況 / 目標) %。target=0 跳過 (避免 div0)。
+    若有 sessions + student_name,額外找第一次達標那一堂的 session_no/date。"""
+    sessions_list = list(sessions) if sessions else []
     result: list[GoalProgress] = []
     for t in targets:
         code = t.get("exercise_code")
@@ -411,11 +441,18 @@ def compute_goal_progress(
         if target_f <= 0:
             continue
         current = prs[code].max_weight_kg if code in prs else 0.0
+        achieved_no, achieved_date = None, None
+        if sessions_list and student_name is not None:
+            ach = _find_goal_achievement(code, target_f, sessions_list, student_name)
+            if ach is not None:
+                achieved_no, achieved_date = ach
         result.append(GoalProgress(
             exercise_code=code,
             current_kg=current,
             target_kg=target_f,
             percent=current / target_f * 100,
+            achieved_on_session_no=achieved_no,
+            achieved_on_date=achieved_date,
         ))
     return result
 
@@ -433,9 +470,12 @@ def render_goal_progress(progress: list[GoalProgress]) -> str:
         filled = int(bar_pct / 10)
         bar = "█" * filled + "░" * (10 - filled)
         check = " ✅" if p.percent >= 100 else ""
+        achievement = ""
+        if p.achieved_on_session_no is not None:
+            achievement = f" 達成於第 {p.achieved_on_session_no} 堂 ({p.achieved_on_date})"
         lines.append(
             f"- {name}: {_format_kg(p.current_kg)} / {_format_kg(p.target_kg)} "
-            f"({p.percent:.0f}%) {bar}{check}"
+            f"({p.percent:.0f}%) {bar}{check}{achievement}"
         )
     lines.append("")
     return "\n".join(lines)

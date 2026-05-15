@@ -399,7 +399,10 @@ def _run_batch(args: argparse.Namespace) -> int:
                 key=lambda s: (s.session_date, s.session_no),
             )
             latest_targets = student_sorted[-1].student_targets if student_sorted else []
-            goals = compute_goal_progress(latest_targets, prs)
+            goals = compute_goal_progress(
+                latest_targets, prs,
+                sessions=parsed_sessions, student_name=name,
+            )
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_path.write_text(
