@@ -33,6 +33,7 @@ from aggregate import (
     aggregate_batch,
     compute_exercise_progression,
     compute_goal_progress,
+    compute_student_1rm_progression,
     compute_student_bw_prs,
     compute_student_prs,
     compute_student_trend,
@@ -429,6 +430,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             prs = compute_student_prs(parsed_sessions, name)
             bw_prs = compute_student_bw_prs(parsed_sessions, name)
             progressions = compute_exercise_progression(parsed_sessions, name)
+            one_rm_progressions = compute_student_1rm_progression(parsed_sessions, name)
             # 取該學員最近一堂的 targets (學員可能會調整目標)
             student_sorted = sorted(
                 (s for s in parsed_sessions if s.student_name == name),
@@ -448,6 +450,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                     all_time_bw_prs=bw_prs,
                     progressions=progressions,
                     goals=goals,
+                    one_rm_progressions=one_rm_progressions,
                 ),
                 encoding="utf-8",
             )
