@@ -27,8 +27,12 @@ MAX_REASONABLE_REPS: int = 100
 MAX_REASONABLE_SETS: int = 20
 
 
-def validate_session(session: "SessionInput") -> list[str]:
-    """檢查 session 各欄位合理性,回傳警告 list (空 list = 全通過)。"""
+def validate_session(
+    session: "SessionInput",
+    today_iso: str | None = None,
+) -> list[str]:
+    """檢查 session 各欄位合理性,回傳警告 list (空 list = 全通過)。
+    today_iso 給定時,session_date > today_iso 視為未來 (年份 typo 預防)。"""
     from exercise_db import lookup
     warnings: list[str] = []
 
@@ -38,6 +42,13 @@ def validate_session(session: "SessionInput") -> list[str]:
 
     if session.duration_min <= 0:
         warnings.append(f"課程時長 {session.duration_min} min 不合理 (應 > 0)")
+
+    # 未來日期警告:純字串比較對 ISO date 安全 (YYYY-MM-DD lexicographic = chronological)
+    if today_iso and session.session_date > today_iso:
+        warnings.append(
+            f"課程日期 {session.session_date} 在未來 "
+            f"(今天 {today_iso}),可能是年份 typo"
+        )
 
     for i, s in enumerate(session.sets, 1):
         prefix = f"第 {i} set ({s.exercise_code})"

@@ -468,7 +468,7 @@ def _run_batch(args: argparse.Namespace) -> int:
         except (KeyError, ValueError) as e:
             print(f"warning: 跳過 {path.name}: {e}", file=sys.stderr)
             continue
-        for w in validate_session(session):
+        for w in validate_session(session, today_iso=date.today().isoformat()):
             print(f"warning [{path.name}]: {w}", file=sys.stderr)
         pairs.append((path, session))
 
@@ -738,7 +738,7 @@ def main() -> int:
 
     session = parse_payload(payload)
 
-    for w in validate_session(session):
+    for w in validate_session(session, today_iso=date.today().isoformat()):
         print(f"warning: {w}", file=sys.stderr)
 
     pr_summary: str | None = None
