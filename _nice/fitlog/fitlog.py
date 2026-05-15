@@ -386,7 +386,10 @@ def _run_batch(args: argparse.Namespace) -> int:
     parsed_sessions: list[SessionInput] = [s for _, s in pairs]
 
     # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary + next_weight_summary
-    for path, session in pairs:
+    # --summary-only 時跳過個別 session 渲染與寫檔 (Pass 1 仍跑供彙總用)
+    if args.summary_only:
+        print("info: --summary-only,跳過個別 session .md", file=sys.stderr)
+    for path, session in (pairs if not args.summary_only else []):
         prev = find_prev_session(session, parsed_sessions)
         pr_summary: str | None = None
         if prev is not None:
@@ -458,6 +461,8 @@ def main() -> int:
     parser.add_argument("--batch", type=Path, help="批次模式:掃描目錄下所有 *.json 各產一份 .md")
     parser.add_argument("--out-dir", type=Path,
                         help="批次模式輸出目錄 (預設寫在原 .json 檔旁)")
+    parser.add_argument("--summary-only", action="store_true",
+                        help="批次模式只產 _batch_summary.md + _student_*.md,跳過個別 session .md")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")

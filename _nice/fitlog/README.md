@@ -124,6 +124,15 @@ python3 fitlog.py --batch students_today/ --out-dir reports/today/ --no-ai
 
 範例輸出見 `examples/batch_demo/` (3 學員 → 3 .md + summary)。
 
+PT 跑週報只要彙總 + 學員 trend (個別 session 已在日常 LINE 給學員了)
+時,加 `--summary-only` 跳過個別 .md:
+
+```bash
+python3 fitlog.py --batch students_today/ --out-dir reports/week/ \
+    --no-ai --summary-only
+# → reports/week/_batch_summary.md, reports/week/_student_*.md
+```
+
 ### 跨堂進步追蹤 (PR 標記)
 
 ```bash
