@@ -39,6 +39,7 @@ from aggregate import (
     compute_student_prs,
     compute_student_session_frequency,
     compute_student_trend,
+    compute_weekly_tonnage,
     find_newly_achieved_goals,
     find_prev_session,
     render_batch_summary,
@@ -459,6 +460,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             one_rm_progressions = compute_student_1rm_progression(parsed_sessions, name)
             density_progression = compute_student_density_progression(parsed_sessions, name)
             frequency = compute_student_session_frequency(parsed_sessions, name)
+            weekly_tonnage = compute_weekly_tonnage(parsed_sessions, name)
             # 取該學員最近一堂的 targets (學員可能會調整目標)
             student_sorted = sorted(
                 (s for s in parsed_sessions if s.student_name == name),
@@ -480,6 +482,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 one_rm_progressions=one_rm_progressions,
                 density_progression=density_progression,
                 frequency=frequency,
+                weekly_tonnage=weekly_tonnage,
             )
             student_path.write_text(student_md, encoding="utf-8")
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)

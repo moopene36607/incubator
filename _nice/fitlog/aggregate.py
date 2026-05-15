@@ -82,6 +82,14 @@ class AllTimeBwBest:
 
 
 @dataclass(frozen=True)
+class WeeklyTonnage:
+    """單一 ISO 週的訓練量加總 (週起始為週一)。"""
+    week_start: str            # ISO date of Monday
+    total_tonnage_kg: float
+    n_sessions: int
+
+
+@dataclass(frozen=True)
 class StudentFrequency:
     """學員訓練頻率 (avg sessions / week + adherence 判讀)。"""
     total_sessions: int
@@ -512,6 +520,48 @@ def render_exercise_progressions(
     return "\n".join(["## 主要動作進度", "", *body, ""])
 
 
+def compute_weekly_tonnage(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> list[WeeklyTonnage]:
+    """按 ISO 週分組學員 sessions,加總每週 tonnage 與堂數。
+    回傳按 week_start (週一日) 升序排列的 list。"""
+    from datetime import date as _date
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    weeks: dict[tuple[int, int], list[float]] = {}
+    for sess in student_sessions:
+        d = _date.fromisoformat(sess.session_date)
+        iso = d.isocalendar()
+        key = (iso[0], iso[1])
+        if key not in weeks:
+            weeks[key] = [0.0, 0]
+        weeks[key][0] += compute_total_tonnage(sess.sets)
+        weeks[key][1] += 1
+    result: list[WeeklyTonnage] = []
+    for (year, week), (total, count) in sorted(weeks.items()):
+        monday = _date.fromisocalendar(year, week, 1).isoformat()
+        result.append(WeeklyTonnage(
+            week_start=monday,
+            total_tonnage_kg=total,
+            n_sessions=int(count),
+        ))
+    return result
+
+
+def render_weekly_tonnage(weekly: list[WeeklyTonnage]) -> str:
+    """產出「## 週訓練量分布」table。< 2 週 → "" (沒分布可講)。"""
+    if len(weekly) < 2:
+        return ""
+    lines = ["## 週訓練量分布", "", "| 週起始 | 堂數 | 訓練量 |", "|---------|------|---------|"]
+    for w in weekly:
+        lines.append(f"| {w.week_start} | {w.n_sessions} | {_format_kg(w.total_tonnage_kg)} |")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def compute_student_session_frequency(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -717,6 +767,7 @@ def render_student_trend(
     one_rm_progressions: dict[str, list[tuple[str, float]]] | None = None,
     density_progression: list[tuple[str, float]] | None = None,
     frequency: StudentFrequency | None = None,
+    weekly_tonnage: list[WeeklyTonnage] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -750,6 +801,10 @@ def render_student_trend(
         if freq_line:
             lines.append(freq_line)
             lines.append("")
+    if weekly_tonnage:
+        weekly_str = render_weekly_tonnage(weekly_tonnage)
+        if weekly_str:
+            lines.append(weekly_str)
     if progressions:
         prog_str = render_exercise_progressions(progressions)
         if prog_str:
