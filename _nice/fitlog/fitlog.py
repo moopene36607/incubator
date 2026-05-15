@@ -50,7 +50,7 @@ from coaching import (
     suggest_next_session_weights,
 )
 from csv_export import write_session_csv
-from metrics import render_category_breakdown, render_volume_summary
+from metrics import render_category_breakdown, render_training_density, render_volume_summary
 from progress import (
     compute_bw_reps_deltas,
     compute_duration_deltas,
@@ -245,6 +245,7 @@ def render_full_report(
     next_weight_summary: str | None = None,
     goal_banner: str | None = None,
     one_rm_summary: str | None = None,
+    density_summary: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -267,12 +268,15 @@ def render_full_report(
     out.extend(render_session_table(session))
     summary = render_volume_summary(session.sets)
     breakdown = render_category_breakdown(session.sets)
-    if summary or breakdown or pr_summary or next_weight_summary or one_rm_summary:
+    if (summary or breakdown or density_summary or pr_summary
+            or next_weight_summary or one_rm_summary):
         out.append("")
     if summary:
         out.append(summary)
     if breakdown:
         out.append(breakdown)
+    if density_summary:
+        out.append(density_summary)
     if pr_summary:
         out.append(pr_summary)
     if one_rm_summary:
@@ -300,6 +304,7 @@ def render_line_friendly(
     pr_summary: str | None = None,
     next_weight_summary: str | None = None,
     one_rm_summary: str | None = None,
+    density_summary: str | None = None,
 ) -> str:
     """LINE 純文字版,去 markdown 符號,加 emoji 分段。"""
     plain = body.replace("### ", "\n").replace("## ", "\n").replace("**", "")
@@ -317,6 +322,8 @@ def render_line_friendly(
         summary_parts.append(f"🏋️ 總噸位:{summary.split(': ', 1)[1]}")
     if breakdown:
         summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
+    if density_summary:
+        summary_parts.append(f"⚡ 密度:{density_summary.split(': ', 1)[1]}")
     if pr_summary:
         summary_parts.append(f"🏆 進步:{pr_summary.split(': ', 1)[1]}")
     if one_rm_summary:
@@ -394,13 +401,15 @@ def _run_batch(args: argparse.Namespace) -> int:
         one_rm_summary = render_1rm_estimates(
             compute_session_1rm_estimates(session.sets)
         )
+        density_summary = render_training_density(session)
         goal_banner = render_session_goal_banner(
             find_newly_achieved_goals(session, parsed_sessions, session.student_targets)
         )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
-                                  one_rm_summary=one_rm_summary)
+                                  one_rm_summary=one_rm_summary,
+                                  density_summary=density_summary)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
@@ -515,10 +524,12 @@ def main() -> int:
     one_rm_summary = render_1rm_estimates(
         compute_session_1rm_estimates(session.sets)
     )
+    density_summary = render_training_density(session)
 
     body = ai_write_body(session) if use_ai else render_skeleton_body()
     full = render_full_report(session, body, pr_summary, next_weight_summary,
-                              one_rm_summary=one_rm_summary)
+                              one_rm_summary=one_rm_summary,
+                              density_summary=density_summary)
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")
@@ -529,7 +540,8 @@ def main() -> int:
     if args.out_line:
         args.out_line.write_text(
             render_line_friendly(session, body, pr_summary, next_weight_summary,
-                                 one_rm_summary=one_rm_summary),
+                                 one_rm_summary=one_rm_summary,
+                                 density_summary=density_summary),
             encoding="utf-8")
         print(f"已寫入 LINE 版: {args.out_line}", file=sys.stderr)
 

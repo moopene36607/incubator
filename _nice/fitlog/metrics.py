@@ -14,7 +14,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Iterable
 
 if TYPE_CHECKING:
-    from fitlog import SetRecord
+    from fitlog import SessionInput, SetRecord
 
 
 def _parse_reps(reps_or_duration: str) -> int | None:
@@ -82,6 +82,24 @@ def compute_category_tonnage(sets: Iterable["SetRecord"]) -> dict[str, float]:
         v = float(s.sets) * float(reps) * float(s.weight_kg)
         breakdown[ex.category] = breakdown.get(ex.category, 0.0) + v
     return breakdown
+
+
+def compute_training_density(total_tonnage_kg: float, duration_min: int) -> float | None:
+    """訓練密度 = tonnage / 分鐘。0/負時長 → None (避免 div0 / 不合理)。"""
+    if duration_min <= 0:
+        return None
+    return total_tonnage_kg / duration_min
+
+
+def render_training_density(session: "SessionInput") -> str | None:
+    """產出「**訓練密度**: X kg/分鐘 (total / N 分)」單行字串。
+    全 BW (tonnage 0) 或 0 時長 → None (沒密度可講)。"""
+    total = compute_total_tonnage(session.sets)
+    density = compute_training_density(total, session.duration_min)
+    if density is None or density <= 0:
+        return None
+    return (f"**訓練密度**: {round(density)} kg/分鐘 "
+            f"({_format_kg(total)} / {session.duration_min} 分)")
 
 
 def render_category_breakdown(sets: Iterable["SetRecord"]) -> str | None:
