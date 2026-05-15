@@ -75,6 +75,7 @@ from html_export import markdown_to_html, render_html_page
 from csv_export import write_batch_csv, write_session_csv
 from metrics import (
     CATEGORY_EMOJI,
+    CATEGORY_ZH,
     compute_rpe_zone_distribution,
     render_category_breakdown,
     render_rpe_zone_distribution,
@@ -223,6 +224,34 @@ def render_session_table(session: SessionInput) -> list[str]:
         rpe_str = f"{s.rpe}" if s.rpe is not None else "—"
         out.append(f"| {i} | {name} | {s.sets} × {s.reps_or_duration} | {weight} | {rpe_str} | {s.note} |")
     return out
+
+
+def render_exercise_listing() -> str:
+    """印出 exercise_db 所有動作 (依分類分組),給 PT 查 exercise_code 用。
+    純函式,不需 input 檔,不會碰 LLM。"""
+    by_cat: dict[str, list[Exercise]] = {}
+    for ex in EXERCISES:
+        by_cat.setdefault(ex.category, []).append(ex)
+    # CATEGORY_ZH 排序鎖死 (legs/pull/push/core/cardio/mobility)
+    category_order = list(CATEGORY_ZH.keys())
+    # 其餘 (未來新分類) 排在最後
+    extra = [c for c in by_cat if c not in category_order]
+    ordered = [c for c in category_order if c in by_cat] + sorted(extra)
+
+    lines: list[str] = [f"# fitlog 動作清單 ({len(EXERCISES)} 個)", ""]
+    # 找最長 code 對齊
+    width = max(len(ex.code) for ex in EXERCISES)
+    for cat in ordered:
+        zh = CATEGORY_ZH.get(cat, cat)
+        items = sorted(by_cat[cat], key=lambda e: e.code)
+        lines.append(f"## {zh} ({len(items)})")
+        lines.append("")
+        for ex in items:
+            lines.append(
+                f"- `{ex.code.ljust(width)}`  {ex.chinese} ({ex.english})"
+            )
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def render_skeleton_body() -> str:
@@ -627,8 +656,14 @@ def main() -> int:
                         help="口述/語音轉文字 → JSON skeleton 印到 stdout (預處理模式)")
     parser.add_argument("--template", action="store_true",
                         help="輸出新 session JSON 樣板到 stdout (PT 可 > new.json 後填寫)")
+    parser.add_argument("--list-exercises", action="store_true",
+                        help="列出 exercise_db 所有動作代碼 (依分類分組);PT 查 code 用")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     args = parser.parse_args()
+
+    if args.list_exercises:
+        sys.stdout.write(render_exercise_listing() + "\n")
+        return 0
 
     if args.template:
         template = make_blank_session_template()
