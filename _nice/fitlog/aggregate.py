@@ -161,6 +161,42 @@ def compute_student_trend(
     )
 
 
+_SPARKLINE_BARS = "▁▂▃▄▅▆▇█"
+
+
+def render_tonnage_sparkline(points: list[StudentTrendPoint]) -> str:
+    """用 8-level Unicode 方塊把 tonnage 序列畫成單行 sparkline。
+
+    格式: '**訓練量趨勢**: ▆▇▇█  (5,640 → 6,200 kg, +9.9%)'
+    空 → '';單點 → '... (X kg)';第一筆 0 不會 div-by-zero。
+    """
+    if not points:
+        return ""
+    values = [p.tonnage_kg for p in points]
+    if len(points) == 1:
+        return f"**訓練量趨勢**: {_SPARKLINE_BARS[4]}  ({_format_kg(values[0])})"
+
+    lo, hi = min(values), max(values)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(points)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((v - lo) / (hi - lo) * last_idx)]
+            for v in values
+        )
+
+    first, last = values[0], values[-1]
+    if first == 0:
+        delta_str = f"{'+' if last >= 0 else ''}{_format_kg(last - first)}"
+    else:
+        pct = (last - first) / first * 100
+        sign = "+" if pct >= 0 else ""
+        delta_str = f"{sign}{pct:.1f}%"
+    return (f"**訓練量趨勢**: {bars}  "
+            f"({_format_kg(first)} → {_format_kg(last)}, {delta_str})")
+
+
 def render_student_trend(
     trend: StudentTrend,
     all_time_prs: dict[str, AllTimeBest] | None = None,
@@ -183,6 +219,10 @@ def render_student_trend(
     else:
         lines.append("- (沒有此學員的 session)")
     lines.append("")
+    sparkline = render_tonnage_sparkline(trend.points)
+    if sparkline:
+        lines.append(sparkline)
+        lines.append("")
     if all_time_prs:
         lines.append(render_all_time_prs(all_time_prs))
     lines.append("---")
