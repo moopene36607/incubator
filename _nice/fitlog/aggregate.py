@@ -637,6 +637,57 @@ def render_bw_reps_progressions(
 
 
 @dataclass(frozen=True)
+class ExerciseVariety:
+    """學員動作多樣性指標 (recent window vs all-time)。"""
+    recent_unique: int       # 最近 N 堂的 unique exercise code 數
+    all_time_unique: int     # 歷來 unique exercise code 數
+    window_sessions: int     # 實際 recent window 內的堂數 (可能 < N)
+
+
+DEFAULT_VARIETY_WINDOW = 4
+
+
+def compute_exercise_variety(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    window: int = DEFAULT_VARIETY_WINDOW,
+) -> ExerciseVariety | None:
+    """該學員過去 N 堂 unique exercise code 數 + all-time unique 數。
+    沒任何 session → None。少於 N 堂時,recent = all-time (用全部),
+    window_sessions 反映實際數。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    if not student_sessions:
+        return None
+    all_codes: set[str] = set()
+    for sess in student_sessions:
+        for s in sess.sets:
+            all_codes.add(s.exercise_code)
+    recent = student_sessions[-window:]
+    recent_codes: set[str] = set()
+    for sess in recent:
+        for s in sess.sets:
+            recent_codes.add(s.exercise_code)
+    return ExerciseVariety(
+        recent_unique=len(recent_codes),
+        all_time_unique=len(all_codes),
+        window_sessions=len(recent),
+    )
+
+
+def render_exercise_variety(v: ExerciseVariety | None) -> str | None:
+    """🎨 **動作多樣性**:近 4 堂用了 8 種動作 (歷來 12 種)。None → None。"""
+    if v is None:
+        return None
+    return (
+        f"🎨 **動作多樣性**:近 {v.window_sessions} 堂用了 "
+        f"{v.recent_unique} 種動作 (歷來 {v.all_time_unique} 種)"
+    )
+
+
+@dataclass(frozen=True)
 class StudioWeek:
     """工作室 (cross-student) 單一 ISO 週的訓練量加總。week_start 為週一 ISO date。"""
     week_start: str
@@ -1449,6 +1500,7 @@ def render_student_trend(
     training_streak: int | None = None,
     goal_etas: dict[str, str] | None = None,
     favorite_exercise: FavoriteExercise | None = None,
+    exercise_variety: ExerciseVariety | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1465,6 +1517,10 @@ def render_student_trend(
         fav_line = render_favorite_exercise(favorite_exercise)
         if fav_line:
             lines.append(f"- {fav_line}")
+    if exercise_variety is not None:
+        variety_line = render_exercise_variety(exercise_variety)
+        if variety_line:
+            lines.append(f"- {variety_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")

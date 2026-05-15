@@ -36,6 +36,7 @@ from aggregate import (
     compute_day_of_week_distribution,
     compute_duration_progression,
     compute_exercise_progression,
+    compute_exercise_variety,
     compute_favorite_exercise,
     compute_goal_etas,
     compute_studio_weekly_tonnage,
@@ -645,6 +646,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 latest_targets, progressions, latest_date,
             ) if latest_date else {}
             favorite_exercise = compute_favorite_exercise(parsed_sessions, name)
+            exercise_variety = compute_exercise_variety(parsed_sessions, name)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_md = render_student_trend(
@@ -663,6 +665,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 training_streak=training_streak,
                 goal_etas=goal_etas,
                 favorite_exercise=favorite_exercise,
+                exercise_variety=exercise_variety,
             )
             student_path.write_text(student_md, encoding="utf-8")
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)
