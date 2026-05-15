@@ -68,6 +68,22 @@ def aggregate_batch(sessions: Iterable["SessionInput"]) -> BatchSummary:
     )
 
 
+def find_prev_session(
+    target: "SessionInput",
+    all_sessions: Iterable["SessionInput"],
+) -> "SessionInput | None":
+    """從 all_sessions 找出與 target 同學員、(date, session_no) 字典序較早
+    的最近一筆 (用於批次模式自動 PR 比對)。沒有 → None。"""
+    candidates = [
+        s for s in all_sessions
+        if s.student_name == target.student_name
+        and (s.session_date, s.session_no) < (target.session_date, target.session_no)
+    ]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda s: (s.session_date, s.session_no))
+
+
 def compute_student_trend(
     sessions: Iterable["SessionInput"],
     student_name: str,

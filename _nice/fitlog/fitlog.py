@@ -32,6 +32,7 @@ from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
     compute_student_trend,
+    find_prev_session,
     render_batch_summary,
     render_student_trend,
 )
@@ -328,7 +329,9 @@ def _run_batch(args: argparse.Namespace) -> int:
     out_dir: Path | None = args.out_dir
     if out_dir is not None:
         out_dir.mkdir(parents=True, exist_ok=True)
-    parsed_sessions: list[SessionInput] = []
+
+    # Pass 1: parse 全部,只收集 (path, session) 對 (還不渲染)
+    pairs: list[tuple[Path, SessionInput]] = []
     for path in sessions:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
@@ -347,12 +350,25 @@ def _run_batch(args: argparse.Namespace) -> int:
             continue
         for w in validate_session(session):
             print(f"warning [{path.name}]: {w}", file=sys.stderr)
+        pairs.append((path, session))
+
+    parsed_sessions: list[SessionInput] = [s for _, s in pairs]
+
+    # Pass 2: 為每堂找同學員的 prev,渲染時帶 pr_summary
+    for path, session in pairs:
+        prev = find_prev_session(session, parsed_sessions)
+        pr_summary: str | None = None
+        if prev is not None:
+            pr_summary = render_pr_summary(
+                compute_pr_deltas(prev.sets, session.sets),
+                compute_bw_reps_deltas(prev.sets, session.sets),
+                compute_duration_deltas(prev.sets, session.sets),
+            )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
-        full = render_full_report(session, body)
+        full = render_full_report(session, body, pr_summary)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         print(f"已寫入 {out_path}", file=sys.stderr)
-        parsed_sessions.append(session)
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
