@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 ~30 個動作,分為:
+收錄台灣健身教練最常處方的 70+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -109,6 +109,38 @@ EXERCISES: list[Exercise] = [
     Exercise("CAT_COW", "貓牛式", "Cat-Cow Stretch", "mobility", "脊椎活動度", "rep", (1, 3)),
     Exercise("COSSACK_SQUAT", "哥薩克深蹲", "Cossack Squat", "mobility", "髖內收/活動度", "rep", (2, 4)),
     Exercise("CHILD_POSE", "嬰兒式", "Child Pose", "mobility", "下背/髖部放鬆", "sec", (1, 2)),
+
+    # ===== v3 擴充 (自由重量進階 / 機械 / 街健 / 瑜珈) =====
+
+    # ---------- legs (+5) ----------
+    Exercise("FRONT_SQUAT", "前蹲舉", "Front Squat", "legs", "股四頭/上背/核心", "rep", (6, 9)),
+    Exercise("SUMO_DEADLIFT", "相撲硬舉", "Sumo Deadlift", "legs", "臀大肌/內收肌/下背", "rep", (7, 9)),
+    Exercise("STEP_UP", "登階", "Step-up", "legs", "股四頭/臀大肌", "rep", (5, 8)),
+    Exercise("GLUTE_BRIDGE", "臀橋", "Glute Bridge", "legs", "臀大肌/股二頭", "rep", (4, 7)),
+    Exercise("NORDIC_CURL", "北歐腿彎舉", "Nordic Hamstring Curl", "legs", "股二頭", "rep", (7, 10)),
+
+    # ---------- pull (+3) ----------
+    Exercise("PENDLAY_ROW", "Pendlay 划船", "Pendlay Row", "pull", "中背/背闊肌/後三角", "rep", (6, 9)),
+    Exercise("STRAIGHT_ARM_PULLDOWN", "直臂下拉", "Straight-arm Pulldown", "pull", "背闊肌", "rep", (4, 7)),
+    Exercise("HIGH_PULL", "高拉", "High Pull", "pull", "斜方肌/後三角/全身爆發", "rep", (6, 9)),
+
+    # ---------- push (+4) ----------
+    Exercise("ARNOLD_PRESS", "阿諾肩推", "Arnold Press", "push", "三角肌/三頭", "rep", (5, 8)),
+    Exercise("TRICEP_PUSHDOWN", "三頭下壓", "Tricep Pushdown", "push", "三頭", "rep", (4, 7)),
+    Exercise("CLOSE_GRIP_BENCH", "窄握臥推", "Close-grip Bench Press", "push", "三頭/胸大肌", "rep", (6, 9)),
+    Exercise("LANDMINE_PRESS", "Landmine 推", "Landmine Press", "push", "前三角/上胸/核心", "rep", (5, 8)),
+
+    # ---------- core (+2) ----------
+    Exercise("RUSSIAN_TWIST", "俄羅斯轉體", "Russian Twist", "core", "腹斜肌/核心旋轉", "rep", (4, 7)),
+    Exercise("BIRD_DOG", "鳥狗式", "Bird Dog", "core", "核心穩定/下背", "rep", (2, 5)),
+
+    # ---------- cardio (+2) ----------
+    Exercise("SPRINT_INTERVAL", "衝刺間歇", "Sprint Interval", "cardio", "下肢/心肺", "sec", (8, 10)),
+    Exercise("SKI_ERG", "滑雪機", "Ski Erg", "cardio", "上肢/核心/心肺", "m", (6, 9)),
+
+    # ---------- mobility (+2) ----------
+    Exercise("COUCH_STRETCH", "沙發伸展", "Couch Stretch", "mobility", "髖屈肌/股四頭", "sec", (1, 3)),
+    Exercise("DOWNWARD_DOG", "下犬式", "Downward Dog", "mobility", "後鏈/肩部活動度", "sec", (1, 3)),
 ]
 
 
