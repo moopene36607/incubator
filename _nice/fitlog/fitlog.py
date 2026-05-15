@@ -32,6 +32,7 @@ from exercise_db import EXERCISES, Exercise, lookup
 from aggregate import (
     aggregate_batch,
     compute_bw_reps_progression,
+    compute_duration_progression,
     compute_exercise_progression,
     compute_goal_progress,
     compute_student_1rm_progression,
@@ -531,6 +532,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             weekly_tonnage = compute_weekly_tonnage(parsed_sessions, name)
             rpe_progression = compute_student_rpe_progression(parsed_sessions, name)
             bw_reps_progressions = compute_bw_reps_progression(parsed_sessions, name)
+            duration_progressions = compute_duration_progression(parsed_sessions, name)
             # 取該學員最近一堂的 targets (學員可能會調整目標)
             student_sorted = sorted(
                 (s for s in parsed_sessions if s.student_name == name),
@@ -555,6 +557,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 weekly_tonnage=weekly_tonnage,
                 rpe_progression=rpe_progression,
                 bw_reps_progressions=bw_reps_progressions,
+                duration_progressions=duration_progressions,
             )
             student_path.write_text(student_md, encoding="utf-8")
             print(f"已寫入學員趨勢: {student_path}", file=sys.stderr)

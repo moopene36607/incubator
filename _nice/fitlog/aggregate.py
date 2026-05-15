@@ -636,6 +636,96 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+def compute_duration_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> dict[str, tuple[str, list[tuple[str, int]]]]:
+    """For 該學員的每個 duration 型 exercise (reps_or_duration = "N <unit>",
+    unit ∈ sec/min/m/km),逐堂取 max value 為當天代表值。
+    回傳 dict[code, (unit, [(date, value), ...])] 按 date 排序。
+
+    跨堂單位變了 → 整個 exercise 跳過 (避免 60 sec vs 1 min 混淆)。
+    """
+    from progress import _parse_duration  # 共用解析,避免重複
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    per_ex: dict[str, tuple[str, list[tuple[str, int]]]] = {}
+    mixed_codes: set[str] = set()
+    for sess in student_sessions:
+        per_ex_top: dict[str, tuple[int, str]] = {}
+        for s in sess.sets:
+            parsed = _parse_duration(s.reps_or_duration)
+            if parsed is None:
+                continue
+            val, unit = parsed
+            cur = per_ex_top.get(s.exercise_code)
+            if cur is None or val > cur[0]:
+                per_ex_top[s.exercise_code] = (val, unit)
+        for code, (val, unit) in per_ex_top.items():
+            if code in mixed_codes:
+                continue
+            existing = per_ex.get(code)
+            if existing is None:
+                per_ex[code] = (unit, [(sess.session_date, val)])
+            else:
+                seen_unit, points = existing
+                if seen_unit != unit:
+                    mixed_codes.add(code)
+                    per_ex.pop(code, None)
+                else:
+                    points.append((sess.session_date, val))
+    return per_ex
+
+
+def _render_duration_progression_line(
+    name: str, unit: str, points: list[tuple[str, int]],
+) -> str:
+    """單行 sparkline + delta% (e.g. '棒式: ▁▄█  (45 → 90 sec, +100.0%)')。"""
+    vals = [v for _, v in points]
+    lo, hi = min(vals), max(vals)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(vals)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((v - lo) / (hi - lo) * last_idx)]
+            for v in vals
+        )
+    first, last = vals[0], vals[-1]
+    if first == 0:
+        delta_str = f"{last - first:+d} {unit}"
+    else:
+        pct = (last - first) / first * 100
+        sign = "+" if pct >= 0 else ""
+        delta_str = f"{sign}{pct:.1f}%"
+    return f"- {name}: {bars}  ({first} → {last} {unit}, {delta_str})"
+
+
+def render_duration_progressions(
+    progressions: dict[str, tuple[str, list[tuple[str, int]]]],
+) -> str:
+    """產出「## 時間/距離跨堂進步」section。少於 2 點的 exercise 跳過。
+    全跳過 (或 dict 空) → ""。排序: 各 exercise 的 max value desc。"""
+    if not progressions:
+        return ""
+    items = sorted(
+        progressions.items(),
+        key=lambda kv: -max(v for _, v in kv[1][1]) if kv[1][1] else 0,
+    )
+    body: list[str] = []
+    for code, (unit, points) in items:
+        if len(points) < 2:
+            continue
+        ex = lookup(code)
+        name = ex.chinese if ex else code
+        body.append(_render_duration_progression_line(name, unit, points))
+    if not body:
+        return ""
+    return "\n".join(["## 時間/距離跨堂進步", "", *body, ""])
+
+
 def compute_weekly_tonnage(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -886,6 +976,7 @@ def render_student_trend(
     weekly_tonnage: list[WeeklyTonnage] | None = None,
     rpe_progression: list[tuple[str, float]] | None = None,
     bw_reps_progressions: dict[str, list[tuple[str, int]]] | None = None,
+    duration_progressions: dict[str, tuple[str, list[tuple[str, int]]]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -940,6 +1031,10 @@ def render_student_trend(
         bw_reps_str = render_bw_reps_progressions(bw_reps_progressions)
         if bw_reps_str:
             lines.append(bw_reps_str)
+    if duration_progressions:
+        dur_str = render_duration_progressions(duration_progressions)
+        if dur_str:
+            lines.append(dur_str)
     if goals:
         lines.append(render_goal_progress(goals))
     if all_time_prs or all_time_bw_prs:
