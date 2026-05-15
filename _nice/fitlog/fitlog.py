@@ -33,6 +33,7 @@ from aggregate import (
     aggregate_batch,
     compute_absent_students,
     compute_bw_reps_progression,
+    compute_day_of_week_distribution,
     compute_duration_progression,
     compute_exercise_progression,
     compute_goal_etas,
@@ -52,6 +53,7 @@ from aggregate import (
     render_absent_students,
     render_batch_one_liner,
     render_batch_summary,
+    render_day_of_week_distribution,
     render_new_pr_banner,
     render_session_goal_banner,
     render_session_one_liner,
@@ -558,6 +560,11 @@ def _run_batch(args: argparse.Namespace) -> int:
             if absent_section:
                 # 插在末尾 footer (---) 之前
                 summary_md = summary_md.rstrip("\n") + "\n\n" + absent_section
+        dow_section = render_day_of_week_distribution(
+            compute_day_of_week_distribution(parsed_sessions)
+        )
+        if dow_section:
+            summary_md = summary_md.rstrip("\n") + "\n\n" + dow_section
         summary_path.write_text(summary_md, encoding="utf-8")
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
         if args.batch_csv:

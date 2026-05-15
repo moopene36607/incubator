@@ -636,6 +636,54 @@ def render_bw_reps_progressions(
     return "\n".join(["## BW reps 跨堂進步", "", *body, ""])
 
 
+# 開課日分布;0=Monday ... 6=Sunday (符合 Python date.weekday())
+_WEEKDAY_ZH = ["週一", "週二", "週三", "週四", "週五", "週六", "週日"]
+# 8 級方塊 bar 字元 (1/8 to 8/8)
+_BAR_CHARS = "▏▎▍▌▋▊▉█"
+
+
+def compute_day_of_week_distribution(
+    sessions: Iterable["SessionInput"],
+) -> dict[int, int]:
+    """數每堂課落在週幾 (0=Mon ... 6=Sun)。永遠回傳 7 個 keys (含 0 count)
+    讓 render 端格式穩定。"""
+    from datetime import date
+    dist: dict[int, int] = {d: 0 for d in range(7)}
+    for s in sessions:
+        try:
+            wd = date.fromisoformat(s.session_date).weekday()
+        except ValueError:
+            continue
+        dist[wd] += 1
+    return dist
+
+
+def render_day_of_week_distribution(dist: dict[int, int]) -> str:
+    """產出「## 開課日分布」section,每行一個週幾 + bar + count。
+    全 0 → "" (沒東西可講)。bar 長度按 max count 等比例縮放,最大 12 字元。"""
+    total = sum(dist.values())
+    if total == 0:
+        return ""
+    max_count = max(dist.values())
+    max_bar_width = 12  # 字元寬度上限,避免報表太寬
+    lines: list[str] = ["## 開課日分布", ""]
+    for d in range(7):
+        count = dist[d]
+        if max_count == 0:
+            bar = ""
+        else:
+            # 用 8 級方塊把比例切細;count=0 → 空字串
+            eighths = round(count / max_count * max_bar_width * 8)
+            full = eighths // 8
+            partial = eighths % 8
+            bar = "█" * full
+            if partial > 0:
+                bar += _BAR_CHARS[partial - 1]
+        lines.append(f"- {_WEEKDAY_ZH[d]} `{bar}` {count}")
+    lines.append("")
+    return "\n".join(lines)
+
+
 @dataclass(frozen=True)
 class AbsentStudent:
     """超過門檻天數沒進場的學員。"""
