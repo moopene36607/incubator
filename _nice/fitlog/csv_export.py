@@ -82,3 +82,21 @@ def write_session_csv(session: "SessionInput", path: Path) -> None:
     with path.open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(rows)
+
+
+def format_batch_csv_rows(sessions: list["SessionInput"]) -> list[list[str]]:
+    """多堂 sessions 串成單一 CSV (header 共用)。空 → 僅 header。
+    sessions 順序保持原序;每個 session 內的 set_index 各自從 1 開始。"""
+    rows: list[list[str]] = [list(CSV_HEADER)]
+    for session in sessions:
+        for data_row in format_session_csv_rows(session)[1:]:  # skip per-session header
+            rows.append(data_row)
+    return rows
+
+
+def write_batch_csv(sessions: list["SessionInput"], path: Path) -> None:
+    """把多堂 sessions 一次寫成 UTF-8 CSV 檔。"""
+    rows = format_batch_csv_rows(sessions)
+    with path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(rows)

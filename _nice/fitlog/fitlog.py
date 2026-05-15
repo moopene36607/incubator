@@ -66,7 +66,7 @@ from coaching import (
 )
 from metrics import compute_total_tonnage
 from html_export import markdown_to_html, render_html_page
-from csv_export import write_session_csv
+from csv_export import write_batch_csv, write_session_csv
 from metrics import (
     CATEGORY_EMOJI,
     compute_rpe_zone_distribution,
@@ -504,6 +504,10 @@ def _run_batch(args: argparse.Namespace) -> int:
         summary_md = render_batch_summary(batch_summary_obj)
         summary_path.write_text(summary_md, encoding="utf-8")
         print(f"已寫入彙總: {summary_path}", file=sys.stderr)
+        if args.batch_csv:
+            batch_csv_path = summary_dir / "_batch.csv"
+            write_batch_csv(parsed_sessions, batch_csv_path)
+            print(f"已寫入批次 CSV: {batch_csv_path}", file=sys.stderr)
         one_liner = render_batch_one_liner(batch_summary_obj)
         if one_liner:
             one_liner_path = summary_dir / "_one_liner.txt"
@@ -575,6 +579,8 @@ def main() -> int:
                         help="批次模式只產 _batch_summary.md + _student_*.md,跳過個別 session .md")
     parser.add_argument("--batch-html", action="store_true",
                         help="批次模式同時產出 .html (與 .md 同名,適合 LINE 分享)")
+    parser.add_argument("--batch-csv", action="store_true",
+                        help="批次模式同時寫 _batch.csv (所有 sessions 的 sets concat,Excel pivot 用)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")
     parser.add_argument("--out-line", type=Path, help="LINE 純文字版輸出路徑")
     parser.add_argument("--csv", type=Path, help="把單堂訓練紀錄匯出成 CSV (Excel-friendly)")
