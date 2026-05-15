@@ -601,6 +601,19 @@ def _run_batch(args: argparse.Namespace) -> int:
                 encoding="utf-8",
             )
             _info(f"已寫入 {html_path}")
+        if args.batch_line:
+            line_path = out_path.with_suffix(".line.txt")
+            line_path.write_text(
+                render_line_friendly(
+                    session, body,
+                    pr_summary=pr_summary,
+                    next_weight_summary=next_weight_summary,
+                    one_rm_summary=one_rm_summary,
+                    density_summary=density_summary,
+                ) + "\n",
+                encoding="utf-8",
+            )
+            _info(f"已寫入 LINE 版: {line_path}")
     if parsed_sessions:
         summary_dir = out_dir if out_dir is not None else args.batch
         summary_path = summary_dir / "_batch_summary.md"
@@ -751,6 +764,8 @@ def main() -> int:
                         help="批次模式同時寫 _batch.csv (所有 sessions 的 sets concat,Excel pivot 用)")
     parser.add_argument("--batch-json", action="store_true",
                         help="批次模式同時寫 _batch.json (批次層級結構化匯總,供 dashboard 整合)")
+    parser.add_argument("--batch-line", action="store_true",
+                        help="批次模式每堂同時產 LINE 純文字版 <stem>.line.txt (PT 直接複製貼 LINE)")
     parser.add_argument("--student", type=str,
                         help="批次模式只跑指定學員 (其他學員 .json 略過)")
     parser.add_argument("--out", type=Path, help="markdown 輸出路徑 (省略 stdout;批次模式忽略)")

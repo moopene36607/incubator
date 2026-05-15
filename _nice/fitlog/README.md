@@ -227,6 +227,7 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 | `--batch-html` | 批次同時產 .html |
 | `--batch-csv` | 批次合併所有 sessions 成單一 `_batch.csv`(Excel pivot) |
 | `--batch-json` | 批次層級結構化匯總 `_batch.json`(dashboard 整合) |
+| `--batch-line` | 批次每堂同時產 LINE 純文字版 `<stem>.line.txt`(直接貼 LINE) |
 | `--student NAME` | 批次只跑指定學員 |
 
 ## 報表能力(純函式計算,LLM 不碰數字)
