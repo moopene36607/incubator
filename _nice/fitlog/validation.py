@@ -87,4 +87,14 @@ def validate_session(
         if s.rpe is not None and (s.rpe < 1 or s.rpe > 10):
             warnings.append(f"{prefix}:RPE {s.rpe} 超出 1–10 範圍")
 
+    # RPE 記錄一致性:整堂部分有部分沒 → 高度疑似漏填 (整堂都沒填則視為刻意不追)
+    n_with_rpe = sum(1 for s in session.sets if s.rpe is not None)
+    if 0 < n_with_rpe < len(session.sets):
+        for i, s in enumerate(session.sets, 1):
+            if s.rpe is None:
+                warnings.append(
+                    f"第 {i} set ({s.exercise_code}):沒填 RPE,但同堂其他 set 有 "
+                    f"— 疑似漏填,RPE 缺漏會讓下次重量建議 / 強度分析跳過該動作"
+                )
+
     return warnings
