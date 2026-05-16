@@ -51,6 +51,18 @@ class TestTimelineSessionReportFresh(unittest.TestCase):
         self.assertIn("訓練強度分數", content)
 
 
+class TestTimelineShowsBodyweightFeatures(unittest.TestCase):
+    """timeline_demo 應展示 round 49-51 的體重 / 相對肌力 / 里程碑功能。"""
+
+    def test_session_shows_relative_strength(self) -> None:
+        content = (TIMELINE / "s01_aming.md").read_text(encoding="utf-8")
+        self.assertIn("相對肌力", content)
+
+    def test_student_trend_shows_bodyweight_trend(self) -> None:
+        content = (TIMELINE / "_student_林阿明.md").read_text(encoding="utf-8")
+        self.assertIn("體重趨勢", content)
+
+
 class TestBatchSummaryFresh(unittest.TestCase):
     """_batch_summary.md 應含開課日分布 + 工作室週訓練量。"""
 
