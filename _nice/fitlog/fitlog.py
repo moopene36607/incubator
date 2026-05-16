@@ -54,6 +54,7 @@ from aggregate import (
     compute_favorite_exercise,
     compute_goal_etas,
     compute_student_intensity_progression,
+    compute_studio_category_distribution,
     compute_studio_weekly_tonnage,
     compute_training_streak,
     count_student_prs,
@@ -73,6 +74,7 @@ from aggregate import (
     render_batch_one_liner,
     render_batch_summary,
     render_coach_workload,
+    render_studio_category_distribution,
     render_day_of_week_distribution,
     render_new_pr_banner,
     render_studio_weekly_tonnage,
@@ -630,6 +632,11 @@ def _run_batch(args: argparse.Namespace) -> int:
         )
         if coach_section:
             summary_md = summary_md.rstrip("\n") + "\n\n" + coach_section
+        category_section = render_studio_category_distribution(
+            compute_studio_category_distribution(parsed_sessions)
+        )
+        if category_section:
+            summary_md = summary_md.rstrip("\n") + "\n\n" + category_section
         # 用批次中最近一堂的日期當 "as_of",讓 demo/test 可預測
         latest_date = max(
             (s.session_date for s in parsed_sessions),

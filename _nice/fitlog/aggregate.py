@@ -805,6 +805,44 @@ def build_batch_metrics_json(
     }
 
 
+def compute_studio_category_distribution(
+    sessions: Iterable["SessionInput"],
+) -> list[tuple[str, float, float]]:
+    """跨所有 sessions 按 exercise_db 分類加總 tonnage,回傳
+    list[(category, tonnage, pct)] 按 tonnage desc。全 BW → []。"""
+    from metrics import compute_category_tonnage
+    totals: dict[str, float] = {}
+    for sess in sessions:
+        for cat, t in compute_category_tonnage(sess.sets).items():
+            totals[cat] = totals.get(cat, 0.0) + t
+    grand = sum(totals.values())
+    if grand <= 0:
+        return []
+    rows = [
+        (cat, ton, ton / grand * 100.0)
+        for cat, ton in totals.items()
+    ]
+    rows.sort(key=lambda r: -r[1])
+    return rows
+
+
+def render_studio_category_distribution(
+    rows: list[tuple[str, float, float]],
+) -> str:
+    """產出「## 工作室肌群分類分布」section。空 → ""。"""
+    if not rows:
+        return ""
+    from metrics import CATEGORY_ZH
+    lines: list[str] = ["## 工作室肌群分類分布", ""]
+    for cat, ton, pct in rows:
+        name = CATEGORY_ZH.get(cat, cat)
+        filled = int(round(pct / 10))
+        bar = "█" * filled + "░" * (10 - filled)
+        lines.append(f"- {name}: {_format_kg(ton)} ({round(pct)}%) {bar}")
+    lines.append("")
+    return "\n".join(lines)
+
+
 @dataclass(frozen=True)
 class CoachWorkload:
     """單一教練在批次內的工作量 (堂數 / 不重複學員數 / 總訓練量)。"""
