@@ -828,6 +828,21 @@ def build_batch_metrics_json(
             }
             for a in compute_absent_students(sessions, latest)
         ]
+    # per-student headline 摘要 (dashboard 每學員一列用)
+    student_summaries = []
+    for name in sorted(summary.students):
+        st_sessions = [s for s in sessions if s.student_name == name]
+        st_latest = max((s.session_date for s in st_sessions), default=None)
+        student_summaries.append({
+            "name": name,
+            "n_sessions": len(st_sessions),
+            "total_tonnage_kg": sum(
+                compute_total_tonnage(s.sets) for s in st_sessions),
+            "training_streak": (
+                compute_training_streak(sessions, name, st_latest)
+                if st_latest else 0),
+            "pr_count": count_student_prs(sessions, name),
+        })
     return {
         "n_sessions": summary.n_sessions,
         "n_students": len(summary.students),
@@ -840,6 +855,7 @@ def build_batch_metrics_json(
         "category_distribution": category_distribution,
         "pr_leaderboard": pr_leaderboard,
         "absent_students": absent,
+        "student_summaries": student_summaries,
     }
 
 
