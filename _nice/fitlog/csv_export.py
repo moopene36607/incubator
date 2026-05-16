@@ -39,6 +39,7 @@ CSV_HEADER: list[str] = [
     "rpe",
     "tonnage_kg",
     "note",
+    "bodyweight_kg",
 ]
 
 
@@ -57,6 +58,8 @@ def format_session_csv_rows(session: "SessionInput") -> list[list[str]]:
         weight_str = _format_number(s.weight_kg) if s.weight_kg is not None else ""
         rpe_str = str(s.rpe) if s.rpe is not None else ""
         tonnage = compute_total_tonnage([s])
+        bw = session.student_bodyweight_kg
+        bw_str = _format_number(bw) if bw is not None else ""
         rows.append([
             session.session_date,
             session.student_name,
@@ -72,6 +75,7 @@ def format_session_csv_rows(session: "SessionInput") -> list[list[str]]:
             rpe_str,
             _format_number(tonnage),
             s.note,
+            bw_str,
         ])
     return rows
 

@@ -1,7 +1,7 @@
-date,student_name,session_no,set_index,exercise_code,exercise_zh,exercise_en,category,sets,reps_or_duration,weight_kg,rpe,tonnage_kg,note
-2026-05-10,林阿明,12,1,WORLDS_GREATEST,世界最強拉伸,World's Greatest Stretch,mobility,2,5 reps/side,,2,0,"暖身,胸椎旋轉感今日比上次好"
-2026-05-10,林阿明,12,2,BB_BACK_SQUAT,槓鈴背蹲舉,Barbell Back Squat,legs,4,10,70,8,2800,"深度本次達 110 度,上次為 90 度;膝蓋追蹤良好,沒有內夾"
-2026-05-10,林阿明,12,3,BENCH_PRESS,槓鈴臥推,Barbell Bench Press,push,4,8,50,8,1600,"突破前次 47.5 kg 瓶頸,4 組都完整完成"
-2026-05-10,林阿明,12,4,ROMANIAN_DL,羅馬尼亞硬舉,Romanian Deadlift,legs,3,10,60,7,1800,"髖鉸鏈動作模式正確,下背無代償"
-2026-05-10,林阿明,12,5,PULL_UP,引體向上,Pull-up,pull,3,6,,9,0,"輔助 band 從 yellow 換到 red,負重逐漸減輕中"
-2026-05-10,林阿明,12,6,PLANK,棒式,Plank,core,3,60 sec,,6,0,"核心穩定度比 4 週前明顯改善,腰椎不再過度前凸"
+date,student_name,session_no,set_index,exercise_code,exercise_zh,exercise_en,category,sets,reps_or_duration,weight_kg,rpe,tonnage_kg,note,bodyweight_kg
+2026-05-10,林阿明,12,1,WORLDS_GREATEST,世界最強拉伸,World's Greatest Stretch,mobility,2,5 reps/side,,2,0,"暖身,胸椎旋轉感今日比上次好",72
+2026-05-10,林阿明,12,2,BB_BACK_SQUAT,槓鈴背蹲舉,Barbell Back Squat,legs,4,10,70,8,2800,"深度本次達 110 度,上次為 90 度;膝蓋追蹤良好,沒有內夾",72
+2026-05-10,林阿明,12,3,BENCH_PRESS,槓鈴臥推,Barbell Bench Press,push,4,8,50,8,1600,"突破前次 47.5 kg 瓶頸,4 組都完整完成",72
+2026-05-10,林阿明,12,4,ROMANIAN_DL,羅馬尼亞硬舉,Romanian Deadlift,legs,3,10,60,7,1800,"髖鉸鏈動作模式正確,下背無代償",72
+2026-05-10,林阿明,12,5,PULL_UP,引體向上,Pull-up,pull,3,6,,9,0,"輔助 band 從 yellow 換到 red,負重逐漸減輕中",72
+2026-05-10,林阿明,12,6,PLANK,棒式,Plank,core,3,60 sec,,6,0,"核心穩定度比 4 週前明顯改善,腰椎不再過度前凸",72

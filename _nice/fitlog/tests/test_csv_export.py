@@ -42,6 +42,7 @@ EXPECTED_HEADER = [
     "rpe",
     "tonnage_kg",
     "note",
+    "bodyweight_kg",
 ]
 
 
