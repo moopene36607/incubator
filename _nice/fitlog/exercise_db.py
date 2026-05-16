@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 140+ 個動作,分為:
+收錄台灣健身教練最常處方的 160+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -269,6 +269,38 @@ EXERCISES: list[Exercise] = [
     Exercise("DEAD_HANG", "死握懸吊", "Dead Hang", "mobility", "肩關節減壓/握力", "sec", (2, 5)),
     Exercise("ARM_CIRCLES", "繞臂", "Arm Circles", "mobility", "肩關節活動度", "rep", (1, 2)),
     Exercise("SCAPULAR_PULLUP", "肩胛引體", "Scapular Pull-up", "mobility", "肩胛控制/下斜方肌", "rep", (2, 5)),
+
+    # ===== v8 擴充 (孤立 / 機械 / 增強式) =====
+
+    # ---------- legs (+3) ----------
+    Exercise("SISSY_SQUAT", "西西深蹲", "Sissy Squat", "legs", "股四頭", "rep", (6, 9)),
+    Exercise("ATG_SPLIT_SQUAT", "ATG 分腿蹲", "ATG Split Squat", "legs", "股四頭/膝關節活動度", "rep", (5, 8)),
+    Exercise("BOX_JUMP", "跳箱", "Box Jump", "legs", "股四頭/臀大肌/爆發力", "rep", (6, 9)),
+
+    # ---------- pull (+3) ----------
+    Exercise("GORILLA_ROW", "大猩猩划船", "Gorilla Row", "pull", "背闊肌/中背/核心", "rep", (6, 9)),
+    Exercise("ZOTTMAN_CURL", "Zottman 彎舉", "Zottman Curl", "pull", "肱二頭肌/肱橈肌/前臂", "rep", (5, 8)),
+    Exercise("CABLE_PULLOVER", "滑輪上拉", "Cable Pullover", "pull", "背闊肌/前鋸肌", "rep", (4, 7)),
+
+    # ---------- push (+3) ----------
+    Exercise("JM_PRESS", "JM 臥推", "JM Press", "push", "肱三頭肌/胸大肌", "rep", (6, 9)),
+    Exercise("PIKE_PUSHUP", "屈體伏地挺身", "Pike Push-up", "push", "三角肌/三頭", "rep", (6, 9)),
+    Exercise("SVEND_PRESS", "Svend 夾推", "Svend Press", "push", "胸大肌內側", "rep", (4, 7)),
+
+    # ---------- core (+3) ----------
+    Exercise("WINDSHIELD_WIPER", "雨刷", "Windshield Wiper", "core", "腹斜肌/核心旋轉", "rep", (7, 10)),
+    Exercise("FLUTTER_KICK", "交替擺腿", "Flutter Kick", "core", "腹直肌下段/髖屈肌", "sec", (4, 7)),
+    Exercise("L_SIT", "L 字支撐", "L-sit", "core", "核心/髖屈肌/三頭", "sec", (7, 10)),
+
+    # ---------- cardio (+3) ----------
+    Exercise("ROWING_SPRINT", "划船機衝刺", "Rowing Sprint", "cardio", "全身/心肺", "sec", (8, 10)),
+    Exercise("AIRDYNE_SPRINT", "風扇車衝刺", "Airdyne Sprint", "cardio", "全身/心肺", "sec", (8, 10)),
+    Exercise("STAIR_RUN", "跑樓梯", "Stair Run", "cardio", "下肢/心肺", "min", (6, 9)),
+
+    # ---------- mobility (+3) ----------
+    Exercise("SCORPION_STRETCH", "天蠍式伸展", "Scorpion Stretch", "mobility", "脊椎旋轉/髖屈肌", "rep", (1, 3)),
+    Exercise("ANKLE_ROCK", "踝關節前後搖", "Ankle Rock", "mobility", "踝背屈活動度", "rep", (1, 3)),
+    Exercise("NECK_CARS", "頸部繞環", "Neck CARs", "mobility", "頸椎活動度", "rep", (1, 2)),
 ]
 
 
