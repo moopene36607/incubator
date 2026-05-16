@@ -140,6 +140,13 @@ def validate_payload_schema(payload: Any) -> list[str]:
     _check_str(sess, "date", "session", errors)
     _check_iso_date(sess, "date", "session", errors)
     _check_str(sess, "theme", "session", errors)
+    # bodyweight_kg 是 optional;有給就要是數字
+    if ("bodyweight_kg" in sess and sess["bodyweight_kg"] is not None
+            and not _is_float_like(sess["bodyweight_kg"])):
+        errors.append(
+            f"session.bodyweight_kg: 應為數字或 null "
+            f"(got {type(sess['bodyweight_kg']).__name__})"
+        )
 
     # ----- session.sets -----
     sets = sess.get("sets")

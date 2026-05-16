@@ -199,6 +199,41 @@ def render_session_intensity_score(score: float | None) -> str | None:
     return f"**訓練強度分數**: {round(score)} (tonnage × avg_rpe/10)"
 
 
+def compute_relative_strength(
+    session: "SessionInput",
+) -> dict[str, float] | None:
+    """每個加重 exercise 的「最重 / 學員體重」倍數。
+    沒填 bodyweight_kg (或 <= 0) → None。無加重 set → None。"""
+    bw = session.student_bodyweight_kg
+    if bw is None or bw <= 0:
+        return None
+    per_ex: dict[str, float] = {}
+    for s in session.sets:
+        if s.weight_kg is None:
+            continue
+        cur = per_ex.get(s.exercise_code)
+        if cur is None or s.weight_kg > cur:
+            per_ex[s.exercise_code] = s.weight_kg
+    if not per_ex:
+        return None
+    return {code: w / bw for code, w in per_ex.items()}
+
+
+def render_relative_strength(ratios: dict[str, float] | None) -> str | None:
+    """「**相對肌力**: 槓鈴背蹲舉 1.5× 體重 · 槓鈴臥推 1.0× 體重」。
+    None / 空 → None。排序: 倍數 desc。"""
+    if not ratios:
+        return None
+    from exercise_db import lookup
+    items = sorted(ratios.items(), key=lambda kv: -kv[1])
+    parts: list[str] = []
+    for code, ratio in items:
+        ex = lookup(code)
+        name = ex.chinese if ex else code
+        parts.append(f"{name} {ratio:.2f}× 體重")
+    return "**相對肌力**: " + " · ".join(parts)
+
+
 def build_session_metrics_json(session: "SessionInput") -> dict:
     """把單堂所有純函式算出的數字包成 json-serializable dict (供 dashboard /
     LINE bot 整合)。AI 散文不進 JSON。全 BW 的 None 指標保留為 None (→ json null)。"""

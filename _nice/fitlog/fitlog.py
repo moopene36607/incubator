@@ -111,9 +111,11 @@ from metrics import (
     CATEGORY_EMOJI,
     CATEGORY_ZH,
     build_session_metrics_json,
+    compute_relative_strength,
     compute_rpe_zone_distribution,
     compute_session_intensity_score,
     render_category_breakdown,
+    render_relative_strength,
     render_rpe_zone_distribution,
     render_session_intensity_score,
     render_training_density,
@@ -214,6 +216,8 @@ class SessionInput:
     student_targets: list[dict[str, Any]] = field(default_factory=list)
     # student.targets: list of {"exercise_code": str, "target_weight_kg": number}
     # 用於跨堂計算「達成 60 kg 目標 X%」progress bar
+    student_bodyweight_kg: float | None = None
+    # session.bodyweight_kg: 當堂學員體重,用於相對肌力 (最重 / 體重)
 
 
 def parse_payload(payload: dict[str, Any]) -> SessionInput:
@@ -247,6 +251,10 @@ def parse_payload(payload: dict[str, Any]) -> SessionInput:
         next_session=payload.get("next_session", {}),
         recovery_diet=payload.get("recovery_diet", {}),
         student_targets=list(s.get("targets", []) or []),
+        student_bodyweight_kg=(
+            float(se["bodyweight_kg"])
+            if se.get("bodyweight_kg") not in (None, "") else None
+        ),
     )
 
 
@@ -397,8 +405,11 @@ def render_full_report(
     intensity_summary = render_session_intensity_score(
         compute_session_intensity_score(session)
     )
+    rel_strength_summary = render_relative_strength(
+        compute_relative_strength(session)
+    )
     if (summary or breakdown or density_summary or zone_summary
-            or intensity_summary or pr_summary
+            or intensity_summary or rel_strength_summary or pr_summary
             or next_weight_summary or one_rm_summary):
         out.append("")
     if summary:
@@ -411,6 +422,8 @@ def render_full_report(
         out.append(zone_summary)
     if intensity_summary:
         out.append(intensity_summary)
+    if rel_strength_summary:
+        out.append(rel_strength_summary)
     if session_vs_average:
         out.append(session_vs_average)
     if pr_summary:
