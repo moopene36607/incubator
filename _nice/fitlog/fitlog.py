@@ -58,6 +58,7 @@ from aggregate import (
     compute_studio_category_distribution,
     compute_studio_weekly_tonnage,
     compute_training_streak,
+    _insert_toc,
     compute_batch_pr_leaderboard,
     count_student_prs,
     detect_new_prs,
@@ -663,6 +664,8 @@ def _run_batch(args: argparse.Namespace) -> int:
         )
         if dow_section:
             summary_md = summary_md.rstrip("\n") + "\n\n" + dow_section
+        # 所有 section append 完後才套目錄,確保涵蓋附加 section
+        summary_md = _insert_toc(summary_md)
         summary_path.write_text(summary_md, encoding="utf-8")
         _info(f"已寫入彙總: {summary_path}")
         if args.batch_csv:
