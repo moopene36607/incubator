@@ -39,7 +39,7 @@ def _info(msg: str) -> None:
     if not _QUIET:
         print(msg, file=sys.stderr)
 
-from exercise_db import EXERCISES, Exercise, lookup
+from exercise_db import EXERCISES, Exercise, lookup, normalize_code
 from aggregate import (
     aggregate_batch,
     build_batch_metrics_json,
@@ -242,8 +242,8 @@ def parse_payload(payload: dict[str, Any]) -> SessionInput:
         theme=se["theme"],
         sets=[
             SetRecord(
-                # 正規化大小寫,避免同堂混寫導致 tonnage / PR 分裂計算
-                exercise_code=str(s["exercise_code"]).strip().upper(),
+                # 正規化大小寫 + 連字號,避免同堂混寫導致 tonnage / PR 分裂計算
+                exercise_code=normalize_code(str(s["exercise_code"])),
                 sets=int(s["sets"]),
                 reps_or_duration=str(s["reps_or_duration"]),
                 weight_kg=(float(s["weight_kg"]) if s.get("weight_kg") not in (None, "") else None),

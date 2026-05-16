@@ -179,8 +179,13 @@ EXERCISES: list[Exercise] = [
 _BY_CODE: dict[str, Exercise] = {e.code: e for e in EXERCISES}
 
 
+def normalize_code(code: str) -> str:
+    """正規化動作代碼:去空白、轉大寫、連字號視同底線。"""
+    return code.strip().upper().replace("-", "_")
+
+
 def lookup(code: str) -> Exercise | None:
-    return _BY_CODE.get(code.strip().upper())
+    return _BY_CODE.get(normalize_code(code))
 
 
 def all_exercises() -> list[Exercise]:
