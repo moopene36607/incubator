@@ -191,18 +191,18 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 - 下次課程主題切到 pull + 核心 + 心肺,並解釋為什麼這樣安排
 - 恢復飲食提醒 prioritize 睡眠 > 蛋白質 > 有氧
 
-## 收錄動作分類(92 動作 v4 擴充版)
+## 收錄動作分類(110 動作 v5 擴充版)
 
 | 大類 | 動作數 | 範例代碼 |
 |------|------|----------|
-| **legs**(腿系) | 20 | BB_BACK_SQUAT, FRONT_SQUAT, SUMO_DEADLIFT, ROMANIAN_DL, HIP_THRUST, GOOD_MORNING, REVERSE_LUNGE, SINGLE_LEG_RDL |
-| **pull**(拉系) | 18 | DEADLIFT, PULL_UP, CHIN_UP, BB_ROW, PENDLAY_ROW, SHRUG, BICEP_CURL, HAMMER_CURL, RACK_PULL |
-| **push**(推系) | 20 | BENCH_PRESS, OHP, ARNOLD_PRESS, PUSH_PRESS, SKULL_CRUSHER, PEC_DECK, LATERAL_RAISE, TRICEP_PUSHDOWN |
-| **core**(核心) | 13 | PLANK, AB_WHEEL, V_UP, RUSSIAN_TWIST, BIRD_DOG, REVERSE_CRUNCH, MOUNTAIN_CLIMBER, PALLOF_PRESS |
-| **cardio**(心肺) | 11 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, SKI_ERG, ELLIPTICAL, SHADOW_BOXING, BURPEE, BATTLE_ROPE |
-| **mobility**(活動度) | 10 | HIP_OPENER, THORACIC_ROT, CAT_COW, COSSACK_SQUAT, COUCH_STRETCH, DOWNWARD_DOG, PIGEON_POSE, WALL_SLIDE |
+| **legs**(腿系) | 23 | BB_BACK_SQUAT, FRONT_SQUAT, SUMO_DEADLIFT, HIP_THRUST, GOOD_MORNING, BELT_SQUAT, PISTOL_SQUAT, JUMP_SQUAT |
+| **pull**(拉系) | 21 | DEADLIFT, PULL_UP, CHIN_UP, BB_ROW, PENDLAY_ROW, SEAL_ROW, CABLE_CURL, MUSCLE_UP, RACK_PULL |
+| **push**(推系) | 23 | BENCH_PRESS, OHP, ARNOLD_PRESS, PUSH_PRESS, FLOOR_PRESS, DIAMOND_PUSHUP, SKULL_CRUSHER, PEC_DECK |
+| **core**(核心) | 16 | PLANK, AB_WHEEL, V_UP, RUSSIAN_TWIST, HOLLOW_HOLD, CABLE_CRUNCH, DRAGON_FLAG, PALLOF_PRESS |
+| **cardio**(心肺) | 14 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, SKI_ERG, VERSACLIMBER, INCLINE_WALK, BURPEE, BATTLE_ROPE |
+| **mobility**(活動度) | 13 | HIP_OPENER, THORACIC_ROT, CAT_COW, COSSACK_SQUAT, BAND_PULL_APART, JEFFERSON_CURL, FOAM_ROLL |
 
-`python3 fitlog.py --list-exercises` 印出全部 92 個動作代碼(依分類分組)。
+`python3 fitlog.py --list-exercises` 印出全部 110 個動作代碼(依分類分組)。
 
 (實際產品需擴充至 200+ 動作,涵蓋 powerlifting / 進階街健 / 普拉提全模組。)
 

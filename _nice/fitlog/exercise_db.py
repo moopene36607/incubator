@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 90+ 個動作,分為:
+收錄台灣健身教練最常處方的 110+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -173,6 +173,38 @@ EXERCISES: list[Exercise] = [
     # ---------- mobility (+2) ----------
     Exercise("PIGEON_POSE", "鴿式", "Pigeon Pose", "mobility", "臀部/髖外旋", "sec", (1, 3)),
     Exercise("WALL_SLIDE", "靠牆滑臂", "Wall Slide", "mobility", "肩胛/胸椎活動度", "rep", (1, 3)),
+
+    # ===== v5 擴充 (進階自由重量 / 機械 / 體操) =====
+
+    # ---------- legs (+3) ----------
+    Exercise("BELT_SQUAT", "腰帶深蹲", "Belt Squat", "legs", "股四頭/臀大肌", "rep", (6, 8)),
+    Exercise("PISTOL_SQUAT", "單腿蹲", "Pistol Squat", "legs", "股四頭/臀大肌/平衡", "rep", (7, 9)),
+    Exercise("JUMP_SQUAT", "跳躍深蹲", "Jump Squat", "legs", "股四頭/臀大肌/爆發力", "rep", (6, 9)),
+
+    # ---------- pull (+3) ----------
+    Exercise("SEAL_ROW", "海豹划船", "Seal Row", "pull", "中背/背闊肌", "rep", (5, 8)),
+    Exercise("CABLE_CURL", "滑輪二頭彎舉", "Cable Curl", "pull", "肱二頭肌", "rep", (5, 8)),
+    Exercise("MUSCLE_UP", "暴力上槓", "Muscle-up", "pull", "背闊肌/胸/三頭/全身", "rep", (8, 10)),
+
+    # ---------- push (+3) ----------
+    Exercise("FLOOR_PRESS", "地板臥推", "Floor Press", "push", "胸大肌/三頭", "rep", (6, 9)),
+    Exercise("DIAMOND_PUSHUP", "鑽石伏地挺身", "Diamond Push-up", "push", "三頭/胸大肌", "rep", (5, 8)),
+    Exercise("OVERHEAD_TRICEP_EXT", "過頭三頭伸展", "Overhead Tricep Extension", "push", "肱三頭肌", "rep", (5, 8)),
+
+    # ---------- core (+3) ----------
+    Exercise("HOLLOW_HOLD", "懸體", "Hollow Hold", "core", "核心/腹直肌", "sec", (5, 8)),
+    Exercise("CABLE_CRUNCH", "滑輪捲腹", "Cable Crunch", "core", "腹直肌", "rep", (5, 8)),
+    Exercise("DRAGON_FLAG", "龍旗", "Dragon Flag", "core", "核心/腹直肌全段", "rep", (8, 10)),
+
+    # ---------- cardio (+3) ----------
+    Exercise("VERSACLIMBER", "垂直攀爬機", "VersaClimber", "cardio", "全身/心肺", "min", (6, 9)),
+    Exercise("INCLINE_WALK", "坡度健走", "Incline Walk", "cardio", "下肢/心肺", "min", (3, 6)),
+    Exercise("JACOBS_LADDER", "雅各天梯", "Jacobs Ladder", "cardio", "全身/心肺", "min", (6, 9)),
+
+    # ---------- mobility (+3) ----------
+    Exercise("BAND_PULL_APART", "彈力帶分開", "Band Pull-apart", "mobility", "後三角/旋轉肌群", "rep", (1, 3)),
+    Exercise("JEFFERSON_CURL", "傑佛森捲體", "Jefferson Curl", "mobility", "脊椎逐節活動度/後鏈", "rep", (2, 4)),
+    Exercise("FOAM_ROLL", "滾筒放鬆", "Foam Rolling", "mobility", "筋膜放鬆", "sec", (1, 2)),
 ]
 
 
