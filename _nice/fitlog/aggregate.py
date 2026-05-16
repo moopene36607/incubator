@@ -1849,6 +1849,7 @@ def find_newly_achieved_goals(
             continue
         weight_target = t.get("target_weight_kg")
         reps_target = t.get("target_reps")
+        duration_target = t.get("target_duration")
         if weight_target is not None:
             try:
                 target_f = float(weight_target)
@@ -1888,6 +1889,26 @@ def find_newly_achieved_goals(
             if not prior_hit:
                 achievements.append(GoalAchievement(
                     exercise_code=code, target_kg=target_r, unit="reps"))
+        elif duration_target is not None:
+            try:
+                target_d = float(duration_target)
+            except (TypeError, ValueError):
+                continue
+            if target_d <= 0:
+                continue
+            max_d = _max_duration_in_session(session, code)
+            if max_d is None or max_d < target_d:
+                continue
+            prior_hit = any(
+                (_max_duration_in_session(sess, code) or 0) >= target_d
+                for sess in prior_sessions
+            )
+            if not prior_hit:
+                # 用該動作的計量單位 (sec/min/m) 當 unit
+                ex = lookup(code)
+                d_unit = ex.measure_unit if ex else "sec"
+                achievements.append(GoalAchievement(
+                    exercise_code=code, target_kg=target_d, unit=d_unit))
     return achievements
 
 
@@ -1905,6 +1926,21 @@ def _max_bw_reps_in_session(
     return max(candidates) if candidates else None
 
 
+def _max_duration_in_session(
+    session: "SessionInput", code: str,
+) -> int | None:
+    """該堂某 duration 型 exercise 的 max duration 值 (忽略單位)。無 → None。"""
+    from progress import _parse_duration
+    candidates: list[int] = []
+    for s in session.sets:
+        if s.exercise_code != code:
+            continue
+        parsed = _parse_duration(s.reps_or_duration)
+        if parsed is not None:
+            candidates.append(parsed[0])
+    return max(candidates) if candidates else None
+
+
 def render_session_goal_banner(achievements: list[GoalAchievement]) -> str:
     """產出「🎉 目標達成」banner;空 list → ""。"""
     if not achievements:
@@ -1915,8 +1951,10 @@ def render_session_goal_banner(achievements: list[GoalAchievement]) -> str:
         name = ex.chinese if ex else a.exercise_code
         if a.unit == "reps":
             target_str = f"{int(a.target_kg)} 下"
-        else:
+        elif a.unit == "kg":
             target_str = _format_kg(a.target_kg)
+        else:
+            target_str = f"{int(a.target_kg)} {a.unit}"
         lines.append(f"- {name}: 突破 {target_str} 目標!")
     lines.append("")
     return "\n".join(lines)
@@ -1928,16 +1966,19 @@ def _find_goal_achievement(
     sessions: list["SessionInput"],
     student_name: str,
     is_reps: bool = False,
+    is_duration: bool = False,
 ) -> tuple[int, str] | None:
     """掃該學員的 sessions (按日期+session_no 排序),找第一個達標的 session,
     回傳 (session_no, date)。沒達標 → None。
-    is_reps=False → 比 max weight;True → 比 BW max reps。"""
+    is_reps → 比 BW max reps;is_duration → 比 max duration;否則比 max weight。"""
     student_sessions = sorted(
         (s for s in sessions if s.student_name == student_name),
         key=lambda s: (s.session_date, s.session_no),
     )
     for sess in student_sessions:
-        if is_reps:
+        if is_duration:
+            current = _max_duration_in_session(sess, exercise_code)
+        elif is_reps:
             current = _max_bw_reps_in_session(sess, exercise_code)
         else:
             current = max(
@@ -2035,11 +2076,20 @@ def compute_goal_progress(
                     dur_unit, points = prog
                     if points:
                         current_d = float(max(v for _, v in points))
+            achieved_no, achieved_date = None, None
+            if sessions_list and student_name is not None:
+                ach = _find_goal_achievement(
+                    code, target_d, sessions_list, student_name,
+                    is_duration=True)
+                if ach is not None:
+                    achieved_no, achieved_date = ach
             result.append(GoalProgress(
                 exercise_code=code,
                 current_kg=current_d,
                 target_kg=target_d,
                 percent=current_d / target_d * 100,
+                achieved_on_session_no=achieved_no,
+                achieved_on_date=achieved_date,
                 unit=dur_unit,
             ))
     return result
