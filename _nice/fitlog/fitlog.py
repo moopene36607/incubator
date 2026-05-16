@@ -114,10 +114,12 @@ from metrics import (
     CATEGORY_EMOJI,
     CATEGORY_ZH,
     build_session_metrics_json,
+    compute_muscles_worked,
     compute_relative_strength,
     compute_rpe_zone_distribution,
     compute_session_intensity_score,
     render_category_breakdown,
+    render_muscles_worked,
     render_relative_strength,
     render_rpe_zone_distribution,
     render_session_intensity_score,
@@ -494,14 +496,17 @@ def render_full_report(
     rel_strength_summary = render_relative_strength(
         compute_relative_strength(session)
     )
+    muscles_summary = render_muscles_worked(compute_muscles_worked(session))
     if (summary or breakdown or density_summary or zone_summary
-            or intensity_summary or rel_strength_summary or pr_summary
-            or next_weight_summary or one_rm_summary):
+            or intensity_summary or rel_strength_summary or muscles_summary
+            or pr_summary or next_weight_summary or one_rm_summary):
         out.append("")
     if summary:
         out.append(summary)
     if breakdown:
         out.append(breakdown)
+    if muscles_summary:
+        out.append(muscles_summary)
     if density_summary:
         out.append(density_summary)
     if zone_summary:

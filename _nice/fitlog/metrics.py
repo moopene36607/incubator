@@ -234,6 +234,34 @@ def render_relative_strength(ratios: dict[str, float] | None) -> str | None:
     return "**相對肌力**: " + " · ".join(parts)
 
 
+def compute_muscles_worked(session: "SessionInput") -> list[str]:
+    """彙整本堂練到的肌群 (從 exercise_db.target_muscles 拆 "/" 去重)。
+    按出現次數 desc 排序 (同次數依首次出現);未知 exercise 跳過。"""
+    from exercise_db import lookup
+    counts: dict[str, int] = {}
+    order: list[str] = []
+    for s in session.sets:
+        ex = lookup(s.exercise_code)
+        if ex is None:
+            continue
+        for muscle in ex.target_muscles.split("/"):
+            m = muscle.strip()
+            if not m:
+                continue
+            if m not in counts:
+                counts[m] = 0
+                order.append(m)
+            counts[m] += 1
+    return sorted(order, key=lambda m: (-counts[m], order.index(m)))
+
+
+def render_muscles_worked(muscles: list[str]) -> str | None:
+    """「🎯 **本堂訓練肌群**: 臀大肌 · 股四頭 · 下背」。空 → None。"""
+    if not muscles:
+        return None
+    return "🎯 **本堂訓練肌群**: " + " · ".join(muscles)
+
+
 def build_session_metrics_json(session: "SessionInput") -> dict:
     """把單堂所有純函式算出的數字包成 json-serializable dict (供 dashboard /
     LINE bot 整合)。AI 散文不進 JSON。全 BW 的 None 指標保留為 None (→ json null)。"""
