@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 120+ 個動作,分為:
+收錄台灣健身教練最常處方的 140+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -237,6 +237,38 @@ EXERCISES: list[Exercise] = [
     Exercise("THREAD_THE_NEEDLE", "穿針式", "Thread the Needle", "mobility", "胸椎旋轉活動度", "rep", (1, 3)),
     Exercise("FROG_STRETCH", "青蛙式伸展", "Frog Stretch", "mobility", "髖內收/髖活動度", "sec", (1, 3)),
     Exercise("HAMSTRING_STRETCH", "腿後肌伸展", "Hamstring Stretch", "mobility", "股二頭柔軟度", "sec", (1, 2)),
+
+    # ===== v7 擴充 (專項變化 / 功能性 / 體操) =====
+
+    # ---------- legs (+3) ----------
+    Exercise("SAFETY_BAR_SQUAT", "安全槓深蹲", "Safety Bar Squat", "legs", "股四頭/臀大肌/上背", "rep", (6, 9)),
+    Exercise("SPANISH_SQUAT", "西班牙蹲", "Spanish Squat", "legs", "股四頭/膝穩定", "rep", (5, 8)),
+    Exercise("KICKSTAND_RDL", "支撐腳羅馬尼亞硬舉", "Kickstand RDL", "legs", "股二頭/臀大肌", "rep", (5, 8)),
+
+    # ---------- pull (+3) ----------
+    Exercise("KROC_ROW", "Kroc 划船", "Kroc Row", "pull", "背闊肌/中背/握力", "rep", (7, 10)),
+    Exercise("INCLINE_CURL", "上斜二頭彎舉", "Incline Curl", "pull", "肱二頭肌長頭", "rep", (5, 8)),
+    Exercise("DRAG_CURL", "拖曳彎舉", "Drag Curl", "pull", "肱二頭肌", "rep", (5, 8)),
+
+    # ---------- push (+3) ----------
+    Exercise("LARSEN_PRESS", "Larsen 臥推", "Larsen Press", "push", "胸大肌/三頭", "rep", (6, 9)),
+    Exercise("BRADFORD_PRESS", "Bradford 推舉", "Bradford Press", "push", "三角肌", "rep", (5, 8)),
+    Exercise("ARCHER_PUSHUP", "弓箭手伏地挺身", "Archer Push-up", "push", "胸大肌/三頭", "rep", (6, 9)),
+
+    # ---------- core (+3) ----------
+    Exercise("BICYCLE_CRUNCH", "腳踏車捲腹", "Bicycle Crunch", "core", "腹直肌/腹斜肌", "rep", (4, 7)),
+    Exercise("V_SIT", "V 字坐姿", "V-sit Hold", "core", "核心/腹直肌", "sec", (5, 8)),
+    Exercise("GHD_SITUP", "GHD 仰臥起坐", "GHD Sit-up", "core", "腹直肌全段/髖屈肌", "rep", (6, 9)),
+
+    # ---------- cardio (+3) ----------
+    Exercise("DEADBALL_SLAM", "藥球砸地", "Deadball Slam", "cardio", "全身/核心/心肺", "rep", (6, 9)),
+    Exercise("TYRE_FLIP", "翻輪胎", "Tyre Flip", "cardio", "全身/爆發/心肺", "rep", (7, 10)),
+    Exercise("PROWLER_DRAG", "雪橇拖行", "Prowler Drag", "cardio", "下肢/全身/心肺", "m", (7, 10)),
+
+    # ---------- mobility (+3) ----------
+    Exercise("DEAD_HANG", "死握懸吊", "Dead Hang", "mobility", "肩關節減壓/握力", "sec", (2, 5)),
+    Exercise("ARM_CIRCLES", "繞臂", "Arm Circles", "mobility", "肩關節活動度", "rep", (1, 2)),
+    Exercise("SCAPULAR_PULLUP", "肩胛引體", "Scapular Pull-up", "mobility", "肩胛控制/下斜方肌", "rep", (2, 5)),
 ]
 
 
