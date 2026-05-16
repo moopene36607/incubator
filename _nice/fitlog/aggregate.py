@@ -1190,6 +1190,57 @@ def render_acwr(ratio: float | None) -> str | None:
     return f"🩺 **急慢性負荷比 (ACWR)**: {ratio:.1f} — {zone}{mark}"
 
 
+# ACWR 甜蜜區邊界 (與 render_acwr 判讀一致),用來反推下週建議量
+ACWR_SWEET_LOW = 0.8
+ACWR_SWEET_HIGH = 1.3
+
+
+def recommend_next_week_tonnage(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    as_of_iso: str,
+) -> tuple[float, float] | None:
+    """從 ACWR 甜蜜區反推下週建議訓練量區間。
+    chronic 週平均 = 近 28 天 tonnage / 4;
+    建議 acute ∈ [0.8 × chronic_weekly, 1.3 × chronic_weekly]。
+    訓練史 < 21 天或 chronic=0 → None。"""
+    from datetime import date, timedelta
+    as_of = date.fromisoformat(as_of_iso)
+    student_sessions = [
+        s for s in sessions if s.student_name == student_name
+    ]
+    if not student_sessions:
+        return None
+    earliest = min(date.fromisoformat(s.session_date)
+                   for s in student_sessions)
+    if (as_of - earliest).days < ACWR_MIN_HISTORY_DAYS:
+        return None
+    chronic_start = as_of - timedelta(days=27)
+    chronic = 0.0
+    for s in student_sessions:
+        d = date.fromisoformat(s.session_date)
+        if chronic_start <= d <= as_of:
+            chronic += compute_total_tonnage(s.sets)
+    chronic_weekly = chronic / 4.0
+    if chronic_weekly <= 0:
+        return None
+    return (ACWR_SWEET_LOW * chronic_weekly,
+            ACWR_SWEET_HIGH * chronic_weekly)
+
+
+def render_next_week_tonnage(
+    rng: tuple[float, float] | None,
+) -> str | None:
+    """🎯 **下週建議訓練量**: 1,280 – 2,080 kg (維持 ACWR 甜蜜區)。None → None。"""
+    if rng is None:
+        return None
+    low, high = rng
+    return (
+        f"🎯 **下週建議訓練量**: {_format_kg(low)} – {_format_kg(high)} "
+        f"(維持 ACWR 甜蜜區)"
+    )
+
+
 def compute_training_streak(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -1887,6 +1938,7 @@ def render_student_trend(
     pr_tally: int | None = None,
     category_coverage: dict[str, bool] | None = None,
     acwr: float | None = None,
+    next_week_tonnage: tuple[float, float] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1919,6 +1971,10 @@ def render_student_trend(
         acwr_line = render_acwr(acwr)
         if acwr_line:
             lines.append(f"- {acwr_line}")
+    if next_week_tonnage is not None:
+        nwt_line = render_next_week_tonnage(next_week_tonnage)
+        if nwt_line:
+            lines.append(f"- {nwt_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")

@@ -60,6 +60,7 @@ from aggregate import (
     compute_training_streak,
     count_student_prs,
     detect_new_prs,
+    recommend_next_week_tonnage,
     compute_goal_progress,
     compute_student_1rm_progression,
     compute_student_bw_prs,
@@ -726,6 +727,9 @@ def _run_batch(args: argparse.Namespace) -> int:
             category_coverage = compute_category_coverage(parsed_sessions, name)
             acwr = (compute_acwr(parsed_sessions, name, latest_date)
                     if latest_date else None)
+            next_week_tonnage = (
+                recommend_next_week_tonnage(parsed_sessions, name, latest_date)
+                if latest_date else None)
             safe = name.replace("/", "_").replace("\\", "_").replace(" ", "_")
             student_path = summary_dir / f"_student_{safe}.md"
             student_md = render_student_trend(
@@ -749,6 +753,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 pr_tally=pr_tally,
                 category_coverage=category_coverage,
                 acwr=acwr,
+                next_week_tonnage=next_week_tonnage,
             )
             student_path.write_text(student_md, encoding="utf-8")
             _info(f"已寫入學員趨勢: {student_path}")
