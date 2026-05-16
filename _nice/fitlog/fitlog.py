@@ -279,11 +279,34 @@ def render_session_table(session: SessionInput) -> list[str]:
     return out
 
 
-def render_exercise_listing() -> str:
-    """印出 exercise_db 所有動作 (依分類分組),給 PT 查 exercise_code 用。
-    純函式,不需 input 檔,不會碰 LLM。"""
+def render_exercise_listing(filter_term: str | None = None) -> str:
+    """印出 exercise_db 動作 (依分類分組),給 PT 查 exercise_code 用。
+    filter_term 為分類名 (legs/腿系...) → 只列該分類;其他字串 → 對
+    中文/英文/code 做子字串搜尋。純函式,不需 input 檔,不會碰 LLM。"""
+    term = (filter_term or "").strip()
+    selected = list(EXERCISES)
+    if term:
+        # 先試分類匹配 (英文 key 或中文標籤)
+        cat_match = None
+        for cat, zh in CATEGORY_ZH.items():
+            if term.lower() == cat.lower() or term == zh:
+                cat_match = cat
+                break
+        if cat_match is not None:
+            selected = [e for e in EXERCISES if e.category == cat_match]
+        else:
+            low = term.lower()
+            selected = [
+                e for e in EXERCISES
+                if low in e.chinese.lower()
+                or low in e.english.lower()
+                or low in e.code.lower()
+            ]
+        if not selected:
+            return f"# fitlog 動作清單\n\n找不到符合「{term}」的動作。\n"
+
     by_cat: dict[str, list[Exercise]] = {}
-    for ex in EXERCISES:
+    for ex in selected:
         by_cat.setdefault(ex.category, []).append(ex)
     # CATEGORY_ZH 排序鎖死 (legs/pull/push/core/cardio/mobility)
     category_order = list(CATEGORY_ZH.keys())
@@ -291,9 +314,9 @@ def render_exercise_listing() -> str:
     extra = [c for c in by_cat if c not in category_order]
     ordered = [c for c in category_order if c in by_cat] + sorted(extra)
 
-    lines: list[str] = [f"# fitlog 動作清單 ({len(EXERCISES)} 個)", ""]
+    lines: list[str] = [f"# fitlog 動作清單 ({len(selected)} 個)", ""]
     # 找最長 code 對齊
-    width = max(len(ex.code) for ex in EXERCISES)
+    width = max(len(ex.code) for ex in selected)
     for cat in ordered:
         zh = CATEGORY_ZH.get(cat, cat)
         items = sorted(by_cat[cat], key=lambda e: e.code)
@@ -959,8 +982,9 @@ def main() -> int:
                         help="口述/語音轉文字 → JSON skeleton 印到 stdout (預處理模式)")
     parser.add_argument("--template", action="store_true",
                         help="輸出新 session JSON 樣板到 stdout (PT 可 > new.json 後填寫)")
-    parser.add_argument("--list-exercises", action="store_true",
-                        help="列出 exercise_db 所有動作代碼 (依分類分組);PT 查 code 用")
+    parser.add_argument("--list-exercises", nargs="?", const="", default=None,
+                        metavar="FILTER",
+                        help="列出 exercise_db 動作代碼;可加分類 (legs/腿系...) 或關鍵字篩選")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
     parser.add_argument("--check", action="store_true",
                         help="只驗證 JSON (schema + 合理性),印 PASS/FAIL 摘要,不產報告、不呼叫 AI")
@@ -971,8 +995,8 @@ def main() -> int:
     global _QUIET
     _QUIET = args.quiet
 
-    if args.list_exercises:
-        sys.stdout.write(render_exercise_listing() + "\n")
+    if args.list_exercises is not None:
+        sys.stdout.write(render_exercise_listing(args.list_exercises) + "\n")
         return 0
 
     if args.template:
