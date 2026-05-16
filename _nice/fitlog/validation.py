@@ -87,6 +87,15 @@ def validate_session(
         if s.rpe is not None and (s.rpe < 1 or s.rpe > 10):
             warnings.append(f"{prefix}:RPE {s.rpe} 超出 1–10 範圍")
 
+        # 時間/距離型動作填純數字 → 漏單位 (會被當 reps,duration PR 追蹤失效)
+        ex = lookup(s.exercise_code)
+        if (ex is not None and ex.measure_unit in ("sec", "min", "m")
+                and s_reps.isdigit()):
+            warnings.append(
+                f"{prefix}:{s.exercise_code} 是 {ex.measure_unit} 計量動作,"
+                f"但填了純數字 '{s_reps}' — 建議補單位 (例 '{s_reps} {ex.measure_unit}')"
+            )
+
     # RPE 記錄一致性:整堂部分有部分沒 → 高度疑似漏填 (整堂都沒填則視為刻意不追)
     n_with_rpe = sum(1 for s in session.sets if s.rpe is not None)
     if 0 < n_with_rpe < len(session.sets):
