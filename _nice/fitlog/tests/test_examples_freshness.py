@@ -63,6 +63,27 @@ class TestTimelineShowsBodyweightFeatures(unittest.TestCase):
         self.assertIn("體重趨勢", content)
 
 
+class TestVoiceExampleShowsChineseNotation(unittest.TestCase):
+    """voice_transcript.txt 應展示中文「組/下/次」記法 (round 29/31)。"""
+
+    def test_transcript_uses_chinese_notation(self) -> None:
+        txt = (PROJECT_ROOT / "examples" / "voice_transcript.txt").read_text(
+            encoding="utf-8")
+        self.assertIn("組", txt)
+
+    def test_skeleton_parses_all_lines(self) -> None:
+        # voice_skeleton.json 應與 transcript 的可解析行數一致
+        import json as _json
+        from voice import parse_voice_transcript
+        txt = (PROJECT_ROOT / "examples" / "voice_transcript.txt").read_text(
+            encoding="utf-8")
+        skeleton = _json.loads(
+            (PROJECT_ROOT / "examples" / "voice_skeleton.json").read_text(
+                encoding="utf-8"))
+        parsed = parse_voice_transcript(txt)
+        self.assertEqual(len(parsed), len(skeleton["session"]["sets"]))
+
+
 class TestBatchSummaryFresh(unittest.TestCase):
     """_batch_summary.md 應含開課日分布 + 工作室週訓練量。"""
 
