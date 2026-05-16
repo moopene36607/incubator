@@ -1131,6 +1131,65 @@ def render_absent_students(absents: list[AbsentStudent]) -> str:
     return "\n".join(lines)
 
 
+ACWR_MIN_HISTORY_DAYS = 21  # 訓練史不足此天數 → chronic 不可靠,不算
+
+
+def compute_acwr(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    as_of_iso: str,
+) -> float | None:
+    """急慢性負荷比 = acute (近 7 天 tonnage) / chronic (近 28 天 tonnage / 4)。
+    訓練史 < 21 天或 chronic=0 → None。"""
+    from datetime import date, timedelta
+    as_of = date.fromisoformat(as_of_iso)
+    student_sessions = [
+        s for s in sessions if s.student_name == student_name
+    ]
+    if not student_sessions:
+        return None
+    earliest = min(date.fromisoformat(s.session_date)
+                   for s in student_sessions)
+    if (as_of - earliest).days < ACWR_MIN_HISTORY_DAYS:
+        return None
+    acute_start = as_of - timedelta(days=6)    # 含當天共 7 天
+    chronic_start = as_of - timedelta(days=27)  # 含當天共 28 天
+    acute = 0.0
+    chronic = 0.0
+    for s in student_sessions:
+        d = date.fromisoformat(s.session_date)
+        if d > as_of:
+            continue
+        t = compute_total_tonnage(s.sets)
+        if d >= chronic_start:
+            chronic += t
+        if d >= acute_start:
+            acute += t
+    chronic_weekly = chronic / 4.0
+    if chronic_weekly <= 0:
+        return None
+    return acute / chronic_weekly
+
+
+def render_acwr(ratio: float | None) -> str | None:
+    """🩺 **急慢性負荷比 (ACWR)**: 1.0 — 最佳甜蜜區。None → None。"""
+    if ratio is None:
+        return None
+    if ratio < 0.8:
+        zone = "訓練量偏低"
+        mark = ""
+    elif ratio <= 1.3:
+        zone = "最佳甜蜜區"
+        mark = " ✓"
+    elif ratio <= 1.5:
+        zone = "偏高,留意"
+        mark = ""
+    else:
+        zone = "過高,受傷風險上升"
+        mark = " ⚠️"
+    return f"🩺 **急慢性負荷比 (ACWR)**: {ratio:.1f} — {zone}{mark}"
+
+
 def compute_training_streak(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -1827,6 +1886,7 @@ def render_student_trend(
     intensity_progression: list[tuple[str, float]] | None = None,
     pr_tally: int | None = None,
     category_coverage: dict[str, bool] | None = None,
+    acwr: float | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -1855,6 +1915,10 @@ def render_student_trend(
         coverage_line = render_category_coverage(category_coverage)
         if coverage_line:
             lines.append(f"- {coverage_line}")
+    if acwr is not None:
+        acwr_line = render_acwr(acwr)
+        if acwr_line:
+            lines.append(f"- {acwr_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")
