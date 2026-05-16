@@ -563,11 +563,14 @@ def render_line_friendly(
     intensity_summary = render_session_intensity_score(
         compute_session_intensity_score(session)
     )
+    muscles_summary = render_muscles_worked(compute_muscles_worked(session))
     summary_parts: list[str] = []
     if summary:
         summary_parts.append(f"🏋️ 總噸位:{summary.split(': ', 1)[1]}")
     if breakdown:
         summary_parts.append(f"📦 分解:{breakdown.split(': ', 1)[1]}")
+    if muscles_summary:
+        summary_parts.append(f"🎯 訓練肌群:{muscles_summary.split(': ', 1)[1]}")
     if density_summary:
         summary_parts.append(f"⚡ 密度:{density_summary.split(': ', 1)[1]}")
     if intensity_summary:

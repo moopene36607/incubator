@@ -291,6 +291,7 @@ def build_session_metrics_json(session: "SessionInput") -> dict:
         "rpe_zones": zone_json,
         "bodyweight_kg": session.student_bodyweight_kg,
         "relative_strength": compute_relative_strength(session),
+        "muscles_worked": compute_muscles_worked(session),
     }
 
 
