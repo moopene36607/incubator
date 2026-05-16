@@ -845,6 +845,7 @@ def main() -> int:
         print(f"warning: {w}", file=sys.stderr)
 
     pr_summary: str | None = None
+    new_pr_banner: str | None = None
     if args.prev:
         if not args.prev.exists():
             print(f"warning: --prev 檔案找不到: {args.prev}", file=sys.stderr)
@@ -855,6 +856,10 @@ def main() -> int:
                 compute_pr_deltas(prev_session.sets, session.sets),
                 compute_bw_reps_deltas(prev_session.sets, session.sets),
                 compute_duration_deltas(prev_session.sets, session.sets),
+            )
+            new_pr_banner = render_new_pr_banner(
+                detect_new_prs([prev_session, session],
+                               session.student_name, session)
             )
 
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
@@ -872,7 +877,8 @@ def main() -> int:
     body = ai_write_body(session) if use_ai else render_skeleton_body()
     full = render_full_report(session, body, pr_summary, next_weight_summary,
                               one_rm_summary=one_rm_summary,
-                              density_summary=density_summary)
+                              density_summary=density_summary,
+                              new_pr_banner=new_pr_banner)
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")
