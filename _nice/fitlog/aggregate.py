@@ -1971,6 +1971,7 @@ def compute_goal_progress(
             continue
         weight_target = t.get("target_weight_kg")
         reps_target = t.get("target_reps")
+        duration_target = t.get("target_duration")
         if weight_target is not None:
             try:
                 target_f = float(weight_target)
@@ -2018,6 +2019,29 @@ def compute_goal_progress(
                 achieved_on_date=achieved_date,
                 unit="reps",
             ))
+        elif duration_target is not None:
+            try:
+                target_d = float(duration_target)
+            except (TypeError, ValueError):
+                continue
+            if target_d <= 0:
+                continue
+            # current = 該學員歷來該動作最高 duration 值 (用 progression 取 max)
+            current_d, dur_unit = 0.0, "sec"
+            if student_name is not None:
+                prog = compute_duration_progression(
+                    sessions_list, student_name).get(code)
+                if prog is not None:
+                    dur_unit, points = prog
+                    if points:
+                        current_d = float(max(v for _, v in points))
+            result.append(GoalProgress(
+                exercise_code=code,
+                current_kg=current_d,
+                target_kg=target_d,
+                percent=current_d / target_d * 100,
+                unit=dur_unit,
+            ))
     return result
 
 
@@ -2045,10 +2069,12 @@ def render_goal_progress(
         eta_str = ""
         if p.percent < 100 and p.exercise_code in etas:
             eta_str = f" (預估達成 {etas[p.exercise_code]})"
-        if p.unit == "reps":
-            value_str = f"{int(p.current_kg)} / {int(p.target_kg)} reps"
-        else:
+        if p.unit == "kg":
             value_str = f"{_format_kg(p.current_kg)} / {_format_kg(p.target_kg)}"
+        else:
+            # reps / sec / min / m 等:整數值 + 單位
+            value_str = (f"{int(p.current_kg)} / {int(p.target_kg)} "
+                         f"{p.unit}")
         lines.append(
             f"- {name}: {value_str} "
             f"({p.percent:.0f}%) {bar}{check}{achievement}{eta_str}"

@@ -104,17 +104,21 @@ def validate_payload_schema(payload: Any) -> list[str]:
                         errors.append(f"{prefix}: 應為 object")
                         continue
                     _check_str(t, "exercise_code", prefix, errors)
-                    # target 必須有 target_weight_kg (重量目標) 或 target_reps
-                    # (BW 次數目標) 至少一個
+                    # target 需有 target_weight_kg (重量) / target_reps
+                    # (BW 次數) / target_duration (時間距離) 至少一個
                     has_weight = "target_weight_kg" in t
                     has_reps = "target_reps" in t
-                    if not has_weight and not has_reps:
+                    has_duration = "target_duration" in t
+                    if not has_weight and not has_reps and not has_duration:
                         errors.append(
-                            f"{prefix}: 需有 target_weight_kg 或 target_reps")
+                            f"{prefix}: 需有 target_weight_kg / target_reps "
+                            f"/ target_duration")
                     if has_weight and not _is_float_like(t["target_weight_kg"]):
                         errors.append(f"{prefix}.target_weight_kg: 應為數字")
                     if has_reps and not _is_int_like(t["target_reps"]):
                         errors.append(f"{prefix}.target_reps: 應為整數")
+                    if has_duration and not _is_int_like(t["target_duration"]):
+                        errors.append(f"{prefix}.target_duration: 應為整數")
 
     # ----- coach -----
     coach = payload.get("coach")
