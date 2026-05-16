@@ -198,6 +198,10 @@ def make_blank_session_template() -> dict[str, Any]:
             "name": "(請填學員姓名)",
             "age": None,
             "goal": "(請填訓練目標,例如:減脂 + 增肌)",
+            # targets: 目標追蹤 (選填) — 重量 / BW 次數 / 時間距離 三型
+            "targets": [
+                {"exercise_code": "BENCH_PRESS", "target_weight_kg": 60.0},
+            ],
         },
         "coach": {
             "name": "(請填教練姓名)",
@@ -209,6 +213,7 @@ def make_blank_session_template() -> dict[str, Any]:
             "date": _date.today().isoformat(),
             "duration_min": 60,
             "theme": "(請填今日訓練主題)",
+            "bodyweight_kg": None,  # 選填:當堂體重,用於相對肌力
             "sets": [
                 {
                     "exercise_code": "BENCH_PRESS",
@@ -220,10 +225,13 @@ def make_blank_session_template() -> dict[str, Any]:
                 },
             ],
         },
-        "coach_observations": [],
-        "student_subjective": [],
-        "next_session": {},
-        "recovery_diet": {},
+        "coach_observations": ["(教練觀察,可多筆;沒有可清空)"],
+        "student_subjective": ["(學員主述,如:下背稍緊;沒有可清空)"],
+        "next_session": {
+            "theme": "(下次訓練主題)",
+            "focus": ["(下次課程重點)"],
+        },
+        "recovery_diet": {"notes": "(本週恢復 / 飲食提醒)"},
     }
 
 
