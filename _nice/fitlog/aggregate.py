@@ -99,9 +99,11 @@ class StudentFrequency:
 
 @dataclass(frozen=True)
 class GoalAchievement:
-    """單堂報告 banner 用:該堂第一次達成的目標 (exercise + target)。"""
+    """單堂報告 banner 用:該堂第一次達成的目標 (exercise + target)。
+    unit "kg" → target_kg 是重量;"reps" → target_kg 存的是次數。"""
     exercise_code: str
     target_kg: float
+    unit: str = "kg"
 
 
 @dataclass(frozen=True)
@@ -1487,43 +1489,73 @@ def find_newly_achieved_goals(
     """偵測 `session` 是否首次達成 `targets` 中任何目標 (本堂達標 + 歷史所有
     prior session 該動作都未達)。同學員的較早 sessions 才算 prior。"""
     sessions_list = list(all_sessions)
+    prior_sessions = [
+        s for s in sessions_list
+        if s.student_name == session.student_name
+        and (s.session_date, s.session_no)
+        < (session.session_date, session.session_no)
+    ]
     achievements: list[GoalAchievement] = []
     for t in targets:
         code = t.get("exercise_code")
-        target = t.get("target_weight_kg")
-        if not code or target is None:
+        if not code:
             continue
-        try:
-            target_f = float(target)
-        except (TypeError, ValueError):
-            continue
-        if target_f <= 0:
-            continue
-        # 本堂該動作的 max weight
-        max_w = max(
-            (s.weight_kg for s in session.sets
-             if s.exercise_code == code and s.weight_kg is not None),
-            default=None,
-        )
-        if max_w is None or max_w < target_f:
-            continue
-        # 看歷史 prior 是否也達過
-        prior_sessions = [
-            s for s in sessions_list
-            if s.student_name == session.student_name
-            and (s.session_date, s.session_no) < (session.session_date, session.session_no)
-        ]
-        prior_hit = any(
-            (sr.weight_kg is not None and sr.weight_kg >= target_f
-             and sr.exercise_code == code)
-            for sess in prior_sessions for sr in sess.sets
-        )
-        if not prior_hit:
-            achievements.append(GoalAchievement(
-                exercise_code=code,
-                target_kg=target_f,
-            ))
+        weight_target = t.get("target_weight_kg")
+        reps_target = t.get("target_reps")
+        if weight_target is not None:
+            try:
+                target_f = float(weight_target)
+            except (TypeError, ValueError):
+                continue
+            if target_f <= 0:
+                continue
+            max_w = max(
+                (s.weight_kg for s in session.sets
+                 if s.exercise_code == code and s.weight_kg is not None),
+                default=None,
+            )
+            if max_w is None or max_w < target_f:
+                continue
+            prior_hit = any(
+                (sr.weight_kg is not None and sr.weight_kg >= target_f
+                 and sr.exercise_code == code)
+                for sess in prior_sessions for sr in sess.sets
+            )
+            if not prior_hit:
+                achievements.append(GoalAchievement(
+                    exercise_code=code, target_kg=target_f, unit="kg"))
+        elif reps_target is not None:
+            try:
+                target_r = float(reps_target)
+            except (TypeError, ValueError):
+                continue
+            if target_r <= 0:
+                continue
+            max_r = _max_bw_reps_in_session(session, code)
+            if max_r is None or max_r < target_r:
+                continue
+            prior_hit = any(
+                (_max_bw_reps_in_session(sess, code) or 0) >= target_r
+                for sess in prior_sessions
+            )
+            if not prior_hit:
+                achievements.append(GoalAchievement(
+                    exercise_code=code, target_kg=target_r, unit="reps"))
     return achievements
+
+
+def _max_bw_reps_in_session(
+    session: "SessionInput", code: str,
+) -> int | None:
+    """該堂某 BW exercise (weight_kg=None + 整數 reps) 的 max reps。無 → None。"""
+    candidates: list[int] = []
+    for s in session.sets:
+        if s.exercise_code != code or s.weight_kg is not None:
+            continue
+        reps_str = s.reps_or_duration.strip()
+        if reps_str.isdigit():
+            candidates.append(int(reps_str))
+    return max(candidates) if candidates else None
 
 
 def render_session_goal_banner(achievements: list[GoalAchievement]) -> str:
@@ -1534,30 +1566,40 @@ def render_session_goal_banner(achievements: list[GoalAchievement]) -> str:
     for a in achievements:
         ex = lookup(a.exercise_code)
         name = ex.chinese if ex else a.exercise_code
-        lines.append(f"- {name}: 突破 {_format_kg(a.target_kg)} 目標!")
+        if a.unit == "reps":
+            target_str = f"{int(a.target_kg)} 下"
+        else:
+            target_str = _format_kg(a.target_kg)
+        lines.append(f"- {name}: 突破 {target_str} 目標!")
     lines.append("")
     return "\n".join(lines)
 
 
 def _find_goal_achievement(
     exercise_code: str,
-    target_kg: float,
+    target: float,
     sessions: list["SessionInput"],
     student_name: str,
+    is_reps: bool = False,
 ) -> tuple[int, str] | None:
-    """掃該學員的 sessions (按日期+session_no 排序),找第一個 max(weight) >= target
-    的 session,回傳 (session_no, date)。沒達標 → None。"""
+    """掃該學員的 sessions (按日期+session_no 排序),找第一個達標的 session,
+    回傳 (session_no, date)。沒達標 → None。
+    is_reps=False → 比 max weight;True → 比 BW max reps。"""
     student_sessions = sorted(
         (s for s in sessions if s.student_name == student_name),
         key=lambda s: (s.session_date, s.session_no),
     )
     for sess in student_sessions:
-        max_w = max(
-            (s.weight_kg for s in sess.sets
-             if s.exercise_code == exercise_code and s.weight_kg is not None),
-            default=None,
-        )
-        if max_w is not None and max_w >= target_kg:
+        if is_reps:
+            current = _max_bw_reps_in_session(sess, exercise_code)
+        else:
+            current = max(
+                (s.weight_kg for s in sess.sets
+                 if s.exercise_code == exercise_code
+                 and s.weight_kg is not None),
+                default=None,
+            )
+        if current is not None and current >= target:
             return (sess.session_no, sess.session_date)
     return None
 
@@ -1613,11 +1655,20 @@ def compute_goal_progress(
             if target_r <= 0:
                 continue
             current_r = float(bw_prs[code].max_reps) if code in bw_prs else 0.0
+            achieved_no, achieved_date = None, None
+            if sessions_list and student_name is not None:
+                ach = _find_goal_achievement(
+                    code, target_r, sessions_list, student_name,
+                    is_reps=True)
+                if ach is not None:
+                    achieved_no, achieved_date = ach
             result.append(GoalProgress(
                 exercise_code=code,
                 current_kg=current_r,
                 target_kg=target_r,
                 percent=current_r / target_r * 100,
+                achieved_on_session_no=achieved_no,
+                achieved_on_date=achieved_date,
                 unit="reps",
             ))
     return result
