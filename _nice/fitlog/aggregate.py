@@ -1484,6 +1484,48 @@ def render_new_pr_banner(prs: list[NewPrRecord]) -> str | None:
     return "🏆 **PR 突破**!: " + " · ".join(parts)
 
 
+def compute_bodyweight_progression(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> list[tuple[str, float]]:
+    """For 該學員,逐堂收集有記錄的體重 (date, kg),按日期排序。
+    沒記 bodyweight (或 <= 0) 的 session 跳過。"""
+    student_sessions = sorted(
+        (s for s in sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    points: list[tuple[str, float]] = []
+    for sess in student_sessions:
+        bw = sess.student_bodyweight_kg
+        if bw is not None and bw > 0:
+            points.append((sess.session_date, bw))
+    return points
+
+
+def render_bodyweight_progression(points: list[tuple[str, float]]) -> str:
+    """單行 sparkline + delta% (e.g. '**體重趨勢**: █▄▁  (73 → 70 kg, -4.1%)')。
+    < 2 點 → ""。"""
+    if len(points) < 2:
+        return ""
+    vals = [w for _, w in points]
+    lo, hi = min(vals), max(vals)
+    if hi == lo:
+        bars = _SPARKLINE_BARS[4] * len(vals)
+    else:
+        last_idx = len(_SPARKLINE_BARS) - 1
+        bars = "".join(
+            _SPARKLINE_BARS[int((w - lo) / (hi - lo) * last_idx)]
+            for w in vals
+        )
+    first, last = vals[0], vals[-1]
+    pct = (last - first) / first * 100 if first else 0.0
+    sign = "+" if pct >= 0 else ""
+    return (
+        f"**體重趨勢**: {bars}  "
+        f"({_format_kg(first)} → {_format_kg(last)}, {sign}{pct:.1f}%)"
+    )
+
+
 def compare_session_to_average(
     sessions: Iterable["SessionInput"],
     student_name: str,
@@ -2039,6 +2081,7 @@ def render_student_trend(
     acwr: float | None = None,
     next_week_tonnage: tuple[float, float] | None = None,
     pr_drought: int | None = None,
+    bodyweight_progression: list[tuple[str, float]] | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -2108,6 +2151,11 @@ def render_student_trend(
         intensity_line = render_intensity_progression(intensity_progression)
         if intensity_line:
             lines.append(intensity_line)
+            lines.append("")
+    if bodyweight_progression:
+        bw_line = render_bodyweight_progression(bodyweight_progression)
+        if bw_line:
+            lines.append(bw_line)
             lines.append("")
     if frequency:
         freq_line = render_session_frequency(frequency)
