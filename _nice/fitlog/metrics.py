@@ -261,6 +261,8 @@ def build_session_metrics_json(session: "SessionInput") -> dict:
         "intensity_score": intensity,
         "category_tonnage_kg": compute_category_tonnage(session.sets),
         "rpe_zones": zone_json,
+        "bodyweight_kg": session.student_bodyweight_kg,
+        "relative_strength": compute_relative_strength(session),
     }
 
 
