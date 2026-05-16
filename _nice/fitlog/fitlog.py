@@ -665,20 +665,21 @@ def _run_check(args: argparse.Namespace) -> int:
               file=sys.stderr)
         return 2
 
-    had_error = False
+    n_pass = 0
+    n_fail = 0
     for path in paths:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as e:
             print(f"FAIL {path.name}: JSON 解析錯誤 {e}")
-            had_error = True
+            n_fail += 1
             continue
         schema_errors = validate_payload_schema(payload)
         if schema_errors:
             print(f"FAIL {path.name}: {len(schema_errors)} 個 schema 錯誤")
             for e in schema_errors:
                 print(f"  - {e}")
-            had_error = True
+            n_fail += 1
             continue
         session = parse_payload(payload)
         warnings = validate_session(session, today_iso=date.today().isoformat())
@@ -688,7 +689,9 @@ def _run_check(args: argparse.Namespace) -> int:
                 print(f"  - {w}")
         else:
             print(f"PASS {path.name}")
-    return 1 if had_error else 0
+        n_pass += 1
+    print(f"--- 共 {n_pass + n_fail} 檔:{n_pass} PASS / {n_fail} FAIL")
+    return 1 if n_fail else 0
 
 
 def _run_batch(args: argparse.Namespace) -> int:
