@@ -714,6 +714,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             )
             goal_etas = compute_goal_etas(
                 latest_targets, progressions, latest_date,
+                bw_reps_progressions=bw_reps_progressions,
             ) if latest_date else {}
             favorite_exercise = compute_favorite_exercise(parsed_sessions, name)
             exercise_variety = compute_exercise_variety(parsed_sessions, name)

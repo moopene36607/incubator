@@ -1705,25 +1705,36 @@ def compute_goal_etas(
     progressions: dict[str, list[tuple[str, float]]],
     today_iso: str,
     max_horizon_days: int = DEFAULT_ETA_HORIZON_DAYS,
+    bw_reps_progressions: dict[str, list[tuple[str, int]]] | None = None,
 ) -> dict[str, str]:
     """對每個 target 找對應的 progression 跑 projection。空 / 已達標 / 無進步
-    都跳過。回傳 dict[code, eta_iso_date]。"""
+    都跳過。回傳 dict[code, eta_iso_date]。
+    target_weight_kg → 用 progressions (重量);target_reps → 用
+    bw_reps_progressions (次數)。"""
+    bw_reps_progressions = bw_reps_progressions or {}
     result: dict[str, str] = {}
     for t in targets:
         code = t.get("exercise_code")
-        target = t.get("target_weight_kg")
-        if not code or target is None:
+        if not code:
+            continue
+        weight_target = t.get("target_weight_kg")
+        reps_target = t.get("target_reps")
+        if weight_target is not None:
+            raw, points = weight_target, progressions.get(code)
+        elif reps_target is not None:
+            raw, points = reps_target, bw_reps_progressions.get(code)
+        else:
             continue
         try:
-            target_f = float(target)
+            target_f = float(raw)
         except (TypeError, ValueError):
             continue
-        if target_f <= 0:
+        if target_f <= 0 or not points:
             continue
-        points = progressions.get(code)
-        if not points:
-            continue
-        eta = project_goal_eta(points, target_f, today_iso, max_horizon_days)
+        eta = project_goal_eta(
+            [(d, float(v)) for d, v in points],
+            target_f, today_iso, max_horizon_days,
+        )
         if eta is not None:
             result[code] = eta
     return result
