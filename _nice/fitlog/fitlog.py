@@ -125,7 +125,12 @@ from progress import (
 )
 from schema import validate_payload_schema
 from validation import validate_session
-from voice import build_session_skeleton, make_blank_session_template, parse_voice_transcript
+from voice import (
+    build_session_skeleton,
+    diagnose_voice_lines,
+    make_blank_session_template,
+    parse_voice_transcript,
+)
 
 
 REPORT_SYSTEM = """你是台灣健身教練 (PT) 的課後報告助理,協助教練把訓練紀錄與觀察轉成
@@ -839,6 +844,9 @@ def main() -> int:
             print(f"error: --voice 找不到 {args.voice}", file=sys.stderr)
             return 2
         text = args.voice.read_text(encoding="utf-8")
+        for lineno, content in diagnose_voice_lines(text):
+            print(f"warning: 第 {lineno} 行有組數但動作名無法辨識,"
+                  f"已略過: {content}", file=sys.stderr)
         sets = parse_voice_transcript(text)
         skeleton = build_session_skeleton(sets)
         sys.stdout.write(json.dumps(skeleton, ensure_ascii=False, indent=2) + "\n")

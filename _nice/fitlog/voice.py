@@ -166,6 +166,28 @@ def parse_voice_transcript(text: str) -> list["SetRecord"]:
     return results
 
 
+def diagnose_voice_lines(text: str) -> list[tuple[int, str]]:
+    """找出「看起來是 set 但 exercise 沒被認出」的行 — 強烈疑似動作名打錯
+    或不在 db。回傳 [(行號 1-based, 行內容)]。
+    判定:該行有組數×次數訊號 (NxM 或 N組M) 但 _find_exercise 找不到動作。
+    純閒話 (無組數訊號) 不會被列入。"""
+    problems: list[tuple[int, str]] = []
+    for lineno, raw in enumerate(text.splitlines(), 1):
+        line = raw.strip()
+        if not line:
+            continue
+        has_sets_reps = bool(
+            _SETS_REPS_RE.search(line)
+            or _SETS_REPS_ZH_RE.search(_zh_to_arabic(line))
+        )
+        if not has_sets_reps:
+            continue
+        ex_code, _ = _find_exercise(line)
+        if ex_code is None:
+            problems.append((lineno, line))
+    return problems
+
+
 def make_blank_session_template() -> dict[str, Any]:
     """產出一份通過 schema 的「新 session 樣板」,含 placeholder 提示。
     PT 用 `fitlog.py --template > new.json` 後手動填學員/動作資料。"""
