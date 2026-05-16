@@ -83,6 +83,11 @@ class TestReadmeMentionsKeyFeatures(unittest.TestCase):
         # 「約 350 行」是早期數字,專案已遠超過
         self.assertNotIn("350 行", README)
 
+    def test_roadmap_reflects_done_features(self) -> None:
+        # voice parser / 進度追蹤 / 自動 PR 偵測都已實作,roadmap 段
+        # 不該還把它們純列為「沒做」— 應有「已實作」之類標記
+        self.assertIn("已實作", README)
+
 
 if __name__ == "__main__":
     unittest.main()
