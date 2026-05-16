@@ -59,6 +59,7 @@ from aggregate import (
     compute_studio_weekly_tonnage,
     compute_training_streak,
     _insert_toc,
+    compare_session_to_average,
     compute_batch_pr_leaderboard,
     compute_pr_drought,
     count_student_prs,
@@ -86,6 +87,7 @@ from aggregate import (
     render_studio_weekly_tonnage,
     render_session_goal_banner,
     render_session_one_liner,
+    render_session_vs_average,
     render_student_trend,
 )
 from batch import discover_session_jsons
@@ -354,6 +356,7 @@ def render_full_report(
     imbalance_banner: str | None = None,
     milestone_banner: str | None = None,
     new_pr_banner: str | None = None,
+    session_vs_average: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -408,6 +411,8 @@ def render_full_report(
         out.append(zone_summary)
     if intensity_summary:
         out.append(intensity_summary)
+    if session_vs_average:
+        out.append(session_vs_average)
     if pr_summary:
         out.append(pr_summary)
     if one_rm_summary:
@@ -584,6 +589,10 @@ def _run_batch(args: argparse.Namespace) -> int:
         new_pr_banner = render_new_pr_banner(
             detect_new_prs(parsed_sessions, session.student_name, session)
         )
+        session_vs_average = render_session_vs_average(
+            compare_session_to_average(
+                parsed_sessions, session.student_name, session)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
@@ -592,7 +601,8 @@ def _run_batch(args: argparse.Namespace) -> int:
                                   deload_banner=deload_banner,
                                   imbalance_banner=imbalance_banner,
                                   milestone_banner=milestone_banner,
-                                  new_pr_banner=new_pr_banner)
+                                  new_pr_banner=new_pr_banner,
+                                  session_vs_average=session_vs_average)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         _info(f"已寫入 {out_path}")

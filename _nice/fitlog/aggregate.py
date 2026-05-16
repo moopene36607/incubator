@@ -1484,6 +1484,45 @@ def render_new_pr_banner(prs: list[NewPrRecord]) -> str | None:
     return "🏆 **PR 突破**!: " + " · ".join(parts)
 
 
+def compare_session_to_average(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+) -> tuple[float, float, float] | None:
+    """本堂 tonnage vs 該學員「其他所有 session」平均 tonnage。
+    回傳 (current_kg, avg_kg, pct_diff)。沒其他 session 或平均 0 → None。"""
+    cur_key = (current_session.session_date, current_session.session_no)
+    others = [
+        compute_total_tonnage(s.sets)
+        for s in sessions
+        if s.student_name == student_name
+        and (s.session_date, s.session_no) != cur_key
+    ]
+    if not others:
+        return None
+    avg = sum(others) / len(others)
+    if avg <= 0:
+        return None
+    current = compute_total_tonnage(current_session.sets)
+    pct = (current - avg) / avg * 100.0
+    return (current, avg, pct)
+
+
+def render_session_vs_average(
+    cmp: tuple[float, float, float] | None,
+) -> str | None:
+    """「📊 本堂訓練量 3,200 kg(高於個人平均 2,000 kg,+60%)」。None → None。"""
+    if cmp is None:
+        return None
+    current, avg, pct = cmp
+    direction = "高於" if pct >= 0 else "低於"
+    sign = "+" if pct >= 0 else ""
+    return (
+        f"📊 本堂訓練量 {_format_kg(current)}"
+        f"({direction}個人平均 {_format_kg(avg)},{sign}{pct:.0f}%)"
+    )
+
+
 def compute_duration_progression(
     sessions: Iterable["SessionInput"],
     student_name: str,
