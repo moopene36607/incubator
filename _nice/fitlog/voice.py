@@ -28,11 +28,12 @@ if TYPE_CHECKING:
 
 
 def _build_name_index() -> dict[str, str]:
-    """中文 / 英文 (lower) → exercise_code。"""
+    """中文 / 英文 / 代碼 (lower) → exercise_code。"""
     idx: dict[str, str] = {}
     for ex in EXERCISES:
         idx[ex.chinese] = ex.code
         idx[ex.english.lower()] = ex.code
+        idx[ex.code.lower()] = ex.code  # 直接用代碼也能解析
     return idx
 
 
