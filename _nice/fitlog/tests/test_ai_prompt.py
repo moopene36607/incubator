@@ -81,5 +81,25 @@ class TestBuildAiUserPrompt(unittest.TestCase):
         self.assertTrue("推系" in prompt or "腿系" in prompt)
 
 
+class TestBuildAiUserPromptWithPrSummary(unittest.TestCase):
+    def test_pr_summary_included_when_given(self) -> None:
+        sess = _session([SetRecord("BENCH_PRESS", 4, "8", 50.0, 8)])
+        pr_text = "**進步亮點**: 槓鈴臥推 47.5→50 kg (+2.5 kg PR)"
+        prompt = build_ai_user_prompt(sess, pr_summary=pr_text)
+        self.assertIn("47.5", prompt)
+        self.assertIn("槓鈴臥推", prompt)
+
+    def test_no_pr_summary_backward_compat(self) -> None:
+        # 不傳 pr_summary → 跟以前一樣可運作
+        sess = _session([SetRecord("BENCH_PRESS", 4, "8", 50.0, 8)])
+        prompt = build_ai_user_prompt(sess)
+        self.assertIn("林阿明", prompt)
+
+    def test_none_pr_summary_no_progress_block(self) -> None:
+        sess = _session([SetRecord("BENCH_PRESS", 4, "8", 50.0, 8)])
+        prompt = build_ai_user_prompt(sess, pr_summary=None)
+        self.assertIsInstance(prompt, str)
+
+
 if __name__ == "__main__":
     unittest.main()

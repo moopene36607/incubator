@@ -398,9 +398,13 @@ def render_skeleton_body(session: SessionInput | None = None) -> str:
     )
 
 
-def build_ai_user_prompt(session: SessionInput) -> str:
+def build_ai_user_prompt(
+    session: SessionInput,
+    pr_summary: str | None = None,
+) -> str:
     """組裝給 AI 的 user prompt:原始 session 資料 + 純函式已算好的量化指標。
     把指標附進去,讓 AI 直接引用而非自己重算 (符合「LLM 絕不算數字」規範)。
+    傳 pr_summary 時附上跨堂進步亮點供「進步突破」段引用。
     純函式,不呼叫 API,可單元測試。"""
     detail = {
         "學員": {"姓名": session.student_name, "年齡": session.student_age,
@@ -438,18 +442,27 @@ def build_ai_user_prompt(session: SessionInput) -> str:
         },
         "本堂訓練肌群": metrics["muscles_worked"],
     }
-    return (
+    prompt = (
         "以下為這堂課的完整資料,請寫一份學員會看完的課後報告 (5 段 markdown):\n\n"
         f"```json\n{json.dumps(detail, ensure_ascii=False, indent=2)}\n```\n\n"
         "下列量化指標已由純函式精確算好,**請直接引用這些數字,不要自己重算**:\n\n"
         f"```json\n{json.dumps(precomputed, ensure_ascii=False, indent=2)}\n```"
     )
+    if pr_summary:
+        prompt += (
+            "\n\n跨堂進步亮點 (已算好,「本次主要進步 / 突破」段請引用):\n"
+            f"{pr_summary}"
+        )
+    return prompt
 
 
-def ai_write_body(session: SessionInput) -> str:
+def ai_write_body(
+    session: SessionInput,
+    pr_summary: str | None = None,
+) -> str:
     import anthropic
 
-    user = build_ai_user_prompt(session)
+    user = build_ai_user_prompt(session, pr_summary=pr_summary)
     client = anthropic.Anthropic()
     response = client.messages.create(
         model="claude-sonnet-4-6",
@@ -773,7 +786,8 @@ def _run_batch(args: argparse.Namespace) -> int:
             detect_relative_strength_milestones(
                 parsed_sessions, session.student_name, session)
         )
-        body = ai_write_body(session) if use_ai else render_skeleton_body(session)
+        body = (ai_write_body(session, pr_summary=pr_summary) if use_ai
+                else render_skeleton_body(session))
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
                                   one_rm_summary=one_rm_summary,
@@ -1111,7 +1125,8 @@ def main() -> int:
     )
     density_summary = render_training_density(session)
 
-    body = ai_write_body(session) if use_ai else render_skeleton_body(session)
+    body = (ai_write_body(session, pr_summary=pr_summary) if use_ai
+                else render_skeleton_body(session))
     full = render_full_report(session, body, pr_summary, next_weight_summary,
                               one_rm_summary=one_rm_summary,
                               density_summary=density_summary,
