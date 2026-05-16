@@ -799,6 +799,35 @@ def build_batch_metrics_json(
         for w in compute_studio_weekly_tonnage(sessions)
     ]
     dow = compute_day_of_week_distribution(sessions)
+    coach_workload = [
+        {
+            "coach_name": w.coach_name,
+            "n_sessions": w.n_sessions,
+            "n_students": w.n_students,
+            "total_tonnage_kg": w.total_tonnage_kg,
+        }
+        for w in compute_coach_workload(sessions)
+    ]
+    category_distribution = [
+        {"category": cat, "tonnage_kg": ton, "pct": pct}
+        for cat, ton, pct in compute_studio_category_distribution(sessions)
+    ]
+    pr_leaderboard = [
+        {"student": name, "pr_count": count}
+        for name, count in compute_batch_pr_leaderboard(sessions)
+    ]
+    # 缺席名單以批次內最近一堂為 as_of
+    latest = max((s.session_date for s in sessions), default=None)
+    absent = []
+    if latest:
+        absent = [
+            {
+                "student_name": a.student_name,
+                "last_session_date": a.last_session_date,
+                "days_since": a.days_since,
+            }
+            for a in compute_absent_students(sessions, latest)
+        ]
     return {
         "n_sessions": summary.n_sessions,
         "n_students": len(summary.students),
@@ -807,6 +836,10 @@ def build_batch_metrics_json(
         "top_exercises": [[code, ton] for code, ton in summary.top_exercises],
         "studio_weekly": studio_weekly,
         "day_of_week": {str(d): n for d, n in dow.items()},
+        "coach_workload": coach_workload,
+        "category_distribution": category_distribution,
+        "pr_leaderboard": pr_leaderboard,
+        "absent_students": absent,
     }
 
 
