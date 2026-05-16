@@ -1389,6 +1389,33 @@ def count_student_prs(
     )
 
 
+def compute_batch_pr_leaderboard(
+    sessions: Iterable["SessionInput"],
+) -> list[tuple[str, int]]:
+    """跨學員的 PR 突破排行:每位學員整批破紀錄總次數。
+    sort: 次數 desc → 姓名字典序。0 次的學員不列入。"""
+    all_sessions = list(sessions)
+    names = sorted({s.student_name for s in all_sessions})
+    rows = [
+        (name, count_student_prs(all_sessions, name))
+        for name in names
+    ]
+    rows = [(n, c) for n, c in rows if c > 0]
+    rows.sort(key=lambda r: (-r[1], r[0]))
+    return rows
+
+
+def render_batch_pr_leaderboard(rows: list[tuple[str, int]]) -> str:
+    """產出「## PR 突破榜」section。空 → ""。"""
+    if not rows:
+        return ""
+    lines: list[str] = ["## PR 突破榜", ""]
+    for i, (name, count) in enumerate(rows, 1):
+        lines.append(f"{i}. {name}: {count} 次 PR 突破")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def render_pr_tally(count: int) -> str | None:
     """🎖️ **本期 PR 突破**:共 N 次。0 → None (避免 0 次洗版)。"""
     if count <= 0:
