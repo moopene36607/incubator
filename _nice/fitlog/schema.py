@@ -61,6 +61,21 @@ def _check_int_like(parent: dict, key: str, path: str, errors: list[str]) -> Non
         errors.append(f"{path}.{key}: 應為整數 (got {type(parent[key]).__name__})")
 
 
+def _check_iso_date(parent: dict, key: str, path: str, errors: list[str]) -> None:
+    """檢查 parent[key] 是合法 ISO 日期 (YYYY-MM-DD)。
+    缺失 / 非字串由 _check_str 負責,此處只在「是非空字串」時加驗格式。"""
+    from datetime import date
+    v = parent.get(key)
+    if not isinstance(v, str) or not v.strip():
+        return  # _check_str 已報過
+    try:
+        date.fromisoformat(v.strip())
+    except ValueError:
+        errors.append(
+            f"{path}.{key}: 日期格式不合法 (需 YYYY-MM-DD ISO 格式),got '{v}'"
+        )
+
+
 def validate_payload_schema(payload: Any) -> list[str]:
     """檢查 JSON payload 結構;回傳人話錯誤 list (空 list = 全通過)。"""
     errors: list[str] = []
@@ -123,6 +138,7 @@ def validate_payload_schema(payload: Any) -> list[str]:
     _check_int_like(sess, "session_no", "session", errors)
     _check_int_like(sess, "duration_min", "session", errors)
     _check_str(sess, "date", "session", errors)
+    _check_iso_date(sess, "date", "session", errors)
     _check_str(sess, "theme", "session", errors)
 
     # ----- session.sets -----
