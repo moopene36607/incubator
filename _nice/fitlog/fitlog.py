@@ -583,9 +583,16 @@ def render_line_friendly(
     next_weight_summary: str | None = None,
     one_rm_summary: str | None = None,
     density_summary: str | None = None,
+    new_pr_banner: str | None = None,
+    rel_strength_milestone: str | None = None,
 ) -> str:
     """LINE 純文字版,去 markdown 符號,加 emoji 分段。"""
     plain = body.replace("### ", "\n").replace("## ", "\n").replace("**", "")
+    # 慶祝 banner (學員最愛看) 放在頂端;去 markdown 粗體
+    celebration = ""
+    for banner in (new_pr_banner, rel_strength_milestone):
+        if banner:
+            celebration += banner.replace("**", "") + "\n"
     quick_table_rows = []
     for i, s in enumerate(session.sets, 1):
         ex = lookup(s.exercise_code)
@@ -626,7 +633,8 @@ def render_line_friendly(
         f"💪 {session.student_name} 第 {session.session_no} 堂課後報告\n"
         f"📅 {session.session_date}  ⏱ {session.duration_min} min\n"
         f"📌 主題:{session.theme}\n"
-        f"━━━━━━━━━━━━━━\n"
+        + celebration
+        + f"━━━━━━━━━━━━━━\n"
         "📊 訓練紀錄:\n"
         + "\n".join(quick_table_rows)
         + summary_line
@@ -830,6 +838,8 @@ def _run_batch(args: argparse.Namespace) -> int:
                     next_weight_summary=next_weight_summary,
                     one_rm_summary=one_rm_summary,
                     density_summary=density_summary,
+                    new_pr_banner=new_pr_banner,
+                    rel_strength_milestone=rel_strength_milestone,
                 ) + "\n",
                 encoding="utf-8",
             )
@@ -1145,7 +1155,9 @@ def main() -> int:
         args.out_line.write_text(
             render_line_friendly(session, body, pr_summary, next_weight_summary,
                                  one_rm_summary=one_rm_summary,
-                                 density_summary=density_summary),
+                                 density_summary=density_summary,
+                                 new_pr_banner=new_pr_banner,
+                                 rel_strength_milestone=rel_strength_milestone),
             encoding="utf-8")
         _info(f"已寫入 LINE 版: {args.out_line}")
 
