@@ -84,6 +84,21 @@ class TestVoiceExampleShowsChineseNotation(unittest.TestCase):
         self.assertEqual(len(parsed), len(skeleton["session"]["sets"]))
 
 
+class TestTimelineHasLineReport(unittest.TestCase):
+    """timeline_demo 應含 --batch-line 產出的 LINE 純文字報告範例。"""
+
+    def test_line_txt_exists(self) -> None:
+        line_files = list(TIMELINE.glob("*.line.txt"))
+        self.assertTrue(line_files, "timeline_demo 缺 .line.txt LINE 報告範例")
+
+    def test_line_report_has_line_format(self) -> None:
+        line_files = sorted(TIMELINE.glob("*.line.txt"))
+        content = line_files[0].read_text(encoding="utf-8")
+        self.assertIn("課後報告", content)
+        self.assertIn("━", content)
+        self.assertNotIn("**", content)  # LINE 版去 markdown 粗體
+
+
 class TestBatchSummaryFresh(unittest.TestCase):
     """_batch_summary.md 應含開課日分布 + 工作室週訓練量。"""
 
