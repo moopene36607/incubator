@@ -242,7 +242,8 @@ def parse_payload(payload: dict[str, Any]) -> SessionInput:
         theme=se["theme"],
         sets=[
             SetRecord(
-                exercise_code=s["exercise_code"],
+                # 正規化大小寫,避免同堂混寫導致 tonnage / PR 分裂計算
+                exercise_code=str(s["exercise_code"]).strip().upper(),
                 sets=int(s["sets"]),
                 reps_or_duration=str(s["reps_or_duration"]),
                 weight_kg=(float(s["weight_kg"]) if s.get("weight_kg") not in (None, "") else None),
