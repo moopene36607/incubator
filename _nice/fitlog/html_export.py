@@ -32,10 +32,20 @@ _TABLE_SEPARATOR_RE = re.compile(r"^\|[\s\-:|]+\|?\s*$")
 
 
 def markdown_to_html(md: str) -> str:
-    """Minimal markdown → HTML for fitlog reports."""
+    """Minimal markdown → HTML for fitlog reports。
+    每個 <h2> 加 id;<li> 文字若等於某 <h2> 標題,自動變成跳轉連結。"""
     if not md.strip():
         return ""
     lines = md.split("\n")
+    # 預掃 ## 標題 → {標題文字: 錨點 id} (計數式 id,避開 slug 跨語言問題)
+    heading_ids: dict[str, str] = {}
+    for raw in lines:
+        s = raw.rstrip()
+        m = _HEADING_RE.match(s)
+        if m and len(m.group(1)) == 2:
+            text = m.group(2).strip()
+            if text not in heading_ids:
+                heading_ids[text] = f"sec-{len(heading_ids)}"
     out: list[str] = []
     in_list = False
     in_table = False
@@ -68,7 +78,11 @@ def markdown_to_html(md: str) -> str:
         if m:
             flush_p(); flush_list(); flush_table()
             level = len(m.group(1))
-            out.append(f"<h{level}>{_convert_inline(m.group(2))}</h{level}>")
+            text = m.group(2)
+            inner = _convert_inline(text)
+            hid = heading_ids.get(text.strip()) if level == 2 else None
+            attr = f' id="{hid}"' if hid else ""
+            out.append(f"<h{level}{attr}>{inner}</h{level}>")
             continue
 
         if line == "---":
@@ -81,7 +95,14 @@ def markdown_to_html(md: str) -> str:
             if not in_list:
                 out.append("<ul>")
                 in_list = True
-            out.append(f"<li>{_convert_inline(line[2:])}</li>")
+            item = line[2:]
+            hid = heading_ids.get(item.strip())
+            if hid is not None:
+                # 目錄項目:文字完全等於某 ## 標題 → 跳轉連結
+                out.append(
+                    f'<li><a href="#{hid}">{_convert_inline(item)}</a></li>')
+            else:
+                out.append(f"<li>{_convert_inline(item)}</li>")
             continue
 
         m = _NUMBERED_LIST_RE.match(line)

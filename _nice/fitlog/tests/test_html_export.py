@@ -35,7 +35,8 @@ class TestMarkdownToHtml(unittest.TestCase):
         md = "# Top\n\n## Mid\n\n### Sub\n"
         result = markdown_to_html(md)
         self.assertIn("<h1>Top</h1>", result)
-        self.assertIn("<h2>Mid</h2>", result)
+        # h2 帶錨點 id (供目錄跳轉);用 regex 容忍 id 值
+        self.assertRegex(result, r'<h2 id="[^"]+">Mid</h2>')
         self.assertIn("<h3>Sub</h3>", result)
 
     def test_bullet_list(self) -> None:
