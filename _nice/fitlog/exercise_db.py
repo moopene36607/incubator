@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 110+ 個動作,分為:
+收錄台灣健身教練最常處方的 120+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -205,6 +205,38 @@ EXERCISES: list[Exercise] = [
     Exercise("BAND_PULL_APART", "彈力帶分開", "Band Pull-apart", "mobility", "後三角/旋轉肌群", "rep", (1, 3)),
     Exercise("JEFFERSON_CURL", "傑佛森捲體", "Jefferson Curl", "mobility", "脊椎逐節活動度/後鏈", "rep", (2, 4)),
     Exercise("FOAM_ROLL", "滾筒放鬆", "Foam Rolling", "mobility", "筋膜放鬆", "sec", (1, 2)),
+
+    # ===== v6 擴充 (進階變化 / 機械 / 負重行走) =====
+
+    # ---------- legs (+3) ----------
+    Exercise("ZERCHER_SQUAT", "Zercher 深蹲", "Zercher Squat", "legs", "股四頭/上背/核心", "rep", (6, 9)),
+    Exercise("SEATED_CALF_RAISE", "坐姿提踵", "Seated Calf Raise", "legs", "比目魚肌", "rep", (5, 8)),
+    Exercise("TERMINAL_KNEE_EXT", "末端伸膝", "Terminal Knee Extension", "legs", "股內側肌/膝穩定", "rep", (3, 6)),
+
+    # ---------- pull (+3) ----------
+    Exercise("CHEST_SUPPORTED_ROW", "胸靠划船", "Chest-supported Row", "pull", "中背/背闊肌/後三角", "rep", (5, 8)),
+    Exercise("PREACHER_CURL", "牧師椅彎舉", "Preacher Curl", "pull", "肱二頭肌", "rep", (5, 8)),
+    Exercise("REVERSE_FLY", "反向飛鳥", "Reverse Fly", "pull", "後三角/中斜方肌", "rep", (4, 7)),
+
+    # ---------- push (+3) ----------
+    Exercise("CABLE_CROSSOVER", "滑輪交叉", "Cable Crossover", "push", "胸大肌", "rep", (5, 8)),
+    Exercise("BENCH_DIP", "椅上撐體", "Bench Dip", "push", "三頭/前三角", "rep", (5, 8)),
+    Exercise("HANDSTAND_PUSHUP", "倒立伏地挺身", "Handstand Push-up", "push", "三角肌/三頭/全身", "rep", (8, 10)),
+
+    # ---------- core (+3) ----------
+    Exercise("SUITCASE_CARRY", "單邊行李走路", "Suitcase Carry", "core", "腹斜肌/核心抗側屈", "m", (5, 8)),
+    Exercise("COPENHAGEN_PLANK", "哥本哈根側棒", "Copenhagen Plank", "core", "內收肌/核心", "sec", (6, 9)),
+    Exercise("JACKKNIFE", "折刀", "Jackknife Sit-up", "core", "腹直肌全段", "rep", (5, 8)),
+
+    # ---------- cardio (+3) ----------
+    Exercise("SLED_PUSH", "雪橇推", "Sled Push", "cardio", "下肢/全身/心肺", "m", (7, 10)),
+    Exercise("FARMERS_WALK", "農夫走路", "Farmer's Walk", "cardio", "握力/斜方肌/全身/心肺", "m", (6, 9)),
+    Exercise("HILL_SPRINT", "坡道衝刺", "Hill Sprint", "cardio", "下肢/心肺", "sec", (8, 10)),
+
+    # ---------- mobility (+3) ----------
+    Exercise("THREAD_THE_NEEDLE", "穿針式", "Thread the Needle", "mobility", "胸椎旋轉活動度", "rep", (1, 3)),
+    Exercise("FROG_STRETCH", "青蛙式伸展", "Frog Stretch", "mobility", "髖內收/髖活動度", "sec", (1, 3)),
+    Exercise("HAMSTRING_STRETCH", "腿後肌伸展", "Hamstring Stretch", "mobility", "股二頭柔軟度", "sec", (1, 2)),
 ]
 
 

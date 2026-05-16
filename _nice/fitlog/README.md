@@ -191,18 +191,18 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 - 下次課程主題切到 pull + 核心 + 心肺,並解釋為什麼這樣安排
 - 恢復飲食提醒 prioritize 睡眠 > 蛋白質 > 有氧
 
-## 收錄動作分類(110 動作 v5 擴充版)
+## 收錄動作分類(128 動作 v6 擴充版)
 
 | 大類 | 動作數 | 範例代碼 |
 |------|------|----------|
-| **legs**(腿系) | 23 | BB_BACK_SQUAT, FRONT_SQUAT, SUMO_DEADLIFT, HIP_THRUST, GOOD_MORNING, BELT_SQUAT, PISTOL_SQUAT, JUMP_SQUAT |
-| **pull**(拉系) | 21 | DEADLIFT, PULL_UP, CHIN_UP, BB_ROW, PENDLAY_ROW, SEAL_ROW, CABLE_CURL, MUSCLE_UP, RACK_PULL |
-| **push**(推系) | 23 | BENCH_PRESS, OHP, ARNOLD_PRESS, PUSH_PRESS, FLOOR_PRESS, DIAMOND_PUSHUP, SKULL_CRUSHER, PEC_DECK |
-| **core**(核心) | 16 | PLANK, AB_WHEEL, V_UP, RUSSIAN_TWIST, HOLLOW_HOLD, CABLE_CRUNCH, DRAGON_FLAG, PALLOF_PRESS |
-| **cardio**(心肺) | 14 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, SKI_ERG, VERSACLIMBER, INCLINE_WALK, BURPEE, BATTLE_ROPE |
-| **mobility**(活動度) | 13 | HIP_OPENER, THORACIC_ROT, CAT_COW, COSSACK_SQUAT, BAND_PULL_APART, JEFFERSON_CURL, FOAM_ROLL |
+| **legs**(腿系) | 26 | BB_BACK_SQUAT, FRONT_SQUAT, SUMO_DEADLIFT, HIP_THRUST, BELT_SQUAT, PISTOL_SQUAT, ZERCHER_SQUAT |
+| **pull**(拉系) | 24 | DEADLIFT, PULL_UP, CHIN_UP, BB_ROW, PENDLAY_ROW, SEAL_ROW, CHEST_SUPPORTED_ROW, PREACHER_CURL |
+| **push**(推系) | 26 | BENCH_PRESS, OHP, ARNOLD_PRESS, PUSH_PRESS, FLOOR_PRESS, CABLE_CROSSOVER, HANDSTAND_PUSHUP |
+| **core**(核心) | 19 | PLANK, AB_WHEEL, V_UP, HOLLOW_HOLD, DRAGON_FLAG, SUITCASE_CARRY, COPENHAGEN_PLANK, JACKKNIFE |
+| **cardio**(心肺) | 17 | RUN_TREADMILL, ROW_ERG, ASSAULT_BIKE, SKI_ERG, SLED_PUSH, FARMERS_WALK, HILL_SPRINT, BURPEE |
+| **mobility**(活動度) | 16 | HIP_OPENER, THORACIC_ROT, CAT_COW, BAND_PULL_APART, THREAD_THE_NEEDLE, FROG_STRETCH, FOAM_ROLL |
 
-`python3 fitlog.py --list-exercises` 印出全部 110 個動作代碼(依分類分組)。
+`python3 fitlog.py --list-exercises` 印出全部 128 個動作代碼(依分類分組)。
 
 (實際產品需擴充至 200+ 動作,涵蓋 powerlifting / 進階街健 / 普拉提全模組。)
 
