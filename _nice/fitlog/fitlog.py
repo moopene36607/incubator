@@ -60,6 +60,7 @@ from aggregate import (
     compute_training_streak,
     _insert_toc,
     compute_batch_pr_leaderboard,
+    compute_pr_drought,
     count_student_prs,
     detect_new_prs,
     recommend_next_week_tonnage,
@@ -734,6 +735,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 parsed_sessions, name
             )
             pr_tally = count_student_prs(parsed_sessions, name)
+            pr_drought = compute_pr_drought(parsed_sessions, name)
             category_coverage = compute_category_coverage(parsed_sessions, name)
             acwr = (compute_acwr(parsed_sessions, name, latest_date)
                     if latest_date else None)
@@ -764,6 +766,7 @@ def _run_batch(args: argparse.Namespace) -> int:
                 category_coverage=category_coverage,
                 acwr=acwr,
                 next_week_tonnage=next_week_tonnage,
+                pr_drought=pr_drought,
             )
             student_path.write_text(student_md, encoding="utf-8")
             _info(f"已寫入學員趨勢: {student_path}")

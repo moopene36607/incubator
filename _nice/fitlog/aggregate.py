@@ -1416,6 +1416,39 @@ def render_batch_pr_leaderboard(rows: list[tuple[str, int]]) -> str:
     return "\n".join(lines)
 
 
+PR_DROUGHT_THRESHOLD = 3  # 連續這麼多堂沒破紀錄才提示
+
+
+def compute_pr_drought(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+) -> int:
+    """該學員「最後一次破 PR 之後」連續幾堂沒再破。
+    從沒破過 PR → 0 (還沒建立 baseline,不算停滯)。"""
+    all_sessions = list(sessions)
+    student_sessions = sorted(
+        (s for s in all_sessions if s.student_name == student_name),
+        key=lambda s: (s.session_date, s.session_no),
+    )
+    last_pr_idx = -1
+    for i, sess in enumerate(student_sessions):
+        if detect_new_prs(all_sessions, student_name, sess):
+            last_pr_idx = i
+    if last_pr_idx < 0:
+        return 0
+    return len(student_sessions) - 1 - last_pr_idx
+
+
+def render_pr_drought(drought: int) -> str | None:
+    """📉 **PR 停滯**:已連續 N 堂沒突破新紀錄。< 門檻 → None。"""
+    if drought < PR_DROUGHT_THRESHOLD:
+        return None
+    return (
+        f"📉 **PR 停滯**:已連續 {drought} 堂沒突破新紀錄,"
+        f"可考慮變化訓練刺激 (換動作 / 調組數次數 / deload)"
+    )
+
+
 def render_pr_tally(count: int) -> str | None:
     """🎖️ **本期 PR 突破**:共 N 次。0 → None (避免 0 次洗版)。"""
     if count <= 0:
@@ -1966,6 +1999,7 @@ def render_student_trend(
     category_coverage: dict[str, bool] | None = None,
     acwr: float | None = None,
     next_week_tonnage: tuple[float, float] | None = None,
+    pr_drought: int | None = None,
 ) -> str:
     """產出單一學員的多堂進步趨勢 markdown。
     傳入 all_time_prs 時加「## 歷來最佳」section (default 不加,向後相容)。"""
@@ -2002,6 +2036,10 @@ def render_student_trend(
         nwt_line = render_next_week_tonnage(next_week_tonnage)
         if nwt_line:
             lines.append(f"- {nwt_line}")
+    if pr_drought is not None:
+        drought_line = render_pr_drought(pr_drought)
+        if drought_line:
+            lines.append(f"- {drought_line}")
     lines.append("")
     lines.append("## 各堂訓練量")
     lines.append("")
