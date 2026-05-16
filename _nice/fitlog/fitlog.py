@@ -398,16 +398,19 @@ def render_skeleton_body(session: SessionInput | None = None) -> str:
     )
 
 
-def ai_write_body(session: SessionInput) -> str:
-    import anthropic
-
+def build_ai_user_prompt(session: SessionInput) -> str:
+    """組裝給 AI 的 user prompt:原始 session 資料 + 純函式已算好的量化指標。
+    把指標附進去,讓 AI 直接引用而非自己重算 (符合「LLM 絕不算數字」規範)。
+    純函式,不呼叫 API,可單元測試。"""
     detail = {
-        "學員": {"姓名": session.student_name, "年齡": session.student_age, "目標": session.student_goal},
+        "學員": {"姓名": session.student_name, "年齡": session.student_age,
+                "目標": session.student_goal},
         "課程": {"次數": session.session_no, "日期": session.session_date,
                 "時長分鐘": session.duration_min, "主題": session.theme},
         "訓練動作": [
             {
-                "動作": (lookup(s.exercise_code).chinese if lookup(s.exercise_code) else s.exercise_code),
+                "動作": (lookup(s.exercise_code).chinese
+                        if lookup(s.exercise_code) else s.exercise_code),
                 "代碼": s.exercise_code,
                 "組數": s.sets,
                 "次或秒": s.reps_or_duration,
@@ -422,10 +425,31 @@ def ai_write_body(session: SessionInput) -> str:
         "下次課程計畫": session.next_session,
         "恢復飲食目標 (學員或教練輸入)": session.recovery_diet,
     }
-    user = (
+    metrics = build_session_metrics_json(session)
+    one_rm = compute_session_1rm_estimates(session.sets)
+    precomputed = {
+        "總噸位kg": metrics["total_tonnage_kg"],
+        "分類訓練量kg": metrics["category_tonnage_kg"],
+        "訓練密度kg每分": metrics["training_density_kg_per_min"],
+        "訓練強度分數": metrics["intensity_score"],
+        "估計1RM_kg": {
+            (lookup(c).chinese if lookup(c) else c): round(v, 1)
+            for c, v in one_rm.items()
+        },
+        "本堂訓練肌群": metrics["muscles_worked"],
+    }
+    return (
         "以下為這堂課的完整資料,請寫一份學員會看完的課後報告 (5 段 markdown):\n\n"
-        f"```json\n{json.dumps(detail, ensure_ascii=False, indent=2)}\n```"
+        f"```json\n{json.dumps(detail, ensure_ascii=False, indent=2)}\n```\n\n"
+        "下列量化指標已由純函式精確算好,**請直接引用這些數字,不要自己重算**:\n\n"
+        f"```json\n{json.dumps(precomputed, ensure_ascii=False, indent=2)}\n```"
     )
+
+
+def ai_write_body(session: SessionInput) -> str:
+    import anthropic
+
+    user = build_ai_user_prompt(session)
     client = anthropic.Anthropic()
     response = client.messages.create(
         model="claude-sonnet-4-6",
