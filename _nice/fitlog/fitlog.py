@@ -65,6 +65,7 @@ from aggregate import (
     compute_pr_drought,
     count_student_prs,
     detect_new_prs,
+    detect_relative_strength_milestones,
     recommend_next_week_tonnage,
     compute_goal_progress,
     compute_student_1rm_progression,
@@ -85,6 +86,7 @@ from aggregate import (
     render_studio_category_distribution,
     render_day_of_week_distribution,
     render_new_pr_banner,
+    render_relative_strength_milestones,
     render_studio_weekly_tonnage,
     render_session_goal_banner,
     render_session_one_liner,
@@ -366,6 +368,7 @@ def render_full_report(
     milestone_banner: str | None = None,
     new_pr_banner: str | None = None,
     session_vs_average: str | None = None,
+    rel_strength_milestone: str | None = None,
 ) -> str:
     out: list[str] = []
     out.append(f"# {session.student_name} 課後訓練報告 (第 {session.session_no} 堂)")
@@ -376,6 +379,9 @@ def render_full_report(
     out.append("")
     if new_pr_banner:
         out.append(new_pr_banner)
+        out.append("")
+    if rel_strength_milestone:
+        out.append(rel_strength_milestone)
         out.append("")
     if goal_banner:
         out.append(goal_banner)
@@ -652,6 +658,10 @@ def _run_batch(args: argparse.Namespace) -> int:
             compare_session_to_average(
                 parsed_sessions, session.student_name, session)
         )
+        rel_strength_milestone = render_relative_strength_milestones(
+            detect_relative_strength_milestones(
+                parsed_sessions, session.student_name, session)
+        )
         body = ai_write_body(session) if use_ai else render_skeleton_body()
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
@@ -661,7 +671,8 @@ def _run_batch(args: argparse.Namespace) -> int:
                                   imbalance_banner=imbalance_banner,
                                   milestone_banner=milestone_banner,
                                   new_pr_banner=new_pr_banner,
-                                  session_vs_average=session_vs_average)
+                                  session_vs_average=session_vs_average,
+                                  rel_strength_milestone=rel_strength_milestone)
         out_path = (out_dir / f"{path.stem}.md") if out_dir is not None else path.with_suffix(".md")
         out_path.write_text(full, encoding="utf-8")
         _info(f"已寫入 {out_path}")
@@ -955,6 +966,7 @@ def main() -> int:
 
     pr_summary: str | None = None
     new_pr_banner: str | None = None
+    rel_strength_milestone: str | None = None
     if args.prev:
         if not args.prev.exists():
             print(f"warning: --prev 檔案找不到: {args.prev}", file=sys.stderr)
@@ -969,6 +981,10 @@ def main() -> int:
             new_pr_banner = render_new_pr_banner(
                 detect_new_prs([prev_session, session],
                                session.student_name, session)
+            )
+            rel_strength_milestone = render_relative_strength_milestones(
+                detect_relative_strength_milestones(
+                    [prev_session, session], session.student_name, session)
             )
 
     use_ai = not args.no_ai and bool(os.environ.get("ANTHROPIC_API_KEY"))
@@ -987,7 +1003,8 @@ def main() -> int:
     full = render_full_report(session, body, pr_summary, next_weight_summary,
                               one_rm_summary=one_rm_summary,
                               density_summary=density_summary,
-                              new_pr_banner=new_pr_banner)
+                              new_pr_banner=new_pr_banner,
+                              rel_strength_milestone=rel_strength_milestone)
 
     if args.out:
         args.out.write_text(full, encoding="utf-8")

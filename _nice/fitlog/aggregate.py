@@ -1484,6 +1484,69 @@ def render_new_pr_banner(prs: list[NewPrRecord]) -> str | None:
     return "🏆 **PR 突破**!: " + " · ".join(parts)
 
 
+# 相對肌力里程碑 (自身體重倍數)
+RELATIVE_STRENGTH_MILESTONES = (0.5, 1.0, 1.5, 2.0, 2.5)
+
+
+def _session_relative_ratios(session: "SessionInput") -> dict[str, float]:
+    """該堂每個加重 exercise 的 (最重 / 當堂體重)。沒體重 → {}。"""
+    bw = session.student_bodyweight_kg
+    if bw is None or bw <= 0:
+        return {}
+    per_ex: dict[str, float] = {}
+    for s in session.sets:
+        if s.weight_kg is None:
+            continue
+        cur = per_ex.get(s.exercise_code)
+        if cur is None or s.weight_kg > cur:
+            per_ex[s.exercise_code] = s.weight_kg
+    return {code: w / bw for code, w in per_ex.items()}
+
+
+def detect_relative_strength_milestones(
+    sessions: Iterable["SessionInput"],
+    student_name: str,
+    current_session: "SessionInput",
+) -> list[tuple[str, float]]:
+    """偵測當堂哪個加重動作的相對肌力首次跨過里程碑倍數。
+    回傳 [(exercise_code, milestone)],每動作取最高新里程碑。"""
+    cur_key = (current_session.session_date, current_session.session_no)
+    prior = [
+        s for s in sessions
+        if s.student_name == student_name
+        and (s.session_date, s.session_no) < cur_key
+    ]
+    prior_best: dict[str, float] = {}
+    for sess in prior:
+        for code, ratio in _session_relative_ratios(sess).items():
+            if ratio > prior_best.get(code, 0.0):
+                prior_best[code] = ratio
+    result: list[tuple[str, float]] = []
+    for code, ratio in _session_relative_ratios(current_session).items():
+        prev = prior_best.get(code, 0.0)
+        crossed = [m for m in RELATIVE_STRENGTH_MILESTONES
+                   if prev < m <= ratio]
+        if crossed:
+            result.append((code, max(crossed)))
+    result.sort(key=lambda r: -r[1])
+    return result
+
+
+def render_relative_strength_milestones(
+    milestones: list[tuple[str, float]],
+) -> str | None:
+    """「🏆 **相對肌力里程碑**:槓鈴臥推 突破 1× 自身體重!」。空 → None。"""
+    if not milestones:
+        return None
+    parts: list[str] = []
+    for code, m in milestones:
+        ex = lookup(code)
+        name = ex.chinese if ex else code
+        m_str = str(int(m)) if m == int(m) else f"{m:g}"
+        parts.append(f"{name} 突破 {m_str}× 自身體重")
+    return "🏆 **相對肌力里程碑**:" + " · ".join(parts) + "!"
+
+
 def compute_bodyweight_progression(
     sessions: Iterable["SessionInput"],
     student_name: str,
