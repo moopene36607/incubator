@@ -322,7 +322,18 @@ def render_skeleton_body(session: SessionInput | None = None) -> str:
     obs_lines: list[str] = []
     plan_lines: list[str] = []
     recovery_lines: list[str] = []
+    summary_line = "(待 AI 填:今日主題 + 整體完成度)"
     if session is not None:
+        theme_txt = session.theme.strip() or "綜合訓練"
+        total = compute_total_tonnage(session.sets)
+        parts = [
+            f"本堂主題:{theme_txt}",
+            f"共完成 {len(session.sets)} 個動作項目",
+            f"{session.duration_min} 分鐘",
+        ]
+        if total > 0:
+            parts.append(f"總訓練量 {int(total):,} kg")
+        summary_line = "、".join(parts) + "。"
         for o in session.coach_observations:
             if str(o).strip():
                 obs_lines.append(f"- {o}")
@@ -353,7 +364,7 @@ def render_skeleton_body(session: SessionInput | None = None) -> str:
         return f"### {num}、{title}\n{placeholder}\n\n"
 
     return (
-        "### 一、今日訓練摘要\n(待 AI 填:今日主題 + 整體完成度)\n\n"
+        f"### 一、今日訓練摘要\n{summary_line}\n\n"
         "### 二、本次主要進步 / 突破\n- (待 AI 填)\n- (待 AI 填)\n\n"
         + _section("三", "身體反應與觀察", obs_lines, "- (待 AI 填)\n- (待 AI 填)")
         + _section("四", "下次課程重點", plan_lines, "(待 AI 填)")
