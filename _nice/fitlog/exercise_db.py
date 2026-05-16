@@ -1,6 +1,6 @@
 """fitlog — 健身訓練動作分類 seed dictionary (純資料,no I/O, no LLM).
 
-收錄台灣健身教練最常處方的 70+ 個動作,分為:
+收錄台灣健身教練最常處方的 90+ 個動作,分為:
   push (推系) / pull (拉系) / legs (腿系) /
   core (核心) / cardio (有氧) / mobility (活動度)
 
@@ -141,6 +141,38 @@ EXERCISES: list[Exercise] = [
     # ---------- mobility (+2) ----------
     Exercise("COUCH_STRETCH", "沙發伸展", "Couch Stretch", "mobility", "髖屈肌/股四頭", "sec", (1, 3)),
     Exercise("DOWNWARD_DOG", "下犬式", "Downward Dog", "mobility", "後鏈/肩部活動度", "sec", (1, 3)),
+
+    # ===== v4 擴充 (孤立動作 / 機械 / 進階) =====
+
+    # ---------- legs (+4) ----------
+    Exercise("GOOD_MORNING", "早安式", "Good Morning", "legs", "股二頭/下背/臀大肌", "rep", (6, 8)),
+    Exercise("REVERSE_LUNGE", "後弓步蹲", "Reverse Lunge", "legs", "股四頭/臀大肌", "rep", (5, 8)),
+    Exercise("BOX_SQUAT", "箱上蹲", "Box Squat", "legs", "股四頭/臀大肌/下背", "rep", (6, 8)),
+    Exercise("SINGLE_LEG_RDL", "單腿羅馬尼亞硬舉", "Single-leg RDL", "legs", "股二頭/臀中肌/平衡", "rep", (5, 8)),
+
+    # ---------- pull (+4) ----------
+    Exercise("SHRUG", "聳肩", "Barbell Shrug", "pull", "上斜方肌", "rep", (5, 8)),
+    Exercise("BICEP_CURL", "二頭彎舉", "Bicep Curl", "pull", "肱二頭肌", "rep", (5, 8)),
+    Exercise("HAMMER_CURL", "錘式彎舉", "Hammer Curl", "pull", "肱二頭肌/肱橈肌", "rep", (5, 8)),
+    Exercise("RACK_PULL", "架上拉", "Rack Pull", "pull", "下背/臀大肌/斜方肌", "rep", (6, 9)),
+
+    # ---------- push (+4) ----------
+    Exercise("PUSH_PRESS", "借力推舉", "Push Press", "push", "三角肌/三頭/下肢爆發", "rep", (6, 9)),
+    Exercise("SKULL_CRUSHER", "碎顱者", "Skull Crusher", "push", "肱三頭肌", "rep", (5, 8)),
+    Exercise("PEC_DECK", "蝴蝶機夾胸", "Pec Deck", "push", "胸大肌", "rep", (5, 8)),
+    Exercise("MACHINE_SHOULDER_PRESS", "機械肩推", "Machine Shoulder Press", "push", "三角肌/三頭", "rep", (5, 8)),
+
+    # ---------- core (+2) ----------
+    Exercise("REVERSE_CRUNCH", "反向捲腹", "Reverse Crunch", "core", "腹直肌下段", "rep", (4, 7)),
+    Exercise("MOUNTAIN_CLIMBER", "登山者", "Mountain Climber", "core", "核心/髖屈肌/心肺", "rep", (5, 8)),
+
+    # ---------- cardio (+2) ----------
+    Exercise("ELLIPTICAL", "橢圓機", "Elliptical Trainer", "cardio", "全身/心肺", "min", (4, 7)),
+    Exercise("SHADOW_BOXING", "空擊", "Shadow Boxing", "cardio", "上肢/核心/心肺", "min", (5, 8)),
+
+    # ---------- mobility (+2) ----------
+    Exercise("PIGEON_POSE", "鴿式", "Pigeon Pose", "mobility", "臀部/髖外旋", "sec", (1, 3)),
+    Exercise("WALL_SLIDE", "靠牆滑臂", "Wall Slide", "mobility", "肩胛/胸椎活動度", "rep", (1, 3)),
 ]
 
 
