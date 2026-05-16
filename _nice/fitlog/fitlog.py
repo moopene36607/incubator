@@ -493,6 +493,51 @@ def render_line_friendly(
     )
 
 
+def _run_check(args: argparse.Namespace) -> int:
+    """--check:驗證 input JSON(s),印 PASS/FAIL 摘要,不產報告。
+    有 schema 錯誤或 JSON 解析失敗 → return 1;全通過 → 0。"""
+    if args.batch:
+        paths = discover_session_jsons(args.batch)
+        if not paths:
+            print(f"warning: 在 {args.batch} 找不到任何 session JSON",
+                  file=sys.stderr)
+            return 0
+    elif args.input is not None:
+        if not args.input.exists():
+            print(f"error: 找不到 {args.input}", file=sys.stderr)
+            return 2
+        paths = [args.input]
+    else:
+        print("error: --check 需指定 input JSON 或 --batch DIR",
+              file=sys.stderr)
+        return 2
+
+    had_error = False
+    for path in paths:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            print(f"FAIL {path.name}: JSON 解析錯誤 {e}")
+            had_error = True
+            continue
+        schema_errors = validate_payload_schema(payload)
+        if schema_errors:
+            print(f"FAIL {path.name}: {len(schema_errors)} 個 schema 錯誤")
+            for e in schema_errors:
+                print(f"  - {e}")
+            had_error = True
+            continue
+        session = parse_payload(payload)
+        warnings = validate_session(session, today_iso=date.today().isoformat())
+        if warnings:
+            print(f"PASS {path.name} (但有 {len(warnings)} 個合理性警告)")
+            for w in warnings:
+                print(f"  - {w}")
+        else:
+            print(f"PASS {path.name}")
+    return 1 if had_error else 0
+
+
 def _run_batch(args: argparse.Namespace) -> int:
     """批次模式:掃 args.batch 目錄下的 *.json,各產一份 <stem>.md。
     --out-dir 指定時寫到該目錄;否則寫在原檔旁 (向後相容)。"""
@@ -833,6 +878,8 @@ def main() -> int:
     parser.add_argument("--list-exercises", action="store_true",
                         help="列出 exercise_db 所有動作代碼 (依分類分組);PT 查 code 用")
     parser.add_argument("--no-ai", action="store_true", help="不呼叫 AI,輸出骨架")
+    parser.add_argument("--check", action="store_true",
+                        help="只驗證 JSON (schema + 合理性),印 PASS/FAIL 摘要,不產報告、不呼叫 AI")
     parser.add_argument("--quiet", action="store_true",
                         help="靜音 info / 進度訊息 (warning / error 仍保留;適合 cron / pipeline)")
     args = parser.parse_args()
@@ -861,6 +908,9 @@ def main() -> int:
         skeleton = build_session_skeleton(sets)
         sys.stdout.write(json.dumps(skeleton, ensure_ascii=False, indent=2) + "\n")
         return 0
+
+    if args.check:
+        return _run_check(args)
 
     if args.batch:
         return _run_batch(args)

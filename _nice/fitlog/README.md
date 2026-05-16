@@ -211,6 +211,7 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 | 旗標 | 用途 |
 |------|------|
 | `--no-ai` | 不呼叫 AI,輸出骨架版(免 API key) |
+| `--check` | 只驗證 JSON(schema + 合理性),印 PASS/FAIL 摘要,不產報告 |
 | `--template` | 印出空白 session JSON 樣板到 stdout |
 | `--list-exercises` | 列出 exercise_db 全部動作代碼(依分類分組) |
 | `--version` | 印出 fitlog 版本 |
