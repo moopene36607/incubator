@@ -2,7 +2,8 @@
   "student": {
     "name": "",
     "age": null,
-    "goal": ""
+    "goal": "",
+    "targets": []
   },
   "coach": {
     "name": "",
@@ -14,6 +15,7 @@
     "date": "2026-05-16",
     "duration_min": 60,
     "theme": "(請填寫主題)",
+    "bodyweight_kg": null,
     "sets": [
       {
         "exercise_code": "WORLDS_GREATEST",
@@ -67,6 +69,11 @@
   },
   "coach_observations": [],
   "student_subjective": [],
-  "next_session": {},
-  "recovery_diet": {}
+  "next_session": {
+    "theme": "",
+    "focus": []
+  },
+  "recovery_diet": {
+    "notes": ""
+  }
 }

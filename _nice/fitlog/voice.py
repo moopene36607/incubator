@@ -240,13 +240,16 @@ def build_session_skeleton(sets: list["SetRecord"]) -> dict[str, Any]:
     讓 PT 拿去填 student/coach metadata 後跑正常 CLI)。"""
     from datetime import date
     return {
-        "student": {"name": "", "age": None, "goal": ""},
+        "student": {"name": "", "age": None, "goal": "",
+                    # targets 選填:目標追蹤 (重量 / BW 次數 / 時間距離)
+                    "targets": []},
         "coach": {"name": "", "studio_name": "", "contact": ""},
         "session": {
             "session_no": 1,
             "date": date.today().isoformat(),
             "duration_min": 60,
             "theme": "(請填寫主題)",
+            "bodyweight_kg": None,  # 選填:當堂體重,用於相對肌力
             "sets": [
                 {
                     "exercise_code": s.exercise_code,
@@ -261,6 +264,6 @@ def build_session_skeleton(sets: list["SetRecord"]) -> dict[str, Any]:
         },
         "coach_observations": [],
         "student_subjective": [],
-        "next_session": {},
-        "recovery_diet": {},
+        "next_session": {"theme": "", "focus": []},
+        "recovery_diet": {"notes": ""},
     }
