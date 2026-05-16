@@ -307,12 +307,26 @@ def render_exercise_listing() -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def render_skeleton_body() -> str:
+def render_skeleton_body(session: SessionInput | None = None) -> str:
+    """--no-ai 骨架版 body。若給 session 且有教練觀察 / 學員主述,
+    「身體反應與觀察」段落逐字列出 PT 輸入(教練自己的話,非 AI 編造)。"""
+    obs_lines: list[str] = []
+    if session is not None:
+        for o in session.coach_observations:
+            if str(o).strip():
+                obs_lines.append(f"- {o}")
+        for s in session.student_subjective:
+            if str(s).strip():
+                obs_lines.append(f"- 學員主述:{s}")
+    if obs_lines:
+        section_three = "### 三、身體反應與觀察\n" + "\n".join(obs_lines) + "\n\n"
+    else:
+        section_three = "### 三、身體反應與觀察\n- (待 AI 填)\n- (待 AI 填)\n\n"
     return (
         "### 一、今日訓練摘要\n(待 AI 填:今日主題 + 整體完成度)\n\n"
         "### 二、本次主要進步 / 突破\n- (待 AI 填)\n- (待 AI 填)\n\n"
-        "### 三、身體反應與觀察\n- (待 AI 填)\n- (待 AI 填)\n\n"
-        "### 四、下次課程重點\n(待 AI 填)\n\n"
+        + section_three
+        + "### 四、下次課程重點\n(待 AI 填)\n\n"
         "### 五、本週恢復 / 飲食提醒\n(待 AI 填,不要編造學員未提到的具體數字)\n"
     )
 
@@ -662,7 +676,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             detect_relative_strength_milestones(
                 parsed_sessions, session.student_name, session)
         )
-        body = ai_write_body(session) if use_ai else render_skeleton_body()
+        body = ai_write_body(session) if use_ai else render_skeleton_body(session)
         full = render_full_report(session, body, pr_summary, next_weight_summary,
                                   goal_banner=goal_banner,
                                   one_rm_summary=one_rm_summary,
@@ -999,7 +1013,7 @@ def main() -> int:
     )
     density_summary = render_training_density(session)
 
-    body = ai_write_body(session) if use_ai else render_skeleton_body()
+    body = ai_write_body(session) if use_ai else render_skeleton_body(session)
     full = render_full_report(session, body, pr_summary, next_weight_summary,
                               one_rm_summary=one_rm_summary,
                               density_summary=density_summary,
