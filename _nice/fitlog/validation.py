@@ -86,6 +86,17 @@ def validate_session(
 
         if s.rpe is not None and (s.rpe < 1 or s.rpe > 10):
             warnings.append(f"{prefix}:RPE {s.rpe} 超出 1–10 範圍")
+        # RPE 大幅偏離動作典型範圍 (超出 2 分以上) → 疑似 typo;
+        # RPE 主觀,只在合法 1-10 範圍內才比,且寬鬆 2 分緩衝
+        if (s.rpe is not None and 1 <= s.rpe <= 10):
+            _ex = lookup(s.exercise_code)
+            if _ex is not None:
+                _lo, _hi = _ex.typical_rpe_range
+                if s.rpe < _lo - 2 or s.rpe > _hi + 2:
+                    warnings.append(
+                        f"{prefix}:RPE {s.rpe} 大幅偏離 {s.exercise_code} "
+                        f"典型範圍 {_lo}-{_hi},確認是否 typo 或填錯欄位"
+                    )
 
         # 時間/距離型動作填純數字 → 漏單位 (會被當 reps,duration PR 追蹤失效)
         ex = lookup(s.exercise_code)
