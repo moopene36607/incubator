@@ -2180,12 +2180,15 @@ def compute_goal_etas(
     today_iso: str,
     max_horizon_days: int = DEFAULT_ETA_HORIZON_DAYS,
     bw_reps_progressions: dict[str, list[tuple[str, int]]] | None = None,
+    duration_progressions: dict[str, tuple[str, list[tuple[str, int]]]]
+    | None = None,
 ) -> dict[str, str]:
     """對每個 target 找對應的 progression 跑 projection。空 / 已達標 / 無進步
     都跳過。回傳 dict[code, eta_iso_date]。
-    target_weight_kg → 用 progressions (重量);target_reps → 用
-    bw_reps_progressions (次數)。"""
+    target_weight_kg → progressions (重量);target_reps →
+    bw_reps_progressions (次數);target_duration → duration_progressions。"""
     bw_reps_progressions = bw_reps_progressions or {}
+    duration_progressions = duration_progressions or {}
     result: dict[str, str] = {}
     for t in targets:
         code = t.get("exercise_code")
@@ -2193,10 +2196,15 @@ def compute_goal_etas(
             continue
         weight_target = t.get("target_weight_kg")
         reps_target = t.get("target_reps")
+        duration_target = t.get("target_duration")
         if weight_target is not None:
             raw, points = weight_target, progressions.get(code)
         elif reps_target is not None:
             raw, points = reps_target, bw_reps_progressions.get(code)
+        elif duration_target is not None:
+            raw = duration_target
+            dur = duration_progressions.get(code)
+            points = dur[1] if dur is not None else None
         else:
             continue
         try:
