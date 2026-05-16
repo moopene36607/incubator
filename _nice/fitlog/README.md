@@ -213,13 +213,13 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 | `--no-ai` | 不呼叫 AI,輸出骨架版(免 API key) |
 | `--check` | 只驗證 JSON(schema + 合理性),印 PASS/FAIL 摘要,不產報告 |
 | `--template` | 印出空白 session JSON 樣板到 stdout |
-| `--list-exercises` | 列出 exercise_db 全部動作代碼(依分類分組) |
+| `--list-exercises [FILTER]` | 列出 exercise_db 動作代碼;可加分類 (legs/腿系…) 或關鍵字篩選 |
 | `--version` | 印出 fitlog 版本 |
 | `--quiet` | 靜音 info / 進度訊息(warning / error 保留;適合 cron / pipeline) |
 | `--out` / `--out-line` | markdown / LINE 純文字版輸出路徑 |
 | `--html` | 單堂報告匯出 HTML 網頁 |
 | `--csv` / `--csv-bom` | 單堂 CSV 匯出;`--csv-bom` 前置 UTF-8 BOM 讓 Windows Excel 中文不亂碼 |
-| `--out-json` | 單堂純函式指標(噸位/密度/強度/RPE zone)輸出結構化 JSON |
+| `--out-json` | 單堂純函式指標(噸位/密度/強度/RPE zone/體重/相對肌力/訓練肌群)輸出結構化 JSON |
 | `--prev` | 帶入上次課程 JSON 算 PR / 噸位 delta |
 | `--voice` | 口述/語音轉文字 → JSON skeleton(預處理) |
 | `--batch DIR` | 多學員批次模式 |
@@ -235,11 +235,13 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 
 - **單堂**:訓練總噸位、per-category 訓練量分解、訓練密度(kg/分)、
   **訓練強度分數**(tonnage × avg_rpe/10)、**RPE 強度分布**(熱身/工作/極限)、
-  Epley 1RM 估算、RPE-based 下次重量建議、PR 突破 banner、里程碑 banner、
-  deload 警示、動作分類失衡警示。
+  **相對肌力**(最重 / 自身體重倍數)、本堂訓練肌群、Epley 1RM 估算、
+  RPE-based 下次重量建議、PR 突破 banner、相對肌力里程碑 banner、
+  里程碑 banner、deload 警示、動作分類失衡警示。
 - **跨堂(學員 trend)**:訓練量 / 密度 / RPE / 強度分數 / 1RM / 加重動作 /
-  BW reps / 時間距離 等 sparkline 趨勢、**連續訓練週數 streak**、
-  **動作多樣性**、最常練動作、目標達成進度 + 線性外推預估達成日。
+  BW reps / 時間距離 / **體重** 等 sparkline 趨勢、**連續訓練週數 streak**、
+  **動作多樣性**、肌群覆蓋、最常練動作、**ACWR 急慢性負荷比**(受傷風險)、
+  下週建議訓練量、目標達成進度 + 線性外推預估達成日。
 - **批次(工作室)**:學員出席、單堂 / 累積訓練量排行、**工作室週訓練量**趨勢、
   開課日(週幾)分布、教練工作量、長期缺席學員預警。
 

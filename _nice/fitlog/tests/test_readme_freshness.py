@@ -62,6 +62,16 @@ class TestReadmeMentionsKeyFeatures(unittest.TestCase):
         self.assertEqual(missing, [],
                          f"README 沒提到這些功能: {missing}")
 
+    def test_mentions_bodyweight_and_relative_strength(self) -> None:
+        # round 49-51 的體重 / 相對肌力功能
+        for feat in ("相對肌力", "體重"):
+            self.assertIn(feat, README, f"README 沒提到 {feat}")
+
+    def test_list_exercises_filter_documented(self) -> None:
+        # round 58 的 --list-exercises 篩選功能應記載
+        self.assertTrue("篩選" in README or "關鍵字" in README,
+                        "README 沒提到 --list-exercises 的篩選能力")
+
 
 if __name__ == "__main__":
     unittest.main()
