@@ -307,10 +307,21 @@ def render_exercise_listing() -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
+_RECOVERY_LABELS = {
+    "protein_target_g": "蛋白質目標 (g)",
+    "kcal_deficit": "熱量赤字 (kcal)",
+    "kcal_target": "熱量目標 (kcal)",
+    "sleep_target_hr": "睡眠目標 (小時)",
+    "water_target_l": "飲水目標 (L)",
+}
+
+
 def render_skeleton_body(session: SessionInput | None = None) -> str:
-    """--no-ai 骨架版 body。若給 session 且有教練觀察 / 學員主述,
-    「身體反應與觀察」段落逐字列出 PT 輸入(教練自己的話,非 AI 編造)。"""
+    """--no-ai 骨架版 body。若給 session,把 PT 已填的觀察 / 下次計畫 /
+    恢復飲食逐字列出(教練自己的話與數字,非 AI 編造)。"""
     obs_lines: list[str] = []
+    plan_lines: list[str] = []
+    recovery_lines: list[str] = []
     if session is not None:
         for o in session.coach_observations:
             if str(o).strip():
@@ -318,16 +329,36 @@ def render_skeleton_body(session: SessionInput | None = None) -> str:
         for s in session.student_subjective:
             if str(s).strip():
                 obs_lines.append(f"- 學員主述:{s}")
-    if obs_lines:
-        section_three = "### 三、身體反應與觀察\n" + "\n".join(obs_lines) + "\n\n"
-    else:
-        section_three = "### 三、身體反應與觀察\n- (待 AI 填)\n- (待 AI 填)\n\n"
+        ns = session.next_session or {}
+        theme = str(ns.get("theme", "")).strip()
+        nsdate = str(ns.get("date", "")).strip()
+        if theme:
+            plan_lines.append(
+                f"- 主題:{theme}" + (f"({nsdate})" if nsdate else ""))
+        for f in ns.get("focus", []) or []:
+            if str(f).strip():
+                plan_lines.append(f"- {f}")
+        rd = session.recovery_diet or {}
+        for key, label in _RECOVERY_LABELS.items():
+            if key in rd and rd[key] not in (None, ""):
+                recovery_lines.append(f"- {label}:{rd[key]}")
+        notes = str(rd.get("notes", "")).strip()
+        if notes:
+            recovery_lines.append(f"- {notes}")
+
+    def _section(num: str, title: str, lines: list[str],
+                 placeholder: str) -> str:
+        if lines:
+            return f"### {num}、{title}\n" + "\n".join(lines) + "\n\n"
+        return f"### {num}、{title}\n{placeholder}\n\n"
+
     return (
         "### 一、今日訓練摘要\n(待 AI 填:今日主題 + 整體完成度)\n\n"
         "### 二、本次主要進步 / 突破\n- (待 AI 填)\n- (待 AI 填)\n\n"
-        + section_three
-        + "### 四、下次課程重點\n(待 AI 填)\n\n"
-        "### 五、本週恢復 / 飲食提醒\n(待 AI 填,不要編造學員未提到的具體數字)\n"
+        + _section("三", "身體反應與觀察", obs_lines, "- (待 AI 填)\n- (待 AI 填)")
+        + _section("四", "下次課程重點", plan_lines, "(待 AI 填)")
+        + _section("五", "本週恢復 / 飲食提醒", recovery_lines,
+                   "(待 AI 填,不要編造學員未提到的具體數字)").rstrip("\n") + "\n"
     )
 
 
