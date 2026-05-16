@@ -107,6 +107,8 @@ class GoalAchievement:
 @dataclass(frozen=True)
 class GoalProgress:
     """學員某動作的目標 vs 現況 (target_kg / current_kg / percent)。
+    unit 為 "kg" (重量目標) 或 "reps" (BW 次數目標);後者 current_kg/target_kg
+    欄位存的是 reps 整數值 (沿用欄名向後相容)。
     若達標,achieved_on_session_no / date 記錄第一次達成那一堂 (歷史時刻)。"""
     exercise_code: str
     current_kg: float
@@ -114,6 +116,7 @@ class GoalProgress:
     percent: float
     achieved_on_session_no: int | None = None
     achieved_on_date: str | None = None
+    unit: str = "kg"
 
 
 def compute_session_leaderboard(
@@ -1564,36 +1567,59 @@ def compute_goal_progress(
     prs: dict[str, AllTimeBest],
     sessions: Iterable["SessionInput"] | None = None,
     student_name: str | None = None,
+    bw_prs: dict[str, AllTimeBwBest] | None = None,
 ) -> list[GoalProgress]:
-    """對每個 target 算 (現況 / 目標) %。target=0 跳過 (避免 div0)。
-    若有 sessions + student_name,額外找第一次達標那一堂的 session_no/date。"""
+    """對每個 target 算 (現況 / 目標) %。target<=0 跳過 (避免 div0)。
+    target 含 target_weight_kg → 重量目標 (current = 歷來最重);
+    target 含 target_reps → BW 次數目標 (current = bw_prs 歷來最高 reps)。
+    若有 sessions + student_name,重量目標額外找第一次達標那一堂。"""
     sessions_list = list(sessions) if sessions else []
+    bw_prs = bw_prs or {}
     result: list[GoalProgress] = []
     for t in targets:
         code = t.get("exercise_code")
-        target = t.get("target_weight_kg")
-        if not code or target is None:
+        if not code:
             continue
-        try:
-            target_f = float(target)
-        except (TypeError, ValueError):
-            continue
-        if target_f <= 0:
-            continue
-        current = prs[code].max_weight_kg if code in prs else 0.0
-        achieved_no, achieved_date = None, None
-        if sessions_list and student_name is not None:
-            ach = _find_goal_achievement(code, target_f, sessions_list, student_name)
-            if ach is not None:
-                achieved_no, achieved_date = ach
-        result.append(GoalProgress(
-            exercise_code=code,
-            current_kg=current,
-            target_kg=target_f,
-            percent=current / target_f * 100,
-            achieved_on_session_no=achieved_no,
-            achieved_on_date=achieved_date,
-        ))
+        weight_target = t.get("target_weight_kg")
+        reps_target = t.get("target_reps")
+        if weight_target is not None:
+            try:
+                target_f = float(weight_target)
+            except (TypeError, ValueError):
+                continue
+            if target_f <= 0:
+                continue
+            current = prs[code].max_weight_kg if code in prs else 0.0
+            achieved_no, achieved_date = None, None
+            if sessions_list and student_name is not None:
+                ach = _find_goal_achievement(
+                    code, target_f, sessions_list, student_name)
+                if ach is not None:
+                    achieved_no, achieved_date = ach
+            result.append(GoalProgress(
+                exercise_code=code,
+                current_kg=current,
+                target_kg=target_f,
+                percent=current / target_f * 100,
+                achieved_on_session_no=achieved_no,
+                achieved_on_date=achieved_date,
+                unit="kg",
+            ))
+        elif reps_target is not None:
+            try:
+                target_r = float(reps_target)
+            except (TypeError, ValueError):
+                continue
+            if target_r <= 0:
+                continue
+            current_r = float(bw_prs[code].max_reps) if code in bw_prs else 0.0
+            result.append(GoalProgress(
+                exercise_code=code,
+                current_kg=current_r,
+                target_kg=target_r,
+                percent=current_r / target_r * 100,
+                unit="reps",
+            ))
     return result
 
 
@@ -1621,8 +1647,12 @@ def render_goal_progress(
         eta_str = ""
         if p.percent < 100 and p.exercise_code in etas:
             eta_str = f" (預估達成 {etas[p.exercise_code]})"
+        if p.unit == "reps":
+            value_str = f"{int(p.current_kg)} / {int(p.target_kg)} reps"
+        else:
+            value_str = f"{_format_kg(p.current_kg)} / {_format_kg(p.target_kg)}"
         lines.append(
-            f"- {name}: {_format_kg(p.current_kg)} / {_format_kg(p.target_kg)} "
+            f"- {name}: {value_str} "
             f"({p.percent:.0f}%) {bar}{check}{achievement}{eta_str}"
         )
     lines.append("")

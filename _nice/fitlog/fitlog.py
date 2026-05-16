@@ -710,6 +710,7 @@ def _run_batch(args: argparse.Namespace) -> int:
             goals = compute_goal_progress(
                 latest_targets, prs,
                 sessions=parsed_sessions, student_name=name,
+                bw_prs=bw_prs,
             )
             goal_etas = compute_goal_etas(
                 latest_targets, progressions, latest_date,
