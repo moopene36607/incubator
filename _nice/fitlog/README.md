@@ -250,16 +250,26 @@ reps_or_duration / weight_kg / rpe / tonnage_kg / note。
 ```
 fitlog/
 ├── README.md
-├── fitlog.py              # CLI 主程式(--out + --out-line)
-├── exercise_db.py         # 30 動作 grounding seed dictionary
-├── samples/
-│   └── sample_input.json  # 60 分鐘全身肌力課程 (第 12 堂)
-├── examples/
-│   └── sample_output.md   # 預先產出的完整課後報告
+├── fitlog.py          # CLI 主程式 + 報告組裝 + AI prompt
+├── exercise_db.py     # 110 動作 grounding seed dictionary
+├── metrics.py         # 純函式量化指標 (噸位/密度/強度/RPE zone/相對肌力…)
+├── aggregate.py       # 多堂聚合 (進步趨勢/排行/工作室彙總/目標/ACWR…)
+├── coaching.py        # 教練建議 (1RM/下次重量/deload/失衡/里程碑)
+├── progress.py        # 跨堂 PR 追蹤 (重量/BW reps/時間距離)
+├── validation.py      # PT 輸入合理性檢查
+├── schema.py          # JSON payload 結構驗證
+├── voice.py           # 口述/語音文字 → SetRecord parser (含中文記法)
+├── batch.py           # 批次模式 session 檔掃描
+├── csv_export.py      # CSV 匯出 (Excel-friendly)
+├── html_export.py     # markdown → HTML (含目錄錨點)
+├── samples/           # 擬真合成輸入
+├── examples/          # 預先產出輸出 (免 API key 也能看 demo)
+├── tests/             # 115+ 測試檔,全程 TDD
 └── requirements.txt
 ```
 
-總計約 350 行 Python。依賴僅 `anthropic`(AI 模式才需要)。
+依賴僅 `anthropic`(AI 模式才需要;`--no-ai` 完全純 Python 標準庫)。
+所有金錢 / 重量 / 訓練量數字由純函式計算,LLM 只寫散文。
 
 ## 真正產品要有但 prototype 沒做
 

@@ -72,6 +72,17 @@ class TestReadmeMentionsKeyFeatures(unittest.TestCase):
         self.assertTrue("篩選" in README or "關鍵字" in README,
                         "README 沒提到 --list-exercises 的篩選能力")
 
+    def test_project_structure_lists_core_modules(self) -> None:
+        # 專案結構段應反映目前的模組拆分,不是只有 fitlog.py
+        for module in ("aggregate.py", "metrics.py", "voice.py",
+                       "exercise_db.py"):
+            self.assertIn(module, README,
+                          f"README 專案結構沒列出 {module}")
+
+    def test_no_stale_350_lines_claim(self) -> None:
+        # 「約 350 行」是早期數字,專案已遠超過
+        self.assertNotIn("350 行", README)
+
 
 if __name__ == "__main__":
     unittest.main()
